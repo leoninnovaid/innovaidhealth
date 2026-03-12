@@ -27,7 +27,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20">
-        <a href="#" className={`text-xl font-extrabold tracking-tight ${scrolled ? "text-primary" : "text-primary-foreground"}`}>
+        <a href="#" className={`flex items-center gap-2 text-xl font-extrabold tracking-tight ${scrolled ? "text-primary" : "text-primary-foreground"}`}>
+          <img src={innovaidSymbol} alt="INNOVAID:health" className="h-8 w-8 object-contain" />
           INNOVAID<span className="text-accent">:health</span>
         </a>
 

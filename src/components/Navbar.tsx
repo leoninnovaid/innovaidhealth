@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Warum wir", href: "#warum" },
-  { label: "Zielgruppen", href: "#zielgruppen" },
-  { label: "SAVE&SAFE", href: "#saveandsafe" },
-  { label: "Methodik", href: "#methodik" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "WARUM", href: "#warum" },
+  { label: "VORTEILE", href: "#zielgruppen" },
+  { label: "EINBLICK", href: "#saveandsafe" },
+  { label: "METHODEN", href: "#methodik" },
+  { label: "KONTAKT", href: "#kontakt" },
 ];
 
 const Navbar = () => {

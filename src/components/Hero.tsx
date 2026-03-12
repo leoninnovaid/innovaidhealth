@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users } from "lucide-react";
+import innovaidLogo from "@/assets/innovaid-logo.png";
 
 const Hero = () => {
   return (

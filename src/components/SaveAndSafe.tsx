@@ -73,8 +73,8 @@ const SaveAndSafe = () =>
 
           <div className="bg-muted/50 rounded-xl p-6 mb-8 border border-border/50">
             <p className="text-sm text-muted-foreground italic">
-
-          </p>
+              KI-basierte Lösungen, um Stürze zu vermeiden und Pflegekräfte zu entlasten. Gemeinsam arbeiten wir an einer sicheren Zukunft in der Geriatrie.
+            </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">

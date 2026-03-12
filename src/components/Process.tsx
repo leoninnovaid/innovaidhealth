@@ -55,7 +55,7 @@ const Process = () => (
             className="relative"
           >
             <span className="text-6xl font-extrabold text-accent/10 absolute -top-4 -left-2 select-none">{s.step}</span>
-            <div className="relative bg-card rounded-xl p-8 card-elevated border border-border/50 h-full">
+            <div className="relative bg-transparent rounded-xl p-8 h-full">
               <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center mb-5">
                 <s.icon className="text-accent" size={24} />
               </div>

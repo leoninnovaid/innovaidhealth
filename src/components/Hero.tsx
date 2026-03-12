@@ -19,7 +19,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <p className="text-sm font-semibold tracking-widest uppercase text-accent-foreground/70 mb-6" style={{ color: 'hsl(170, 80%, 70%)' }}>
+            <img src={innovaidLogo} alt="INNOVAID:health Logo" className="h-10 md:h-12 mb-8" />
+            <p className="text-sm font-semibold tracking-widest uppercase mb-6" style={{ color: 'hsl(205, 80%, 70%)' }}>
               Health Innovation · Market Access · Impact
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-primary-foreground mb-6">

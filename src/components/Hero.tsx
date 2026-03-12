@@ -24,7 +24,7 @@ const Hero = () => {
               Health Innovation · Market Access · Impact
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-primary-foreground mb-6">
-              Gesundheits&shy;innovationen in Versorgung, Erstattung und Markt bringen.
+              Wir bringen Innovation in den Gesundheitsmarkt
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-10 max-w-2xl">
               Wir verbinden Startups, Krankenkassen und Investoren, damit aus innovativen Projekten tragfähige Versorgungslösungen werden.

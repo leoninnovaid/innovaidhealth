@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import innovaidSymbol from "@/assets/innovaid-symbol.png";
 
 const navItems = [
   { label: "WARUM", href: "#warum" },

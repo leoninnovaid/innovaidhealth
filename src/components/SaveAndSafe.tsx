@@ -72,7 +72,8 @@ const SaveAndSafe = () =>
             </div>
           </div>
 
-          <div className="bg-muted/50 rounded-xl p-6 mb-8 border border-border/50">
+          <div className="bg-muted/50 rounded-xl p-6 mb-8 border border-border/50 flex items-center gap-6">
+            <img src={sasaLogo} alt="SAVE&SAFE Logo" className="w-20 h-20 object-contain shrink-0" />
             <p className="text-sm text-muted-foreground italic">
               KI-basierte Lösungen, um Stürze zu vermeiden und Pflegekräfte zu entlasten. Gemeinsam arbeiten wir an einer sicheren Zukunft in der Geriatrie.
             </p>

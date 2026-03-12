@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users } from "lucide-react";
+import innovaidLogo from "@/assets/innovaid-logo.png";
 
 const Hero = () => {
   return (
@@ -18,7 +19,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <p className="text-sm font-semibold tracking-widest uppercase text-accent-foreground/70 mb-6" style={{ color: 'hsl(170, 80%, 70%)' }}>
+            <img src={innovaidLogo} alt="INNOVAID:health Logo" className="h-10 md:h-12 mb-8" />
+            <p className="text-sm font-semibold tracking-widest uppercase mb-6" style={{ color: 'hsl(205, 80%, 70%)' }}>
               Health Innovation · Market Access · Impact
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-primary-foreground mb-6">
@@ -52,7 +54,7 @@ const Hero = () => {
       {/* Bottom wave */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0 80L1440 80L1440 30C1200 60 960 10 720 30C480 50 240 0 0 30L0 80Z" fill="hsl(210, 20%, 98%)" />
+          <path d="M0 80L1440 80L1440 30C1200 60 960 10 720 30C480 50 240 0 0 30L0 80Z" fill="hsl(220, 20%, 97%)" />
         </svg>
       </div>
     </section>

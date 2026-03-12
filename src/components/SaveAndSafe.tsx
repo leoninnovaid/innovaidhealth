@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, HeartPulse, Shield, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import sasaLogo from "@/assets/saveandsafe-logo.png";
 
 const SaveAndSafe = () =>
 <section id="saveandsafe" className="section-padding bg-background">

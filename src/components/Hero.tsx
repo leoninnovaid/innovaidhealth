@@ -44,7 +44,7 @@ const Hero = () => {
             </Button>
             <Button size="lg" variant="hero-outline" className="text-base px-8 py-6" asChild>
               <a href="#zielgruppen">
-                <Users className="mr-2" size={18} /> Für wen wir arbeiten
+                <Users className="mr-2" size={18} /> Zielgruppen
               </a>
             </Button>
           </motion.div>

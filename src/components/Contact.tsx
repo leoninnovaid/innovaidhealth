@@ -17,7 +17,7 @@ const Contact = () => (
           Kontakt aufnehmen
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-10">
-          Ob Startup, Krankenkasse oder Investor – wir freuen uns auf den Austausch. Vereinbaren Sie ein unverbindliches Erstgespräch und erfahren Sie, wie wir Ihre Innovation voranbringen können.
+          Ob Startup, Krankenkasse oder Investor – gemeinsame Gespräche ermöglichen den Austausch. Ein unverbindliches Erstgespräch zeigt, wie Innovationen vorangebracht werden können.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

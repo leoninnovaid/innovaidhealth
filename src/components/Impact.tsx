@@ -20,7 +20,7 @@ const Impact = () => (
       >
         <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">Wirkung</p>
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
-          Unser Impact
+          Impact
         </h2>
       </motion.div>
 

@@ -35,7 +35,7 @@ const WhyUs = () =>
       className="text-center max-w-2xl mx-auto mb-16">
       
         <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">Unsere Stärke</p>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground text-center">Wir bringen Innovation sicher in den Markt
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground text-center">Innovation sicher in den Markt bringen
 
       </h2>
       </motion.div>

@@ -36,7 +36,7 @@ const Audiences = () =>
       className="text-center max-w-2xl mx-auto mb-16">
       
         <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">Zielgruppen</p>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Wir verbinden Stakeholder
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Stakeholder verbinden
 
       </h2>
       </motion.div>

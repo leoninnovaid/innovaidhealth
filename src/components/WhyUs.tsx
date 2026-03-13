@@ -5,22 +5,22 @@ const items = [
 {
   icon: Lightbulb,
   title: "Innovation Screening",
-  text: "Wir identifizieren und validieren Gesundheitsinnovationen mit echtem Versorgungspotenzial – systematisch und evidenzbasiert."
+  text: "Identifikation und Validierung von Gesundheitsinnovationen mit echtem Versorgungspotenzial – systematisch und evidenzbasiert."
 },
 {
   icon: Network,
   title: "Stakeholder-Vernetzung",
-  text: "Wir bringen die richtigen Akteure zusammen: Startups, Leistungserbringer, Kostenträger und Investoren."
+  text: "Die richtigen Akteure zusammenbringen: Startups, Leistungserbringer, Kostenträger und Investoren."
 },
 {
   icon: ShieldCheck,
   title: "Marktzugang & Erstattung",
-  text: "Wir begleiten den Weg in Reimbursement-Strukturen und schaffen tragfähige Geschäftsmodelle im regulierten Markt."
+  text: "Begleitung auf dem Weg in Reimbursement-Strukturen und Schaffung tragfähiger Geschäftsmodelle im regulierten Markt."
 },
 {
   icon: TrendingUp,
   title: "Skalierbare Wirkung",
-  text: "Unser Ziel: aus einzelnen Projekten skalierbare Versorgungslösungen machen, die Patienten und System nachhaltig entlasten."
+  text: "Ziel: aus einzelnen Projekten skalierbare Versorgungslösungen machen, die Patienten und System nachhaltig entlasten."
 }];
 
 

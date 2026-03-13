@@ -6,21 +6,21 @@ const audiences = [
   icon: Rocket,
   title: "Startups",
   pain: "Der deutsche Gesundheitsmarkt ist hochreguliert und schwer zugänglich. Ohne Marktzugang und Erstattungspfade bleibt eine Innovation wirkungslos.",
-  solution: "Wir unterstützen bei Markteintritt, Einbindung relevanter Akteure und einer tragfähigen Umsetzungsstrategie – vom Prototypen bis zum Reimbursement.",
+  solution: "Unterstützung bei Markteintritt, Einbindung relevanter Akteure und einer tragfähigen Umsetzungsstrategie – vom Prototypen bis zum Reimbursement.",
   cta: "Marktzugang besprechen"
 },
 {
   icon: Building2,
   title: "Krankenkassen",
   pain: "Steigende Kosten und Versorgungslücken erfordern innovative Ansätze. Doch die Integration neuer Lösungen in bestehende Strukturen ist komplex.",
-  solution: "Wir schaffen konkrete Partizipationsmöglichkeiten an wirksamen Innovationen und helfen, Projekte mit messbarem Versorgungsnutzen in die Regelversorgung zu bringen.",
+  solution: "Konkrete Partizipationsmöglichkeiten an wirksamen Innovationen und Hilfe bei der Integration von Projekten mit messbarem Versorgungsnutzen in die Regelversorgung.",
   cta: "Partner werden"
 },
 {
   icon: BarChart3,
   title: "Investoren",
   pain: "Health-Startups sind schwer zu bewerten: regulatorische Hürden, lange Zyklen und unklare Marktperspektiven erschweren fundierte Investitionsentscheidungen.",
-  solution: "Wir bieten frühzeitigen Zugang zu geprüften Projekten und Expertise zur Einschätzung der Umsetzbarkeit im deutschen Gesundheitsmarkt.",
+  solution: "Frühzeitiger Zugang zu geprüften Projekten und Expertise zur Einschätzung der Umsetzbarkeit im deutschen Gesundheitsmarkt.",
   cta: "Investorengespräch anfragen"
 }];
 
@@ -36,7 +36,7 @@ const Audiences = () =>
       className="text-center max-w-2xl mx-auto mb-16">
       
         <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">Zielgruppen</p>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Wir verbinden Stakeholder
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Stakeholder verbinden
 
       </h2>
       </motion.div>

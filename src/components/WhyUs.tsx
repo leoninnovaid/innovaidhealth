@@ -5,22 +5,22 @@ const items = [
 {
   icon: Lightbulb,
   title: "Innovation Screening",
-  text: "Wir identifizieren und validieren Gesundheitsinnovationen mit echtem Versorgungspotenzial – systematisch und evidenzbasiert."
+  text: "Identifikation und Validierung von Gesundheitsinnovationen mit echtem Versorgungspotenzial – systematisch und evidenzbasiert."
 },
 {
   icon: Network,
   title: "Stakeholder-Vernetzung",
-  text: "Wir bringen die richtigen Akteure zusammen: Startups, Leistungserbringer, Kostenträger und Investoren."
+  text: "Die richtigen Akteure zusammenbringen: Startups, Leistungserbringer, Kostenträger und Investoren."
 },
 {
   icon: ShieldCheck,
   title: "Marktzugang & Erstattung",
-  text: "Wir begleiten den Weg in Reimbursement-Strukturen und schaffen tragfähige Geschäftsmodelle im regulierten Markt."
+  text: "Begleitung auf dem Weg in Reimbursement-Strukturen und Schaffung tragfähiger Geschäftsmodelle im regulierten Markt."
 },
 {
   icon: TrendingUp,
   title: "Skalierbare Wirkung",
-  text: "Unser Ziel: aus einzelnen Projekten skalierbare Versorgungslösungen machen, die Patienten und System nachhaltig entlasten."
+  text: "Ziel: aus einzelnen Projekten skalierbare Versorgungslösungen machen, die Patienten und System nachhaltig entlasten."
 }];
 
 
@@ -35,7 +35,7 @@ const WhyUs = () =>
       className="text-center max-w-2xl mx-auto mb-16">
       
         <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">Unsere Stärke</p>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground text-center">Wir bringen Innovation sicher in den Markt
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground text-center">Innovation sicher in den Markt bringen
 
       </h2>
       </motion.div>

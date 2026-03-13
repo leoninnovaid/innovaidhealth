@@ -24,10 +24,10 @@ const Hero = () => {
               Health Innovation · Market Access · Impact
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-primary-foreground mb-6">
-              Wir bringen Innovation in den Gesundheitsmarkt
+              Innovation im Gesundheitsmarkt
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-10 max-w-2xl">
-              Wir verbinden Startups, Krankenkassen und Investoren, damit aus innovativen Projekten tragfähige Versorgungslösungen werden.
+              Startups, Krankenkassen und Investoren werden vernetzt – damit aus innovativen Projekten tragfähige Versorgungslösungen werden.
             </p>
           </motion.div>
 
@@ -44,7 +44,7 @@ const Hero = () => {
             </Button>
             <Button size="lg" variant="hero-outline" className="text-base px-8 py-6" asChild>
               <a href="#zielgruppen">
-                <Users className="mr-2" size={18} /> Für wen wir arbeiten
+                <Users className="mr-2" size={18} /> Zielgruppen
               </a>
             </Button>
           </motion.div>

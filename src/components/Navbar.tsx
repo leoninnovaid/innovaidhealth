@@ -3,11 +3,11 @@ import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Leistungen", href: "#warum" },
-  { label: "Zielgruppen", href: "#zielgruppen" },
-  { label: "SAVE&SAFE", href: "#saveandsafe" },
-  { label: "Methodik", href: "#methodik" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "Leistungen", href: "/#warum" },
+  { label: "Zielgruppen", href: "/#zielgruppen" },
+  { label: "SAVE&SAFE", href: "/#saveandsafe" },
+  { label: "Methodik", href: "/#methodik" },
+  { label: "Kontakt", href: "/#kontakt" },
 ];
 
 
@@ -50,7 +50,7 @@ const Navbar = () => {
             </a>
           )}
           <a
-            href="#kontakt"
+            href="/#kontakt"
             className="text-sm font-semibold px-5 py-2.5 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 transition-colors">
             
             Gespräch vereinbaren
@@ -80,7 +80,7 @@ const Navbar = () => {
             </a>
         )}
           <a
-          href="#kontakt"
+          href="/#kontakt"
           onClick={() => setOpen(false)}
           className="block text-sm font-semibold px-5 py-2.5 rounded-lg bg-accent text-accent-foreground text-center">
           

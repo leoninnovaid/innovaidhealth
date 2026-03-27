@@ -32,7 +32,7 @@ const Navbar = () => {
       }>
       
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20">
-        <a href="#" className={`text-xl font-extrabold tracking-tight ${scrolled ? "text-primary" : "text-primary-foreground"}`}>
+        <a href="/" className={`text-xl font-extrabold tracking-tight ${solidHeader ? "text-primary" : "text-primary-foreground"}`}>
           INNOVAID<span className="text-accent text-left">:health</span>
         </a>
 

@@ -8,7 +8,7 @@ const Footer = () => (
       </p>
       <div className="flex gap-6">
         <Link to="/impressum" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">Impressum</Link>
-        <a href="#" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">Datenschutz</a>
+        <Link to="/datenschutz" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">Datenschutz</Link>
       </div>
     </div>
   </footer>

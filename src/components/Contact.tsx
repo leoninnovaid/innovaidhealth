@@ -22,12 +22,12 @@ const Contact = () => (
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button size="lg" className="text-base px-8 py-6" asChild>
-            <a href="mailto:kontakt@innovaid-health.de">
+            <a href="mailto:info@innovaid.health">
               <Mail className="mr-2" size={18} /> Projekt besprechen
             </a>
           </Button>
           <Button size="lg" variant="outline" className="text-base px-8 py-6" asChild>
-            <a href="mailto:investoren@innovaid-health.de">
+            <a href="mailto:info@innovaid.health">
               Investorengespräch anfragen <ArrowRight className="ml-2" size={18} />
             </a>
           </Button>

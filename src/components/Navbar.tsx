@@ -3,11 +3,11 @@ import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Leistungen", href: "#warum" },
-  { label: "Zielgruppen", href: "#zielgruppen" },
-  { label: "SAVE&SAFE", href: "#saveandsafe" },
-  { label: "Methodik", href: "#methodik" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "Leistungen", href: "/#warum" },
+  { label: "Zielgruppen", href: "/#zielgruppen" },
+  { label: "SAVE&SAFE", href: "/#saveandsafe" },
+  { label: "Methodik", href: "/#methodik" },
+  { label: "Kontakt", href: "/#kontakt" },
 ];
 
 

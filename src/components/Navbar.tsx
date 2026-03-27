@@ -80,7 +80,7 @@ const Navbar = () => {
             </a>
         )}
           <a
-          href="#kontakt"
+          href="/#kontakt"
           onClick={() => setOpen(false)}
           className="block text-sm font-semibold px-5 py-2.5 rounded-lg bg-accent text-accent-foreground text-center">
           

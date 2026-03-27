@@ -43,7 +43,7 @@ const Navbar = () => {
             key={item.href}
             href={item.href}
             className={`text-sm font-medium transition-colors hover:text-accent ${
-            scrolled ? "text-foreground" : "text-primary-foreground/80"}`
+            solidHeader ? "text-foreground" : "text-primary-foreground/80"}`
             }>
             
               {item.label}
@@ -60,7 +60,7 @@ const Navbar = () => {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className={`md:hidden ${scrolled ? "text-foreground" : "text-primary-foreground"}`}>
+          className={`md:hidden ${solidHeader ? "text-foreground" : "text-primary-foreground"}`}>
           
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>

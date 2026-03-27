@@ -50,7 +50,7 @@ const Navbar = () => {
             </a>
           )}
           <a
-            href="#kontakt"
+            href="/#kontakt"
             className="text-sm font-semibold px-5 py-2.5 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 transition-colors">
             
             Gespräch vereinbaren

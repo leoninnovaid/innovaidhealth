@@ -20,7 +20,7 @@ const Impressum = () => (
 
           <div>
             <h2 className="text-lg font-bold text-foreground mb-2">Vertreten durch</h2>
-            <p>Geschäftsführer: Christoph Meyer-Delpho</p>
+            <p>Geschäftsführer: Dr. Christoph Meyer-Delpho</p>
           </div>
 
           <div>

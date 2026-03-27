@@ -22,7 +22,7 @@ const Datenschutz = () => (
               Dr. Christoph Meyer-Delpho<br />
               Albert-Fischer-Straße 9<br />
               53113 Bonn<br />
-              E-Mail: <a href="mailto:info@innovaid.health" className="text-accent hover:underline">info@innovaid.health</a>
+              E-Mail: <button type="button" onClick={() => { navigator.clipboard.writeText('info@innovaid.health'); }} className="text-accent hover:underline cursor-pointer" title="E-Mail in Zwischenablage kopieren">E-Mail kopieren</button>
             </p>
           </section>
 
@@ -64,13 +64,6 @@ const Datenschutz = () => (
             </p>
           </section>
 
-          <section className="border-t border-border pt-6 mt-8">
-            <p className="text-xs text-muted-foreground">
-              <strong className="text-foreground">Quellen:</strong>{" "}
-              <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">GitHub Privacy Statement</a>,{" "}
-              <a href="https://www.lda.bayern.de" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Bayerisches Landesamt für Datenschutzaufsicht</a>
-            </p>
-          </section>
         </div>
       </div>
     </main>

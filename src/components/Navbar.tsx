@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -13,6 +14,8 @@ const navItems = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const isSubpage = location.pathname !== "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -20,14 +23,16 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const solidHeader = scrolled || isSubpage;
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? "bg-card/95 backdrop-blur-md shadow-sm" : "bg-transparent"}`
+      solidHeader ? "bg-card/95 backdrop-blur-md shadow-sm" : "bg-transparent"}`
       }>
       
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20">
-        <a href="#" className={`text-xl font-extrabold tracking-tight ${scrolled ? "text-primary" : "text-primary-foreground"}`}>
+        <a href="/" className={`text-xl font-extrabold tracking-tight ${solidHeader ? "text-primary" : "text-primary-foreground"}`}>
           INNOVAID<span className="text-accent text-left">:health</span>
         </a>
 
@@ -38,7 +43,7 @@ const Navbar = () => {
             key={item.href}
             href={item.href}
             className={`text-sm font-medium transition-colors hover:text-accent ${
-            scrolled ? "text-foreground" : "text-primary-foreground/80"}`
+            solidHeader ? "text-foreground" : "text-primary-foreground/80"}`
             }>
             
               {item.label}
@@ -55,7 +60,7 @@ const Navbar = () => {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className={`md:hidden ${scrolled ? "text-foreground" : "text-primary-foreground"}`}>
+          className={`md:hidden ${solidHeader ? "text-foreground" : "text-primary-foreground"}`}>
           
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -15,30 +15,32 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 70% 10%;
 
-    --primary: 220 70% 10%;
+    --primary: 222 70% 10%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 30% 94%;
-    --secondary-foreground: 220 70% 10%;
+    --secondary-foreground: 222 70% 10%;
 
     --muted: 215 15% 94%;
-    --muted-foreground: 220 10% 45%;
+    --muted-foreground: 222 10% 45%;
 
-    --accent: 205 62% 55%;
+    --accent: 207 62% 55%;
     --accent-foreground: 0 0% 100%;
+
+    --gold: 34 55% 63%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 215 15% 90%;
     --input: 215 15% 90%;
-    --ring: 205 62% 55%;
+    --ring: 207 62% 55%;
 
     --radius: 0.75rem;
 
-    --hero-gradient: linear-gradient(135deg, hsl(220, 70%, 10%) 0%, hsl(218, 55%, 18%) 50%, hsl(205, 62%, 30%) 100%);
-    --card-shadow: 0 4px 24px -4px hsl(220 70% 10% / 0.06);
-    --card-shadow-hover: 0 8px 32px -4px hsl(220 70% 10% / 0.12);
+    --hero-gradient: linear-gradient(135deg, hsl(222, 70%, 10%) 0%, hsl(222, 55%, 18%) 50%, hsl(207, 62%, 30%) 100%);
+    --card-shadow: 0 4px 24px -4px hsl(222 70% 10% / 0.06);
+    --card-shadow-hover: 0 8px 32px -4px hsl(222 70% 10% / 0.12);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -47,7 +49,7 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 205 62% 55%;
+    --sidebar-ring: 207 62% 55%;
   }
 }
 

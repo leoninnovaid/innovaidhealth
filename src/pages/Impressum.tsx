@@ -40,6 +40,43 @@ const Impressum = () => {
             </div>
 
             <div>
+              <h2 className="mb-2 text-lg font-bold text-foreground">Registereintrag</h2>
+              <p>
+                Eingetragen im Handelsregister
+                <br />
+                Registergericht: Amtsgericht Bonn
+                <br />
+                Registernummer: HRB 29789
+              </p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-lg font-bold text-foreground">Umsatzsteuer-Identifikationsnummer</h2>
+              <p>Gemäß § 27 a Umsatzsteuergesetz: DE457813678</p>
+            </div>
+
+            <div>
+              <h2 className="mb-2 text-lg font-bold text-foreground">Links auf fremde Seiten</h2>
+              <p>
+                Für den redaktionellen Inhalt der vorgenannten Internet-Angebote sind ausschließlich die jeweiligen
+                Auftraggeber verantwortlich.
+              </p>
+              <p className="mt-3">
+                Mit Urteil vom 12. Mai 1998 hat das Landgericht Hamburg entschieden, dass man durch die Ausbringung
+                eines Links die Inhalte der gelinkten Seite gegebenenfalls mit zu verantworten hat. Dies kann, so das
+                Landgericht, nur dadurch verhindert werden, dass man sich ausdrücklich von diesen Inhalten distanziert.
+                Wir haben auf unseren Seiten Links zu anderen Seiten im Internet gelegt.
+              </p>
+              <p className="mt-3">
+                Für alle diese Links gilt: Der Webmaster dieser Website erklärt ausdrücklich, dass er keinerlei
+                Einfluss auf die Inhalte der gelinkten Seiten hat. Deshalb distanziert er sich hiermit ausdrücklich von
+                allen Inhalten aller gelinkten Seiten auf dieser Homepage und macht sich diese Inhalte nicht zu eigen.
+                Diese Erklärung gilt für alle in dieser Domain angezeigten Links und für alle Inhalte der Seiten, zu
+                denen die hier vorhandenen Banner und Links führen.
+              </p>
+            </div>
+
+            <div>
               <h2 className="mb-2 text-lg font-bold text-foreground">Haftungsausschluss</h2>
               <p>
                 Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,

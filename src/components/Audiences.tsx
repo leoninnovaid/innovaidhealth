@@ -7,7 +7,7 @@ const audiences = [
     icon: Rocket,
     title: "Startups",
     pain: "Der deutsche Gesundheitsmarkt ist hochreguliert und schwer zugänglich. Ohne Marktzugang und Erstattungspfade bleibt eine Innovation wirkungslos.",
-    solution: "Unterstützung bei Markteintritt, Einbindung relevanter Akteure und einer tragfähigen Umsetzungsstrategie – vom Prototypen bis zum Reimbursement.",
+    solution: "Unterstützung bei Markteintritt, Einbindung relevanter Akteure und einer tragfähigen Umsetzungsstrategie - vom Prototypen bis zum Reimbursement.",
     cta: "Marktzugang besprechen",
   },
   {
@@ -34,13 +34,13 @@ const Audiences = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-center max-w-2xl mx-auto mb-16"
+        className="mx-auto mb-12 max-w-2xl text-center md:mb-16"
       >
-        <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">Zielgruppen</p>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Stakeholder verbinden</h2>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Zielgruppen</p>
+        <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Stakeholder verbinden</h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
         {audiences.map((audience, i) => (
           <motion.div
             key={audience.title}
@@ -48,25 +48,25 @@ const Audiences = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.12 }}
-            className="bg-card rounded-xl overflow-hidden card-elevated border border-border/50 flex flex-col"
+            className="flex flex-col overflow-hidden rounded-xl border border-border/50 bg-card card-elevated"
           >
-            <div className="p-8 flex-1">
-              <div className="w-14 h-14 rounded-xl hero-gradient flex items-center justify-center mb-6">
+            <div className="flex-1 p-6 md:p-8">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl hero-gradient">
                 <audience.icon className="text-primary-foreground" size={28} />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-4">{audience.title}</h3>
+              <h3 className="mb-4 text-xl font-bold text-foreground">{audience.title}</h3>
               <div className="mb-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Herausforderung</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{audience.pain}</p>
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Herausforderung</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">{audience.pain}</p>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-2">Unser Ansatz</p>
-                <p className="text-sm text-foreground leading-relaxed">{audience.solution}</p>
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">Unser Ansatz</p>
+                <p className="text-sm leading-relaxed text-foreground">{audience.solution}</p>
               </div>
             </div>
-            <div className="px-8 pb-8">
-              <Link to="/?section=kontakt" className="inline-flex items-center text-sm font-semibold text-accent hover:text-accent/80 transition-colors">
-                {audience.cta} →
+            <div className="px-6 pb-6 md:px-8 md:pb-8">
+              <Link to="/?section=kontakt" className="inline-flex items-center text-sm font-semibold text-accent transition-colors hover:text-accent/80">
+                {audience.cta} <span className="ml-1" aria-hidden="true">&rarr;</span>
               </Link>
             </div>
           </motion.div>

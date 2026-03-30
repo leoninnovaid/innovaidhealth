@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Datenschutz = () => {
   const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "error">("idle");
+
+  useEffect(() => {
+    document.title = "Datenschutz | INNOVAID:health";
+    return () => {
+      document.title = "INNOVAID:health - Gesundheitsinnovationen in Versorgung und Markt";
+    };
+  }, []);
 
   const handleCopyEmail = async () => {
     try {
@@ -19,13 +26,13 @@ const Datenschutz = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="pt-24 md:pt-32 pb-16 section-padding">
+      <main className="pt-24 pb-16 section-padding md:pt-32">
         <div className="container mx-auto max-w-2xl">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-8">Datenschutzerklärung</h1>
+          <h1 className="mb-8 text-3xl font-extrabold text-foreground md:text-4xl">Datenschutzerklärung</h1>
 
-          <div className="space-y-8 text-sm md:text-base text-muted-foreground leading-relaxed">
+          <div className="space-y-8 text-sm leading-relaxed text-muted-foreground md:text-base">
             <section>
-              <h2 className="text-lg font-bold text-foreground mb-2">1. Grundsatz der Datenminimierung</h2>
+              <h2 className="mb-2 text-lg font-bold text-foreground">1. Grundsatz der Datenminimierung</h2>
               <p>
                 Unser Angebot richtet sich ausschließlich an Gewerbetreibende, Unternehmen sowie Institutionen des
                 Gesundheitswesens (B2B). Wir erheben und verarbeiten personenbezogene Daten von Ansprechpartnern bei
@@ -34,7 +41,7 @@ const Datenschutz = () => {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold text-foreground mb-2">2. Verantwortlicher</h2>
+              <h2 className="mb-2 text-lg font-bold text-foreground">2. Verantwortlicher</h2>
               <p>
                 Dr. Christoph Meyer-Delpho
                 <br />
@@ -46,7 +53,7 @@ const Datenschutz = () => {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="text-accent hover:underline cursor-pointer"
+                  className="cursor-pointer text-accent hover:underline"
                   title="E-Mail in Zwischenablage kopieren"
                   aria-describedby="copy-email-status"
                 >
@@ -60,12 +67,12 @@ const Datenschutz = () => {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold text-foreground mb-2">3. Hosting & Infrastruktur (GitHub Pages)</h2>
+              <h2 className="mb-2 text-lg font-bold text-foreground">3. Hosting & Infrastruktur (GitHub Pages)</h2>
               <p>
                 Diese Website wird als statische Seite über GitHub Pages (GitHub Inc., 88 Colin P. Kelly Jr St, San
                 Francisco, CA 94107, USA) bereitgestellt.
               </p>
-              <ul className="list-disc pl-5 mt-2 space-y-1">
+              <ul className="mt-2 list-disc space-y-1 pl-5">
                 <li>
                   <strong className="text-foreground">Zweck:</strong> Bereitstellung der Unternehmenspräsentation.
                 </li>
@@ -85,12 +92,12 @@ const Datenschutz = () => {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold text-foreground mb-2">4. Datenerfassung bei Geschäftskontakten</h2>
+              <h2 className="mb-2 text-lg font-bold text-foreground">4. Datenerfassung bei Geschäftskontakten</h2>
               <p>
                 Wenn Sie uns als Vertreter eines Unternehmens kontaktieren, verarbeiten wir Ihre Daten (Name, Funktion,
                 geschäftliche Kontaktdaten):
               </p>
-              <ul className="list-disc pl-5 mt-2 space-y-1">
+              <ul className="mt-2 list-disc space-y-1 pl-5">
                 <li>
                   <strong className="text-foreground">Zweck:</strong> Durchführung vorvertraglicher Maßnahmen oder
                   Erfüllung von Verträgen mit Ihrem Unternehmen.
@@ -104,7 +111,7 @@ const Datenschutz = () => {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold text-foreground mb-2">5. Datensicherheit (SSL/TLS)</h2>
+              <h2 className="mb-2 text-lg font-bold text-foreground">5. Datensicherheit (SSL/TLS)</h2>
               <p>
                 Zum Schutz Ihrer geschäftlichen Kommunikation nutzen wir eine SSL-Verschlüsselung (HTTPS). Wir
                 empfehlen, vertrauliche Projektunterlagen oder sensible Geschäftsdaten nur über gesicherte Kanäle
@@ -113,7 +120,7 @@ const Datenschutz = () => {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold text-foreground mb-2">6. Ihre Rechte</h2>
+              <h2 className="mb-2 text-lg font-bold text-foreground">6. Ihre Rechte</h2>
               <p>
                 Auch als Geschäftskontakt stehen Ihnen die Rechte auf Auskunft, Berichtigung, Löschung und Widerspruch
                 nach der DSGVO zu.

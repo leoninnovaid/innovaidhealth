@@ -13,10 +13,11 @@ const Contact = () => (
         className="max-w-2xl mx-auto text-center"
       >
         <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">Kontakt</p>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6">Kontakt aufnehmen</h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6">
+          Kontakt aufnehmen
+        </h2>
         <p className="text-muted-foreground leading-relaxed mb-10">
-          Ob Startup, Krankenkasse oder Investor – gemeinsame Gespräche ermöglichen den Austausch. Ein
-          unverbindliches Erstgespräch zeigt, wie Innovationen vorangebracht werden können.
+          Ob Startup, Krankenkasse oder Investor – gemeinsame Gespräche ermöglichen den Austausch. Ein unverbindliches Erstgespräch zeigt, wie Innovationen vorangebracht werden können.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

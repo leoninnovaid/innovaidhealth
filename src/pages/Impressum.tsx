@@ -12,8 +12,10 @@ const Impressum = () => (
           <div>
             <h2 className="text-lg font-bold text-foreground mb-2">Angaben gemäß § 5 TMG</h2>
             <p>
-              INNOVAID:health<br />
-              Albert-Fischer-Straße 9<br />
+              INNOVAID:health
+              <br />
+              Albert-Fischer-Straße 9
+              <br />
               53113 Bonn
             </p>
           </div>
@@ -25,15 +27,14 @@ const Impressum = () => (
 
           <div>
             <h2 className="text-lg font-bold text-foreground mb-2">Kontakt</h2>
-            <p>
-              E-Mail: info@innovaid.health
-            </p>
+            <p>E-Mail: info@innovaid.health</p>
           </div>
 
           <div>
             <h2 className="text-lg font-bold text-foreground mb-2">Haftungsausschluss</h2>
             <p>
-              Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.
+              Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,
+              Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.
             </p>
           </div>
         </div>

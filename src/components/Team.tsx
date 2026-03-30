@@ -32,6 +32,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Leon Uschwa",
     role: "Referent der Geschaeftsfuehrung",
+    linkedin: "https://www.linkedin.com/in/leonuschwa",
     notes: [
       "Unterstuetzung der Geschaeftsfuehrung im Tagesgeschaeft",
       "Projektkoordination und Strukturierung",

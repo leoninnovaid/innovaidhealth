@@ -6,23 +6,23 @@ const audiences = [
   {
     icon: Rocket,
     title: "Startups",
-    pain: "Der deutsche Gesundheitsmarkt ist hochreguliert und schwer zugÃ¤nglich. Ohne Marktzugang und Erstattungspfade bleibt eine Innovation wirkungslos.",
-    solution: "UnterstÃ¼tzung bei Markteintritt, Einbindung relevanter Akteure und einer tragfÃ¤higen Umsetzungsstrategie â€“ vom Prototypen bis zum Reimbursement.",
+    pain: "Der deutsche Gesundheitsmarkt ist hochreguliert und schwer zugänglich. Ohne Marktzugang und Erstattungspfade bleibt eine Innovation wirkungslos.",
+    solution: "Unterstützung bei Markteintritt, Einbindung relevanter Akteure und einer tragfähigen Umsetzungsstrategie – vom Prototypen bis zum Reimbursement.",
     cta: "Marktzugang besprechen",
   },
   {
     icon: Building2,
     title: "Krankenkassen",
-    pain: "Steigende Kosten und VersorgungslÃ¼cken erfordern innovative AnsÃ¤tze. Doch die Integration neuer LÃ¶sungen in bestehende Strukturen ist komplex.",
-    solution: "Konkrete PartizipationsmÃ¶glichkeiten an wirksamen Innovationen und Hilfe bei der Integration von Projekten mit messbarem Versorgungsnutzen in die Regelversorgung.",
+    pain: "Steigende Kosten und Versorgungslücken erfordern innovative Ansätze. Doch die Integration neuer Lösungen in bestehende Strukturen ist komplex.",
+    solution: "Konkrete Partizipationsmöglichkeiten an wirksamen Innovationen und Hilfe bei der Integration von Projekten mit messbarem Versorgungsnutzen in die Regelversorgung.",
     cta: "Partner werden",
   },
   {
     icon: BarChart3,
     title: "Investoren",
-    pain: "Health-Startups sind schwer zu bewerten: regulatorische HÃ¼rden, lange Zyklen und unklare Marktperspektiven erschweren fundierte Investitionsentscheidungen.",
-    solution: "FrÃ¼hzeitiger Zugang zu geprÃ¼ften Projekten und Expertise zur EinschÃ¤tzung der Umsetzbarkeit im deutschen Gesundheitsmarkt.",
-    cta: "InvestorengesprÃ¤ch anfragen",
+    pain: "Health-Startups sind schwer zu bewerten: regulatorische Hürden, lange Zyklen und unklare Marktperspektiven erschweren fundierte Investitionsentscheidungen.",
+    solution: "Frühzeitiger Zugang zu geprüften Projekten und Expertise zur Einschätzung der Umsetzbarkeit im deutschen Gesundheitsmarkt.",
+    cta: "Investorengespräch anfragen",
   },
 ];
 
@@ -66,7 +66,7 @@ const Audiences = () => (
             </div>
             <div className="px-8 pb-8">
               <Link to="/?section=kontakt" className="inline-flex items-center text-sm font-semibold text-accent hover:text-accent/80 transition-colors">
-                {audience.cta} â†’
+                {audience.cta} →
               </Link>
             </div>
           </motion.div>

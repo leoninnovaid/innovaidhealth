@@ -20,14 +20,14 @@ const Hero = () => {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <img src={innovaidLogo} alt="INNOVAID:health Logo" className="h-10 md:h-12 mb-8" />
             <p className="text-sm font-semibold tracking-widest uppercase mb-6" style={{ color: "hsl(207, 62%, 65%)" }}>
-              Health Innovation Â· Market Access Â· Impact
+              Health Innovation · Market Access · Impact
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-primary-foreground mb-6">
               Innovation im Gesundheitsmarkt
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-10 max-w-2xl">
-              Startups, Krankenkassen und Investoren werden vernetzt â€“ damit aus innovativen Projekten tragfÃ¤hige
-              VersorgungslÃ¶sungen werden.
+              Startups, Krankenkassen und Investoren werden vernetzt – damit aus innovativen Projekten tragfähige
+              Versorgungslösungen werden.
             </p>
           </motion.div>
 

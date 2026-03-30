@@ -16,15 +16,13 @@ const Impact = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-center max-w-2xl mx-auto mb-16"
+        className="mx-auto mb-12 max-w-2xl text-center md:mb-16"
       >
-        <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">Wirkung</p>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
-          Impact
-        </h2>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Wirkung</p>
+        <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Impact</h2>
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <div className="mx-auto grid max-w-3xl gap-5 sm:grid-cols-2 md:gap-6">
         {kpis.map((k, i) => (
           <motion.div
             key={k.label}
@@ -32,12 +30,12 @@ const Impact = () => (
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="flex gap-4 p-6 bg-card rounded-xl border border-border/50 card-elevated"
+            className="flex gap-4 rounded-xl border border-border/50 bg-card p-5 card-elevated md:p-6"
           >
-            <CheckCircle2 className="text-accent shrink-0 mt-0.5" size={22} />
+            <CheckCircle2 className="mt-0.5 shrink-0 text-accent" size={22} />
             <div>
-              <h3 className="font-bold text-foreground mb-1">{k.label}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{k.desc}</p>
+              <h3 className="mb-1 font-bold text-foreground">{k.label}</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">{k.desc}</p>
             </div>
           </motion.div>
         ))}

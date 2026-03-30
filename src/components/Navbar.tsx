@@ -26,6 +26,7 @@ const Navbar = () => {
 
   return (
     <nav
+      aria-label="Hauptnavigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         solidHeader ? "bg-card/95 backdrop-blur-md shadow-sm" : "bg-transparent"
       }`}
@@ -56,6 +57,10 @@ const Navbar = () => {
         </div>
 
         <button
+          type="button"
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          aria-label={open ? "Menü schließen" : "Menü öffnen"}
           onClick={() => setOpen(!open)}
           className={`md:hidden ${solidHeader ? "text-foreground" : "text-primary-foreground"}`}
         >
@@ -64,7 +69,7 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div className="md:hidden bg-card border-t border-border px-6 pb-6 pt-2 space-y-3">
+        <div id="mobile-navigation" className="md:hidden bg-card border-t border-border px-6 pb-6 pt-2 space-y-3">
           {navItems.map((item) => (
             <Link
               key={item.to}

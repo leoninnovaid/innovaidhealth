@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Team from "@/components/Team";
 import WhyUs from "@/components/WhyUs";
 import Audiences from "@/components/Audiences";
 import SaveAndSafe from "@/components/SaveAndSafe";
@@ -46,6 +47,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
+      <Team />
       <WhyUs />
       <Audiences />
       <SaveAndSafe />

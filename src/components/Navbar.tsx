@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Leistungen", to: "/?section=warum" },
+  { label: "Team", to: "/?section=team" },
   { label: "Zielgruppen", to: "/?section=zielgruppen" },
   { label: "SAVE&SAFE", to: "/?section=saveandsafe" },
   { label: "Methodik", to: "/?section=methodik" },
@@ -52,7 +53,7 @@ const Navbar = () => {
             to="/?section=kontakt"
             className="text-sm font-semibold px-5 py-2.5 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 transition-colors"
           >
-            Gespräch vereinbaren
+            Gespraech vereinbaren
           </Link>
         </div>
 
@@ -60,7 +61,7 @@ const Navbar = () => {
           type="button"
           aria-expanded={open}
           aria-controls="mobile-navigation"
-          aria-label={open ? "Menü schließen" : "Menü öffnen"}
+          aria-label={open ? "Menue schliessen" : "Menue oeffnen"}
           onClick={() => setOpen(!open)}
           className={`md:hidden ${solidHeader ? "text-foreground" : "text-primary-foreground"}`}
         >
@@ -85,7 +86,7 @@ const Navbar = () => {
             onClick={() => setOpen(false)}
             className="block text-sm font-semibold px-5 py-2.5 rounded-lg bg-accent text-accent-foreground text-center"
           >
-            Gespräch vereinbaren
+            Gespraech vereinbaren
           </Link>
         </div>
       )}

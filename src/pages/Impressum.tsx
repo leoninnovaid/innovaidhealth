@@ -21,7 +21,7 @@ const Impressum = () => {
             <div>
               <h2 className="mb-2 text-lg font-bold text-foreground">Angaben gemäß § 5 TMG</h2>
               <p>
-                INNOVAID:health
+                INNOVAID:health GmbH
                 <br />
                 Albert-Fischer-Straße 9
                 <br />

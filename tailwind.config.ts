@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -14,8 +15,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['"Montserrat"', 'system-ui', 'sans-serif'],
-        heading: ['"Montserrat"', 'system-ui', 'sans-serif'],
+        sans: ['"Montserrat"', "system-ui", "sans-serif"],
+        heading: ['"Montserrat"', "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -89,5 +90,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;

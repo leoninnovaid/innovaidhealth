@@ -19,15 +19,13 @@ const Impact = () => (
         className="text-center max-w-2xl mx-auto mb-16"
       >
         <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">Wirkung</p>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
-          Impact
-        </h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Impact</h2>
       </motion.div>
 
       <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-        {kpis.map((k, i) => (
+        {kpis.map((kpi, i) => (
           <motion.div
-            key={k.label}
+            key={kpi.label}
             initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -36,8 +34,8 @@ const Impact = () => (
           >
             <CheckCircle2 className="text-accent shrink-0 mt-0.5" size={22} />
             <div>
-              <h3 className="font-bold text-foreground mb-1">{k.label}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{k.desc}</p>
+              <h3 className="font-bold text-foreground mb-1">{kpi.label}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{kpi.desc}</p>
             </div>
           </motion.div>
         ))}

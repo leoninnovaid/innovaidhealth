@@ -39,28 +39,26 @@ const Process = () => (
         className="text-center max-w-2xl mx-auto mb-16"
       >
         <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">Methodik</p>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
-          Unser Vorgehen
-        </h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Unser Vorgehen</h2>
       </motion.div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {steps.map((s, i) => (
+        {steps.map((step, i) => (
           <motion.div
-            key={s.step}
+            key={step.step}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             className="relative"
           >
-            <span className="text-6xl font-extrabold text-accent/10 absolute -top-4 -left-2 select-none">{s.step}</span>
+            <span className="text-6xl font-extrabold text-accent/10 absolute -top-4 -left-2 select-none">{step.step}</span>
             <div className="relative bg-transparent rounded-xl p-8 h-full">
               <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center mb-5">
-                <s.icon className="text-accent" size={24} />
+                <step.icon className="text-accent" size={24} />
               </div>
-              <h3 className="text-lg font-bold text-foreground mb-3">{s.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{s.text}</p>
+              <h3 className="text-lg font-bold text-foreground mb-3">{step.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{step.text}</p>
             </div>
           </motion.div>
         ))}

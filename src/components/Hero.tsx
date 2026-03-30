@@ -26,7 +26,7 @@ const Hero = () => {
               Innovation im Gesundheitsmarkt
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-10 max-w-2xl">
-              Startups, Krankenkassen und Investoren werden vernetzt – damit aus innovativen Projekten tragfähige
+              Startups, Krankenkassen und Investoren werden vernetzt, damit aus innovativen Projekten tragfähige
               Versorgungslösungen werden.
             </p>
           </motion.div>

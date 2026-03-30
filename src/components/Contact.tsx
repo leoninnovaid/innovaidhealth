@@ -15,8 +15,9 @@ const Contact = () => (
         <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">Kontakt</p>
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6">Kontakt aufnehmen</h2>
         <p className="text-muted-foreground leading-relaxed mb-10">
-          Ob Startup, Krankenkasse oder Investor – gemeinsame Gespräche ermöglichen den Austausch. Ein
-          unverbindliches Erstgespräch zeigt, wie Innovationen vorangebracht werden können.
+          Ob Startup, Krankenkasse oder Investor &ndash; gemeinsame Gespr&auml;che erm&ouml;glichen den
+          Austausch. Ein unverbindliches Erstgespr&auml;ch zeigt, wie Innovationen vorangebracht werden
+          k&ouml;nnen.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -27,7 +28,7 @@ const Contact = () => (
           </Button>
           <Button size="lg" variant="outline" className="text-base px-8 py-6" asChild>
             <a href="mailto:info@innovaid.health">
-              Investorengespräch anfragen <ArrowRight className="ml-2" size={18} />
+              Investorengespr&auml;ch anfragen <ArrowRight className="ml-2" size={18} />
             </a>
           </Button>
         </div>

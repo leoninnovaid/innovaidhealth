@@ -3,6 +3,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Impressum from "./pages/Impressum.tsx";
 import Datenschutz from "./pages/Datenschutz.tsx";
+import WissensindexPrototyp from "./pages/WissensindexPrototyp.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const App = () => (
@@ -12,6 +13,7 @@ const App = () => (
         <Route path="/" element={<Index />} />
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/datenschutz" element={<Datenschutz />} />
+        <Route path="/wissensindex-prototyp" element={<WissensindexPrototyp />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

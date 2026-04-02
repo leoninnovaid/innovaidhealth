@@ -34,7 +34,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://de.linkedin.com/in/christoph-riese-4842a3a9",
     portrait: christophMeyerDelphoPortrait,
     portraitAlt: "Portrait von Christoph Riese",
-    portraitClassName: "h-[122%] w-full object-cover object-[center_top] -translate-y-[3%] scale-[1.03]",
+    portraitClassName: "h-[108%] w-full object-cover object-[center_top] translate-y-[1%] scale-100",
     notes: [
       "Operative Umsetzung und Projektsteuerung",
       "Marktverständnis im deutschen Gesundheitswesen",

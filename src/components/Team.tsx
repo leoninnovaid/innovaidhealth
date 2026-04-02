@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
     portrait: christophRiesePortrait,
     portraitAlt: "Portrait von Christoph Riese",
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(213_20%_96%),hsl(219_16%_90%))]",
-    portraitClassName: "h-[96%] w-full object-cover object-[center_16%] scale-[0.98]",
+    portraitClassName: "h-[98%] w-full object-cover object-[center_12%] scale-[0.98]",
     notes: [
       "Operative Umsetzung und Projektsteuerung",
       "Marktverständnis im deutschen Gesundheitswesen",

@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
+import christophMeyerDelphoPortrait from "@/assets/team-christoph-meyer-delpho.jpg";
+import christophRiesePortrait from "@/assets/team-christoph-riese.jpg";
+import leonUschwaPortrait from "@/assets/team-leon-uschwa.jpg";
 
 type TeamMember = {
   name: string;
   role: string;
   linkedin: string;
+  portrait: string;
+  portraitAlt: string;
+  portraitPosition: string;
   notes: string[];
 };
 
@@ -13,6 +19,9 @@ const teamMembers: TeamMember[] = [
     name: "Dr. Christoph Meyer-Delpho",
     role: "CEO",
     linkedin: "https://de.linkedin.com/in/meyer-delpho",
+    portrait: christophMeyerDelphoPortrait,
+    portraitAlt: "Portrait von Dr. Christoph Meyer-Delpho",
+    portraitPosition: "center 28%",
     notes: [
       "Digital Health und Versorgungsinnovation",
       "Strategische Entwicklung im Gesundheitsmarkt",
@@ -23,6 +32,9 @@ const teamMembers: TeamMember[] = [
     name: "Christoph Riese",
     role: "COO",
     linkedin: "https://de.linkedin.com/in/christoph-riese-4842a3a9",
+    portrait: christophRiesePortrait,
+    portraitAlt: "Portrait von Christoph Riese",
+    portraitPosition: "center 24%",
     notes: [
       "Operative Umsetzung und Projektsteuerung",
       "Marktverständnis im deutschen Gesundheitswesen",
@@ -33,6 +45,9 @@ const teamMembers: TeamMember[] = [
     name: "Leon Uschwa",
     role: "Referent der Geschäftsführung",
     linkedin: "https://www.linkedin.com/in/leonuschwa",
+    portrait: leonUschwaPortrait,
+    portraitAlt: "Portrait von Leon Uschwa",
+    portraitPosition: "center 18%",
     notes: [
       "Unterstützung der Geschäftsführung im Tagesgeschäft",
       "Projektkoordination und interne Strukturierung",
@@ -72,12 +87,16 @@ const Team = () => (
             className="overflow-hidden rounded-[28px] border border-border/60 bg-card shadow-[0_18px_60px_-28px_hsl(222_70%_10%_/_0.35)]"
           >
             <div className="p-5 sm:p-6">
-              <div className="mb-5 aspect-[5/6] w-full rounded-[22px] border border-dashed border-accent/35 bg-[linear-gradient(180deg,hsl(210_30%_96%),hsl(220_20%_93%))] p-3">
-                <div className="flex h-full w-full items-center justify-center rounded-[18px] border border-white/60 bg-white/50 text-center">
-                  <div className="px-4 text-muted-foreground">
-                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Portrait</p>
-                    <p className="mt-3 text-sm">Hier kann später ein Teamfoto eingefügt werden.</p>
-                  </div>
+              <div className="mb-5 overflow-hidden rounded-[22px] border border-white/70 bg-[linear-gradient(180deg,hsl(210_30%_96%),hsl(220_20%_92%))] p-3 shadow-inner">
+                <div className="relative aspect-[5/6] overflow-hidden rounded-[18px] bg-[radial-gradient(circle_at_top,hsl(0_0%_100%/_0.55),transparent_58%),linear-gradient(180deg,hsl(214_33%_94%),hsl(220_17%_88%))]">
+                  <img
+                    src={member.portrait}
+                    alt={member.portraitAlt}
+                    className="h-full w-full object-cover"
+                    style={{ objectPosition: member.portraitPosition }}
+                    loading="lazy"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_60%,hsl(222_70%_10%_/_0.08)_100%)]" />
                 </div>
               </div>
 

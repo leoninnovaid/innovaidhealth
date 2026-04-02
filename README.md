@@ -60,6 +60,25 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Wissensindex Prototyp (intern)
+
+Der interne Wissensindex fuer Innovationsfonds-Inhalte ist unter folgender Route verfuegbar:
+
+- `/#/wissensindex-prototyp`
+
+### PDF-Ingest ausfuehren
+
+Der Ingest liest die fest definierten Innovationsfonds-PDFs ein und erzeugt eine lokale Wissensbasis in `public/knowledge`.
+
+```sh
+npm run knowledge:ingest -- --source-dir "C:\Users\Leon\Downloads"
+```
+
+Erzeugte Dateien:
+
+- `public/knowledge/innovation-fund-index.json`
+- `public/knowledge/innovation-fund-index.md`
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.

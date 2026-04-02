@@ -23,7 +23,7 @@ const teamMembers: TeamMember[] = [
     portrait: christophMeyerDelphoPortrait,
     portraitAlt: "Portrait von Dr. Christoph Meyer-Delpho",
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(213_26%_92%),hsl(220_18%_86%))]",
-    portraitClassName: "h-[118%] w-full object-cover object-[center_24%] scale-[1.04]",
+    portraitClassName: "h-[126%] w-full object-cover object-[center_22%] scale-[1.08]",
     notes: [
       "Digital Health und Versorgungsinnovation",
       "Strategische Entwicklung im Gesundheitsmarkt",
@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
     portrait: christophRiesePortrait,
     portraitAlt: "Portrait von Christoph Riese",
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(213_20%_96%),hsl(219_16%_90%))]",
-    portraitClassName: "h-full w-full object-contain object-center scale-[0.82]",
+    portraitClassName: "h-full w-full object-contain object-center scale-[0.76]",
     notes: [
       "Operative Umsetzung und Projektsteuerung",
       "Marktverständnis im deutschen Gesundheitswesen",
@@ -51,7 +51,7 @@ const teamMembers: TeamMember[] = [
     portrait: leonUschwaPortrait,
     portraitAlt: "Portrait von Leon Uschwa",
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(214_23%_95%),hsl(219_17%_89%))]",
-    portraitClassName: "h-[132%] w-full object-cover object-[center_top] -translate-y-[15%] scale-[1.06]",
+    portraitClassName: "h-[118%] w-full object-cover object-[center_top] -translate-y-[8%] scale-[1.02]",
     notes: [
       "Unterstützung der Geschäftsführung im Tagesgeschäft",
       "Projektkoordination und interne Strukturierung",

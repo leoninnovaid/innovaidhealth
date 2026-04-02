@@ -10,7 +10,7 @@ type TeamMember = {
   linkedin: string;
   portrait: string;
   portraitAlt: string;
-  portraitPosition: string;
+  portraitClassName: string;
   notes: string[];
 };
 
@@ -21,7 +21,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://de.linkedin.com/in/meyer-delpho",
     portrait: christophRiesePortrait,
     portraitAlt: "Portrait von Dr. Christoph Meyer-Delpho",
-    portraitPosition: "center 30%",
+    portraitClassName: "h-full w-full object-cover object-[center_30%]",
     notes: [
       "Digital Health und Versorgungsinnovation",
       "Strategische Entwicklung im Gesundheitsmarkt",
@@ -34,7 +34,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://de.linkedin.com/in/christoph-riese-4842a3a9",
     portrait: christophMeyerDelphoPortrait,
     portraitAlt: "Portrait von Christoph Riese",
-    portraitPosition: "center 56%",
+    portraitClassName: "h-[128%] w-full object-cover object-[center_top] translate-y-[16%] scale-[1.04]",
     notes: [
       "Operative Umsetzung und Projektsteuerung",
       "Marktverständnis im deutschen Gesundheitswesen",
@@ -47,7 +47,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/leonuschwa",
     portrait: leonUschwaPortrait,
     portraitAlt: "Portrait von Leon Uschwa",
-    portraitPosition: "center 4%",
+    portraitClassName: "h-[120%] w-full object-cover object-[center_top] -translate-y-[12%] scale-[1.03]",
     notes: [
       "Unterstützung der Geschäftsführung im Tagesgeschäft",
       "Projektkoordination und interne Strukturierung",
@@ -92,8 +92,7 @@ const Team = () => (
                   <img
                     src={member.portrait}
                     alt={member.portraitAlt}
-                    className="h-full w-full object-cover"
-                    style={{ objectPosition: member.portraitPosition }}
+                    className={member.portraitClassName}
                     loading="lazy"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_60%,hsl(222_70%_10%_/_0.08)_100%)]" />

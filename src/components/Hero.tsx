@@ -18,7 +18,13 @@ const Hero = () => {
       <div className="container mx-auto relative z-10 py-32 md:py-40">
         <div className="max-w-3xl">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <img src={innovaidLogo} alt="INNOVAID:health Logo" className="h-10 md:h-12 mb-8" />
+            <img
+              src={innovaidLogo}
+              alt="INNOVAID:health Logo"
+              width="302"
+              height="72"
+              className="h-10 md:h-12 mb-8"
+            />
             <p className="text-sm font-semibold tracking-widest uppercase mb-6" style={{ color: "hsl(207, 62%, 65%)" }}>
               Health Innovation · Market Access · Impact
             </p>

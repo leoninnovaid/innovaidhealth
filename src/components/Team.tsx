@@ -34,7 +34,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://de.linkedin.com/in/christoph-riese-4842a3a9",
     portrait: christophMeyerDelphoPortrait,
     portraitAlt: "Portrait von Christoph Riese",
-    portraitPosition: "center 42%",
+    portraitPosition: "center 56%",
     notes: [
       "Operative Umsetzung und Projektsteuerung",
       "Marktverständnis im deutschen Gesundheitswesen",
@@ -47,7 +47,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/leonuschwa",
     portrait: leonUschwaPortrait,
     portraitAlt: "Portrait von Leon Uschwa",
-    portraitPosition: "center 10%",
+    portraitPosition: "center 4%",
     notes: [
       "Unterstützung der Geschäftsführung im Tagesgeschäft",
       "Projektkoordination und interne Strukturierung",

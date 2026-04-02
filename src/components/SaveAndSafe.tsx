@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { ExternalLink, HeartPulse, Shield, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import sasaLogo from "@/assets/saveandsafe-logo.png";
@@ -82,7 +81,9 @@ const SaveAndSafe = () => (
               </a>
             </Button>
             <Button variant="outline" asChild className="w-full text-sm md:w-auto">
-              <Link to="/?section=kontakt">Projektdetails anfragen</Link>
+              <a href="mailto:info@innovaid.health?subject=SAFE%20%26%20SAVE%20Projektdetails">
+                Projektdetails anfragen
+              </a>
             </Button>
           </div>
         </div>

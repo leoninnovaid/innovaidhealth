@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import WhyUs from "@/components/WhyUs";
 import Audiences from "@/components/Audiences";
 import SaveAndSafe from "@/components/SaveAndSafe";
+import Team from "@/components/Team";
 import Process from "@/components/Process";
 import Impact from "@/components/Impact";
 import Contact from "@/components/Contact";
@@ -19,6 +20,7 @@ const Index = () => {
     const section = params.get("section");
 
     if (!section) {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
       return;
     }
 
@@ -49,6 +51,7 @@ const Index = () => {
       <WhyUs />
       <Audiences />
       <SaveAndSafe />
+      <Team />
       <Process />
       <Impact />
       <Contact />

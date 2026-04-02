@@ -28,7 +28,7 @@ const Datenschutz = () => {
       <Navbar />
       <main className="pt-24 pb-16 section-padding md:pt-32">
         <div className="container mx-auto max-w-3xl">
-          <h1 className="mb-8 text-3xl font-extrabold text-foreground md:text-4xl">Datenschutzerklaerung</h1>
+          <h1 className="mb-8 text-3xl font-extrabold text-foreground md:text-4xl">Datenschutzerklärung</h1>
 
           <div className="space-y-8 text-sm leading-relaxed text-muted-foreground md:text-base">
             <section>
@@ -44,11 +44,11 @@ const Datenschutz = () => {
               <p>
                 INNOVAID:health GmbH
                 <br />
-                Albert-Fischer-Strasse 9
+                Albert-Fischer-Straße 9
                 <br />
                 53113 Bonn
                 <br />
-                Vertreten durch: Dr. Christoph Meyer-Delpho
+                Vertreten durch: Dr. Christoph Meyer-Delpho und Christoph Riese
                 <br />
                 E-Mail:{" "}
                 <button
@@ -71,25 +71,25 @@ const Datenschutz = () => {
               <h2 className="mb-2 text-lg font-bold text-foreground">2. Zwecke und Rechtsgrundlagen der Verarbeitung</h2>
               <p>Wir verarbeiten personenbezogene Daten auf dieser Website insbesondere zu folgenden Zwecken:</p>
               <ul className="mt-2 list-disc space-y-1 pl-5">
-                <li>Bereitstellung einer funktionsfaehigen und sicheren Website, Art. 6 Abs. 1 lit. f DSGVO</li>
+                <li>Bereitstellung einer funktionsfähigen und sicheren Website, Art. 6 Abs. 1 lit. f DSGVO</li>
                 <li>Bearbeitung von Anfragen per E-Mail oder sonstiger Kontaktaufnahme, Art. 6 Abs. 1 lit. b oder lit. f DSGVO</li>
-                <li>Erfuellung gesetzlicher Aufbewahrungs- und Nachweispflichten, Art. 6 Abs. 1 lit. c DSGVO</li>
+                <li>Erfüllung gesetzlicher Aufbewahrungs- und Nachweispflichten, Art. 6 Abs. 1 lit. c DSGVO</li>
               </ul>
             </section>
 
             <section>
               <h2 className="mb-2 text-lg font-bold text-foreground">3. Hosting, Protokollierung und Server-Logfiles</h2>
               <p>
-                Diese Website wird ueber GitHub Pages bereitgestellt. Anbieter der Hosting-Infrastruktur ist GitHub,
+                Diese Website wird über GitHub Pages bereitgestellt. Anbieter der Hosting-Infrastruktur ist GitHub,
                 Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA.
               </p>
               <p className="mt-3">
-                Beim Aufruf der Website koennen technisch erforderliche Verbindungsdaten verarbeitet werden. Dazu
-                gehoeren insbesondere IP-Adresse, Datum und Uhrzeit des Abrufs, aufgerufene Dateien, uebertragene
+                Beim Aufruf der Website können technisch erforderliche Verbindungsdaten verarbeitet werden. Dazu
+                gehören insbesondere IP-Adresse, Datum und Uhrzeit des Abrufs, aufgerufene Dateien, übertragene
                 Datenmenge, Browsertyp, Betriebssystem sowie Referrer-Informationen.
               </p>
               <p className="mt-3">
-                Die Verarbeitung erfolgt zur Gewaehrleistung eines sicheren und stabilen Betriebs der Website auf
+                Die Verarbeitung erfolgt zur Gewährleistung eines sicheren und stabilen Betriebs der Website auf
                 Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
               </p>
             </section>
@@ -97,40 +97,39 @@ const Datenschutz = () => {
             <section>
               <h2 className="mb-2 text-lg font-bold text-foreground">4. Kontaktaufnahme</h2>
               <p>
-                Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen uebermittelten Angaben zur
-                Bearbeitung Ihrer Anfrage. Dazu koennen insbesondere Name, E-Mail-Adresse, Unternehmensbezug sowie der
-                Inhalt Ihrer Nachricht gehoeren.
+                Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen übermittelten Angaben zur
+                Bearbeitung Ihrer Anfrage. Dazu können insbesondere Name, E-Mail-Adresse, Unternehmensbezug sowie der
+                Inhalt Ihrer Nachricht gehören.
               </p>
               <p className="mt-3">
-                Die Verarbeitung erfolgt zur Durchfuehrung vorvertraglicher Massnahmen oder zur Bearbeitung Ihres
+                Die Verarbeitung erfolgt zur Durchführung vorvertraglicher Maßnahmen oder zur Bearbeitung Ihres
                 Anliegens auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO beziehungsweise auf Grundlage unseres
-                berechtigten Interesses an einer geordneten Kommunikation gemaess Art. 6 Abs. 1 lit. f DSGVO.
+                berechtigten Interesses an einer geordneten Kommunikation gemäß Art. 6 Abs. 1 lit. f DSGVO.
               </p>
             </section>
 
             <section>
-              <h2 className="mb-2 text-lg font-bold text-foreground">5. Empfaenger der Daten</h2>
+              <h2 className="mb-2 text-lg font-bold text-foreground">5. Empfänger der Daten</h2>
               <p>
                 Eine Weitergabe personenbezogener Daten erfolgt nur, soweit dies zur Bereitstellung der Website, zur
-                Bearbeitung Ihrer Anfrage, zur Erfuellung rechtlicher Verpflichtungen oder zur Wahrung berechtigter
+                Bearbeitung Ihrer Anfrage, zur Erfüllung rechtlicher Verpflichtungen oder zur Wahrung berechtigter
                 Interessen erforderlich ist.
               </p>
               <p className="mt-3">
-                Empfaenger koennen insbesondere technische Dienstleister im Rahmen des Hostings sowie sonstige
-                Auftragsverarbeiter sein, die fuer uns auf Grundlage eines entsprechenden Vertrags taetig werden.
+                Empfänger können insbesondere technische Dienstleister im Rahmen des Hostings sowie sonstige
+                Auftragsverarbeiter sein, die für uns auf Grundlage eines entsprechenden Vertrags tätig werden.
               </p>
             </section>
 
             <section>
               <h2 className="mb-2 text-lg font-bold text-foreground">6. Drittlandbezug</h2>
               <p>
-                Im Zusammenhang mit dem Hosting ueber GitHub Pages kann eine Verarbeitung personenbezogener Daten in
-                Staaten ausserhalb der Europaeischen Union, insbesondere in den USA, nicht ausgeschlossen werden.
+                Im Zusammenhang mit dem Hosting über GitHub Pages kann eine Verarbeitung personenbezogener Daten in
+                Staaten außerhalb der Europäischen Union, insbesondere in den USA, nicht ausgeschlossen werden.
               </p>
               <p className="mt-3">
                 Weitere Informationen zur Datenverarbeitung durch GitHub finden Sie in den Datenschutzinformationen von
-                GitHub:
-                {" "}
+                GitHub:{" "}
                 <a
                   href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
                   target="_blank"
@@ -145,9 +144,9 @@ const Datenschutz = () => {
             <section>
               <h2 className="mb-2 text-lg font-bold text-foreground">7. Speicherdauer</h2>
               <p>
-                Wir speichern personenbezogene Daten nur so lange, wie dies fuer die jeweiligen Verarbeitungszwecke
-                erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen. Danach werden die Daten geloescht,
-                soweit keine weitere rechtliche Grundlage fuer die Speicherung greift.
+                Wir speichern personenbezogene Daten nur so lange, wie dies für die jeweiligen Verarbeitungszwecke
+                erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen. Danach werden die Daten gelöscht,
+                soweit keine weitere rechtliche Grundlage für die Speicherung greift.
               </p>
             </section>
 
@@ -159,7 +158,7 @@ const Datenschutz = () => {
               </p>
               <p className="mt-3">
                 Soweit technisch notwendige Speichermechanismen durch den Browser oder die Hosting-Infrastruktur
-                eingesetzt werden, erfolgen diese ausschliesslich zur Bereitstellung und sicheren Auslieferung der
+                eingesetzt werden, erfolgen diese ausschließlich zur Bereitstellung und sicheren Auslieferung der
                 Website.
               </p>
             </section>
@@ -167,13 +166,13 @@ const Datenschutz = () => {
             <section>
               <h2 className="mb-2 text-lg font-bold text-foreground">9. Externe Links</h2>
               <p>
-                Unsere Website enthaelt Verlinkungen auf externe Websites. Wenn Sie einen solchen Link anklicken,
-                verlassen Sie unsere Website. Fuer die Datenverarbeitung auf den verlinkten Seiten sind ausschliesslich
+                Unsere Website enthält Verlinkungen auf externe Websites. Wenn Sie einen solchen Link anklicken,
+                verlassen Sie unsere Website. Für die Datenverarbeitung auf den verlinkten Seiten sind ausschließlich
                 deren jeweilige Betreiber verantwortlich.
               </p>
               <p className="mt-3">
                 Wir verwenden auf dieser Website nach aktuellem Stand keine Social-Media-Plugins, die bereits beim
-                blossen Besuch der Website automatisch personenbezogene Daten an soziale Netzwerke uebermitteln.
+                bloßen Besuch der Website automatisch personenbezogene Daten an soziale Netzwerke übermitteln.
               </p>
             </section>
 
@@ -181,31 +180,31 @@ const Datenschutz = () => {
               <h2 className="mb-2 text-lg font-bold text-foreground">10. Ihre Rechte</h2>
               <p>Sie haben im Rahmen der gesetzlichen Voraussetzungen insbesondere folgende Rechte:</p>
               <ul className="mt-2 list-disc space-y-1 pl-5">
-                <li>Recht auf Auskunft gemaess Art. 15 DSGVO</li>
-                <li>Recht auf Berichtigung gemaess Art. 16 DSGVO</li>
-                <li>Recht auf Loeschung gemaess Art. 17 DSGVO</li>
-                <li>Recht auf Einschraenkung der Verarbeitung gemaess Art. 18 DSGVO</li>
-                <li>Recht auf Datenuebertragbarkeit gemaess Art. 20 DSGVO</li>
-                <li>Widerspruchsrecht gemaess Art. 21 DSGVO</li>
-                <li>Recht auf Widerruf erteilter Einwilligungen mit Wirkung fuer die Zukunft, Art. 7 Abs. 3 DSGVO</li>
+                <li>Recht auf Auskunft gemäß Art. 15 DSGVO</li>
+                <li>Recht auf Berichtigung gemäß Art. 16 DSGVO</li>
+                <li>Recht auf Löschung gemäß Art. 17 DSGVO</li>
+                <li>Recht auf Einschränkung der Verarbeitung gemäß Art. 18 DSGVO</li>
+                <li>Recht auf Datenübertragbarkeit gemäß Art. 20 DSGVO</li>
+                <li>Widerspruchsrecht gemäß Art. 21 DSGVO</li>
+                <li>Recht auf Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft, Art. 7 Abs. 3 DSGVO</li>
               </ul>
             </section>
 
             <section>
-              <h2 className="mb-2 text-lg font-bold text-foreground">11. Beschwerderecht bei einer Aufsichtsbehoerde</h2>
+              <h2 className="mb-2 text-lg font-bold text-foreground">11. Beschwerderecht bei einer Aufsichtsbehörde</h2>
               <p>
-                Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehoerde zu beschweren, wenn Sie der Ansicht
+                Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren, wenn Sie der Ansicht
                 sind, dass die Verarbeitung Ihrer personenbezogenen Daten gegen datenschutzrechtliche Vorschriften
-                verstoesst.
+                verstößt.
               </p>
               <p className="mt-3">
-                Zustaendige Aufsichtsbehoerde fuer unser Unternehmen ist insbesondere:
+                Zuständige Aufsichtsbehörde für unser Unternehmen ist insbesondere:
                 <br />
-                Landesbeauftragte fuer Datenschutz und Informationsfreiheit Nordrhein-Westfalen
+                Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen
                 <br />
-                Kavalleriestrasse 2-4
+                Kavalleriestraße 2-4
                 <br />
-                40213 Duesseldorf
+                40213 Düsseldorf
                 <br />
                 E-Mail: poststelle@ldi.nrw.de
                 <br />
@@ -217,10 +216,10 @@ const Datenschutz = () => {
             </section>
 
             <section>
-              <h2 className="mb-2 text-lg font-bold text-foreground">12. Aktualisierung dieser Datenschutzerklaerung</h2>
+              <h2 className="mb-2 text-lg font-bold text-foreground">12. Aktualisierung dieser Datenschutzerklärung</h2>
               <p>
-                Wir behalten uns vor, diese Datenschutzerklaerung anzupassen, damit sie stets den aktuellen rechtlichen
-                Anforderungen und den tatsaechlichen Verarbeitungen auf dieser Website entspricht.
+                Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen
+                Anforderungen und den tatsächlichen Verarbeitungen auf dieser Website entspricht.
               </p>
             </section>
           </div>

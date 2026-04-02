@@ -10,6 +10,7 @@ type TeamMember = {
   linkedin: string;
   portrait: string;
   portraitAlt: string;
+  portraitWrapperClassName?: string;
   portraitClassName: string;
   notes: string[];
 };
@@ -21,7 +22,8 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://de.linkedin.com/in/meyer-delpho",
     portrait: christophMeyerDelphoPortrait,
     portraitAlt: "Portrait von Dr. Christoph Meyer-Delpho",
-    portraitClassName: "h-full w-full object-cover object-[center_18%]",
+    portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(213_26%_92%),hsl(220_18%_86%))]",
+    portraitClassName: "h-[118%] w-full object-cover object-[center_24%] scale-[1.04]",
     notes: [
       "Digital Health und Versorgungsinnovation",
       "Strategische Entwicklung im Gesundheitsmarkt",
@@ -34,7 +36,8 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://de.linkedin.com/in/christoph-riese-4842a3a9",
     portrait: christophRiesePortrait,
     portraitAlt: "Portrait von Christoph Riese",
-    portraitClassName: "h-[104%] w-full object-cover object-[center_14%] scale-100",
+    portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(213_20%_96%),hsl(219_16%_90%))]",
+    portraitClassName: "h-full w-full object-contain object-center scale-[0.82]",
     notes: [
       "Operative Umsetzung und Projektsteuerung",
       "Marktverständnis im deutschen Gesundheitswesen",
@@ -47,6 +50,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/leonuschwa",
     portrait: leonUschwaPortrait,
     portraitAlt: "Portrait von Leon Uschwa",
+    portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(214_23%_95%),hsl(219_17%_89%))]",
     portraitClassName: "h-[132%] w-full object-cover object-[center_top] -translate-y-[15%] scale-[1.06]",
     notes: [
       "Unterstützung der Geschäftsführung im Tagesgeschäft",
@@ -88,7 +92,9 @@ const Team = () => (
           >
             <div className="p-5 sm:p-6">
               <div className="mb-5 overflow-hidden rounded-[22px] border border-white/70 bg-[linear-gradient(180deg,hsl(210_30%_96%),hsl(220_20%_92%))] p-3 shadow-inner">
-                <div className="relative aspect-[5/6] overflow-hidden rounded-[18px] bg-[radial-gradient(circle_at_top,hsl(0_0%_100%/_0.55),transparent_58%),linear-gradient(180deg,hsl(214_33%_94%),hsl(220_17%_88%))]">
+                <div
+                  className={`relative aspect-[5/6] overflow-hidden rounded-[18px] bg-[radial-gradient(circle_at_top,hsl(0_0%_100%/_0.55),transparent_58%),linear-gradient(180deg,hsl(214_33%_94%),hsl(220_17%_88%))] ${member.portraitWrapperClassName ?? ""}`}
+                >
                   <img
                     src={member.portrait}
                     alt={member.portraitAlt}

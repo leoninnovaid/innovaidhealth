@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Leistungen", to: "/?section=warum" },
-  { label: "Zielgruppen", to: "/?section=zielgruppen" },
-  { label: "SAVE&SAFE", to: "/?section=saveandsafe" },
-  { label: "Team", to: "/?section=team" },
-  { label: "Methodik", to: "/?section=methodik" },
-  { label: "Kontakt", to: "/?section=kontakt" },
+  { label: "Leistungen", section: "warum" },
+  { label: "Zielgruppen", section: "zielgruppen" },
+  { label: "SAVE&SAFE", section: "saveandsafe" },
+  { label: "Team", section: "team" },
+  { label: "Methodik", section: "methodik" },
+  { label: "Kontakt", section: "kontakt" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const isSubpage = location.pathname !== "/";
 
   useEffect(() => {
@@ -24,6 +25,42 @@ const Navbar = () => {
   }, []);
 
   const solidHeader = scrolled || isSubpage;
+
+  const scrollToSection = (section: string) => {
+    const element = document.getElementById(section);
+
+    if (!element) {
+      return false;
+    }
+
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+    navigate("/", { replace: true });
+    return true;
+  };
+
+  const handleSectionClick = (section: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    setOpen(false);
+
+    if (location.pathname === "/" && scrollToSection(section)) {
+      return;
+    }
+
+    navigate(`/?section=${section}`);
+  };
+
+  const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    setOpen(false);
+
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      navigate("/", { replace: true });
+      return;
+    }
+
+    navigate("/");
+  };
 
   return (
     <nav
@@ -35,6 +72,7 @@ const Navbar = () => {
       <div className="container mx-auto flex h-16 items-center justify-between md:h-20">
         <Link
           to="/"
+          onClick={handleHomeClick}
           className={`text-xl font-extrabold tracking-tight ${solidHeader ? "text-primary" : "text-primary-foreground"}`}
         >
           INNOVAID<span className="text-left text-accent">:health</span>
@@ -43,8 +81,9 @@ const Navbar = () => {
         <div className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
             <Link
-              key={item.to}
-              to={item.to}
+              key={item.section}
+              to={`/?section=${item.section}`}
+              onClick={handleSectionClick(item.section)}
               className={`text-sm font-medium transition-colors hover:text-accent ${
                 solidHeader ? "text-foreground" : "text-primary-foreground/80"
               }`}
@@ -54,6 +93,7 @@ const Navbar = () => {
           ))}
           <Link
             to="/?section=kontakt"
+            onClick={handleSectionClick("kontakt")}
             className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
           >
             Gespräch vereinbaren
@@ -79,9 +119,9 @@ const Navbar = () => {
         >
           {navItems.map((item) => (
             <Link
-              key={item.to}
-              to={item.to}
-              onClick={() => setOpen(false)}
+              key={item.section}
+              to={`/?section=${item.section}`}
+              onClick={handleSectionClick(item.section)}
               className="block rounded-xl px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-accent"
             >
               {item.label}
@@ -89,7 +129,7 @@ const Navbar = () => {
           ))}
           <Link
             to="/?section=kontakt"
-            onClick={() => setOpen(false)}
+            onClick={handleSectionClick("kontakt")}
             className="mt-3 block rounded-xl bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground"
           >
             Gespräch vereinbaren

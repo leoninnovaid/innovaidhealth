@@ -21,9 +21,9 @@ const Hero = () => {
             <img
               src={innovaidLogo}
               alt="INNOVAID:health Logo"
-              width="302"
-              height="72"
-              className="h-10 md:h-12 mb-8"
+              width="1798"
+              height="722"
+              className="mb-8 h-auto w-[220px] md:w-[300px] lg:w-[340px]"
             />
             <p className="text-sm font-semibold tracking-widest uppercase mb-6" style={{ color: "hsl(207, 62%, 65%)" }}>
               Health Innovation · Market Access · Impact
@@ -58,7 +58,13 @@ const Hero = () => {
       </div>
 
       <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+        <svg
+          viewBox="0 0 1440 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="block w-full translate-y-px"
+          preserveAspectRatio="none"
+        >
           <path d="M0 80L1440 80L1440 30C1200 60 960 10 720 30C480 50 240 0 0 30L0 80Z" fill="hsl(220, 20%, 97%)" />
         </svg>
       </div>

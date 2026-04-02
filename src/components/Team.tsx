@@ -19,7 +19,7 @@ const teamMembers: TeamMember[] = [
     name: "Dr. Christoph Meyer-Delpho",
     role: "CEO",
     linkedin: "https://de.linkedin.com/in/meyer-delpho",
-    portrait: christophRiesePortrait,
+    portrait: christophMeyerDelphoPortrait,
     portraitAlt: "Portrait von Dr. Christoph Meyer-Delpho",
     portraitClassName: "h-full w-full object-cover object-[center_30%]",
     notes: [
@@ -32,9 +32,9 @@ const teamMembers: TeamMember[] = [
     name: "Christoph Riese",
     role: "COO",
     linkedin: "https://de.linkedin.com/in/christoph-riese-4842a3a9",
-    portrait: christophMeyerDelphoPortrait,
+    portrait: christophRiesePortrait,
     portraitAlt: "Portrait von Christoph Riese",
-    portraitClassName: "h-[108%] w-full object-cover object-[center_top] translate-y-[1%] scale-100",
+    portraitClassName: "h-[112%] w-full object-cover object-[center_16%] scale-[1.01]",
     notes: [
       "Operative Umsetzung und Projektsteuerung",
       "Marktverständnis im deutschen Gesundheitswesen",

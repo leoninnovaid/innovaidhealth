@@ -21,7 +21,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://de.linkedin.com/in/meyer-delpho",
     portrait: christophMeyerDelphoPortrait,
     portraitAlt: "Portrait von Dr. Christoph Meyer-Delpho",
-    portraitClassName: "h-full w-full object-cover object-[center_30%]",
+    portraitClassName: "h-[112%] w-full object-cover object-[center_18%] scale-[1.02]",
     notes: [
       "Digital Health und Versorgungsinnovation",
       "Strategische Entwicklung im Gesundheitsmarkt",
@@ -47,7 +47,7 @@ const teamMembers: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/leonuschwa",
     portrait: leonUschwaPortrait,
     portraitAlt: "Portrait von Leon Uschwa",
-    portraitClassName: "h-[120%] w-full object-cover object-[center_top] -translate-y-[12%] scale-[1.03]",
+    portraitClassName: "h-[132%] w-full object-cover object-[center_top] -translate-y-[15%] scale-[1.06]",
     notes: [
       "Unterstützung der Geschäftsführung im Tagesgeschäft",
       "Projektkoordination und interne Strukturierung",

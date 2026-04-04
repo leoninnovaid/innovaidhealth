@@ -1,0 +1,14 @@
+# Daily Logs - App-Wrapper-Store
+
+Alle Aktivitäten werden hier mit Timestamps protokolliert.
+
+## 2026-04-04
+- **02:17**: Repository geklont und initialisiert.
+- **02:20**: Analyse der Projektstruktur durchgeführt. Festgestellt, dass `DAILY_LOGS.md`, `TASK_TRACKER.md` und `META_PLAN.md` fehlten.
+- **02:25**: Initialisierung der fehlenden Playbook-Dateien.
+- **02:30**: Review der initialisierten Playbook-Dateien abgeschlossen.
+- **02:32**: Beginne mit der Installation der Projektabhängigkeiten.
+- **02:35**: Projektabhängigkeiten erfolgreich installiert.
+- **02:40**: `App.tsx`, `Index.tsx` und `Footer.tsx` analysiert, um die Struktur der Anwendung zu verstehen.
+- **02:45**: Link zum Wissensindex in `Footer.tsx` hinzugefügt.
+- **02:50**: Link zum Wissensindex in `Navbar.tsx` (Desktop und Mobile) hinzugefügt.

@@ -5,6 +5,9 @@ const Footer = () => (
     <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
       <p className="text-sm text-primary-foreground/60">&copy; {new Date().getFullYear()} INNOVAID:health GmbH. Alle Rechte vorbehalten.</p>
       <div className="flex gap-6">
+        <Link to="/wissensindex-prototyp" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+          Wissensindex
+        </Link>
         <Link to="/impressum" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
           Impressum
         </Link>

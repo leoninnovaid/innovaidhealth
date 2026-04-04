@@ -12,3 +12,6 @@ Alle Aktivitäten werden hier mit Timestamps protokolliert.
 - **02:40**: `App.tsx`, `Index.tsx` und `Footer.tsx` analysiert, um die Struktur der Anwendung zu verstehen.
 - **02:45**: Link zum Wissensindex in `Footer.tsx` hinzugefügt.
 - **02:50**: Link zum Wissensindex in `Navbar.tsx` (Desktop und Mobile) hinzugefügt.
+
+- **02:55**: Verbesserung der "Keine Ergebnisse"-Nachricht in `WissensindexPrototyp.tsx` implementiert.
+- **03:00**: Suchlogik in `search.ts` optimiert, um bei leeren Suchanfragen nur "freigegeben" Einträge anzuzeigen.

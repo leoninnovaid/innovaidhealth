@@ -347,7 +347,24 @@ const WissensindexPrototyp = () => {
                         </div>
                       </div>
                     ) : (
-                      <div className="text-sm text-muted-foreground">Keine passenden Ergebnisse gefunden.</div>
+                      <div className="space-y-4">
+                        <div className="rounded-2xl border border-border/70 bg-card p-6">
+                          <h3 className="text-base font-semibold text-foreground mb-3">Keine passenden Ergebnisse gefunden</h3>
+                          <p className="text-sm text-muted-foreground mb-4">
+                            Versuchen Sie, Ihre Suche zu verfeinern oder einen anderen Suchbegriff zu verwenden.
+                          </p>
+                          <div className="space-y-2">
+                            <p className="text-xs font-medium text-foreground uppercase tracking-widest">Tipps zur Suche:</p>
+                            <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                              <li>Verwenden Sie einfachere oder allgemeinere Begriffe</li>
+                              <li>Überprüfen Sie die Schreibweise Ihrer Suchbegriffe</li>
+                              <li>Versuchen Sie, Synonyme oder verwandte Begriffe zu nutzen</li>
+                              <li>Nutzen Sie die Themenfilter auf der linken Seite</li>
+                              <li>Probieren Sie eine der Schnellfragen aus</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                     )}
                   </div>
                 </div>

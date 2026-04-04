@@ -79,14 +79,24 @@ function snippetFromText(text: string, tokens: string[]): string {
   }
 
   const lower = cleaned.toLowerCase();
-  const firstToken = tokens.find((token) => lower.includes(token));
-  if (!firstToken) {
+  
+  // Finde das erste Token-Match mit höherer Gewichtung für längere Token
+  let bestMatch: { token: string; index: number; length: number } | null = null;
+  for (const token of tokens) {
+    const index = lower.indexOf(token);
+    if (index !== -1) {
+      if (!bestMatch || token.length > bestMatch.length) {
+        bestMatch = { token, index, length: token.length };
+      }
+    }
+  }
+  
+  if (!bestMatch) {
     return cleaned.slice(0, 240);
   }
 
-  const tokenIndex = lower.indexOf(firstToken);
-  const start = Math.max(0, tokenIndex - 100);
-  const end = Math.min(cleaned.length, tokenIndex + 200);
+  const start = Math.max(0, bestMatch.index - 100);
+  const end = Math.min(cleaned.length, bestMatch.index + 200);
   let snippet = cleaned.slice(start, end).trim();
   
   // Ellipsis hinzufügen wenn nicht am Anfang oder Ende
@@ -97,11 +107,15 @@ function snippetFromText(text: string, tokens: string[]): string {
 }
 
 function sectionMatchesTopic(sectionText: string, topicId: TopicId, sectionTags?: string[]): boolean {
-  const lower = sectionText.toLowerCase();
-  const topicKeywords = TOPIC_KEYWORDS[topicId];
+  // Exakte Tag-Matches haben hoechste Prioritaet
   if (sectionTags?.some((tag) => tag === topicId)) {
     return true;
   }
+  
+  const lower = sectionText.toLowerCase();
+  const topicKeywords = TOPIC_KEYWORDS[topicId];
+  
+  // Mindestens 1 Keyword-Match fuer Themenrelevanz
   return topicKeywords.some((keyword) => lower.includes(keyword));
 }
 

@@ -65,7 +65,7 @@ function tokenize(input: string): string[] {
   return normalize(input)
     .split(" ")
     .map((token) => token.trim())
-    .filter((token) => token.length >= 3 && !STOPWORDS.has(token));
+    .filter((token) => token.length >= 2 && !STOPWORDS.has(token));
 }
 
 function compileRulePatterns(rule: QuestionRule): RegExp[] {
@@ -85,9 +85,15 @@ function snippetFromText(text: string, tokens: string[]): string {
   }
 
   const tokenIndex = lower.indexOf(firstToken);
-  const start = Math.max(0, tokenIndex - 90);
-  const end = Math.min(cleaned.length, tokenIndex + 190);
-  return cleaned.slice(start, end).trim();
+  const start = Math.max(0, tokenIndex - 100);
+  const end = Math.min(cleaned.length, tokenIndex + 200);
+  let snippet = cleaned.slice(start, end).trim();
+  
+  // Ellipsis hinzufügen wenn nicht am Anfang oder Ende
+  if (start > 0) snippet = "..." + snippet;
+  if (end < cleaned.length) snippet = snippet + "...";
+  
+  return snippet;
 }
 
 function sectionMatchesTopic(sectionText: string, topicId: TopicId, sectionTags?: string[]): boolean {

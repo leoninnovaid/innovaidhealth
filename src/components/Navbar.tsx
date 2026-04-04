@@ -65,6 +65,7 @@ const Navbar = () => {
   return (
     <nav
       aria-label="Hauptnavigation"
+      role="navigation"
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
         solidHeader ? "bg-card/95 shadow-sm backdrop-blur-md" : "bg-transparent"
       }`}

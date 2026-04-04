@@ -241,7 +241,20 @@ const WissensindexPrototyp = () => {
               )}
 
               {loadError && (
-                <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-sm text-red-800">{loadError}</div>
+                <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-sm text-red-800">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 flex-shrink-0">
+                      <svg className="h-5 w-5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-red-900">Fehler beim Laden des Wissensindex</h3>
+                      <p className="mt-1 text-red-700">{loadError}</p>
+                      <p className="mt-2 text-xs text-red-600">Bitte versuchen Sie, die Seite zu aktualisieren oder kontaktieren Sie den Support.</p>
+                    </div>
+                  </div>
+                </div>
               )}
 
               {!isLoading && !loadError && (
@@ -349,19 +362,26 @@ const WissensindexPrototyp = () => {
                     ) : (
                       <div className="space-y-4">
                         <div className="rounded-2xl border border-border/70 bg-card p-6">
-                          <h3 className="text-base font-semibold text-foreground mb-3">Keine passenden Ergebnisse gefunden</h3>
-                          <p className="text-sm text-muted-foreground mb-4">
-                            Versuchen Sie, Ihre Suche zu verfeinern oder einen anderen Suchbegriff zu verwenden.
-                          </p>
-                          <div className="space-y-2">
-                            <p className="text-xs font-medium text-foreground uppercase tracking-widest">Tipps zur Suche:</p>
-                            <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                              <li>Verwenden Sie einfachere oder allgemeinere Begriffe</li>
-                              <li>Überprüfen Sie die Schreibweise Ihrer Suchbegriffe</li>
-                              <li>Versuchen Sie, Synonyme oder verwandte Begriffe zu nutzen</li>
-                              <li>Nutzen Sie die Themenfilter auf der linken Seite</li>
-                              <li>Probieren Sie eine der Schnellfragen aus</li>
-                            </ul>
+                          <div className="flex items-start gap-4">
+                            <div className="flex-shrink-0 mt-1">
+                              <Search className="h-6 w-6 text-muted-foreground" />
+                            </div>
+                            <div className="flex-1">
+                              <h3 className="text-base font-semibold text-foreground mb-2">Keine passenden Ergebnisse gefunden</h3>
+                              <p className="text-sm text-muted-foreground mb-4">
+                                Versuchen Sie, Ihre Suche zu verfeinern oder einen anderen Suchbegriff zu verwenden.
+                              </p>
+                              <div className="space-y-2">
+                                <p className="text-xs font-medium text-foreground uppercase tracking-widest">Tipps zur Suche:</p>
+                                <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                                  <li>Verwenden Sie einfachere oder allgemeinere Begriffe</li>
+                                  <li>Überprüfen Sie die Schreibweise Ihrer Suchbegriffe</li>
+                                  <li>Versuchen Sie, Synonyme oder verwandte Begriffe zu nutzen</li>
+                                  <li>Nutzen Sie die Themenfilter auf der linken Seite</li>
+                                  <li>Probieren Sie eine der Schnellfragen aus</li>
+                                </ul>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>

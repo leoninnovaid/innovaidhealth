@@ -15,3 +15,10 @@ Alle Aktivitäten werden hier mit Timestamps protokolliert.
 
 - **02:55**: Verbesserung der "Keine Ergebnisse"-Nachricht in `WissensindexPrototyp.tsx` implementiert.
 - **03:00**: Suchlogik in `search.ts` optimiert, um bei leeren Suchanfragen nur "freigegeben" Einträge anzuzeigen.
+
+## 2026-04-04
+- **03:05**: Verbesserte Fehlerbehandlung in `WissensindexPrototyp.tsx` implementiert.
+- **03:10**: "Keine Ergebnisse"-Nachricht in `WissensindexPrototyp.tsx` visuell verbessert.
+- **03:15**: Suchlogik in `search.ts` optimiert (Tokenisierung und Snippet-Extraktion).
+- **03:20**: Accessibility (ARIA-Label und `role="navigation"`) in `Navbar.tsx` verbessert.
+- **03:22**: Doppelte Importe in `Navbar.tsx` entfernt.

@@ -13,7 +13,8 @@ Zukünftige Schritte und strategische Ziele.
 - [x] Visuelle Verbesserung der "Keine Ergebnisse"-Nachricht
 - [x] Optimierung der Suchlogik (Tokenisierung & Snippet-Extraktion)
 - [x] Accessibility-Verbesserungen in `Navbar.tsx`
-- [ ] Weitere UX/UI-Optimierungen im Wissensindex identifizieren und planen
+- [x] Clear-Button für Suchfeld und Filter-Resets implementiert
+- [ ] Responsive Design der Filter-Sektion im Wissensindex prüfen und optimieren
 
 ## Strategische Ziele (Mittelfristig)
 - [ ] Kontinuierliche Verbesserung der Nutzer-Erfahrung

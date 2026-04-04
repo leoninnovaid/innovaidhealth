@@ -15,3 +15,5 @@
 | T11 | Visuelle Verbesserung der "Keine Ergebnisse"-Nachricht | Erledigt | Mittel | Überarbeitung der Anzeige bei leeren Suchergebnissen |
 | T12 | Optimierung der Suchlogik (Tokenisierung & Snippet-Extraktion) | Erledigt | Hoch | Anpassung der `tokenize` und `snippetFromText` Funktionen in `search.ts` |
 | T13 | Accessibility-Verbesserungen in Navbar.tsx | Erledigt | Mittel | Hinzufügen von `role="navigation"` und Entfernung doppelter Importe |
+| T14 | Clear-Button für Suchfeld implementieren | Erledigt | Mittel | Hinzufügen eines Buttons zum Leeren der Suchanfrage |
+| T15 | Filter-Reset Buttons hinzufügen | Erledigt | Mittel | "Zurücksetzen" für Themen- und Statusfilter implementiert |

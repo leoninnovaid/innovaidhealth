@@ -17,3 +17,5 @@
 | T13 | Accessibility-Verbesserungen in Navbar.tsx | Erledigt | Mittel | Hinzufügen von `role="navigation"` und Entfernung doppelter Importe |
 | T14 | Clear-Button für Suchfeld implementieren | Erledigt | Mittel | Hinzufügen eines Buttons zum Leeren der Suchanfrage |
 | T15 | Filter-Reset Buttons hinzufügen | Erledigt | Mittel | "Zurücksetzen" für Themen- und Statusfilter implementiert |
+| T16 | Snippet-Extraktion optimieren | Erledigt | Mittel | Bessere Token-Gewichtung in `snippetFromText` Funktion |
+| T17 | Build-Test durchführen | Erledigt | Hoch | Sicherstellen, dass alle Änderungen kompilieren |

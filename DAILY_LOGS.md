@@ -28,3 +28,8 @@ Alle Aktivitäten werden hier mit Timestamps protokolliert.
 - **03:40**: Implementierung eines "Suche leeren" Buttons im Suchfeld.
 - **03:45**: Hinzufügen von "Zurücksetzen" Buttons für Themen- und Statusfilter zur Verbesserung der Bedienbarkeit.
 - **03:50**: Optimierung der Filter-UI durch Trennung von Label und Reset-Aktion.
+
+- **04:00**: Optimierung der Snippet-Extraktion in `search.ts` durchgeführt (bessere Token-Gewichtung).
+- **04:05**: Verbesserung der Keyword-Matching-Logik mit Kommentaren für Klarheit.
+- **04:10**: Projektabhängigkeiten installiert und Build-Test erfolgreich durchgeführt.
+- **04:15**: Alle Änderungen kompilieren fehlerfrei, keine TypeScript-Fehler.

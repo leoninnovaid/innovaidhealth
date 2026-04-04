@@ -6,7 +6,7 @@ Zukünftige Schritte und strategische Ziele.
 - [x] Projektabhängigkeiten installieren (`npm install`)
 - [x] Codebase-Analyse: Was ist der aktuelle Fokus des App-Wrapper-Stores?
 - [x] Wissensindex-Links in Footer und Navbar hinzufügen
-- [ ] Erste kleine Verbesserungen durchführen (UX/UI oder Bug Fixes)
+- [x] Erste kleine Verbesserungen durchführen (UX/UI oder Bug Fixes)
 - [ ] Commits gemäß Conventional Commits Format pushen
 
 ## Strategische Ziele (Mittelfristig)

@@ -192,12 +192,18 @@ export function runKnowledgeSearch({
   const normalizedQuery = normalize(query);
   const queryTokens = tokenize(query);
   const documents = index?.documents ?? [];
+  const isEmptyQuery = normalizedQuery.length === 0;
 
   return answerEntries
     .filter((entry) => (topicFilter === "alle" ? true : entry.topicId === topicFilter))
-    .filter((entry) => (statusFilter === "alle" ? true : entry.status === statusFilter))
+    .filter((entry) => {
+      if (isEmptyQuery && statusFilter === "alle") {
+        return entry.status === "freigegeben";
+      }
+      return statusFilter === "alle" ? true : entry.status === statusFilter;
+    })
     .map((entry) => {
-      let score = normalizedQuery.length === 0 ? 10 : 0;
+      let score = isEmptyQuery ? 15 : 0;
 
       const contentBlob = normalize(
         `${entry.frage} ${entry.antwort_kurz} ${entry.antwort_lang} ${entry.verwandte_fragen.join(" ")}`,

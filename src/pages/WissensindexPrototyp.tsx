@@ -192,22 +192,43 @@ const WissensindexPrototyp = () => {
             <section className="space-y-6">
               <div className="rounded-2xl border border-border/70 bg-card p-5 md:p-6">
                 <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_220px_220px]">
-                  <label className="relative block">
+                  <div className="relative">
                     <Search className="pointer-events-none absolute left-3 top-3.5 text-muted-foreground" size={16} />
                     <input
                       value={query}
                       onChange={(event) => setQuery(event.target.value)}
                       placeholder="Frage eingeben, z. B. 'Welche Unterlagen brauche ich?'"
-                      className="w-full rounded-xl border border-border bg-background py-3 pl-10 pr-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
+                      className="w-full rounded-xl border border-border bg-background py-3 pl-10 pr-10 text-sm text-foreground outline-none transition-colors focus:border-accent"
                     />
-                  </label>
+                    {query && (
+                      <button
+                        onClick={() => setQuery("")}
+                        className="absolute right-3 top-3 text-muted-foreground hover:text-foreground"
+                        title="Suche leeren"
+                      >
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    )}
+                  </div>
 
-                  <label className="block text-xs font-medium text-muted-foreground">
-                    Themenfilter
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <label className="text-xs font-medium text-muted-foreground">Themenfilter</label>
+                      {topicFilter !== "alle" && (
+                        <button 
+                          onClick={() => setTopicFilter("alle")}
+                          className="text-[10px] text-accent hover:underline"
+                        >
+                          Zurücksetzen
+                        </button>
+                      )}
+                    </div>
                     <select
                       value={topicFilter}
                       onChange={(event) => setTopicFilter(event.target.value as TopicId | "alle")}
-                      className="mt-1.5 w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground"
+                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent"
                     >
                       <option value="alle">Alle Themen</option>
                       {Object.entries(topicMeta).map(([topicId, meta]) => (
@@ -216,21 +237,31 @@ const WissensindexPrototyp = () => {
                         </option>
                       ))}
                     </select>
-                  </label>
+                  </div>
 
-                  <label className="block text-xs font-medium text-muted-foreground">
-                    Review-Status
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <label className="text-xs font-medium text-muted-foreground">Review-Status</label>
+                      {statusFilter !== "alle" && (
+                        <button 
+                          onClick={() => setStatusFilter("alle")}
+                          className="text-[10px] text-accent hover:underline"
+                        >
+                          Zurücksetzen
+                        </button>
+                      )}
+                    </div>
                     <select
                       value={statusFilter}
                       onChange={(event) => setStatusFilter(event.target.value as ReviewStatus | "alle")}
-                      className="mt-1.5 w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground"
+                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent"
                     >
                       <option value="alle">Alle Stati</option>
                       <option value="roh">Roh</option>
                       <option value="in_review">In Review</option>
                       <option value="freigegeben">Freigegeben</option>
                     </select>
-                  </label>
+                  </div>
                 </div>
               </div>
 

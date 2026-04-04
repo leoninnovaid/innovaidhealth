@@ -22,3 +22,9 @@ Alle Aktivitäten werden hier mit Timestamps protokolliert.
 - **03:15**: Suchlogik in `search.ts` optimiert (Tokenisierung und Snippet-Extraktion).
 - **03:20**: Accessibility (ARIA-Label und `role="navigation"`) in `Navbar.tsx` verbessert.
 - **03:22**: Doppelte Importe in `Navbar.tsx` entfernt.
+
+- **03:30**: Review des Playbooks und der aktuellen Projektstruktur.
+- **03:35**: Analyse der `WissensindexPrototyp.tsx` auf UX-Verbesserungspotenziale.
+- **03:40**: Implementierung eines "Suche leeren" Buttons im Suchfeld.
+- **03:45**: Hinzufügen von "Zurücksetzen" Buttons für Themen- und Statusfilter zur Verbesserung der Bedienbarkeit.
+- **03:50**: Optimierung der Filter-UI durch Trennung von Label und Reset-Aktion.

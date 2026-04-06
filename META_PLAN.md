@@ -14,7 +14,7 @@ Zukünftige Schritte und strategische Ziele.
 - [x] Optimierung der Suchlogik (Tokenisierung & Snippet-Extraktion)
 - [x] Accessibility-Verbesserungen in `Navbar.tsx`
 - [x] Clear-Button für Suchfeld und Filter-Resets implementiert
-- [ ] Responsive Design der Filter-Sektion im Wissensindex prüfen und optimieren
+- [x] Responsive Design der Filter-Sektion im Wissensindex prüfen und optimieren
 
 ## Strategische Ziele (Mittelfristig)
 - [ ] Kontinuierliche Verbesserung der Nutzer-Erfahrung

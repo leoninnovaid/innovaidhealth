@@ -12,6 +12,10 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
+    // @ts-ignore
+    allowedHosts: [
+      "8080-iftqi09jldqg58r3aqdtc-b6136d93.us2.manus.computer",
+    ],
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {

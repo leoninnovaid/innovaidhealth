@@ -1,5 +1,7 @@
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
+
 import { Search, TreePine, FileText, Filter } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { runKnowledgeSearch } from "@/knowledge/search";
@@ -225,18 +227,22 @@ const WissensindexPrototyp = () => {
                         </button>
                       )}
                     </div>
-                    <select
+                    <Select
                       value={topicFilter}
-                      onChange={(event) => setTopicFilter(event.target.value as TopicId | "alle")}
-                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent"
+                      onValueChange={(value) => setTopicFilter(value as TopicId | "alle")}
                     >
-                      <option value="alle">Alle Themen</option>
-                      {Object.entries(topicMeta).map(([topicId, meta]) => (
-                        <option key={topicId} value={topicId}>
-                          {meta.label}
-                        </option>
-                      ))}
-                    </select>
+                      <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
+                        <SelectValue placeholder="Alle Themen" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="alle">Alle Themen</SelectItem>
+                        {Object.entries(topicMeta).map(([topicId, meta]) => (
+                          <SelectItem key={topicId} value={topicId}>
+                            {meta.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   <div className="space-y-1.5">
@@ -251,16 +257,20 @@ const WissensindexPrototyp = () => {
                         </button>
                       )}
                     </div>
-                    <select
+                    <Select
                       value={statusFilter}
-                      onChange={(event) => setStatusFilter(event.target.value as ReviewStatus | "alle")}
-                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent"
+                      onValueChange={(value) => setStatusFilter(value as ReviewStatus | "alle")}
                     >
-                      <option value="alle">Alle Stati</option>
-                      <option value="roh">Roh</option>
-                      <option value="in_review">In Review</option>
-                      <option value="freigegeben">Freigegeben</option>
-                    </select>
+                      <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
+                        <SelectValue placeholder="Alle Stati" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="alle">Alle Stati</SelectItem>
+                        <SelectItem value="roh">Roh</SelectItem>
+                        <SelectItem value="in_review">In Review</SelectItem>
+                        <SelectItem value="freigegeben">Freigegeben</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
               </div>

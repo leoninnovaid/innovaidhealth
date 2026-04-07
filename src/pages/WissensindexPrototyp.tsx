@@ -193,7 +193,7 @@ const WissensindexPrototyp = () => {
 
             <section className="space-y-6">
               <div className="rounded-2xl border border-border/70 bg-card p-5 md:p-6">
-                <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_220px_220px]">
+                <div className="grid gap-4 grid-cols-1 md:grid-cols-[minmax(0,1fr)_220px] lg:grid-cols-[minmax(0,1fr)_220px_220px]">
                   <div className="relative">
                     <Search className="pointer-events-none absolute left-3 top-3.5 text-muted-foreground" size={16} />
                     <input

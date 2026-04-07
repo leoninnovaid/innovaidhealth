@@ -41,3 +41,7 @@ Alle Aktivitäten werden hier mit Timestamps protokolliert.
 - **[CURRENT_TIME]**: Import der `Select`-Komponenten (`Select`, `SelectContent`, `SelectItem`, `SelectTrigger`, `SelectValue`) in `WissensindexPrototyp.tsx` hinzugefügt.
 - **[CURRENT_TIME]**: Native `select`-Elemente für Themenfilter in `WissensindexPrototyp.tsx` durch die `Select`-Komponente ersetzt.
 - **[CURRENT_TIME]**: Native `select`-Elemente für Statusfilter in `WissensindexPrototyp.tsx` durch die `Select`-Komponente ersetzt.
+
+## 2026-04-07
+- **18:16**: Responsive Design der Filter-Sektion in `WissensindexPrototyp.tsx` optimiert. Das Grid-Layout wurde für verschiedene Bildschirmgrößen angepasst: Mobile (grid-cols-1), Tablet (md:grid-cols-[minmax(0,1fr)_220px]), Desktop (lg:grid-cols-[minmax(0,1fr)_220px_220px]).
+- **18:16**: Projektabhängigkeiten installiert und Build-Test erfolgreich durchgeführt.

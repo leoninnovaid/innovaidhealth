@@ -19,4 +19,4 @@
 | T15 | Filter-Reset Buttons hinzufügen | Erledigt | Mittel | "Zurücksetzen" für Themen- und Statusfilter implementiert |
 | T16 | Snippet-Extraktion optimieren | Erledigt | Mittel | Bessere Token-Gewichtung in `snippetFromText` Funktion |
 | T17 | Build-Test durchführen | Erledigt | Hoch | Sicherstellen, dass alle Änderungen kompilieren |
-| T18 | Responsive Design der Filter-Sektion im Wissensindex prüfen und optimieren | Offen | Hoch | Überprüfung und Anpassung des Layouts der Filter für verschiedene Bildschirmgrößen |
+| T18 | Responsive Design der Filter-Sektion im Wissensindex prüfen und optimieren | Erledigt | Hoch | Überprüfung und Anpassung des Layouts der Filter für verschiedene Bildschirmgrößen |

@@ -8,7 +8,6 @@ const navItems = [
   { label: "Projekte", section: "saveandsafe" },
   { label: "Team", section: "team" },
   { label: "Methodik", section: "methodik" },
-  { label: "Kontakt", section: "kontakt" },
 ];
 
 const Navbar = () => {

@@ -4,23 +4,21 @@ import { ClipboardCheck, ShieldCheck } from "lucide-react";
 const offerings = [
   {
     icon: ClipboardCheck,
-    label: "Offering A",
-    title: "Förderprojekte im Digital-Health-Markt",
-    text: "Wir begleiten Förderprojekte von der Konsortialentwicklung über die Antragstellung bis zur Umsetzung und Verstetigung in der Versorgung.",
+    title: "Foerderprojekte mit Verstetigung",
+    text: "Wir begleiten Foerderprojekte von der Konsortialentwicklung ueber die Antragstellung bis zur belastbaren Umsetzung in der Versorgung.",
     points: [
-      "Konsortialaufbau und Antragsunterstützung",
-      "Projektmanagement Office für komplexe Verbundprojekte",
-      "Verstetigungs- und Geschäftsmodelllogik nach Förderende",
+      "Konsortialaufbau und Antragsunterstuetzung",
+      "Projektmanagement Office fuer komplexe Verbundprojekte",
+      "Verstetigungs- und Geschaeftsmodelllogik nach Foerderende",
     ],
   },
   {
     icon: ShieldCheck,
-    label: "Offering B",
-    title: "MDR/DiGA und digitale Therapiebegleitung",
-    text: "Wir unterstützen bei Produktstrategie, PMO und Implementierung digitaler Therapiebegleitung mit Fokus auf regulatorische Anschlussfähigkeit.",
+    title: "Strategie und Umsetzung digitaler Versorgung",
+    text: "Wir unterstuetzen bei der Entwicklung, Etablierung und Implementierung digitaler Loesungen im Gesundheitswesen.",
     points: [
-      "Produktmanagement für digitale Medizinprodukte",
-      "MDR/DiGA-nahe Umsetzungsbegleitung",
+      "Strategie und Priorisierung von Versorgungsvorhaben",
+      "Strukturiertes PMO fuer Steuerung und Umsetzung",
       "Integration in reale Versorgungsprozesse",
     ],
   },
@@ -37,10 +35,10 @@ const WhyUs = () => (
         className="mx-auto mb-12 max-w-3xl text-center md:mb-16"
       >
         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Leistungen</p>
-        <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Unsere zwei Kern-Offerings</h2>
+        <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Unsere zwei Kernleistungen</h2>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-          Wir fokussieren uns auf zwei Leistungen: Förderprojekte mit Verstetigungslogik und MDR/DiGA-nahe
-          Produktumsetzung in der digitalen Therapiebegleitung.
+          Wir fokussieren uns auf zwei Leistungen: Foerderprojekte mit klarer Verstetigungslogik und die Umsetzung
+          digitaler Versorgungsvorhaben.
         </p>
       </motion.div>
 
@@ -54,11 +52,8 @@ const WhyUs = () => (
             transition={{ duration: 0.5, delay: i * 0.12 }}
             className="rounded-xl border border-border/50 bg-card p-6 card-elevated md:p-8"
           >
-            <div className="mb-5 flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary">
-                <offering.icon className="text-accent" size={24} />
-              </div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-accent">{offering.label}</p>
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary">
+              <offering.icon className="text-accent" size={24} />
             </div>
             <h3 className="mb-3 text-xl font-bold text-foreground">{offering.title}</h3>
             <p className="mb-5 text-sm leading-relaxed text-muted-foreground">{offering.text}</p>

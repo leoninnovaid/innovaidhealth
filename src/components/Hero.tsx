@@ -32,25 +32,25 @@ const Hero = () => {
               Wir bringen Innovation in die Versorgung
             </h1>
             <p className="mb-8 max-w-2xl text-lg leading-relaxed text-primary-foreground/80 md:text-xl">
-              Wir vernetzen Startups, Krankenkassen und Leistungserbringer, damit aus innovativen Projekten tragfähige
-              Versorgungslösungen werden.
+              Wir vernetzen Startups, Krankenkassen und Leistungserbringer, damit aus innovativen Projekten tragfaehige
+              Versorgungslosungen werden.
             </p>
 
             <div className="mb-10 grid max-w-2xl gap-3 sm:grid-cols-2">
               <div className="rounded-xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
                 <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">
-                  Offering A
+                  Kernleistung
                 </p>
                 <p className="text-sm leading-relaxed text-primary-foreground">
-                  Förderprojekte: Wir begleiten von der Konsortialentwicklung bis zur Verstetigung.
+                  Foerderprojekte: Wir begleiten von der Konsortialentwicklung bis zur Verstetigung.
                 </p>
               </div>
               <div className="rounded-xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
                 <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">
-                  Offering B
+                  Kernleistung
                 </p>
                 <p className="text-sm leading-relaxed text-primary-foreground">
-                  MDR/DiGA: Wir steuern Produktentwicklung und Implementierung digitaler Therapiebegleitung.
+                  Digitale Versorgung: Wir steuern Strategie, Umsetzung und Integration in den Versorgungsalltag.
                 </p>
               </div>
             </div>
@@ -64,11 +64,11 @@ const Hero = () => {
           >
             <Button size="lg" variant="accent" className="px-8 py-6 text-base" asChild>
               <Link to="/?section=kontakt">
-                Offering A besprechen <ArrowRight className="ml-2" size={18} />
+                Foerderprojekt besprechen <ArrowRight className="ml-2" size={18} />
               </Link>
             </Button>
             <Button size="lg" variant="hero-outline" className="px-8 py-6 text-base" asChild>
-              <Link to="/?section=kontakt">Offering B besprechen</Link>
+              <Link to="/?section=kontakt">Vorhaben besprechen</Link>
             </Button>
           </motion.div>
         </div>

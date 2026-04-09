@@ -11,13 +11,18 @@ import Impact from "@/components/Impact";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
+type SectionState = {
+  sectionToScroll?: string;
+} | null;
+
 const Index = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
+    const state = location.state as SectionState;
     const params = new URLSearchParams(location.search);
-    const section = params.get("section");
+    const section = state?.sectionToScroll ?? params.get("section");
 
     if (!section) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -32,7 +37,7 @@ const Index = () => {
       }
 
       element.scrollIntoView({ behavior: "smooth", block: "start" });
-      navigate("/", { replace: true });
+      navigate("/", { replace: true, state: null });
       return true;
     };
 
@@ -40,9 +45,9 @@ const Index = () => {
       return;
     }
 
-    const timeoutId = window.setTimeout(scrollToSection, 100);
+    const timeoutId = window.setTimeout(scrollToSection, 120);
     return () => window.clearTimeout(timeoutId);
-  }, [location.search, navigate]);
+  }, [location.search, location.state, navigate]);
 
   return (
     <div className="min-h-screen bg-background">

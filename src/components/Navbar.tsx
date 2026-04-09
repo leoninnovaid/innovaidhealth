@@ -46,7 +46,7 @@ const Navbar = () => {
       return;
     }
 
-    navigate(`/?section=${section}`);
+    navigate("/", { state: { sectionToScroll: section } });
   };
 
   const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -83,7 +83,7 @@ const Navbar = () => {
           {navItems.map((item) => (
             <Link
               key={item.section}
-              to={`/?section=${item.section}`}
+              to="/"
               onClick={handleSectionClick(item.section)}
               className={`whitespace-nowrap text-[13px] font-medium transition-colors hover:text-accent xl:text-sm ${
                 solidHeader ? "text-foreground" : "text-primary-foreground/80"
@@ -93,7 +93,7 @@ const Navbar = () => {
             </Link>
           ))}
           <Link
-            to="/?section=kontakt"
+            to="/"
             onClick={handleSectionClick("kontakt")}
             className="shrink-0 whitespace-nowrap rounded-lg bg-accent px-4 py-2 text-[13px] font-semibold text-accent-foreground transition-colors hover:bg-accent/90 xl:px-5 xl:py-2.5 xl:text-sm"
           >
@@ -121,7 +121,7 @@ const Navbar = () => {
           {navItems.map((item) => (
             <Link
               key={item.section}
-              to={`/?section=${item.section}`}
+              to="/"
               onClick={handleSectionClick(item.section)}
               className="block rounded-xl px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-accent"
             >
@@ -129,7 +129,7 @@ const Navbar = () => {
             </Link>
           ))}
           <Link
-            to="/?section=kontakt"
+            to="/"
             onClick={handleSectionClick("kontakt")}
             className="mt-3 block rounded-xl bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground"
           >

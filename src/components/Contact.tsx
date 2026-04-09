@@ -393,19 +393,21 @@ const Contact = () => {
                   )}
                 />
 
-                {isTurnstileEnabled && (
-                  <div className="rounded-lg border border-border/50 bg-muted/40 p-4">
-                    <div ref={turnstileContainerRef} className="min-h-[65px]" />
-                    {turnstileError && <p className="mt-2 text-sm text-destructive">{turnstileError}</p>}
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                    <Button type="submit" size="lg" className="px-8 py-6 text-base" disabled={submitStatus === "loading"}>
+                      {submitStatus === "loading" ? "Wird gesendet ..." : "Anfrage senden"}
+                      <Send className="ml-2" size={18} />
+                    </Button>
+                    <p className="text-xs text-muted-foreground">Felder mit * sind Pflichtfelder.</p>
                   </div>
-                )}
 
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <Button type="submit" size="lg" className="px-8 py-6 text-base" disabled={submitStatus === "loading"}>
-                    {submitStatus === "loading" ? "Wird gesendet ..." : "Anfrage senden"}
-                    <Send className="ml-2" size={18} />
-                  </Button>
-                  <p className="text-xs text-muted-foreground">Felder mit * sind Pflichtfelder.</p>
+                  {isTurnstileEnabled && (
+                    <div className="w-full lg:w-auto">
+                      <div ref={turnstileContainerRef} className="mx-auto min-h-[65px] max-w-[300px] lg:mx-0" />
+                      {turnstileError && <p className="mt-2 text-sm text-destructive">{turnstileError}</p>}
+                    </div>
+                  )}
                 </div>
 
                 {submitStatus === "success" && (

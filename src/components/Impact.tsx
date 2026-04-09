@@ -2,10 +2,22 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
 const kpis = [
-  { label: "Frühe Validierung", desc: "Innovationen werden systematisch auf Versorgungsrelevanz und Machbarkeit geprüft." },
-  { label: "Marktzugang", desc: "Begleitung auf dem Weg in Erstattungsstrukturen und den regulierten deutschen Gesundheitsmarkt." },
-  { label: "Relevante Partnerschaften", desc: "Vernetzung mit Krankenkassen, Leistungserbringern und strategischen Investoren." },
-  { label: "Skalierbare Versorgung", desc: "Projekte werden so aufgebaut, dass sie über Pilotphasen hinaus wirken können." },
+  {
+    label: "Verstetigte Förderprojekte",
+    desc: "Wir schaffen die Grundlage, damit erfolgreiche Projektresultate nach der Förderphase in der Versorgung weitergeführt werden.",
+  },
+  {
+    label: "Klarer Marktzugang",
+    desc: "Wir verbinden regulatorische Anforderungen mit umsetzbaren Schritten für Erstattung und breite Anwendung.",
+  },
+  {
+    label: "Entlastung in der Versorgung",
+    desc: "Wir richten digitale Lösungen auf konkrete Nutzen in Klinik, Praxis und Pflege aus.",
+  },
+  {
+    label: "Verlässliche Umsetzung",
+    desc: "Wir sorgen mit strukturiertem PMO für klare Verantwortungen, Transparenz und Umsetzungstempo.",
+  },
 ];
 
 const Impact = () => (
@@ -19,7 +31,7 @@ const Impact = () => (
         className="mx-auto mb-12 max-w-2xl text-center md:mb-16"
       >
         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Wirkung</p>
-        <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Impact</h2>
+        <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Was wir gemeinsam erreichen</h2>
       </motion.div>
 
       <div className="mx-auto grid max-w-3xl gap-5 sm:grid-cols-2 md:gap-6">

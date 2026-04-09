@@ -25,8 +25,12 @@ const SaveAndSafe = () => (
         className="overflow-hidden rounded-2xl border border-border/50 bg-card card-elevated"
       >
         <div className="hero-gradient px-5 py-6 md:px-12 md:py-8">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70 md:text-sm">Showcase-Projekt</p>
-          <h3 className="text-xl font-extrabold text-primary-foreground md:text-3xl">SAVE&SAFE - Innovation in der Versorgung</h3>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70 md:text-sm">
+            Showcase-Projekt
+          </p>
+          <h3 className="text-xl font-extrabold text-primary-foreground md:text-3xl">
+            SAVE&SAFE - Innovation in der Versorgung
+          </h3>
         </div>
 
         <div className="p-5 md:p-12">
@@ -35,17 +39,17 @@ const SaveAndSafe = () => (
               {
                 icon: HeartPulse,
                 title: "Versorgungsproblem",
-                text: "SAVE&SAFE adressiert ein konkretes Versorgungsproblem, bei dem bestehende Strukturen an ihre Grenzen stoßen und innovative Ansätze erforderlich sind.",
+                text: "Wir adressieren mit dem Projekt ein konkretes Versorgungsproblem, bei dem bestehende Strukturen an Grenzen stoßen.",
               },
               {
                 icon: Shield,
                 title: "Lösungsansatz",
-                text: "Das Projekt kombiniert technologische Innovation mit einem Versorgungsmodell, das auf Evidenz und Erstattungsfähigkeit ausgerichtet ist.",
+                text: "Wir verbinden technologische Innovation mit einem evidenzorientierten und erstattungsfähigen Versorgungsmodell.",
               },
               {
                 icon: Users,
                 title: "Go-To-Market",
-                text: "Die Lösung adressiert einen relevanten Markt im deutschen Gesundheitswesen mit klarem Skalierungspotenzial und Nutzen für alle Beteiligten bis hin zum Markteintritt.",
+                text: "Wir arbeiten auf eine skalierbare Anwendung im deutschen Gesundheitswesen mit klarem Nutzen für Beteiligte hin.",
               },
             ].map((item) => (
               <div key={item.title} className="flex gap-3 md:gap-4">
@@ -69,8 +73,7 @@ const SaveAndSafe = () => (
               className="h-16 w-16 shrink-0 object-contain md:h-20 md:w-20"
             />
             <p className="text-center text-xs italic text-muted-foreground sm:text-left md:text-sm">
-              KI-basierte Lösungen, um Stürze zu vermeiden und Pflegekräfte zu entlasten. Gemeinsam arbeiten wir an
-              einer sicheren Zukunft in der Geriatrie.
+              Wir entwickeln KI-basierte Lösungen, um Stürze zu vermeiden und Pflegekräfte zu entlasten.
             </p>
           </div>
 

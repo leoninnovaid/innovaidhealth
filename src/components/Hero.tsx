@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Users } from "lucide-react";
 import innovaidLogo from "@/assets/innovaid-logo.png";
 
 const Hero = () => {
@@ -25,33 +25,50 @@ const Hero = () => {
               height="722"
               className="mb-8 h-auto w-[220px] md:w-[300px] lg:w-[340px]"
             />
-            <p className="text-sm font-semibold tracking-widest uppercase mb-6" style={{ color: "hsl(207, 62%, 65%)" }}>
-              Health Innovation · Market Access · Impact
+            <p className="mb-6 text-sm font-semibold uppercase tracking-widest" style={{ color: "hsl(207, 62%, 65%)" }}>
+              Health Innovation | Market Access | Impact
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-primary-foreground mb-6">
-              Innovation im Gesundheitsmarkt
+            <h1 className="mb-6 text-4xl font-extrabold leading-tight text-primary-foreground md:text-5xl lg:text-6xl">
+              Wir bringen Innovation in die Versorgung
             </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-10 max-w-2xl">
-              Startups, Krankenkassen und Investoren werden vernetzt, damit aus innovativen Projekten tragfähige
+            <p className="mb-8 max-w-2xl text-lg leading-relaxed text-primary-foreground/80 md:text-xl">
+              Wir vernetzen Startups, Krankenkassen und Leistungserbringer, damit aus innovativen Projekten tragfähige
               Versorgungslösungen werden.
             </p>
+
+            <div className="mb-10 grid max-w-2xl gap-3 sm:grid-cols-2">
+              <div className="rounded-xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
+                <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">
+                  Offering A
+                </p>
+                <p className="text-sm leading-relaxed text-primary-foreground">
+                  Förderprojekte: Wir begleiten von der Konsortialentwicklung bis zur Verstetigung.
+                </p>
+              </div>
+              <div className="rounded-xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
+                <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">
+                  Offering B
+                </p>
+                <p className="text-sm leading-relaxed text-primary-foreground">
+                  MDR/DiGA: Wir steuern Produktentwicklung und Implementierung digitaler Therapiebegleitung.
+                </p>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col gap-4 sm:flex-row"
           >
-            <Button size="lg" variant="accent" className="text-base px-8 py-6" asChild>
+            <Button size="lg" variant="accent" className="px-8 py-6 text-base" asChild>
               <Link to="/?section=kontakt">
-                Projekt besprechen <ArrowRight className="ml-2" size={18} />
+                Offering A besprechen <ArrowRight className="ml-2" size={18} />
               </Link>
             </Button>
-            <Button size="lg" variant="hero-outline" className="text-base px-8 py-6" asChild>
-              <Link to="/?section=zielgruppen">
-                <Users className="mr-2" size={18} /> Zielgruppen
-              </Link>
+            <Button size="lg" variant="hero-outline" className="px-8 py-6 text-base" asChild>
+              <Link to="/?section=kontakt">Offering B besprechen</Link>
             </Button>
           </motion.div>
         </div>

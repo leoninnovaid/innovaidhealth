@@ -49,10 +49,10 @@ const FailureReasons = () => (
             transition={{ duration: 0.5, delay: i * 0.1 }}
             className="relative"
           >
-            <span className="pointer-events-none absolute -left-2 -top-4 select-none text-5xl font-extrabold text-accent/10 md:text-6xl">
+            <span className="pointer-events-none absolute -left-1 -top-5 z-20 select-none text-4xl font-extrabold text-accent md:text-5xl">
               {reason.step}
             </span>
-            <div className="relative h-full rounded-xl border border-border/50 bg-card p-6 card-elevated md:p-8">
+            <div className="relative z-10 h-full rounded-xl border border-border/50 bg-card p-6 card-elevated md:p-8">
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary">
                 <reason.icon className="text-accent" size={24} />
               </div>

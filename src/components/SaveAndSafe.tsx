@@ -13,7 +13,7 @@ const SaveAndSafe = () => (
         transition={{ duration: 0.5 }}
         className="mx-auto mb-12 max-w-2xl text-center md:mb-16"
       >
-        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Einblick</p>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Projekte</p>
         <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">SAVE&SAFE</h2>
       </motion.div>
 

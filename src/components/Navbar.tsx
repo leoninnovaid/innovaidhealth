@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
@@ -92,6 +92,15 @@ const Navbar = () => {
             </Link>
           ))}
           <Link
+            to="/wissensindex-prototyp"
+            onClick={() => setOpen(false)}
+            className={`whitespace-nowrap text-[13px] font-medium transition-colors hover:text-accent xl:text-sm ${
+              solidHeader ? "text-foreground" : "text-primary-foreground/80"
+            }`}
+          >
+            Wissensindex
+          </Link>
+          <Link
             to="/"
             onClick={handleSectionClick("kontakt")}
             className="shrink-0 whitespace-nowrap rounded-lg bg-accent px-4 py-2 text-[13px] font-semibold text-accent-foreground transition-colors hover:bg-accent/90 xl:px-5 xl:py-2.5 xl:text-sm"
@@ -128,6 +137,13 @@ const Navbar = () => {
             </Link>
           ))}
           <Link
+            to="/wissensindex-prototyp"
+            onClick={() => setOpen(false)}
+            className="block rounded-xl px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-accent"
+          >
+            Wissensindex
+          </Link>
+          <Link
             to="/"
             onClick={handleSectionClick("kontakt")}
             className="mt-3 block rounded-xl bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground"
@@ -141,3 +157,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

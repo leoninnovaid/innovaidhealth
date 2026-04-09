@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { runKnowledgeSearch } from "@/knowledge/search";
+import { runKnowledgeDocumentSearch, runKnowledgeSearch } from "@/knowledge/search";
 import type { KnowledgeIndex } from "@/knowledge/types";
 
 const mockIndex: KnowledgeIndex = {
@@ -77,5 +77,46 @@ describe("runKnowledgeSearch", () => {
 
     expect(results.length).toBeGreaterThan(0);
     expect(results.every((result) => result.status === "freigegeben")).toBe(true);
+  });
+});
+
+describe("runKnowledgeDocumentSearch", () => {
+  it("liefert dokumentbasierte Treffer fuer eine Query", () => {
+    const results = runKnowledgeDocumentSearch({
+      query: "Stichtag FAQ",
+      index: mockIndex,
+      topicFilter: "alle",
+      statusFilter: "alle",
+      maxResults: 10,
+    });
+
+    expect(results.length).toBeGreaterThan(0);
+    expect(results[0].dokumentId).toBe("faq-antragstellende");
+  });
+
+  it("beruecksichtigt Statusfilter auch fuer Dokumenttreffer", () => {
+    const results = runKnowledgeDocumentSearch({
+      query: "",
+      index: mockIndex,
+      topicFilter: "alle",
+      statusFilter: "freigegeben",
+      maxResults: 10,
+    });
+
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.status === "freigegeben")).toBe(true);
+  });
+
+  it("liefert ohne Query einen klaren Einstieg mit mindestens einem Treffer", () => {
+    const results = runKnowledgeDocumentSearch({
+      query: "",
+      index: mockIndex,
+      topicFilter: "alle",
+      statusFilter: "alle",
+      maxResults: 10,
+    });
+
+    expect(results.length).toBeGreaterThan(0);
+    expect(new Set(results.map((result) => result.dokumentId)).size).toBe(results.length);
   });
 });

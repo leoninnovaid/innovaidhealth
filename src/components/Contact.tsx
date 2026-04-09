@@ -256,7 +256,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mx-auto max-w-3xl"
+          className="mx-auto max-w-5xl"
         >
           <div className="mb-10 text-center md:mb-12">
             <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Kontakt</p>
@@ -267,170 +267,209 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-border/50 bg-card p-6 card-elevated md:p-8">
-            <Form {...form}>
-              <form className="space-y-6" noValidate onSubmit={form.handleSubmit(onSubmit)}>
-                <div className="grid gap-4 md:grid-cols-2">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Name *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Vor- und Nachname" autoComplete="name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+          <div className="overflow-hidden rounded-3xl border border-border/50 bg-card card-elevated">
+            <div className="hero-gradient px-6 py-5 md:px-8">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">Kontaktformular</p>
+              <h3 className="text-xl font-extrabold text-primary-foreground md:text-2xl">Erzählen Sie uns von Ihrem Vorhaben</h3>
+            </div>
 
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>E-Mail *</FormLabel>
-                        <FormControl>
-                          <Input type="email" placeholder="name@unternehmen.de" autoComplete="email" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+            <div className="grid lg:grid-cols-[1.45fr_1fr]">
+              <div className="border-b border-border/60 p-6 md:p-8 lg:border-b-0 lg:border-r">
+                <Form {...form}>
+                  <form className="space-y-6" noValidate onSubmit={form.handleSubmit(onSubmit)}>
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Name *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Vor- und Nachname" autoComplete="name" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
 
-                <div className="grid gap-4 md:grid-cols-2">
-                  <FormField
-                    control={form.control}
-                    name="organization"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Organisation</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Unternehmen, Einrichtung, Krankenkasse" autoComplete="organization" {...field} />
-                        </FormControl>
-                        <FormDescription>Optional</FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="inquiryType"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Anliegen *</FormLabel>
-                        <Select modal={false} onValueChange={field.onChange} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Bitte auswählen" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            {inquiryOptions.map((option) => (
-                              <SelectItem key={option.value} value={option.value}>
-                                {option.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Nachricht *</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Beschreiben Sie kurz Ihr Vorhaben, den Kontext und wo Sie Unterstützung benötigen."
-                          className="min-h-[140px]"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <input
-                  type="text"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  className="hidden"
-                  {...form.register("website")}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="privacyAccepted"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="flex items-start gap-3 rounded-lg border border-border/50 bg-muted/40 p-4">
-                        <FormControl>
-                          <Checkbox checked={field.value} onCheckedChange={(checked) => field.onChange(checked === true)} />
-                        </FormControl>
-                        <div className="space-y-1">
-                          <FormLabel className="text-sm font-normal leading-relaxed">
-                            Ich stimme der Verarbeitung meiner Daten gemäß der{" "}
-                            <Link to="/datenschutz" className="font-medium text-accent underline-offset-2 hover:underline">
-                              Datenschutzerklärung
-                            </Link>{" "}
-                            zu. *
-                          </FormLabel>
-                          <FormMessage />
-                        </div>
-                      </div>
-                    </FormItem>
-                  )}
-                />
-
-                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                    <Button type="submit" size="lg" className="px-8 py-6 text-base" disabled={submitStatus === "loading"}>
-                      {submitStatus === "loading" ? "Wird gesendet ..." : "Anfrage senden"}
-                      <Send className="ml-2" size={18} />
-                    </Button>
-                    <p className="text-xs text-muted-foreground">Felder mit * sind Pflichtfelder.</p>
-                  </div>
-
-                  {isTurnstileEnabled && (
-                    <div className="w-full lg:w-auto">
-                      <div ref={turnstileContainerRef} className="mx-auto min-h-[65px] max-w-[300px] lg:mx-0" />
-                      {turnstileError && <p className="mt-2 text-sm text-destructive">{turnstileError}</p>}
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>E-Mail *</FormLabel>
+                            <FormControl>
+                              <Input type="email" placeholder="name@unternehmen.de" autoComplete="email" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                     </div>
-                  )}
+
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <FormField
+                        control={form.control}
+                        name="organization"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Organisation</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Unternehmen, Einrichtung, Krankenkasse" autoComplete="organization" {...field} />
+                            </FormControl>
+                            <FormDescription>Optional</FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="inquiryType"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Anliegen *</FormLabel>
+                            <Select modal={false} onValueChange={field.onChange} value={field.value}>
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Bitte auswählen" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {inquiryOptions.map((option) => (
+                                  <SelectItem key={option.value} value={option.value}>
+                                    {option.label}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Nachricht *</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Beschreiben Sie kurz Ihr Vorhaben, den Kontext und wo Sie Unterstützung benötigen."
+                              className="min-h-[140px]"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <input
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      className="hidden"
+                      {...form.register("website")}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="privacyAccepted"
+                      render={({ field }) => (
+                        <FormItem>
+                          <div className="flex items-start gap-3 rounded-lg border border-border/50 bg-muted/40 p-4">
+                            <FormControl>
+                              <Checkbox checked={field.value} onCheckedChange={(checked) => field.onChange(checked === true)} />
+                            </FormControl>
+                            <div className="space-y-1">
+                              <FormLabel className="text-sm font-normal leading-relaxed">
+                                Ich stimme der Verarbeitung meiner Daten gemäß der{" "}
+                                <Link to="/datenschutz" className="font-medium text-accent underline-offset-2 hover:underline">
+                                  Datenschutzerklärung
+                                </Link>{" "}
+                                zu. *
+                              </FormLabel>
+                              <FormMessage />
+                            </div>
+                          </div>
+                        </FormItem>
+                      )}
+                    />
+
+                    <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                        <Button type="submit" size="lg" className="px-8 py-6 text-base" disabled={submitStatus === "loading"}>
+                          {submitStatus === "loading" ? "Wird gesendet ..." : "Anfrage senden"}
+                          <Send className="ml-2" size={18} />
+                        </Button>
+                        <p className="text-xs text-muted-foreground">Felder mit * sind Pflichtfelder.</p>
+                      </div>
+
+                      {isTurnstileEnabled && (
+                        <div className="w-full xl:w-auto">
+                          <div className="rounded-xl border border-border/60 bg-background px-2 py-2">
+                            <div ref={turnstileContainerRef} className="min-h-[65px] max-w-[300px]" />
+                          </div>
+                          {turnstileError && <p className="mt-2 text-sm text-destructive">{turnstileError}</p>}
+                        </div>
+                      )}
+                    </div>
+
+                    {submitStatus === "success" && (
+                      <p className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-800">{submitMessage}</p>
+                    )}
+
+                    {submitStatus === "error" && (
+                      <p className="rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
+                        {submitMessage}
+                      </p>
+                    )}
+                  </form>
+                </Form>
+              </div>
+
+              <aside className="bg-muted/20 p-6 md:p-8">
+                <div className="rounded-xl border border-border/60 bg-background/80 p-5">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">Ablauf</p>
+                  <h4 className="text-lg font-bold text-foreground">So gehen wir vor</h4>
+                  <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-3">
+                      <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-semibold text-foreground">
+                        1
+                      </span>
+                      <span>Wir prüfen Ihr Anliegen und priorisieren den passenden Einstieg.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-semibold text-foreground">
+                        2
+                      </span>
+                      <span>Wir melden uns mit einer klaren Empfehlung zum nächsten Schritt.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-semibold text-foreground">
+                        3
+                      </span>
+                      <span>Wir starten mit einem fokussierten Erstgespräch und definieren das Vorgehen.</span>
+                    </li>
+                  </ul>
                 </div>
 
-                {submitStatus === "success" && (
-                  <p className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-800">{submitMessage}</p>
-                )}
+                <div className="mt-5 rounded-xl border border-border/60 bg-background/80 p-5">
+                  <p className="mb-2 text-sm font-semibold text-foreground">Direkter Kontakt</p>
+                  <p className="mb-4 text-sm text-muted-foreground">Alternativ erreichen Sie uns jederzeit direkt per E-Mail.</p>
+                  <Button variant="outline" asChild className="w-full sm:w-auto">
+                    <a href="mailto:info@innovaid.health">
+                      <Mail className="mr-2" size={18} /> info@innovaid.health
+                    </a>
+                  </Button>
+                </div>
 
-                {submitStatus === "error" && (
-                  <p className="rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
-                    {submitMessage}
-                  </p>
-                )}
-              </form>
-            </Form>
-
-            <div className="mt-6 border-t border-border/60 pt-6">
-              <p className="mb-4 text-sm text-muted-foreground">
-                Alternativ erreichen Sie uns jederzeit direkt per E-Mail.
-              </p>
-              <Button variant="outline" asChild>
-                <a href="mailto:info@innovaid.health">
-                  <Mail className="mr-2" size={18} /> info@innovaid.health
-                </a>
-              </Button>
+                <p className="mt-4 text-xs text-muted-foreground">In der Regel melden wir uns innerhalb von zwei Werktagen zurück.</p>
+              </aside>
             </div>
           </div>
         </motion.div>

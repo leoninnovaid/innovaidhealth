@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { answerEntries } from "@/knowledge/answer-entries";
+import { getCategoriesForEntry, knowledgeCategoryMeta } from "@/knowledge/categories";
 import { statusMeta } from "@/knowledge/presentation";
 import { runKnowledgeSearch } from "@/knowledge/search";
 import { topicMeta } from "@/knowledge/topics";
@@ -106,6 +107,8 @@ const WissensindexFrage = () => {
       .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
   }, [answer]);
 
+  const categories = useMemo(() => (answer ? getCategoriesForEntry(answer) : []), [answer]);
+
   if (!answer) {
     return (
       <div className="min-h-screen bg-background">
@@ -154,6 +157,32 @@ const WissensindexFrage = () => {
                 {statusMeta[answer.status].label}
               </span>
             </div>
+
+            <div className="mb-4 flex flex-wrap gap-2">
+              {categories.map((categoryId) => (
+                <Link
+                  key={categoryId}
+                  to={`/wissensindex-beta/kategorie/${categoryId}`}
+                  className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-foreground transition-colors hover:border-accent/50 hover:text-accent"
+                >
+                  {knowledgeCategoryMeta[categoryId].label}
+                </Link>
+              ))}
+            </div>
+
+            {categories.length > 0 && (
+              <div className="mb-4 rounded-xl border border-border/60 bg-background p-3">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Kategorien</p>
+                <ul className="mt-2 space-y-1">
+                  {categories.map((categoryId) => (
+                    <li key={`desc-${categoryId}`} className="text-sm text-muted-foreground">
+                      <span className="font-medium text-foreground">{knowledgeCategoryMeta[categoryId].label}:</span>{" "}
+                      {knowledgeCategoryMeta[categoryId].description}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <h1 className="text-2xl font-extrabold text-foreground md:text-3xl">{answer.frage}</h1>
             <p className="mt-4 text-base font-semibold text-foreground">{answer.antwort_kurz}</p>

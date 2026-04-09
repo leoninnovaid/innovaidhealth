@@ -7,10 +7,12 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { getCategoriesForEntry, knowledgeCategoryMeta } from "@/knowledge/categories";
 import { statusMeta } from "@/knowledge/presentation";
 import { runKnowledgeDocumentSearch, runKnowledgeSearch } from "@/knowledge/search";
 import { topicMeta } from "@/knowledge/topics";
 import type {
+  KnowledgeCategoryId,
   KnowledgeDocumentType,
   KnowledgeIndex,
   ReviewStatus,
@@ -36,6 +38,7 @@ const WissensindexPrototyp = () => {
   const [query, setQuery] = useState("");
   const [contentFilter, setContentFilter] = useState<ContentFilter>("alle");
   const [topicFilter, setTopicFilter] = useState<TopicId | "alle">("alle");
+  const [categoryFilter, setCategoryFilter] = useState<KnowledgeCategoryId | "alle">("alle");
   const [statusFilter, setStatusFilter] = useState<ReviewStatus | "alle">("alle");
   const [selectedDocTypes, setSelectedDocTypes] = useState<KnowledgeDocumentType[]>([]);
   const [expandedAnswerSlug, setExpandedAnswerSlug] = useState<string | null>(null);
@@ -122,26 +125,30 @@ const WissensindexPrototyp = () => {
   );
 
   const filteredAnswers = useMemo(() => {
-    if (selectedDocTypes.length === 0) {
-      return qaResults;
-    }
-
     return qaResults.filter((result) => {
       const sourceTypes = result.answer.quellen
         .map((source) => documentMeta.get(source.dokumentId)?.dokumenttyp)
         .filter((type): type is KnowledgeDocumentType => Boolean(type));
+      const docTypeMatch = selectedDocTypes.length === 0 || sourceTypes.some((type) => selectedDocTypes.includes(type));
+      const categoryMatch =
+        categoryFilter === "alle" || getCategoriesForEntry(result.answer).includes(categoryFilter);
 
-      return sourceTypes.some((type) => selectedDocTypes.includes(type));
+      return docTypeMatch && categoryMatch;
     });
-  }, [documentMeta, qaResults, selectedDocTypes]);
+  }, [categoryFilter, documentMeta, qaResults, selectedDocTypes]);
 
   const filteredDocs = useMemo(() => {
-    if (selectedDocTypes.length === 0) {
-      return docResults;
-    }
+    return docResults.filter((result) => {
+      const docTypeMatch = selectedDocTypes.length === 0 || selectedDocTypes.includes(result.dokumenttyp);
+      if (categoryFilter === "alle") {
+        return docTypeMatch;
+      }
 
-    return docResults.filter((result) => selectedDocTypes.includes(result.dokumenttyp));
-  }, [docResults, selectedDocTypes]);
+      const categoryTopics = knowledgeCategoryMeta[categoryFilter].topicIds;
+      const categoryMatch = result.matchedTopicIds.some((topicId) => categoryTopics.includes(topicId));
+      return docTypeMatch && categoryMatch;
+    });
+  }, [categoryFilter, docResults, selectedDocTypes]);
 
   const showAnswers = contentFilter !== "dokumente";
   const showDocs = contentFilter !== "antworten";
@@ -163,6 +170,7 @@ const WissensindexPrototyp = () => {
     setQuery("");
     setContentFilter("alle");
     setTopicFilter("alle");
+    setCategoryFilter("alle");
     setStatusFilter("alle");
     setSelectedDocTypes(availableDocTypes);
     setExpandedAnswerSlug(null);
@@ -208,6 +216,18 @@ const WissensindexPrototyp = () => {
               Beta-Hinweis: Inhalte werden laufend redaktionell geprüft und können sich ändern. Verbindlich sind
               ausschließlich die Originaldokumente.
             </p>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {Object.entries(knowledgeCategoryMeta).map(([categoryId, meta]) => (
+                <Link
+                  key={categoryId}
+                  to={`/wissensindex-beta/kategorie/${categoryId}`}
+                  className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-foreground transition-colors hover:border-accent/40 hover:text-accent"
+                >
+                  {meta.label}
+                </Link>
+              ))}
+            </div>
 
             <div className="relative mt-6">
               <Search className="pointer-events-none absolute left-3 top-3.5 text-muted-foreground" size={16} />
@@ -271,6 +291,26 @@ const WissensindexPrototyp = () => {
                     <SelectItem value="alle">Alle Themen</SelectItem>
                     {Object.entries(topicMeta).map(([topicId, meta]) => (
                       <SelectItem key={topicId} value={topicId}>
+                        {meta.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </section>
+
+              <section className="rounded-2xl border border-border/70 bg-card p-5">
+                <p className="mb-3 text-sm font-semibold text-foreground">Kategorie</p>
+                <Select
+                  value={categoryFilter}
+                  onValueChange={(value) => setCategoryFilter(value as KnowledgeCategoryId | "alle")}
+                >
+                  <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
+                    <SelectValue placeholder="Alle Kategorien" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="alle">Alle Kategorien</SelectItem>
+                    {Object.entries(knowledgeCategoryMeta).map(([categoryId, meta]) => (
+                      <SelectItem key={categoryId} value={categoryId}>
                         {meta.label}
                       </SelectItem>
                     ))}
@@ -375,6 +415,17 @@ const WissensindexPrototyp = () => {
                                 >
                                   Unterseite öffnen
                                 </Link>
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {getCategoriesForEntry(result.answer).map((categoryId) => (
+                                    <Link
+                                      key={`${result.slug}-${categoryId}`}
+                                      to={`/wissensindex-beta/kategorie/${categoryId}`}
+                                      className="rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground transition-colors hover:border-accent/40 hover:text-accent"
+                                    >
+                                      {knowledgeCategoryMeta[categoryId].label}
+                                    </Link>
+                                  ))}
+                                </div>
                                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{result.answer.antwort_kurz}</p>
 
                                 <button

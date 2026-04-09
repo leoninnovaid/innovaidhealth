@@ -12,6 +12,16 @@ export type TopicId =
   | "antragsrollen"
   | "formale_voraussetzungen";
 
+export type KnowledgeCategoryId =
+  | "antragsverfahren"
+  | "konsortium_und_rollen"
+  | "fristen_und_formalia"
+  | "foerderkriterien_und_qualitaet"
+  | "rechtsgrundlagen_und_transfer"
+  | "digitalisierung_und_datenschutz"
+  | "finanzierung_und_kosten"
+  | "nachweise_und_berichtswesen";
+
 export type ReviewStatus = "roh" | "in_review" | "freigegeben";
 
 export type KnowledgeSection = {
@@ -40,6 +50,7 @@ export type SourceReference = {
 export type AnswerEntry = {
   slug: string;
   topicId: TopicId;
+  kategorien?: KnowledgeCategoryId[];
   frage: string;
   antwort_kurz: string;
   antwort_lang: string;

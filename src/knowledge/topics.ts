@@ -35,8 +35,8 @@ export const wisdomTree: Array<{
     topics: ["foerderfaehigkeit", "antragsrollen"],
     fragen: [
       "Wer ist antragsberechtigt im Innovationsfonds?",
-      "Welche Vorhaben gelten als förderfähig?",
-      "Welche Rolle können Versorgungspartner übernehmen?",
+      "Welche Projekte sind von der Förderung ausgeschlossen?",
+      "Wann muss eine Krankenkasse beteiligt sein?",
     ],
   },
   {
@@ -44,9 +44,9 @@ export const wisdomTree: Array<{
     label: "2) Fristen und Ablauf",
     topics: ["fristen", "unterlagen"],
     fragen: [
-      "Wann ist die nächste Einreichungsfrist?",
-      "Welche Unterlagen müssen zur Frist vollständig vorliegen?",
-      "Welche Formvorgaben gelten für den Antrag?",
+      "Welche Einreichungsfristen gelten 2026 für NVF1 und NVF2?",
+      "Welche Unterlagen müssen in Stufe 1 des zweistufigen Verfahrens vorliegen?",
+      "Müssen Formblätter im Original eingereicht werden?",
     ],
   },
   {
@@ -54,16 +54,16 @@ export const wisdomTree: Array<{
     label: "3) Formale Compliance",
     topics: ["formale_voraussetzungen"],
     fragen: [
-      "Welche Nebenbestimmungen gelten für geförderte Projekte?",
-      "Welche Nachweise sind bei Bewilligung später erforderlich?",
-      "Welche Regeln gelten für Personal- und Kostenansätze?",
+      "Welche Änderungen sind zustimmungspflichtig?",
+      "Welche Anforderungen gelten für Belege und Aufbewahrungsfristen?",
+      "Wie funktioniert der Verwendungsnachweis im Innovationsfonds?",
     ],
   },
 ];
 
 export const initialSuggestedQuestions = [
   "Wer ist antragsberechtigt im Innovationsfonds?",
-  "Welche Unterlagen brauche ich für die Antragseinreichung?",
-  "Wann ist die Einreichungsfrist für NVF1/NVF2?",
-  "Welche formalen Voraussetzungen müssen vor Antragstellung erfüllt sein?",
+  "Wie erfolgt die Antragseinreichung für NVF1 und NVF2?",
+  "Welche Einreichungsfristen gelten 2026 für NVF1 und NVF2?",
+  "Welche Ausgaben sind grundsätzlich förderfähig?",
 ];

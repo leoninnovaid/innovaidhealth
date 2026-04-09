@@ -6,6 +6,7 @@ import Impressum from "./pages/Impressum.tsx";
 import Datenschutz from "./pages/Datenschutz.tsx";
 import WissensindexPrototyp from "./pages/WissensindexPrototyp.tsx";
 import WissensindexFrage from "./pages/WissensindexFrage.tsx";
+import WissensindexKategorie from "./pages/WissensindexKategorie.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const App = () => (
@@ -15,8 +16,10 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/wissensindex-beta" element={<WissensindexPrototyp />} />
+        <Route path="/wissensindex-beta/kategorie/:categoryId" element={<WissensindexKategorie />} />
         <Route path="/wissensindex-beta/:slug" element={<WissensindexFrage />} />
         <Route path="/wissensindex" element={<WissensindexPrototyp />} />
+        <Route path="/wissensindex/kategorie/:categoryId" element={<WissensindexKategorie />} />
         <Route path="/wissensindex/:slug" element={<WissensindexFrage />} />
         <Route path="/wissensindex-prototyp" element={<WissensindexPrototyp />} />
         <Route path="/impressum" element={<Impressum />} />

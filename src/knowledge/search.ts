@@ -277,7 +277,7 @@ export function runKnowledgeSearch({
   index,
   topicFilter,
   statusFilter,
-  maxResults = 20,
+  maxResults = 60,
 }: SearchOptions): SearchResult[] {
   const normalizedQuery = normalize(query);
   const queryTokens = tokenize(query);

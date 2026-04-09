@@ -39,7 +39,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_FORMSPREE_ENDPOINT: https://formspree.io/f/mnjoyoqn
+          VITE_FORMSPREE_ENDPOINT: ${{ secrets.VITE_FORMSPREE_ENDPOINT }}
+          VITE_TURNSTILE_SITE_KEY: ${{ secrets.VITE_TURNSTILE_SITE_KEY }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

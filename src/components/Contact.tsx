@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Mail, Send } from "lucide-react";
@@ -20,6 +20,24 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+type TurnstileRenderOptions = {
+  sitekey: string;
+  callback?: (token: string) => void;
+  "error-callback"?: () => void;
+  "expired-callback"?: () => void;
+};
+
+type TurnstileApi = {
+  render: (container: HTMLElement, options: TurnstileRenderOptions) => string;
+  reset: (widgetId: string) => void;
+};
+
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi;
+  }
+}
 
 const inquiryOptions = [
   { value: "foerderprojekte", label: "Förderprojekte" },
@@ -62,16 +80,101 @@ const defaultValues = {
 } satisfies Partial<ContactFormValues>;
 
 const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
+const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
 
 const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
   const [submitMessage, setSubmitMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileError, setTurnstileError] = useState("");
+  const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
+  const turnstileWidgetIdRef = useRef<string | null>(null);
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues,
     mode: "onTouched",
   });
+
+  const isTurnstileEnabled = Boolean(turnstileSiteKey?.trim());
+
+  useEffect(() => {
+    if (!isTurnstileEnabled || !turnstileSiteKey || !turnstileContainerRef.current) {
+      return;
+    }
+
+    const scriptId = "cf-turnstile-script";
+    let isCancelled = false;
+
+    const renderWidget = () => {
+      if (isCancelled || !window.turnstile || !turnstileContainerRef.current) {
+        return;
+      }
+
+      turnstileContainerRef.current.innerHTML = "";
+      turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
+        sitekey: turnstileSiteKey,
+        callback: (token) => {
+          setTurnstileToken(token);
+          setTurnstileError("");
+        },
+        "error-callback": () => {
+          setTurnstileToken("");
+          setTurnstileError("Spam-Schutz konnte nicht geladen werden. Bitte Seite neu laden.");
+        },
+        "expired-callback": () => {
+          setTurnstileToken("");
+          setTurnstileError("Die Sicherheitsprüfung ist abgelaufen. Bitte erneut bestätigen.");
+        },
+      });
+    };
+
+    const loadTurnstileScript = () => {
+      if (window.turnstile) {
+        renderWidget();
+        return;
+      }
+
+      const existingScript = document.getElementById(scriptId) as HTMLScriptElement | null;
+      if (existingScript) {
+        existingScript.addEventListener("load", renderWidget, { once: true });
+        existingScript.addEventListener(
+          "error",
+          () => {
+            setTurnstileError("Spam-Schutz konnte nicht geladen werden. Bitte Seite neu laden.");
+          },
+          { once: true },
+        );
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.id = scriptId;
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      script.async = true;
+      script.defer = true;
+      script.onload = renderWidget;
+      script.onerror = () => {
+        setTurnstileError("Spam-Schutz konnte nicht geladen werden. Bitte Seite neu laden.");
+      };
+      document.head.appendChild(script);
+    };
+
+    loadTurnstileScript();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [isTurnstileEnabled]);
+
+  const resetTurnstile = () => {
+    setTurnstileToken("");
+    setTurnstileError("");
+
+    if (window.turnstile && turnstileWidgetIdRef.current) {
+      window.turnstile.reset(turnstileWidgetIdRef.current);
+    }
+  };
 
   const onSubmit = async (values: ContactFormValues) => {
     if (values.website?.trim()) {
@@ -89,23 +192,33 @@ const Contact = () => {
       return;
     }
 
+    if (isTurnstileEnabled && !turnstileToken) {
+      setSubmitStatus("error");
+      setSubmitMessage("Bitte bestätigen Sie zuerst den Spam-Schutz.");
+      return;
+    }
+
     setSubmitStatus("loading");
     setSubmitMessage("");
 
     try {
+      const formData = new FormData();
+      formData.set("name", values.name);
+      formData.set("email", values.email);
+      formData.set("organization", values.organization || "Nicht angegeben");
+      formData.set("anliegen", inquiryLabelMap[values.inquiryType]);
+      formData.set("message", values.message);
+
+      if (isTurnstileEnabled && turnstileToken) {
+        formData.set("cf-turnstile-response", turnstileToken);
+      }
+
       const response = await fetch(formspreeEndpoint, {
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: values.name,
-          email: values.email,
-          organization: values.organization || "Nicht angegeben",
-          anliegen: inquiryLabelMap[values.inquiryType],
-          message: values.message,
-        }),
+        body: formData,
       });
 
       if (!response.ok) {
@@ -122,10 +235,16 @@ const Contact = () => {
       setSubmitStatus("success");
       setSubmitMessage("Vielen Dank. Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns zeitnah bei Ihnen.");
       form.reset(defaultValues);
+      if (isTurnstileEnabled) {
+        resetTurnstile();
+      }
     } catch (error) {
       const message = error instanceof Error ? error.message : "Beim Versand ist ein unbekannter Fehler aufgetreten.";
       setSubmitStatus("error");
       setSubmitMessage(message);
+      if (isTurnstileEnabled) {
+        resetTurnstile();
+      }
     }
   };
 
@@ -273,6 +392,13 @@ const Contact = () => {
                     </FormItem>
                   )}
                 />
+
+                {isTurnstileEnabled && (
+                  <div className="rounded-lg border border-border/50 bg-muted/40 p-4">
+                    <div ref={turnstileContainerRef} className="min-h-[65px]" />
+                    {turnstileError && <p className="mt-2 text-sm text-destructive">{turnstileError}</p>}
+                  </div>
+                )}
 
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                   <Button type="submit" size="lg" className="px-8 py-6 text-base" disabled={submitStatus === "loading"}>

@@ -1,22 +1,19 @@
-# Meta Plan - App-Wrapper-Store
-
-Zukünftige Schritte und strategische Ziele.
+# Meta Plan - INNOVAID:health Website
 
 ## Nächste Schritte (Kurzfristig)
-- [x] Projektabhängigkeiten installieren (`npm install`)
-- [x] Codebase-Analyse: Was ist der aktuelle Fokus des App-Wrapper-Stores?
-- [x] Wissensindex-Links in Footer und Navbar hinzufügen
-- [x] Erste kleine Verbesserungen durchführen (UX/UI oder Bug Fixes)
-- [x] Commits gemäß Conventional Commits Format pushen (Richtlinie festgelegt)
-- [x] `TASK_TRACKER.md` und `DAILY_LOGS.md` präzisieren und synchronisieren
-- [x] Verbesserte Fehlerbehandlung in `WissensindexPrototyp.tsx`
-- [x] Visuelle Verbesserung der "Keine Ergebnisse"-Nachricht
-- [x] Optimierung der Suchlogik (Tokenisierung & Snippet-Extraktion)
-- [x] Accessibility-Verbesserungen in `Navbar.tsx`
-- [x] Clear-Button für Suchfeld und Filter-Resets implementiert
-- [x] Responsive Design der Filter-Sektion im Wissensindex prüfen und optimieren
+- [x] Kontaktformular produktiv integrieren (Formspree)
+- [x] Cloudflare Turnstile clientseitig integrieren
+- [x] GitHub Pages Deploy auf Secrets-basierte ENV umstellen
+- [x] Kontaktbereich visuell neu gestalten (2-Spalten-Layout)
+- [ ] In Formspree „Restrict to Domain“ aktivieren und gegen Live-Domain prüfen
+- [ ] Formspree Form Rules (Blocklist/Keyword-Regeln) aktivieren und testen
+- [ ] Turnstile Secret-Key Rotation final verifizieren und alten Key deaktivieren
 
 ## Strategische Ziele (Mittelfristig)
-- [ ] Kontinuierliche Verbesserung der Nutzer-Erfahrung
-- [ ] Erweiterung der Funktionalität (Features)
-- [ ] Vollständige Dokumentation aller Änderungen
+- [ ] Konversionsfokus im Kontaktbereich messen (Absenderate, Fehlerquote, Abbrüche)
+- [ ] Frontend-Bundlegröße reduzieren (aktueller Build-Warnhinweis >500 kB)
+- [ ] Kleine E2E-Checks für Navigation, Kontaktformular und Legal-Seiten aufsetzen
+
+## Leitlinie
+- Alle öffentlich sichtbaren Inhalte bleiben in klarer Wir-Perspektive.
+- Sensible Keys bleiben ausschließlich in sicheren Server-/Tool-Settings, niemals im Frontend-Code.

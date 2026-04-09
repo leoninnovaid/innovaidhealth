@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import innovaidLogo from "@/assets/innovaid-logo.png";
 
 const Hero = () => {
+  const handleContactScroll = () => {
+    const contactSection = document.getElementById("kontakt");
+    contactSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section className="relative hero-gradient min-h-[90vh] flex items-center overflow-hidden">
       <div
@@ -43,10 +47,8 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="flex flex-col gap-4 sm:flex-row"
           >
-            <Button size="lg" variant="accent" className="px-8 py-6 text-base" asChild>
-              <Link to="/?section=kontakt">
-                Förderprojekt besprechen <ArrowRight className="ml-2" size={18} />
-              </Link>
+            <Button size="lg" variant="accent" className="px-8 py-6 text-base" onClick={handleContactScroll}>
+              Förderprojekt besprechen <ArrowRight className="ml-2" size={18} />
             </Button>
           </motion.div>
         </div>

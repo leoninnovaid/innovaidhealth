@@ -203,7 +203,7 @@ const Contact = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Anliegen *</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
+                        <Select modal={false} onValueChange={field.onChange} value={field.value}>
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="Bitte auswählen" />

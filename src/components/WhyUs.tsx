@@ -17,7 +17,7 @@ const offerings = [
     title: "Strategie und Umsetzung digitaler Versorgung",
     text: "Wir unterstützen bei der Entwicklung, Etablierung und Implementierung digitaler Lösungen im Gesundheitswesen.",
     points: [
-      "Strategie und Priorisierung von Versorgungsvorhaben",
+      "MDR- und DiGA-nahe Produkt- und Implementierungsstrategie",
       "Strukturiertes PMO für Steuerung und Umsetzung",
       "Integration in reale Versorgungsprozesse",
     ],

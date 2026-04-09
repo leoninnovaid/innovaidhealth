@@ -1,47 +1,32 @@
-# Daily Logs - App-Wrapper-Store
-
-Alle Aktivitäten werden hier mit Timestamps protokolliert.
+# Daily Logs - INNOVAID:health Website
 
 ## 2026-04-04
-- **02:17**: Repository geklont und initialisiert.
-- **02:20**: Analyse der Projektstruktur durchgeführt. Festgestellt, dass `DAILY_LOGS.md`, `TASK_TRACKER.md` und `META_PLAN.md` fehlten.
-- **02:25**: Initialisierung der fehlenden Playbook-Dateien.
-- **02:30**: Review der initialisierten Playbook-Dateien abgeschlossen.
-- **02:32**: Beginne mit der Installation der Projektabhängigkeiten.
-- **02:35**: Projektabhängigkeiten erfolgreich installiert.
-- **02:40**: `App.tsx`, `Index.tsx` und `Footer.tsx` analysiert, um die Struktur der Anwendung zu verstehen.
-- **02:45**: Link zum Wissensindex in `Footer.tsx` hinzugefügt.
-- **02:50**: Link zum Wissensindex in `Navbar.tsx` (Desktop und Mobile) hinzugefügt.
-
-- **02:55**: Verbesserung der "Keine Ergebnisse"-Nachricht in `WissensindexPrototyp.tsx` implementiert.
-- **03:00**: Suchlogik in `search.ts` optimiert, um bei leeren Suchanfragen nur "freigegeben" Einträge anzuzeigen.
-
-## 2026-04-04
-- **03:05**: Verbesserte Fehlerbehandlung in `WissensindexPrototyp.tsx` implementiert.
-- **03:10**: "Keine Ergebnisse"-Nachricht in `WissensindexPrototyp.tsx` visuell verbessert.
-- **03:15**: Suchlogik in `search.ts` optimiert (Tokenisierung und Snippet-Extraktion).
-- **03:20**: Accessibility (ARIA-Label und `role="navigation"`) in `Navbar.tsx` verbessert.
-- **03:22**: Doppelte Importe in `Navbar.tsx` entfernt.
-
-- **03:30**: Review des Playbooks und der aktuellen Projektstruktur.
-- **03:35**: Analyse der `WissensindexPrototyp.tsx` auf UX-Verbesserungspotenziale.
-- **03:40**: Implementierung eines "Suche leeren" Buttons im Suchfeld.
-- **03:45**: Hinzufügen von "Zurücksetzen" Buttons für Themen- und Statusfilter zur Verbesserung der Bedienbarkeit.
-- **03:50**: Optimierung der Filter-UI durch Trennung von Label und Reset-Aktion.
-
-- **04:00**: Optimierung der Snippet-Extraktion in `search.ts` durchgeführt (bessere Token-Gewichtung).
-- **04:05**: Verbesserung der Keyword-Matching-Logik mit Kommentaren für Klarheit.
-- **04:10**: Projektabhängigkeiten installiert und Build-Test erfolgreich durchgeführt.
-- **04:15**: Alle Änderungen kompilieren fehlerfrei, keine TypeScript-Fehler.
-
-## 2026-04-06
-- **[CURRENT_TIME]**: Review der Logs, des Trackers und des Meta-Plans durchgeführt.
-- **[CURRENT_TIME]**: TASK_TRACKER.md aktualisiert, um die Aufgabe T18 "Responsive Design der Filter-Sektion im Wissensindex prüfen und optimieren" hinzuzufügen und T7 auf "In Bearbeitung" zu setzen.
-- **[CURRENT_TIME]**: `WissensindexPrototyp.tsx` analysiert, um die Filter-Sektion zu verstehen.
-- **[CURRENT_TIME]**: Import der `Select`-Komponenten (`Select`, `SelectContent`, `SelectItem`, `SelectTrigger`, `SelectValue`) in `WissensindexPrototyp.tsx` hinzugefügt.
-- **[CURRENT_TIME]**: Native `select`-Elemente für Themenfilter in `WissensindexPrototyp.tsx` durch die `Select`-Komponente ersetzt.
-- **[CURRENT_TIME]**: Native `select`-Elemente für Statusfilter in `WissensindexPrototyp.tsx` durch die `Select`-Komponente ersetzt.
+- Playbook-Dateien initialisiert (`DAILY_LOGS.md`, `TASK_TRACKER.md`, `META_PLAN.md`).
+- Basisanalyse der Projektstruktur und erste UI-/Suchverbesserungen am Wissensindex umgesetzt.
 
 ## 2026-04-07
-- **18:16**: Responsive Design der Filter-Sektion in `WissensindexPrototyp.tsx` optimiert. Das Grid-Layout wurde für verschiedene Bildschirmgrößen angepasst: Mobile (grid-cols-1), Tablet (md:grid-cols-[minmax(0,1fr)_220px]), Desktop (lg:grid-cols-[minmax(0,1fr)_220px_220px]).
-- **18:16**: Projektabhängigkeiten installiert und Build-Test erfolgreich durchgeführt.
+- Responsive Optimierung der Wissensindex-Filter abgeschlossen.
+- Build erfolgreich validiert.
+
+## 2026-04-09
+- Umfangreiche Homepage-Überarbeitung umgesetzt (Copy, Zielgruppen, Team, Navigation, Methodik/Failure-Sektion).
+- Kontaktbereich von Mailto auf Formular-Flow umgestellt (Validierung + Formspree).
+- Spam-Schutz mit Cloudflare Turnstile ergänzt und in den Submit-Flow integriert.
+- GitHub Pages Deploy auf Secrets-basierte ENV-Konfiguration umgestellt.
+- Kontaktformular visuell neu aufgebaut (zweispaltiges Layout mit klarer Aktionszone).
+
+### Referenz-Commits (2026-04-09)
+- `7036cc8`: Homepage-Messaging geschärft und Basis-QA stabilisiert.
+- `5780d23`: Wissensindex ausgeblendet, Offerings vereinfacht.
+- `a3e3c56`: Copy verfeinert, Section-Scrolling über Seiten hinweg korrigiert.
+- `16cd3e4`: Hero-CTA und Teamprofil-Schärfung, Failure-Reasons vorbereitet.
+- `f7ce48f`: Header „Projekte“ + Failure-Reasons-Redesign.
+- `1fd1a82`: Z-Layering der Zahlen/Tiles korrigiert.
+- `9d12eec`: Hero-Button auf Kontakt-Scroll, Kontakt aus Navbar entfernt.
+- `7268488`: Kontaktformular (Formspree) eingeführt.
+- `380b129`: Navbar-Verschiebung bei „Anliegen“-Select behoben.
+- `6e11a55`: Formspree Build-ENV initial verdrahtet.
+- `c50c548`: Scrollbar visuell ausgeblendet.
+- `a0585aa`: Workflow auf Secrets + Turnstile integriert.
+- `5d073a0`: Turnstile neben Submit-Action positioniert.
+- `43fb278`: Visuelles Redesign des Kontaktformulars.

@@ -82,3 +82,19 @@ export type SearchResult = {
   matchedRuleIds: string[];
   snippets: MatchedSnippet[];
 };
+
+export type KnowledgeViewMode = "qa" | "docs";
+
+export type DocumentSearchResult = {
+  id: string;
+  dokumentId: string;
+  dokumentTitel: string;
+  dokumenttyp: KnowledgeDocumentType;
+  abschnittId: string;
+  abschnittTitel: string;
+  seite: number;
+  status: ReviewStatus;
+  score: number;
+  snippet: string;
+  matchedTopicIds: TopicId[];
+};

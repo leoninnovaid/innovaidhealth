@@ -2,8 +2,8 @@ import type { TopicId } from "@/knowledge/types";
 
 export const topicMeta: Record<TopicId, { label: string; description: string }> = {
   foerderfaehigkeit: {
-    label: "Foerderfaehigkeit",
-    description: "Wer ist foerderfaehig, welche Vorhaben passen in den Innovationsfonds?",
+    label: "Förderfähigkeit",
+    description: "Wer ist förderfähig, welche Vorhaben passen in den Innovationsfonds?",
   },
   fristen: {
     label: "Fristen und Einreichung",
@@ -11,7 +11,7 @@ export const topicMeta: Record<TopicId, { label: string; description: string }> 
   },
   unterlagen: {
     label: "Erforderliche Unterlagen",
-    description: "Welche Dokumente sind fuer den Antrag und die Einreichung notwendig?",
+    description: "Welche Dokumente sind für den Antrag und die Einreichung notwendig?",
   },
   antragsrollen: {
     label: "Antragsrollen",
@@ -19,7 +19,7 @@ export const topicMeta: Record<TopicId, { label: string; description: string }> 
   },
   formale_voraussetzungen: {
     label: "Formale Voraussetzungen",
-    description: "Welche formalen Bedingungen und Regelwerke muessen eingehalten werden?",
+    description: "Welche formalen Bedingungen und Regelwerke müssen eingehalten werden?",
   },
 };
 
@@ -35,8 +35,8 @@ export const wisdomTree: Array<{
     topics: ["foerderfaehigkeit", "antragsrollen"],
     fragen: [
       "Wer ist antragsberechtigt im Innovationsfonds?",
-      "Welche Vorhaben gelten als foerderfaehig?",
-      "Welche Rolle koennen Versorgungspartner uebernehmen?",
+      "Welche Vorhaben gelten als förderfähig?",
+      "Welche Rolle können Versorgungspartner übernehmen?",
     ],
   },
   {
@@ -44,9 +44,9 @@ export const wisdomTree: Array<{
     label: "2) Fristen und Ablauf",
     topics: ["fristen", "unterlagen"],
     fragen: [
-      "Wann ist die naechste Einreichungsfrist?",
-      "Welche Unterlagen muessen zur Frist vollstaendig vorliegen?",
-      "Welche Formvorgaben gelten fuer den Antrag?",
+      "Wann ist die nächste Einreichungsfrist?",
+      "Welche Unterlagen müssen zur Frist vollständig vorliegen?",
+      "Welche Formvorgaben gelten für den Antrag?",
     ],
   },
   {
@@ -54,16 +54,16 @@ export const wisdomTree: Array<{
     label: "3) Formale Compliance",
     topics: ["formale_voraussetzungen"],
     fragen: [
-      "Welche Nebenbestimmungen gelten fuer gefoerderte Projekte?",
-      "Welche Nachweise sind bei Bewilligung spaeter erforderlich?",
-      "Welche Regeln gelten fuer Personal- und Kostenansaetze?",
+      "Welche Nebenbestimmungen gelten für geförderte Projekte?",
+      "Welche Nachweise sind bei Bewilligung später erforderlich?",
+      "Welche Regeln gelten für Personal- und Kostenansätze?",
     ],
   },
 ];
 
 export const initialSuggestedQuestions = [
   "Wer ist antragsberechtigt im Innovationsfonds?",
-  "Welche Unterlagen brauche ich fuer die Antragseinreichung?",
-  "Wann ist die Einreichungsfrist fuer NVF1/NVF2?",
-  "Welche formalen Voraussetzungen muessen vor Antragstellung erfuellt sein?",
+  "Welche Unterlagen brauche ich für die Antragseinreichung?",
+  "Wann ist die Einreichungsfrist für NVF1/NVF2?",
+  "Welche formalen Voraussetzungen müssen vor Antragstellung erfüllt sein?",
 ];

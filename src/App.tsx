@@ -4,6 +4,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index.tsx";
 import Impressum from "./pages/Impressum.tsx";
 import Datenschutz from "./pages/Datenschutz.tsx";
+import WissensindexPrototyp from "./pages/WissensindexPrototyp.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const App = () => (
@@ -12,6 +13,7 @@ const App = () => (
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Index />} />
+        <Route path="/wissensindex-prototyp" element={<WissensindexPrototyp />} />
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/datenschutz" element={<Datenschutz />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { label: "Leistungen", section: "warum" },
   { label: "Zielgruppen", section: "zielgruppen" },
-  { label: "SAVE&SAFE", section: "saveandsafe" },
+  { label: "Projekte", section: "saveandsafe" },
   { label: "Team", section: "team" },
   { label: "Methodik", section: "methodik" },
   { label: "Kontakt", section: "kontakt" },

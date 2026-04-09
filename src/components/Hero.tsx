@@ -31,29 +31,10 @@ const Hero = () => {
             <h1 className="mb-6 text-4xl font-extrabold leading-tight text-primary-foreground md:text-5xl lg:text-6xl">
               Wir bringen Innovation in die Versorgung
             </h1>
-            <p className="mb-8 max-w-2xl text-lg leading-relaxed text-primary-foreground/80 md:text-xl">
-              Wir vernetzen Startups, Krankenkassen und Leistungserbringer, damit aus innovativen Projekten tragfaehige
-              Versorgungslosungen werden.
+            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-primary-foreground/80 md:text-xl">
+              Wir vernetzen Startups, Krankenkassen und Leistungserbringer, damit aus innovativen Projekten tragfähige
+              Versorgungslösungen werden.
             </p>
-
-            <div className="mb-10 grid max-w-2xl gap-3 sm:grid-cols-2">
-              <div className="rounded-xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
-                <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">
-                  Kernleistung
-                </p>
-                <p className="text-sm leading-relaxed text-primary-foreground">
-                  Foerderprojekte: Wir begleiten von der Konsortialentwicklung bis zur Verstetigung.
-                </p>
-              </div>
-              <div className="rounded-xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
-                <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">
-                  Kernleistung
-                </p>
-                <p className="text-sm leading-relaxed text-primary-foreground">
-                  Digitale Versorgung: Wir steuern Strategie, Umsetzung und Integration in den Versorgungsalltag.
-                </p>
-              </div>
-            </div>
           </motion.div>
 
           <motion.div
@@ -64,7 +45,7 @@ const Hero = () => {
           >
             <Button size="lg" variant="accent" className="px-8 py-6 text-base" asChild>
               <Link to="/?section=kontakt">
-                Foerderprojekt besprechen <ArrowRight className="ml-2" size={18} />
+                Förderprojekt besprechen <ArrowRight className="ml-2" size={18} />
               </Link>
             </Button>
             <Button size="lg" variant="hero-outline" className="px-8 py-6 text-base" asChild>

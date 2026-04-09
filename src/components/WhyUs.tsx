@@ -4,21 +4,21 @@ import { ClipboardCheck, ShieldCheck } from "lucide-react";
 const offerings = [
   {
     icon: ClipboardCheck,
-    title: "Foerderprojekte mit Verstetigung",
-    text: "Wir begleiten Foerderprojekte von der Konsortialentwicklung ueber die Antragstellung bis zur belastbaren Umsetzung in der Versorgung.",
+    title: "Förderprojekte mit Verstetigung",
+    text: "Wir begleiten Förderprojekte von der Konsortialentwicklung über die Antragstellung bis zur belastbaren Umsetzung in der Versorgung.",
     points: [
-      "Konsortialaufbau und Antragsunterstuetzung",
-      "Projektmanagement Office fuer komplexe Verbundprojekte",
-      "Verstetigungs- und Geschaeftsmodelllogik nach Foerderende",
+      "Konsortialaufbau und Antragsunterstützung",
+      "Projektmanagement Office für komplexe Verbundprojekte",
+      "Verstetigungs- und Geschäftsmodelllogik nach Förderende",
     ],
   },
   {
     icon: ShieldCheck,
     title: "Strategie und Umsetzung digitaler Versorgung",
-    text: "Wir unterstuetzen bei der Entwicklung, Etablierung und Implementierung digitaler Loesungen im Gesundheitswesen.",
+    text: "Wir unterstützen bei der Entwicklung, Etablierung und Implementierung digitaler Lösungen im Gesundheitswesen.",
     points: [
       "Strategie und Priorisierung von Versorgungsvorhaben",
-      "Strukturiertes PMO fuer Steuerung und Umsetzung",
+      "Strukturiertes PMO für Steuerung und Umsetzung",
       "Integration in reale Versorgungsprozesse",
     ],
   },
@@ -37,7 +37,7 @@ const WhyUs = () => (
         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Leistungen</p>
         <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Unsere zwei Kernleistungen</h2>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-          Wir fokussieren uns auf zwei Leistungen: Foerderprojekte mit klarer Verstetigungslogik und die Umsetzung
+          Wir fokussieren uns auf zwei Leistungen: Förderprojekte mit klarer Verstetigungslogik und die Umsetzung
           digitaler Versorgungsvorhaben.
         </p>
       </motion.div>

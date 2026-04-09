@@ -2,12 +2,17 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
-const navItems = [
-  { label: "Leistungen", section: "warum" },
-  { label: "Zielgruppen", section: "zielgruppen" },
-  { label: "Projekte", section: "saveandsafe" },
-  { label: "Team", section: "team" },
-  { label: "Methodik", section: "methodik" },
+type NavItem =
+  | { label: string; type: "section"; section: string }
+  | { label: string; type: "route"; to: string };
+
+const navItems: NavItem[] = [
+  { label: "Leistungen", type: "section", section: "warum" },
+  { label: "Zielgruppen", type: "section", section: "zielgruppen" },
+  { label: "Projekte", type: "section", section: "saveandsafe" },
+  { label: "Team", type: "section", section: "team" },
+  { label: "Methodik", type: "section", section: "methodik" },
+  { label: "Wissensindex", type: "route", to: "/wissensindex-prototyp" },
 ];
 
 const Navbar = () => {
@@ -81,9 +86,9 @@ const Navbar = () => {
         <div className="hidden items-center gap-5 lg:flex xl:gap-8">
           {navItems.map((item) => (
             <Link
-              key={item.section}
-              to="/"
-              onClick={handleSectionClick(item.section)}
+              key={item.label}
+              to={item.type === "route" ? item.to : "/"}
+              onClick={item.type === "route" ? () => setOpen(false) : handleSectionClick(item.section)}
               className={`whitespace-nowrap text-[13px] font-medium transition-colors hover:text-accent xl:text-sm ${
                 solidHeader ? "text-foreground" : "text-primary-foreground/80"
               }`}
@@ -91,15 +96,6 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-          <Link
-            to="/wissensindex-prototyp"
-            onClick={() => setOpen(false)}
-            className={`whitespace-nowrap text-[13px] font-medium transition-colors hover:text-accent xl:text-sm ${
-              solidHeader ? "text-foreground" : "text-primary-foreground/80"
-            }`}
-          >
-            Wissensindex
-          </Link>
           <Link
             to="/"
             onClick={handleSectionClick("kontakt")}
@@ -128,21 +124,14 @@ const Navbar = () => {
         >
           {navItems.map((item) => (
             <Link
-              key={item.section}
-              to="/"
-              onClick={handleSectionClick(item.section)}
+              key={item.label}
+              to={item.type === "route" ? item.to : "/"}
+              onClick={item.type === "route" ? () => setOpen(false) : handleSectionClick(item.section)}
               className="block rounded-xl px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-accent"
             >
               {item.label}
             </Link>
           ))}
-          <Link
-            to="/wissensindex-prototyp"
-            onClick={() => setOpen(false)}
-            className="block rounded-xl px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-accent"
-          >
-            Wissensindex
-          </Link>
           <Link
             to="/"
             onClick={handleSectionClick("kontakt")}

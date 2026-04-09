@@ -12,7 +12,11 @@ type TeamMember = {
   portraitAlt: string;
   portraitWrapperClassName?: string;
   portraitClassName: string;
-  notes: string[];
+  highlights: {
+    doing: string;
+    capability: string;
+    impact: string;
+  };
 };
 
 const teamMembers: TeamMember[] = [
@@ -24,11 +28,11 @@ const teamMembers: TeamMember[] = [
     portraitAlt: "Portrait von Dr. Christoph Meyer-Delpho",
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(213_26%_92%),hsl(220_18%_86%))]",
     portraitClassName: "h-[126%] w-full object-cover object-[center_22%] scale-[1.08]",
-    notes: [
-      "Digital Health und Versorgungsinnovation",
-      "Strategische Entwicklung im Gesundheitsmarkt",
-      "Partnerschaften zwischen Innovation und Versorgung",
-    ],
+    highlights: {
+      doing: "Mit ihm steuern wir Strategie, Konsortialaufbau und Geschäftsmodellentwicklung in Förderprojekten.",
+      capability: "Wir verbinden langjährige Digital-Health-Erfahrung mit belastbarer Stakeholderführung.",
+      impact: "Wir machen Projekte anschlussfähig für die Regelversorgung und schaffen klare Prioritäten.",
+    },
   },
   {
     name: "Christoph Riese",
@@ -38,11 +42,11 @@ const teamMembers: TeamMember[] = [
     portraitAlt: "Portrait von Christoph Riese",
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(213_20%_96%),hsl(219_16%_90%))]",
     portraitClassName: "h-[98%] w-full object-cover object-[center_12%] scale-[0.98]",
-    notes: [
-      "Operative Umsetzung und Projektsteuerung",
-      "Marktverständnis im deutschen Gesundheitswesen",
-      "Brücke zwischen Versorgung, Produkt und Umsetzung",
-    ],
+    highlights: {
+      doing: "Mit ihm steuern wir Produktentwicklung, PMO und Implementierung digitaler Therapiebegleitung.",
+      capability: "Wir bringen MDR/DiGA-Expertise und operative Umsetzungsstärke im Versorgungsalltag zusammen.",
+      impact: "Wir überführen digitale Produkte strukturiert von der Idee in die reale Versorgung.",
+    },
   },
   {
     name: "Leon Uschwa",
@@ -52,11 +56,11 @@ const teamMembers: TeamMember[] = [
     portraitAlt: "Portrait von Leon Uschwa",
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(214_23%_95%),hsl(219_17%_89%))]",
     portraitClassName: "h-[118%] w-full object-cover object-[center_top] -translate-y-[8%] scale-[1.02]",
-    notes: [
-      "Unterstützung der Geschäftsführung im Tagesgeschäft",
-      "Projektkoordination und interne Strukturierung",
-      "Operative Begleitung laufender Themen und Prozesse",
-    ],
+    highlights: {
+      doing: "Mit ihm sichern wir Priorisierung, Abstimmung und Follow-up im operativen Tagesgeschäft.",
+      capability: "Wir etablieren verlässliche Strukturen, klare Verantwortungen und nachvollziehbare Arbeitsabläufe.",
+      impact: "Wir halten Projekte handlungsfähig und schaffen Tempo in kritischen Arbeitspaketen.",
+    },
   },
 ];
 
@@ -71,12 +75,10 @@ const Team = () => (
         className="mx-auto mb-10 max-w-3xl text-center md:mb-14"
       >
         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Team</p>
-        <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">
-          Die Menschen hinter INNOVAID:health
-        </h2>
+        <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Die Menschen hinter INNOVAID:health</h2>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-          Drei Ansprechpartner mit gemeinsamem Fokus: Gesundheitsinnovationen mit Struktur, Relevanz und
-          Umsetzungsstärke voranbringen.
+          Wir arbeiten als Kernteam mit klarem Fokus auf Umsetzung: strategisch sauber, operativ belastbar und immer
+          nah an der Versorgung.
         </p>
       </motion.div>
 
@@ -95,12 +97,7 @@ const Team = () => (
                 <div
                   className={`relative aspect-[5/6] overflow-hidden rounded-[18px] bg-[radial-gradient(circle_at_top,hsl(0_0%_100%/_0.55),transparent_58%),linear-gradient(180deg,hsl(214_33%_94%),hsl(220_17%_88%))] ${member.portraitWrapperClassName ?? ""}`}
                 >
-                  <img
-                    src={member.portrait}
-                    alt={member.portraitAlt}
-                    className={member.portraitClassName}
-                    loading="lazy"
-                  />
+                  <img src={member.portrait} alt={member.portraitAlt} className={member.portraitClassName} loading="lazy" />
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_60%,hsl(222_70%_10%_/_0.08)_100%)]" />
                 </div>
               </div>
@@ -110,15 +107,19 @@ const Team = () => (
                 <p className="mt-1 text-sm font-semibold text-accent">{member.role}</p>
               </div>
 
-              <ul className="space-y-2.5 text-sm leading-relaxed text-muted-foreground">
-                {member.notes.map((note) => (
-                  <li key={note} className="flex gap-3">
-                    <span aria-hidden="true" className="text-accent">
-                      -
-                    </span>
-                    <span>{note}</span>
-                  </li>
-                ))}
+              <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground">
+                <li>
+                  <p className="mb-1 font-semibold uppercase tracking-wide text-foreground/80">Was wir tun</p>
+                  <p>{member.highlights.doing}</p>
+                </li>
+                <li>
+                  <p className="mb-1 font-semibold uppercase tracking-wide text-foreground/80">Was wir können</p>
+                  <p>{member.highlights.capability}</p>
+                </li>
+                <li>
+                  <p className="mb-1 font-semibold uppercase tracking-wide text-foreground/80">Welchen Nutzen wir stiften</p>
+                  <p>{member.highlights.impact}</p>
+                </li>
               </ul>
 
               <a

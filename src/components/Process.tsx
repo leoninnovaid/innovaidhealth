@@ -1,30 +1,30 @@
 import { motion } from "framer-motion";
-import { Search, FileCheck, Handshake, Rocket } from "lucide-react";
+import { FileCheck, Handshake, Rocket, Search } from "lucide-react";
 
 const steps = [
   {
     icon: Search,
     step: "01",
-    title: "Innovation Screening",
-    text: "Systematische Bewertung von Gesundheitsinnovationen auf Versorgungsrelevanz, regulatorische Machbarkeit und Marktpotenzial.",
+    title: "Versorgungs- und Potenzialanalyse",
+    text: "Wir bewerten Innovationen systematisch auf Versorgungsrelevanz, Machbarkeit und Realisierbarkeit im Gesundheitssystem.",
   },
   {
     icon: FileCheck,
     step: "02",
     title: "Reimbursement & Marktzugang",
-    text: "Entwicklung tragfähiger Erstattungsstrategien und Begleitung durch regulatorische Anforderungen des deutschen Markts.",
+    text: "Wir entwickeln tragfähige Erstattungs- und Marktzugangsstrategien für den regulierten deutschen Gesundheitsmarkt.",
   },
   {
     icon: Handshake,
     step: "03",
     title: "Stakeholder-Integration",
-    text: "Strukturierte Einbindung von Krankenkassen, Leistungserbringern und weiteren relevanten Akteuren in die Umsetzung.",
+    text: "Wir binden Krankenkassen, Leistungserbringer und weitere relevante Partner frühzeitig in die Umsetzung ein.",
   },
   {
     icon: Rocket,
     step: "04",
-    title: "Investoren-Readiness",
-    text: "Vorbereitung auf Investorengespräche mit fundierter Marktbewertung, klarer Value Proposition und Umsetzungsplanung.",
+    title: "Implementierung & Verstetigung",
+    text: "Wir bringen Lösungen in die Versorgung und schaffen Strukturen, die über Pilot- und Förderphasen hinaus tragen.",
   },
 ];
 

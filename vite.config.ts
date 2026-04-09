@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
-    // @ts-ignore
+    // @ts-expect-error Vite accepts allowedHosts in dev server config.
     allowedHosts: [
       "8080-iftqi09jldqg58r3aqdtc-b6136d93.us2.manus.computer",
     ],

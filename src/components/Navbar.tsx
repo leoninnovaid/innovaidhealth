@@ -74,18 +74,18 @@ const Navbar = () => {
         <Link
           to="/"
           onClick={handleHomeClick}
-          className={`text-xl font-extrabold tracking-tight ${solidHeader ? "text-primary" : "text-primary-foreground"}`}
+          className={`shrink-0 text-xl font-extrabold tracking-tight ${solidHeader ? "text-primary" : "text-primary-foreground"}`}
         >
           INNOVAID<span className="text-left text-accent">:health</span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-5 lg:flex xl:gap-8">
           {navItems.map((item) => (
             <Link
               key={item.section}
               to={`/?section=${item.section}`}
               onClick={handleSectionClick(item.section)}
-              className={`text-sm font-medium transition-colors hover:text-accent ${
+              className={`whitespace-nowrap text-[13px] font-medium transition-colors hover:text-accent xl:text-sm ${
                 solidHeader ? "text-foreground" : "text-primary-foreground/80"
               }`}
             >
@@ -94,7 +94,7 @@ const Navbar = () => {
           ))}
           <Link
             to="/wissensindex-prototyp"
-            className={`text-sm font-medium transition-colors hover:text-accent ${
+            className={`whitespace-nowrap text-[13px] font-medium transition-colors hover:text-accent xl:text-sm ${
               solidHeader ? "text-foreground" : "text-primary-foreground/80"
             }`}
           >
@@ -103,7 +103,7 @@ const Navbar = () => {
           <Link
             to="/?section=kontakt"
             onClick={handleSectionClick("kontakt")}
-            className="rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+            className="shrink-0 whitespace-nowrap rounded-lg bg-accent px-4 py-2 text-[13px] font-semibold text-accent-foreground transition-colors hover:bg-accent/90 xl:px-5 xl:py-2.5 xl:text-sm"
           >
             Gespräch vereinbaren
           </Link>
@@ -115,7 +115,7 @@ const Navbar = () => {
           aria-controls="mobile-navigation"
           aria-label={open ? "Menü schließen" : "Menü öffnen"}
           onClick={() => setOpen(!open)}
-          className={`md:hidden ${solidHeader ? "text-foreground" : "text-primary-foreground"}`}
+          className={`lg:hidden ${solidHeader ? "text-foreground" : "text-primary-foreground"}`}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -124,7 +124,7 @@ const Navbar = () => {
       {open && (
         <div
           id="mobile-navigation"
-          className="md:hidden border-t border-border bg-card px-4 pb-5 pt-2 shadow-[0_20px_50px_-32px_hsl(222_70%_10%_/_0.4)]"
+          className="border-t border-border bg-card px-4 pb-5 pt-2 shadow-[0_20px_50px_-32px_hsl(222_70%_10%_/_0.4)] lg:hidden"
         >
           {navItems.map((item) => (
             <Link

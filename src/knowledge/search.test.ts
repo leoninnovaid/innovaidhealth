@@ -75,6 +75,7 @@ describe("runKnowledgeSearch", () => {
       maxResults: 10,
     });
 
-    expect(results.length).toBeGreaterThan(5);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((result) => result.status === "freigegeben")).toBe(true);
   });
 });

@@ -1,26 +1,28 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Network, TrendingUp, Lightbulb } from "lucide-react";
+import { ClipboardCheck, ShieldCheck } from "lucide-react";
 
-const items = [
+const offerings = [
   {
-    icon: Lightbulb,
-    title: "Innovation Screening",
-    text: "Identifikation und Validierung von Gesundheitsinnovationen mit echtem Versorgungspotenzial - systematisch und evidenzbasiert.",
-  },
-  {
-    icon: Network,
-    title: "Stakeholder-Vernetzung",
-    text: "Die richtigen Akteure zusammenbringen: Startups, Leistungserbringer, Kostenträger und Investoren.",
+    icon: ClipboardCheck,
+    label: "Offering A",
+    title: "Förderprojekte im Digital-Health-Markt",
+    text: "Wir begleiten Förderprojekte von der Konsortialentwicklung über die Antragstellung bis zur Umsetzung und Verstetigung in der Versorgung.",
+    points: [
+      "Konsortialaufbau und Antragsunterstützung",
+      "Projektmanagement Office für komplexe Verbundprojekte",
+      "Verstetigungs- und Geschäftsmodelllogik nach Förderende",
+    ],
   },
   {
     icon: ShieldCheck,
-    title: "Marktzugang & Erstattung",
-    text: "Begleitung auf dem Weg in Reimbursement-Strukturen und Schaffung tragfähiger Geschäftsmodelle im regulierten Markt.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Skalierbare Wirkung",
-    text: "Ziel: aus einzelnen Projekten skalierbare Versorgungslösungen machen, die Patienten und System nachhaltig entlasten.",
+    label: "Offering B",
+    title: "MDR/DiGA und digitale Therapiebegleitung",
+    text: "Wir unterstützen bei Produktstrategie, PMO und Implementierung digitaler Therapiebegleitung mit Fokus auf regulatorische Anschlussfähigkeit.",
+    points: [
+      "Produktmanagement für digitale Medizinprodukte",
+      "MDR/DiGA-nahe Umsetzungsbegleitung",
+      "Integration in reale Versorgungsprozesse",
+    ],
   },
 ];
 
@@ -32,28 +34,45 @@ const WhyUs = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mx-auto mb-12 max-w-2xl text-center md:mb-16"
+        className="mx-auto mb-12 max-w-3xl text-center md:mb-16"
       >
-        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Unsere Stärke</p>
-        <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Innovation sicher in den Markt bringen</h2>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Leistungen</p>
+        <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Unsere zwei Kern-Offerings</h2>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+          Wir fokussieren uns auf zwei Leistungen: Förderprojekte mit Verstetigungslogik und MDR/DiGA-nahe
+          Produktumsetzung in der digitalen Therapiebegleitung.
+        </p>
       </motion.div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-        {items.map((item, i) => (
-          <motion.div
-            key={item.title}
+      <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
+        {offerings.map((offering, i) => (
+          <motion.article
+            key={offering.title}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
+            transition={{ duration: 0.5, delay: i * 0.12 }}
             className="rounded-xl border border-border/50 bg-card p-6 card-elevated md:p-8"
           >
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary">
-              <item.icon className="text-accent" size={24} />
+            <div className="mb-5 flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary">
+                <offering.icon className="text-accent" size={24} />
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-accent">{offering.label}</p>
             </div>
-            <h3 className="mb-3 text-lg font-bold text-foreground">{item.title}</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-          </motion.div>
+            <h3 className="mb-3 text-xl font-bold text-foreground">{offering.title}</h3>
+            <p className="mb-5 text-sm leading-relaxed text-muted-foreground">{offering.text}</p>
+            <ul className="space-y-2 text-sm text-foreground">
+              {offering.points.map((point) => (
+                <li key={point} className="flex gap-3">
+                  <span aria-hidden="true" className="text-accent">
+                    -
+                  </span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.article>
         ))}
       </div>
     </div>

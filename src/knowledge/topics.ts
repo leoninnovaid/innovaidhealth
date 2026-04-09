@@ -1,4 +1,4 @@
-import type { TopicId } from "@/knowledge/types";
+﻿import type { TopicId } from "@/knowledge/types";
 
 export const topicMeta: Record<TopicId, { label: string; description: string }> = {
   foerderfaehigkeit: {
@@ -11,7 +11,7 @@ export const topicMeta: Record<TopicId, { label: string; description: string }> 
   },
   unterlagen: {
     label: "Erforderliche Unterlagen",
-    description: "Welche Dokumente sind für den Antrag und die Einreichung notwendig?",
+    description: "Welche Dokumente sind für Antrag und Einreichung notwendig?",
   },
   antragsrollen: {
     label: "Antragsrollen",

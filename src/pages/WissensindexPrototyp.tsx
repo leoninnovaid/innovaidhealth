@@ -1,33 +1,44 @@
 ﻿import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 
-import { FileText, Filter, MessagesSquare, Search, TreePine } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { CheckSquare, FileText, Filter, Search } from "lucide-react";
+
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { runKnowledgeDocumentSearch, runKnowledgeSearch } from "@/knowledge/search";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { statusMeta } from "@/knowledge/presentation";
-import { initialSuggestedQuestions, topicMeta, wisdomTree } from "@/knowledge/topics";
+import { runKnowledgeDocumentSearch, runKnowledgeSearch } from "@/knowledge/search";
+import { topicMeta } from "@/knowledge/topics";
 import type {
-  DocumentSearchResult,
+  KnowledgeDocumentType,
   KnowledgeIndex,
-  KnowledgeViewMode,
   ReviewStatus,
   SearchResult,
   TopicId,
 } from "@/knowledge/types";
+
+type ContentFilter = "alle" | "antworten" | "dokumente";
+
+const documentTypeLabel: Record<KnowledgeDocumentType, string> = {
+  Foerderbekanntmachung: "Förderbekanntmachung",
+  Leitfaden: "Leitfaden",
+  FAQ: "FAQ",
+  ANBest: "ANBest",
+  Personalmittelsaetze: "Personalmittelsätze",
+};
 
 const WissensindexPrototyp = () => {
   const [index, setIndex] = useState<KnowledgeIndex | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
 
-  const [viewMode, setViewMode] = useState<KnowledgeViewMode>("qa");
   const [query, setQuery] = useState("");
+  const [contentFilter, setContentFilter] = useState<ContentFilter>("alle");
   const [topicFilter, setTopicFilter] = useState<TopicId | "alle">("alle");
   const [statusFilter, setStatusFilter] = useState<ReviewStatus | "alle">("alle");
-
-  const [selectedQaSlug, setSelectedQaSlug] = useState<string | null>(null);
-  const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
+  const [selectedDocTypes, setSelectedDocTypes] = useState<KnowledgeDocumentType[]>([]);
+  const [expandedAnswerSlug, setExpandedAnswerSlug] = useState<string | null>(null);
 
   const deferredQuery = useDeferredValue(query);
 
@@ -48,9 +59,15 @@ const WissensindexPrototyp = () => {
         }
 
         const data = (await response.json()) as KnowledgeIndex;
-        if (active) {
-          setIndex(data);
+
+        if (!active) {
+          return;
         }
+
+        setIndex(data);
+
+        const uniqueTypes = Array.from(new Set(data.documents.map((document) => document.dokumenttyp)));
+        setSelectedDocTypes(uniqueTypes);
       } catch (error) {
         if (active) {
           setLoadError(error instanceof Error ? error.message : "Unbekannter Ladefehler");
@@ -91,76 +108,88 @@ const WissensindexPrototyp = () => {
     [deferredQuery, index, statusFilter, topicFilter],
   );
 
-  useEffect(() => {
-    if (qaResults.length === 0) {
-      setSelectedQaSlug(null);
-      return;
-    }
-
-    if (!selectedQaSlug || !qaResults.some((result) => result.slug === selectedQaSlug)) {
-      setSelectedQaSlug(qaResults[0].slug);
-    }
-  }, [qaResults, selectedQaSlug]);
-
-  useEffect(() => {
-    if (docResults.length === 0) {
-      setSelectedDocId(null);
-      return;
-    }
-
-    if (!selectedDocId || !docResults.some((result) => result.id === selectedDocId)) {
-      setSelectedDocId(docResults[0].id);
-    }
-  }, [docResults, selectedDocId]);
-
-  const selectedQaResult = qaResults.find((result) => result.slug === selectedQaSlug) ?? null;
-  const selectedDocResult = docResults.find((result) => result.id === selectedDocId) ?? null;
-
-  const documentMap = useMemo(() => {
-    const map = new Map<string, string>();
-    index?.documents.forEach((document) => map.set(document.id, document.titel));
+  const documentMeta = useMemo(() => {
+    const map = new Map<string, { titel: string; dokumenttyp: KnowledgeDocumentType }>();
+    index?.documents.forEach((document) => {
+      map.set(document.id, { titel: document.titel, dokumenttyp: document.dokumenttyp });
+    });
     return map;
   }, [index]);
 
-  const sectionCount = useMemo(
-    () => index?.documents.reduce((count, document) => count + document.abschnitte.length, 0) ?? 0,
+  const availableDocTypes = useMemo(
+    () => Array.from(new Set(index?.documents.map((document) => document.dokumenttyp) ?? [])),
     [index],
   );
 
-  const hasActiveFilters = query.trim().length > 0 || topicFilter !== "alle" || statusFilter !== "alle";
-
-  const applyQuestion = (question: string, topicId?: TopicId) => {
-    setViewMode("qa");
-    setQuery(question);
-
-    if (topicId) {
-      setTopicFilter(topicId);
+  const filteredAnswers = useMemo(() => {
+    if (selectedDocTypes.length === 0) {
+      return qaResults;
     }
+
+    return qaResults.filter((result) => {
+      const sourceTypes = result.answer.quellen
+        .map((source) => documentMeta.get(source.dokumentId)?.dokumenttyp)
+        .filter((type): type is KnowledgeDocumentType => Boolean(type));
+
+      return sourceTypes.some((type) => selectedDocTypes.includes(type));
+    });
+  }, [documentMeta, qaResults, selectedDocTypes]);
+
+  const filteredDocs = useMemo(() => {
+    if (selectedDocTypes.length === 0) {
+      return docResults;
+    }
+
+    return docResults.filter((result) => selectedDocTypes.includes(result.dokumenttyp));
+  }, [docResults, selectedDocTypes]);
+
+  const showAnswers = contentFilter !== "dokumente";
+  const showDocs = contentFilter !== "antworten";
+
+  const toggleDocType = (docType: KnowledgeDocumentType, checked: boolean) => {
+    setSelectedDocTypes((previous) => {
+      if (checked) {
+        if (previous.includes(docType)) {
+          return previous;
+        }
+        return [...previous, docType];
+      }
+
+      return previous.filter((type) => type !== docType);
+    });
   };
 
   const resetFilters = () => {
     setQuery("");
+    setContentFilter("alle");
     setTopicFilter("alle");
     setStatusFilter("alle");
+    setSelectedDocTypes(availableDocTypes);
+    setExpandedAnswerSlug(null);
   };
 
-  const getQaSourceLabel = (result: SearchResult, sourceId: string) => {
-    const title = documentMap.get(sourceId) ?? sourceId;
-    const sourceRef = result.answer.quellen.find((source) => source.dokumentId === sourceId);
+  const formatAnswerSources = (result: SearchResult) => {
+    const grouped = new Map<string, { titel: string; pages: number[] }>();
 
-    if (sourceRef?.seite) {
-      return `${title} (Seite ${sourceRef.seite})`;
-    }
+    result.answer.quellen.forEach((source) => {
+      const meta = documentMeta.get(source.dokumentId);
+      const key = source.dokumentId;
+      const current = grouped.get(key) ?? {
+        titel: meta?.titel ?? source.dokumentId,
+        pages: [],
+      };
 
-    return title;
-  };
+      if (source.seite && !current.pages.includes(source.seite)) {
+        current.pages.push(source.seite);
+      }
 
-  const getDocTopicLabels = (result: DocumentSearchResult) => {
-    if (result.matchedTopicIds.length === 0) {
-      return ["Ohne Themenzuordnung"];
-    }
+      grouped.set(key, current);
+    });
 
-    return result.matchedTopicIds.map((topicId) => topicMeta[topicId].label);
+    return Array.from(grouped.values()).map((entry) => {
+      const pageLabel = entry.pages.length > 0 ? ` · Seite ${entry.pages.sort((a, b) => a - b).join(", ")}` : "";
+      return `${entry.titel}${pageLabel}`;
+    });
   };
 
   return (
@@ -169,85 +198,71 @@ const WissensindexPrototyp = () => {
 
       <main className="section-padding pt-24 md:pt-32">
         <div className="container mx-auto">
-          <header className="mb-8 rounded-3xl border border-border/70 bg-card p-6 shadow-[0_20px_60px_-34px_hsl(222_70%_10%_/_0.45)] md:p-8">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.26em] text-accent">Wissensindex</p>
-            <h1 className="text-2xl font-extrabold text-foreground md:text-4xl">
-              Orientierung im Innovationsfonds mit nachvollziehbaren Quellen
-            </h1>
+          <header className="mb-8 rounded-3xl border border-border/70 bg-card p-6 md:p-8">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">Wissensindex Beta</p>
+            <h1 className="text-2xl font-extrabold text-foreground md:text-4xl">Kuratierte Antworten und Quellen</h1>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
-              Wir verbinden kuratierte Antworten mit einem transparenten Dokumenten-Explorer. So finden Sie schneller,
-              was wirklich gilt: mit Status, Fundstelle und klarer Einordnung.
+              Minimaler Einstieg wie in einem Q&amp;A-Feed: links filtern, rechts direkt lesen.
+            </p>
+            <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+              Beta-Hinweis: Inhalte werden laufend redaktionell geprüft und können sich ändern. Verbindlich sind
+              ausschließlich die Originaldokumente.
             </p>
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-xl border border-border/60 bg-background px-4 py-3">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">Dokumente</p>
-                <p className="mt-1 text-lg font-bold text-foreground">{index?.documents.length ?? 0}</p>
-              </div>
-              <div className="rounded-xl border border-border/60 bg-background px-4 py-3">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">Abschnitte</p>
-                <p className="mt-1 text-lg font-bold text-foreground">{sectionCount}</p>
-              </div>
-              <div className="rounded-xl border border-border/60 bg-background px-4 py-3">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">Verfügbare Antworten</p>
-                <p className="mt-1 text-lg font-bold text-foreground">{qaResults.length}</p>
-              </div>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => setViewMode("qa")}
-                className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition-colors ${
-                  viewMode === "qa"
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-background text-foreground hover:border-accent/50 hover:text-accent"
-                }`}
-              >
-                <MessagesSquare size={16} />
-                Q&A
-              </button>
-              <button
-                type="button"
-                onClick={() => setViewMode("docs")}
-                className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition-colors ${
-                  viewMode === "docs"
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-background text-foreground hover:border-accent/50 hover:text-accent"
-                }`}
-              >
-                <FileText size={16} />
-                Dokumenten-Explorer
-              </button>
+            <div className="relative mt-6">
+              <Search className="pointer-events-none absolute left-3 top-3.5 text-muted-foreground" size={16} />
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Suche nach Frage, Begriff oder Dokument ..."
+                className="w-full rounded-xl border border-border bg-background py-3 pl-10 pr-10 text-sm text-foreground outline-none transition-colors focus:border-accent"
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  className="absolute right-3 top-3 text-muted-foreground transition-colors hover:text-foreground"
+                  title="Suche leeren"
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              )}
             </div>
           </header>
 
-          <div className="mb-6 rounded-2xl border border-border/70 bg-card p-5 md:p-6">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-[minmax(0,1fr)_220px] lg:grid-cols-[minmax(0,1fr)_220px_220px_auto]">
-              <div className="relative">
-                <Search className="pointer-events-none absolute left-3 top-3.5 text-muted-foreground" size={16} />
-                <input
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Suche starten, z. B. 'Welche Unterlagen brauche ich?'"
-                  className="w-full rounded-xl border border-border bg-background py-3 pl-10 pr-10 text-sm text-foreground outline-none transition-colors focus:border-accent"
-                />
-                {query && (
-                  <button
-                    type="button"
-                    onClick={() => setQuery("")}
-                    className="absolute right-3 top-3 text-muted-foreground transition-colors hover:text-foreground"
-                    title="Suche leeren"
-                  >
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                )}
-              </div>
+          <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
+            <aside className="space-y-5 lg:sticky lg:top-24 lg:h-fit">
+              <section className="rounded-2xl border border-border/70 bg-card p-5">
+                <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
+                  <Filter size={16} className="text-accent" />
+                  Inhalt
+                </p>
+                <div className="space-y-2">
+                  {([
+                    { value: "alle", label: "Alle" },
+                    { value: "antworten", label: "Antworten" },
+                    { value: "dokumente", label: "Dokumente" },
+                  ] as const).map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setContentFilter(option.value)}
+                      className={`w-full rounded-lg border px-3 py-2 text-left text-sm transition-colors ${
+                        contentFilter === option.value
+                          ? "border-accent bg-accent/10 text-accent"
+                          : "border-border/60 bg-background text-foreground hover:border-accent/40"
+                      }`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </section>
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-muted-foreground">Thema</label>
+              <section className="rounded-2xl border border-border/70 bg-card p-5">
+                <p className="mb-3 text-sm font-semibold text-foreground">Thema</p>
                 <Select value={topicFilter} onValueChange={(value) => setTopicFilter(value as TopicId | "alle")}>
                   <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
                     <SelectValue placeholder="Alle Themen" />
@@ -261,10 +276,10 @@ const WissensindexPrototyp = () => {
                     ))}
                   </SelectContent>
                 </Select>
-              </div>
+              </section>
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-muted-foreground">Review-Status</label>
+              <section className="rounded-2xl border border-border/70 bg-card p-5">
+                <p className="mb-3 text-sm font-semibold text-foreground">Status</p>
                 <Select
                   value={statusFilter}
                   onValueChange={(value) => setStatusFilter(value as ReviewStatus | "alle")}
@@ -279,323 +294,189 @@ const WissensindexPrototyp = () => {
                     <SelectItem value="freigegeben">{statusMeta.freigegeben.label}</SelectItem>
                   </SelectContent>
                 </Select>
-              </div>
+              </section>
 
-              <div className="flex items-end">
-                <button
-                  type="button"
-                  onClick={resetFilters}
-                  disabled={!hasActiveFilters}
-                  className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  Filter zurücksetzen
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {isLoading && (
-            <div className="rounded-2xl border border-border/70 bg-card p-6 text-sm text-muted-foreground">
-              Wissensindex wird geladen ...
-            </div>
-          )}
-
-          {loadError && (
-            <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-sm text-red-800">
-              <h3 className="font-semibold text-red-900">Fehler beim Laden des Wissensindex</h3>
-              <p className="mt-1 text-red-700">{loadError}</p>
-              <p className="mt-3 text-xs text-red-600">
-                Bitte laden Sie die Seite neu. Wenn der Fehler bestehen bleibt, kontaktieren Sie uns direkt per E-Mail.
-              </p>
-            </div>
-          )}
-
-          {!isLoading && !loadError && (
-            <div className="grid gap-6 xl:grid-cols-[340px_minmax(0,1fr)]">
-              <aside className="space-y-6">
-                <section className="rounded-2xl border border-border/70 bg-card p-5">
-                  <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
-                    <FileText size={16} className="text-accent" />
-                    Schnellstart
+              <section className="rounded-2xl border border-border/70 bg-card p-5">
+                <div className="mb-3 flex items-center justify-between gap-3">
+                  <p className="inline-flex items-center gap-2 text-sm font-semibold text-foreground">
+                    <CheckSquare size={16} className="text-accent" />
+                    Dokumenttypen
                   </p>
-                  <p className="mb-4 text-xs text-muted-foreground">
-                    Nutzen Sie eine Startfrage oder wechseln Sie direkt in den Dokumenten-Explorer.
-                  </p>
-                  <div className="space-y-2">
-                    {initialSuggestedQuestions.map((question) => (
-                      <button
-                        type="button"
-                        key={question}
-                        onClick={() => applyQuestion(question)}
-                        className="w-full rounded-lg border border-border/60 bg-background px-3 py-2 text-left text-xs text-foreground transition-colors hover:border-accent/30 hover:text-accent"
-                      >
-                        {question}
-                      </button>
-                    ))}
-                  </div>
-                </section>
+                  <button type="button" onClick={resetFilters} className="text-xs text-accent hover:underline">
+                    Zurücksetzen
+                  </button>
+                </div>
 
-                <section className="rounded-2xl border border-border/70 bg-card p-5">
-                  <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
-                    <TreePine size={16} className="text-accent" />
-                    Themenbaum
-                  </p>
-                  <div className="space-y-4">
-                    {wisdomTree.map((node) => (
-                      <div key={node.id} className="rounded-xl border border-border/60 bg-background p-4">
-                        <p className="text-sm font-bold text-foreground">{node.label}</p>
-                        <div className="mt-2 flex flex-wrap gap-2">
-                          {node.topics.map((topicId) => (
-                            <button
-                              type="button"
-                              key={`${node.id}-${topicId}`}
-                              onClick={() => setTopicFilter(topicId)}
-                              className="rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:border-accent hover:text-accent"
-                            >
-                              {topicMeta[topicId].label}
-                            </button>
-                          ))}
-                        </div>
-                        <div className="mt-3 space-y-2">
-                          {node.fragen.map((question) => (
-                            <button
-                              type="button"
-                              key={`${node.id}-${question}`}
-                              onClick={() => applyQuestion(question, node.topics[0])}
-                              className="block w-full rounded-lg border border-transparent bg-muted/45 px-3 py-2 text-left text-xs text-foreground transition-colors hover:border-accent/30 hover:bg-muted"
-                            >
-                              {question}
-                            </button>
-                          ))}
-                        </div>
+                <div className="space-y-3">
+                  {availableDocTypes.map((docType) => (
+                    <label key={docType} className="flex items-start gap-3 rounded-lg border border-border/60 bg-background p-3">
+                      <Checkbox
+                        checked={selectedDocTypes.includes(docType)}
+                        onCheckedChange={(checked) => toggleDocType(docType, checked === true)}
+                      />
+                      <span className="text-sm text-foreground">{documentTypeLabel[docType]}</span>
+                    </label>
+                  ))}
+                </div>
+              </section>
+            </aside>
+
+            <section className="space-y-6">
+              {isLoading && (
+                <div className="rounded-2xl border border-border/70 bg-card p-6 text-sm text-muted-foreground">
+                  Wissensindex wird geladen ...
+                </div>
+              )}
+
+              {loadError && (
+                <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-sm text-red-800">
+                  <h3 className="font-semibold text-red-900">Fehler beim Laden des Wissensindex</h3>
+                  <p className="mt-1 text-red-700">{loadError}</p>
+                </div>
+              )}
+
+              {!isLoading && !loadError && (
+                <>
+                  {showAnswers && (
+                    <section className="rounded-2xl border border-border/70 bg-card p-5 md:p-6">
+                      <div className="mb-4 flex items-center gap-2">
+                        <span className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">
+                          Antworten
+                        </span>
+                        <span className="text-sm text-muted-foreground">{filteredAnswers.length} Treffer</span>
                       </div>
-                    ))}
-                  </div>
-                </section>
-              </aside>
 
-              <section className="space-y-6">
-                {viewMode === "qa" ? (
-                  <div className="grid gap-6 xl:grid-cols-[360px_minmax(0,1fr)]">
-                    <div className="rounded-2xl border border-border/70 bg-card p-5">
-                      <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
-                        <Filter size={16} className="text-accent" />
-                        Q&A-Ergebnisse ({qaResults.length})
-                      </p>
-
-                      {qaResults.length === 0 ? (
-                        <p className="rounded-xl border border-border/60 bg-background px-3 py-4 text-sm text-muted-foreground">
-                          Keine passenden Antworten gefunden. Bitte Suche oder Filter anpassen.
+                      {filteredAnswers.length === 0 ? (
+                        <p className="rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-muted-foreground">
+                          Keine passenden Antworten gefunden.
                         </p>
                       ) : (
-                        <div className="space-y-3">
-                          {qaResults.map((result) => {
-                            const status = statusMeta[result.status];
+                        <div className="space-y-4">
+                          {filteredAnswers.map((result) => {
+                            const isExpanded = expandedAnswerSlug === result.slug;
 
                             return (
-                              <button
-                                type="button"
-                                key={result.slug}
-                                onClick={() => setSelectedQaSlug(result.slug)}
-                                className={`w-full rounded-xl border px-3 py-3 text-left transition-colors ${
-                                  selectedQaSlug === result.slug
-                                    ? "border-accent bg-accent/5"
-                                    : "border-border/60 bg-background hover:border-accent/40"
-                                }`}
-                              >
-                                <div className="mb-2 flex items-center justify-between gap-2">
+                              <article key={result.slug} className="rounded-xl border border-border/60 bg-background p-4">
+                                <div className="mb-2 flex items-center justify-between gap-3">
                                   <span className="text-xs uppercase tracking-widest text-muted-foreground">
                                     {topicMeta[result.topicId].label}
                                   </span>
-                                  <span className={`rounded-full border px-2 py-0.5 text-[11px] ${status.className}`}>
-                                    {status.label}
+                                  <span
+                                    className={`rounded-full border px-2 py-0.5 text-[11px] ${statusMeta[result.status].className}`}
+                                  >
+                                    {statusMeta[result.status].label}
                                   </span>
                                 </div>
-                                <p className="text-sm font-semibold text-foreground">{result.frage}</p>
-                                <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
-                                  {result.answer.antwort_kurz}
-                                </p>
-                              </button>
+
+                                <h2 className="text-base font-bold text-foreground">{result.frage}</h2>
+                                <Link
+                                  to={`/wissensindex-beta/${result.slug}`}
+                                  className="mt-1 inline-block text-sm font-medium text-accent hover:underline"
+                                >
+                                  Unterseite öffnen
+                                </Link>
+                                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{result.answer.antwort_kurz}</p>
+
+                                <button
+                                  type="button"
+                                  onClick={() => setExpandedAnswerSlug(isExpanded ? null : result.slug)}
+                                  className="mt-3 text-sm font-medium text-accent hover:underline"
+                                >
+                                  {isExpanded ? "Antwort ausblenden" : "Antwort anzeigen"}
+                                </button>
+
+                                {isExpanded && (
+                                  <div className="mt-4 space-y-4 border-t border-border/60 pt-4">
+                                    <p className="text-sm leading-relaxed text-foreground">{result.answer.antwort_lang}</p>
+
+                                    <div>
+                                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                        Quellen
+                                      </p>
+                                      <ul className="space-y-2">
+                                        {formatAnswerSources(result).map((sourceLabel) => (
+                                          <li key={`${result.slug}-${sourceLabel}`} className="text-sm text-muted-foreground">
+                                            {sourceLabel}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+
+                                    {result.snippets.length > 0 && (
+                                      <div>
+                                        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                          Fundstellen
+                                        </p>
+                                        <div className="space-y-2">
+                                          {result.snippets.map((snippet) => (
+                                            <div
+                                              key={`${result.slug}-${snippet.abschnittId}`}
+                                              className="rounded-lg border border-border/60 p-3"
+                                            >
+                                              <p className="text-xs text-muted-foreground">
+                                                {(documentMeta.get(snippet.dokumentId)?.titel ?? snippet.dokumentId) +
+                                                  ` · Seite ${snippet.seite}`}
+                                              </p>
+                                              <p className="mt-1 text-sm text-foreground">{snippet.text}</p>
+                                            </div>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    )}
+                                  </div>
+                                )}
+                              </article>
                             );
                           })}
                         </div>
                       )}
-                    </div>
+                    </section>
+                  )}
 
-                    <div className="rounded-2xl border border-border/70 bg-card p-6">
-                      {selectedQaResult ? (
-                        <div>
-                          <div className="mb-4 flex items-center justify-between gap-3">
-                            <span className="rounded-full border border-border/70 bg-background px-2.5 py-1 text-xs text-muted-foreground">
-                              {topicMeta[selectedQaResult.topicId].label}
-                            </span>
-                            <span
-                              className={`rounded-full border px-2.5 py-1 text-xs ${
-                                statusMeta[selectedQaResult.status].className
-                              }`}
-                            >
-                              {statusMeta[selectedQaResult.status].label}
-                            </span>
-                          </div>
+                  {showDocs && (
+                    <section className="rounded-2xl border border-border/70 bg-card p-5 md:p-6">
+                      <div className="mb-4 flex items-center gap-2">
+                        <span className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">
+                          Dokumente
+                        </span>
+                        <span className="text-sm text-muted-foreground">{filteredDocs.length} Treffer</span>
+                      </div>
 
-                          <h2 className="text-2xl font-extrabold text-foreground">{selectedQaResult.frage}</h2>
-                          <p className="mt-4 text-base font-semibold text-foreground">
-                            {selectedQaResult.answer.antwort_kurz}
-                          </p>
-                          <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
-                            {selectedQaResult.answer.antwort_lang}
-                          </p>
-
-                          <div className="mt-6">
-                            <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">Quellen</h3>
-                            <ul className="mt-3 space-y-2">
-                              {Array.from(
-                                new Set(selectedQaResult.answer.quellen.map((source) => source.dokumentId)),
-                              ).map((sourceId) => (
-                                <li
-                                  key={sourceId}
-                                  className="rounded-lg border border-border/60 bg-background px-3 py-2 text-sm"
-                                >
-                                  {getQaSourceLabel(selectedQaResult, sourceId)}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                          <div className="mt-6">
-                            <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">Fundstellen</h3>
-                            <div className="mt-3 space-y-3">
-                              {selectedQaResult.snippets.map((snippet) => (
-                                <div
-                                  key={`${snippet.abschnittId}-${snippet.seite}`}
-                                  className="rounded-lg border border-border/60 bg-background px-3 py-3"
-                                >
-                                  <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                                    {documentMap.get(snippet.dokumentId) ?? snippet.dokumentId} · Seite {snippet.seite}
-                                  </p>
-                                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{snippet.text}</p>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="rounded-xl border border-border/60 bg-background p-4 text-sm text-muted-foreground">
-                          Bitte wählen Sie links eine Frage aus, um die Antwortdetails zu sehen.
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="grid gap-6 xl:grid-cols-[360px_minmax(0,1fr)]">
-                    <div className="rounded-2xl border border-border/70 bg-card p-5">
-                      <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
-                        <Filter size={16} className="text-accent" />
-                        Dokumenttreffer ({docResults.length})
-                      </p>
-
-                      {docResults.length === 0 ? (
-                        <p className="rounded-xl border border-border/60 bg-background px-3 py-4 text-sm text-muted-foreground">
-                          Keine passenden Fundstellen gefunden. Bitte Suche oder Filter anpassen.
+                      {filteredDocs.length === 0 ? (
+                        <p className="rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-muted-foreground">
+                          Keine passenden Dokumenttreffer gefunden.
                         </p>
                       ) : (
-                        <div className="space-y-3">
-                          {docResults.map((result) => {
-                            const status = statusMeta[result.status];
-
-                            return (
-                              <button
-                                type="button"
-                                key={result.id}
-                                onClick={() => setSelectedDocId(result.id)}
-                                className={`w-full rounded-xl border px-3 py-3 text-left transition-colors ${
-                                  selectedDocId === result.id
-                                    ? "border-accent bg-accent/5"
-                                    : "border-border/60 bg-background hover:border-accent/40"
-                                }`}
-                              >
-                                <div className="mb-2 flex items-center justify-between gap-2">
-                                  <span className="text-xs uppercase tracking-widest text-muted-foreground">
-                                    {result.dokumenttyp}
-                                  </span>
-                                  <span className={`rounded-full border px-2 py-0.5 text-[11px] ${status.className}`}>
-                                    {status.label}
-                                  </span>
-                                </div>
-                                <p className="text-sm font-semibold text-foreground">{result.abschnittTitel}</p>
-                                <p className="mt-1 text-xs text-muted-foreground">
-                                  {result.dokumentTitel} · Seite {result.seite}
-                                </p>
-                                <p className="mt-2 line-clamp-2 text-xs text-muted-foreground">{result.snippet}</p>
-                              </button>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="rounded-2xl border border-border/70 bg-card p-6">
-                      {selectedDocResult ? (
-                        <div>
-                          <div className="mb-4 flex items-center justify-between gap-3">
-                            <span className="rounded-full border border-border/70 bg-background px-2.5 py-1 text-xs text-muted-foreground">
-                              {selectedDocResult.dokumenttyp}
-                            </span>
-                            <span
-                              className={`rounded-full border px-2.5 py-1 text-xs ${
-                                statusMeta[selectedDocResult.status].className
-                              }`}
-                            >
-                              {statusMeta[selectedDocResult.status].label}
-                            </span>
-                          </div>
-
-                          <h2 className="text-2xl font-extrabold text-foreground">{selectedDocResult.abschnittTitel}</h2>
-                          <p className="mt-2 text-sm text-muted-foreground">{selectedDocResult.dokumentTitel}</p>
-                          <p className="mt-1 text-sm text-muted-foreground">Seite {selectedDocResult.seite}</p>
-
-                          <div className="mt-6 rounded-xl border border-border/60 bg-background p-4">
-                            <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">Fundstelle</h3>
-                            <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
-                              {selectedDocResult.snippet}
-                            </p>
-                          </div>
-
-                          <div className="mt-6">
-                            <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">Themenbezug</h3>
-                            <div className="mt-2 flex flex-wrap gap-2">
-                              {getDocTopicLabels(selectedDocResult).map((label) => (
-                                <span
-                                  key={`${selectedDocResult.id}-${label}`}
-                                  className="rounded-full border border-border bg-background px-3 py-1 text-xs text-muted-foreground"
-                                >
-                                  {label}
+                        <div className="space-y-4">
+                          {filteredDocs.map((result) => (
+                            <article key={result.id} className="rounded-xl border border-border/60 bg-background p-4">
+                              <div className="mb-2 flex items-center justify-between gap-2">
+                                <span className="inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground">
+                                  <FileText size={12} />
+                                  {documentTypeLabel[result.dokumenttyp]}
                                 </span>
-                              ))}
-                            </div>
-                          </div>
+                                <span
+                                  className={`rounded-full border px-2 py-0.5 text-[11px] ${statusMeta[result.status].className}`}
+                                >
+                                  {statusMeta[result.status].label}
+                                </span>
+                              </div>
 
-                          <div className="mt-6">
-                            <button
-                              type="button"
-                              onClick={() => setViewMode("qa")}
-                              className="rounded-xl border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:text-accent"
-                            >
-                              Zur Q&A-Ansicht wechseln
-                            </button>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="rounded-xl border border-border/60 bg-background p-4 text-sm text-muted-foreground">
-                          Bitte wählen Sie links einen Dokumenttreffer aus, um Details zu sehen.
+                              <h3 className="text-base font-bold text-foreground">{result.dokumentTitel}</h3>
+                              <p className="mt-1 text-sm text-muted-foreground">
+                                {result.abschnittTitel} · Seite {result.seite}
+                              </p>
+                              <p className="mt-3 text-sm leading-relaxed text-foreground">{result.snippet}</p>
+                            </article>
+                          ))}
                         </div>
                       )}
-                    </div>
-                  </div>
-                )}
-              </section>
-            </div>
-          )}
+                    </section>
+                  )}
+                </>
+              )}
+            </section>
+          </div>
         </div>
       </main>
 
@@ -605,3 +486,5 @@ const WissensindexPrototyp = () => {
 };
 
 export default WissensindexPrototyp;
+
+

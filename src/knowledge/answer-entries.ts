@@ -1,4 +1,4 @@
-import type { AnswerEntry } from "@/knowledge/types";
+﻿import type { AnswerEntry } from "@/knowledge/types";
 
 export const answerEntries: AnswerEntry[] = [
   {
@@ -6,159 +6,642 @@ export const answerEntries: AnswerEntry[] = [
     topicId: "antragsrollen",
     frage: "Wer ist antragsberechtigt im Innovationsfonds?",
     antwort_kurz:
-      "Antragsberechtigung und Rollen ergeben sich aus der jeweiligen Foerderbekanntmachung und den Leitfaeden. Die konkrete Rolle von Partnern sollte immer gegen die aktuelle Runde geprueft werden.",
+      "Antragsberechtigte Institutionen sind in den Förderbekanntmachungen definiert. In der Regel muss zusätzlich eine Krankenkasse beteiligt sein.",
     antwort_lang:
-      "Fuer jede Runde sollten zuerst die Foerderbekanntmachungen (NVF1/NVF2) und die zugehoerigen Leitfaeden geprueft werden. Dort ist geregelt, welche Institutionen Antragsteller sein duerfen, wie Verbundstrukturen ausgestaltet sein koennen und welche Rolle einzelne Partner uebernehmen. Fuer belastbare Aussagen wird der finale Entwurf gegen diese Quellen quergeprueft.",
+      "Die Förderbekanntmachungen NVF1 und NVF2 benennen die antragsberechtigten Akteure und fordern bei neuen Versorgungsformen in der Regel die Beteiligung einer Krankenkasse. Für das Konsortium bedeutet das: Rollen und Beteiligung müssen früh verbindlich geklärt und dokumentiert werden.",
     verwandte_fragen: [
-      "Welche Rolle koennen Versorgungspartner uebernehmen?",
-      "Welche Konsortialstruktur ist sinnvoll?",
+      "Wann muss eine Krankenkasse beteiligt sein?",
+      "Wie wird die Krankenkassenbeteiligung im zweistufigen Verfahren nachgewiesen?",
     ],
     quellen: [
-      { dokumentId: "fbm-nvf1-l-to" },
-      { dokumentId: "fbm-nvf2-l-to" },
-      { dokumentId: "leitfaden-nvf1-l" },
-      { dokumentId: "leitfaden-nvf2-l-s" },
+      {
+        dokumentId: "fbm-nvf1-l-to",
+        abschnittId: "fbm-nvf1-l-to-seite-6",
+        seite: 6,
+        zitat: "Bei der Antragstellung ist in der Regel eine Krankenkasse zu beteiligen.",
+      },
+      {
+        dokumentId: "fbm-nvf2-l-ts",
+        abschnittId: "fbm-nvf2-l-ts-seite-9",
+        seite: 9,
+        zitat: "Bei der Antragstellung ist in der Regel eine Krankenkasse zu beteiligen.",
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-23",
+        seite: 23,
+      },
     ],
-    status: "in_review",
+    status: "freigegeben",
   },
   {
-    slug: "rollen-im-konsortium",
-    topicId: "antragsrollen",
-    frage: "Welche Rollen im Konsortium sollten frueh geklaert werden?",
+    slug: "wie-erfolgt-die-antragseinreichung",
+    topicId: "unterlagen",
+    frage: "Wie erfolgt die Antragseinreichung für NVF1 und NVF2?",
     antwort_kurz:
-      "Fruehzeitig sollten Antragstellerrolle, Umsetzungsverantwortung, Daten-/Evaluationseinbindung und Finanzverantwortung je Partner geklaert sein.",
+      "Die Einreichung erfolgt elektronisch über PT-Outline. Je Förderlinie gibt es ein eigenes Portal.",
     antwort_lang:
-      "Der Prototyp fuehrt Konsortialfragen in vier Bloecken: Antragstellende, fachliche Umsetzung, Evaluation/Daten und kaufmaennische Steuerung. Diese Struktur hilft, Luecken vor Einreichung zu erkennen und Unterlagen konsistent vorzubereiten.",
-    verwandte_fragen: ["Wer ist antragsberechtigt im Innovationsfonds?"],
-    quellen: [
-      { dokumentId: "leitfaden-nvf1-l" },
-      { dokumentId: "leitfaden-nvf2-l-s" },
+      "Für NVF1 sowie die zweistufigen NVF2-Verfahren erfolgt die Einreichung über PT-Outline. Die Leitfäden nennen die konkreten Portal-Links und erläutern, welche Bestandteile elektronisch eingereicht werden müssen.",
+    verwandte_fragen: [
+      "Welche Unterlagen sind bei der Antragseinreichung Pflicht?",
+      "Müssen Formblätter im Original eingereicht werden?",
     ],
-    status: "roh",
+    quellen: [
+      {
+        dokumentId: "fbm-nvf1-l-to",
+        abschnittId: "fbm-nvf1-l-to-seite-11",
+        seite: 11,
+        zitat: "Die Einreichung erfolgt elektronisch über das Internet-Portal.",
+      },
+      {
+        dokumentId: "fbm-nvf2-l-ts",
+        abschnittId: "fbm-nvf2-l-ts-seite-15",
+        seite: 15,
+      },
+      {
+        dokumentId: "leitfaden-nvf2-l-s",
+        abschnittId: "leitfaden-nvf2-l-s-seite-7",
+        seite: 7,
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-11",
+        seite: 11,
+      },
+    ],
+    status: "freigegeben",
   },
   {
-    slug: "wann-ist-ein-vorhaben-foerderfaehig",
+    slug: "unterschied-einstufig-zweistufig",
     topicId: "foerderfaehigkeit",
-    frage: "Wann ist ein Vorhaben foerderfaehig?",
+    frage: "Was ist der Unterschied zwischen einstufigem und zweistufigem Verfahren?",
     antwort_kurz:
-      "Foerderfaehigkeit ergibt sich aus Passung zu den Zielen der Ausschreibung, formaler Zulassigkeit und vollstaendiger Antragslogik.",
+      "Einstufig: direkter Antrag. Zweistufig: zuerst Ideenskizze, danach Vollantrag nach Auswahl.",
     antwort_lang:
-      "Die Frage nach Foerderfaehigkeit wird im Prototyp als mehrstufiges Matching abgebildet: inhaltliche Passung zur Bekanntmachung, formale Eignung laut Leitfaden und Nachweisfaehigkeit ueber die geforderten Unterlagen. Eine positive Vorpruefung ersetzt keine juristische Pruefung, reduziert aber Fehlstarts.",
+      "Im einstufigen Verfahren wird der Antrag direkt eingereicht. Im zweistufigen Verfahren startet der Prozess mit einer Ideenskizze. Nur ausgewählte Skizzen gehen in die Konzeptentwicklungsphase und werden als Vollantrag ausgearbeitet.",
     verwandte_fragen: [
-      "Welche formalen Voraussetzungen gelten?",
-      "Welche Unterlagen sind Pflicht?",
+      "Wie hoch ist die Förderung der Konzeptentwicklungsphase?",
+      "Welche formalen Ausschlussgründe gibt es?",
     ],
     quellen: [
-      { dokumentId: "fbm-nvf1-l-to" },
-      { dokumentId: "fbm-nvf2-l-ts" },
-      { dokumentId: "fbm-nvf2-l-to" },
+      {
+        dokumentId: "fbm-nvf1-l-to",
+        abschnittId: "fbm-nvf1-l-to-seite-1",
+        seite: 1,
+      },
+      {
+        dokumentId: "fbm-nvf2-l-ts",
+        abschnittId: "fbm-nvf2-l-ts-seite-3",
+        seite: 3,
+        zitat: "zunächst Ideenskizzen einzureichen",
+      },
+      {
+        dokumentId: "leitfaden-nvf2-l-s",
+        abschnittId: "leitfaden-nvf2-l-s-seite-7",
+        seite: 7,
+      },
     ],
-    status: "in_review",
+    status: "freigegeben",
   },
   {
-    slug: "welche-fristen-gelten-fuer-die-einreichung",
+    slug: "seitenumfang-nvf1-antrag",
+    topicId: "unterlagen",
+    frage: "Welche Seitenbegrenzung gilt für NVF1-Anträge?",
+    antwort_kurz:
+      "Der Antrag darf 20 DIN-A4-Seiten (Calibri 12, 1,5-zeilig) zuzüglich Anlagen nicht überschreiten.",
+    antwort_lang:
+      "Für NVF1 ist in Förderbekanntmachung und Leitfaden ein maximaler Umfang von 20 Seiten für den Antrag genannt; Anlagen kommen zusätzlich dazu. Diese formale Vorgabe ist eine harte Einreichungsanforderung.",
+    verwandte_fragen: [
+      "Welche Seitenbegrenzung gilt für NVF2-Ideenskizzen?",
+      "Welche formalen Ausschlussgründe gibt es?",
+    ],
+    quellen: [
+      {
+        dokumentId: "fbm-nvf1-l-to",
+        abschnittId: "fbm-nvf1-l-to-seite-12",
+        seite: 12,
+        zitat: "Der Umfang des Antrags darf 20 DIN-A4-Seiten ... nicht überschreiten.",
+      },
+      {
+        dokumentId: "fbm-nvf1-k-to",
+        abschnittId: "fbm-nvf1-k-to-seite-12",
+        seite: 12,
+      },
+      {
+        dokumentId: "leitfaden-nvf1-l",
+        abschnittId: "leitfaden-nvf1-l-seite-10",
+        seite: 10,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "seitenumfang-nvf2-ideenskizze",
+    topicId: "unterlagen",
+    frage: "Welche Seitenbegrenzung gilt für NVF2-Ideenskizzen?",
+    antwort_kurz:
+      "Die Ideenskizze ist auf maximal 12 Seiten begrenzt (zuzüglich definierter Anlagen).",
+    antwort_lang:
+      "Im zweistufigen Verfahren ist der Umfang der Ideenskizze klar begrenzt. Der Leitfaden benennt 12 Seiten als Obergrenze und ergänzt formale Vorgaben zu Sprache, Layout und Anlagen.",
+    verwandte_fragen: [
+      "Wie erfolgt die Antragseinreichung für NVF1 und NVF2?",
+      "Welche formalen Ausschlussgründe gibt es?",
+    ],
+    quellen: [
+      {
+        dokumentId: "leitfaden-nvf2-l-s",
+        abschnittId: "leitfaden-nvf2-l-s-seite-1",
+        seite: 1,
+        zitat: "Kommentiertes Gliederungsschema Ideenskizzen (max. Umfang: 12 Seiten)",
+      },
+      {
+        dokumentId: "leitfaden-nvf2-l-s",
+        abschnittId: "leitfaden-nvf2-l-s-seite-8",
+        seite: 8,
+      },
+      {
+        dokumentId: "fbm-nvf2-l-ts",
+        abschnittId: "fbm-nvf2-l-ts-seite-16",
+        seite: 16,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "formblaetter-original",
+    topicId: "formale_voraussetzungen",
+    frage: "Müssen Formblätter im Original eingereicht werden?",
+    antwort_kurz:
+      "Ja, die rechtsverbindlich unterschriebenen Formblätter müssen fristgerecht im Original vorliegen.",
+    antwort_lang:
+      "Neben der elektronischen Einreichung müssen bestimmte Formblätter rechtsverbindlich unterschrieben und fristgerecht im Original an den Projektträger geschickt werden. Wird diese Vorgabe nicht erfüllt, droht ein formaler Ausschluss.",
+    verwandte_fragen: [
+      "Welche Fristen gelten für Originalunterschriften?",
+      "Welche formalen Ausschlussgründe gibt es?",
+    ],
+    quellen: [
+      {
+        dokumentId: "fbm-nvf1-k-to",
+        abschnittId: "fbm-nvf1-k-to-seite-12",
+        seite: 12,
+      },
+      {
+        dokumentId: "leitfaden-nvf1-l",
+        abschnittId: "leitfaden-nvf1-l-seite-8",
+        seite: 8,
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-14",
+        seite: 14,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "fristen-originalunterschriften",
     topicId: "fristen",
-    frage: "Welche Fristen gelten fuer die Einreichung?",
+    frage: "Welche Fristen gelten für Originalunterschriften und Formblätter?",
     antwort_kurz:
-      "Relevante Stichtage werden je Runde aus Foerderbekanntmachung und FAQ uebernommen und in der Antwort mit Quelle und Seite ausgewiesen.",
+      "Die Fristen sind je Förderlinie verbindlich vorgegeben (z. B. 14 Tage Nachreichung oder feste Stichtage).",
     antwort_lang:
-      "Fristen werden im Wissensindex nicht frei formuliert, sondern aus den verbindlichen Dokumenten extrahiert und als Quellhinweis belegt. Bei Widerspruch zwischen Dokumentstaenden gilt immer die aktuellere Bekanntmachung. Der Prototyp kennzeichnet solche Antworten bis zur finalen redaktionellen Freigabe als Entwurf oder in_review.",
+      "Für einzelne Linien gelten konkrete Fristregeln: etwa die Nachreichung unterschriebener Formblätter innerhalb von 14 Tagen nach elektronischer Einreichung oder feste Stichtage für Ideenskizzen. Maßgeblich sind immer Förderbekanntmachung und Leitfaden der jeweiligen Runde.",
     verwandte_fragen: [
-      "Welche Unterlagen muessen bis zur Frist vorliegen?",
-      "Wo finde ich verbindliche Quellen?",
-    ],
-    quellen: [{ dokumentId: "fbm-nvf1-k-to" }, { dokumentId: "faq-antragstellende" }],
-    status: "freigegeben",
-  },
-  {
-    slug: "welche-unterlagen-sind-pflicht",
-    topicId: "unterlagen",
-    frage: "Welche Unterlagen sind fuer die Antragseinreichung Pflicht?",
-    antwort_kurz:
-      "Pflichtunterlagen ergeben sich aus den Leitfaeden und Bekanntmachungen und sollten als Checkliste je Antrag zusammengestellt werden.",
-    antwort_lang:
-      "Der Prototyp bildet Unterlagen als strukturierte Liste je Themencluster ab. Dazu gehoeren Kernformulare, Anlagen und ggf. ergaenzende Nachweise. Jeder Punkt wird mit Quellreferenz (Dokument + Seite) versehen, damit die Liste nachvollziehbar und auditierbar bleibt.",
-    verwandte_fragen: [
-      "Welche Formvorgaben gelten fuer Anlagen?",
-      "Welche Fristen gelten fuer die Einreichung?",
+      "Müssen Formblätter im Original eingereicht werden?",
+      "Wie erfolgt die Antragseinreichung für NVF1 und NVF2?",
     ],
     quellen: [
-      { dokumentId: "leitfaden-nvf1-l" },
-      { dokumentId: "leitfaden-nvf2-l-s" },
-      { dokumentId: "faq-antragstellende" },
+      {
+        dokumentId: "fbm-nvf1-k-to",
+        abschnittId: "fbm-nvf1-k-to-seite-12",
+        seite: 12,
+        zitat: "innerhalb von 14 Tagen nach der elektronischen Einreichung",
+      },
+      {
+        dokumentId: "fbm-nvf2-l-ts",
+        abschnittId: "fbm-nvf2-l-ts-seite-16",
+        seite: 16,
+      },
+      {
+        dokumentId: "leitfaden-nvf2-l-s",
+        abschnittId: "leitfaden-nvf2-l-s-seite-8",
+        seite: 8,
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-15",
+        seite: 15,
+      },
     ],
     status: "freigegeben",
   },
   {
-    slug: "welche-formalen-voraussetzungen-gelten",
-    topicId: "formale_voraussetzungen",
-    frage: "Welche formalen Voraussetzungen gelten vor Antragstellung?",
+    slug: "krankenkasse-beteiligung",
+    topicId: "antragsrollen",
+    frage: "Wann muss eine Krankenkasse beteiligt sein?",
     antwort_kurz:
-      "Formale Voraussetzungen betreffen Antragsformat, Nachweisstruktur, Fristenkonformitaet und die Einhaltung der Nebenbestimmungen.",
+      "Im Bereich neue Versorgungsformen ist in der Regel eine Krankenkasse zu beteiligen.",
     antwort_lang:
-      "Formale Voraussetzungen werden im Prototyp als separater Pruefpfad modelliert. Ziel ist, inhaltliche Eignung und formale Zulassigkeit getrennt zu bewerten, damit kein formal unvollstaendiger Antrag in die finale Einreichung geht.",
+      "Die Förderbekanntmachungen sehen in der Regel eine Krankenkassenbeteiligung vor. Diese Beteiligung muss im Antrag nachweisbar beschrieben und formal dokumentiert sein.",
     verwandte_fragen: [
-      "Welche Nebenbestimmungen gelten?",
-      "Wie werden Personalmittel angesetzt?",
+      "Wer ist antragsberechtigt im Innovationsfonds?",
+      "Wie wird die Krankenkassenbeteiligung im zweistufigen Verfahren nachgewiesen?",
     ],
-    quellen: [{ dokumentId: "anbest-if-stand-juni-2025" }, { dokumentId: "leitfaden-nvf1-l" }],
-    status: "in_review",
-  },
-  {
-    slug: "welche-nebenbestimmungen-gelten",
-    topicId: "formale_voraussetzungen",
-    frage: "Welche Nebenbestimmungen gelten fuer bewilligte Projekte?",
-    antwort_kurz:
-      "Die Nebenbestimmungen richten sich nach den ANBest-IF und den foerderrechtlichen Vorgaben der jeweiligen Runde.",
-    antwort_lang:
-      "Fuer die operative Planung sollten Nebenbestimmungen nicht erst nach Bewilligung betrachtet werden. Der Prototyp mappt typische Pflichten (Dokumentation, Mittelverwendung, Nachweise) fruehzeitig auf Arbeitspakete, damit die Projektsteuerung von Beginn an foerderkonform aufgesetzt wird.",
-    verwandte_fragen: [
-      "Welche formalen Voraussetzungen gelten vor Antragstellung?",
-      "Wie werden Personalmittel angesetzt?",
+    quellen: [
+      {
+        dokumentId: "fbm-nvf1-l-to",
+        abschnittId: "fbm-nvf1-l-to-seite-6",
+        seite: 6,
+      },
+      {
+        dokumentId: "fbm-nvf2-l-ts",
+        abschnittId: "fbm-nvf2-l-ts-seite-9",
+        seite: 9,
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-23",
+        seite: 23,
+      },
     ],
-    quellen: [{ dokumentId: "anbest-if-stand-juni-2025" }],
     status: "freigegeben",
   },
   {
-    slug: "wie-werden-personalmittel-angesetzt",
-    topicId: "formale_voraussetzungen",
-    frage: "Wie werden Personalmittel und Personalsaetze angesetzt?",
+    slug: "nachweis-krankenkasse-zweistufig",
+    topicId: "antragsrollen",
+    frage: "Wie wird die Krankenkassenbeteiligung im zweistufigen Verfahren nachgewiesen?",
     antwort_kurz:
-      "Die Ansatzlogik fuer Personalmittel orientiert sich an den veroeffentlichten Personalmittelsaetzen und den Vorgaben im Leitfaden.",
+      "Bereits bei der Ideenskizze ist eine Absichtserklärung der Krankenkasse(n) vorgesehen.",
     antwort_lang:
-      "Im Prototyp wird fuer Kostenfragen ein eigener Bereich mit Quellverweisen auf Personalmittelsaetze aufgebaut. So lassen sich frueh Annahmen dokumentieren und im Review als Entwurf kennzeichnen, bevor Zahlen in den finalen Antrag uebernommen werden.",
-    verwandte_fragen: ["Welche formalen Voraussetzungen gelten?", "Welche Nebenbestimmungen gelten?"],
-    quellen: [{ dokumentId: "personalmittelsaetze-if-2026" }, { dokumentId: "leitfaden-nvf1-l" }],
-    status: "roh",
-  },
-  {
-    slug: "wo-finde-ich-verbindliche-quellen",
-    topicId: "unterlagen",
-    frage: "Wo finde ich die verbindlichen Quellen fuer Antworten?",
-    antwort_kurz:
-      "Jede Antwort im Prototyp verweist auf Dokumente und Seitenstellen, damit Aussagen nachvollziehbar und reviewfaehig bleiben.",
-    antwort_lang:
-      "Der Wissensindex fuehrt keine Chat-Antworten ohne Quelle aus. Jede inhaltliche Aussage sollte auf mindestens eine Primarquelle verlinken. Bei Unklarheiten wird der Status auf in_review oder roh gesetzt, bis eine Redaktion die Formulierung freigibt.",
+      "Im zweistufigen Verfahren muss die Krankenkassenbeteiligung schon in der Ideenskizze nachvollziehbar sein. Die Förderbekanntmachungen nennen dazu eine Absichtserklärung als Nachweisinstrument.",
     verwandte_fragen: [
-      "Welche Unterlagen sind fuer die Antragseinreichung Pflicht?",
-      "Welche Fristen gelten fuer die Einreichung?",
+      "Wann muss eine Krankenkasse beteiligt sein?",
+      "Was ist der Unterschied zwischen einstufigem und zweistufigem Verfahren?",
     ],
-    quellen: [{ dokumentId: "faq-antragstellende" }, { dokumentId: "leitfaden-nvf2-l-s" }],
+    quellen: [
+      {
+        dokumentId: "fbm-nvf2-l-ts",
+        abschnittId: "fbm-nvf2-l-ts-seite-9",
+        seite: 9,
+        zitat: "bereits bei der Einreichung der Ideenskizze durch eine Absichtserklärung",
+      },
+      {
+        dokumentId: "fbm-nvf2-l-to",
+        abschnittId: "fbm-nvf2-l-to-seite-7",
+        seite: 7,
+      },
+      {
+        dokumentId: "leitfaden-nvf2-l-s",
+        abschnittId: "leitfaden-nvf2-l-s-seite-14",
+        seite: 14,
+      },
+    ],
     status: "freigegeben",
   },
   {
-    slug: "wie-gehe-ich-bei-unklarer-frage-vor",
+    slug: "foerderung-konzeptentwicklungsphase",
     topicId: "foerderfaehigkeit",
-    frage: "Wie gehe ich bei unklaren Fragestellungen vor?",
+    frage: "Wie hoch ist die Förderung der Konzeptentwicklungsphase?",
     antwort_kurz:
-      "Bei unklarer Frage zuerst Themencluster setzen, dann Quellenstellen sichten und den Entwurf mit Status in_review kennzeichnen.",
+      "Für die Konzeptentwicklungsphase können bis zu 75.000 € bei bis zu sechs Monaten Laufzeit beantragt werden.",
     antwort_lang:
-      "Wenn kein klares Regelmatch vorliegt, liefert der Prototyp relevante Volltextstellen aus mehreren Dokumenten. Daraus wird ein kuratierter Entwurf erstellt, der erst nach fachlichem Review freigegeben wird. So bleibt die Antwort nutzbar, ohne ungesicherte Aussagen als final zu behandeln.",
+      "In den zweistufigen Verfahren ist die Konzeptentwicklungsphase auf bis zu sechs Monate angelegt. Für diese Phase wird eine Förderung von bis zu 75.000 € als Obergrenze genannt, die nach Aufwand abgerechnet wird.",
     verwandte_fragen: [
-      "Wo finde ich die verbindlichen Quellen fuer Antworten?",
-      "Wann ist ein Vorhaben foerderfaehig?",
+      "Was ist der Unterschied zwischen einstufigem und zweistufigem Verfahren?",
+      "Wie lang dürfen Projekte laufen?",
     ],
-    quellen: [{ dokumentId: "faq-antragstellende" }, { dokumentId: "fbm-nvf2-l-to" }],
-    status: "roh",
+    quellen: [
+      {
+        dokumentId: "fbm-nvf2-l-ts",
+        abschnittId: "fbm-nvf2-l-ts-seite-13",
+        seite: 13,
+      },
+      {
+        dokumentId: "leitfaden-nvf2-l-s",
+        abschnittId: "leitfaden-nvf2-l-s-seite-18",
+        seite: 18,
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-19",
+        seite: 19,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "projektlaufzeit-maximal",
+    topicId: "fristen",
+    frage: "Wie lang dürfen Projekte in der Durchführungsphase laufen?",
+    antwort_kurz:
+      "Regelhaft 36 Monate, in begründeten Fällen bis maximal 48 Monate.",
+    antwort_lang:
+      "Die Förderdokumente nennen in der Regel 36 Monate Laufzeit. In begründeten Ausnahmefällen sind bis zu 48 Monate möglich. Für eng getaktete Planung empfehlen die Leitfäden, den Puffer nicht vollständig zu verbrauchen.",
+    verwandte_fragen: [
+      "Wie hoch ist die Förderung der Konzeptentwicklungsphase?",
+      "Welche Fristen gelten für Originalunterschriften und Formblätter?",
+    ],
+    quellen: [
+      {
+        dokumentId: "fbm-nvf1-l-to",
+        abschnittId: "fbm-nvf1-l-to-seite-9",
+        seite: 9,
+      },
+      {
+        dokumentId: "fbm-nvf2-l-ts",
+        abschnittId: "fbm-nvf2-l-ts-seite-13",
+        seite: 13,
+      },
+      {
+        dokumentId: "leitfaden-nvf1-l",
+        abschnittId: "leitfaden-nvf1-l-seite-16",
+        seite: 16,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "datenschutzvorgaben",
+    topicId: "formale_voraussetzungen",
+    frage: "Welche Datenschutzvorgaben gelten im Innovationsfonds?",
+    antwort_kurz:
+      "Es gelten die einschlägigen Datenschutzvorschriften (u. a. DSGVO, BDSG, SGB V/SGB X).",
+    antwort_lang:
+      "Die Förderbekanntmachungen verpflichten zur Einhaltung datenschutzrechtlicher Bestimmungen. Die Leitfäden konkretisieren die rechtlichen Rahmenbedingungen für personenbezogene Patientendaten und verweisen auf DSGVO, BDSG sowie sozialrechtliche Vorgaben.",
+    verwandte_fragen: [
+      "Was gilt für Daten außerhalb der ePA?",
+      "Welche Anforderungen gelten für TI und Interoperabilität?",
+    ],
+    quellen: [
+      {
+        dokumentId: "fbm-nvf1-l-to",
+        abschnittId: "fbm-nvf1-l-to-seite-9",
+        seite: 9,
+      },
+      {
+        dokumentId: "leitfaden-nvf1-l",
+        abschnittId: "leitfaden-nvf1-l-seite-3",
+        seite: 3,
+      },
+      {
+        dokumentId: "anbest-if-stand-juni-2025",
+        abschnittId: "anbest-if-stand-juni-2025-seite-3",
+        seite: 3,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "daten-ausserhalb-epa",
+    topicId: "formale_voraussetzungen",
+    frage: "Was gilt für Daten außerhalb der ePA?",
+    antwort_kurz:
+      "Wenn Patientendaten außerhalb der ePA gespeichert werden, muss dies begründet werden.",
+    antwort_lang:
+      "Die Leitfäden verlangen eine nachvollziehbare Begründung, falls Daten für die Versorgungsform nicht in der ePA gehalten werden. Zusätzlich ist die Übertragbarkeit in die Regelversorgung mit ePA/TI-Bezug darzustellen.",
+    verwandte_fragen: [
+      "Welche Datenschutzvorgaben gelten im Innovationsfonds?",
+      "Welche Anforderungen gelten für TI und Interoperabilität?",
+    ],
+    quellen: [
+      {
+        dokumentId: "leitfaden-nvf1-l",
+        abschnittId: "leitfaden-nvf1-l-seite-14",
+        seite: 14,
+      },
+      {
+        dokumentId: "leitfaden-nvf2-l-s",
+        abschnittId: "leitfaden-nvf2-l-s-seite-5",
+        seite: 5,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "ti-und-interoperabilitaet",
+    topicId: "formale_voraussetzungen",
+    frage: "Welche Anforderungen gelten für TI und Interoperabilität?",
+    antwort_kurz:
+      "Projekte mit IT-/Telemedizinbezug müssen Anforderungen zu TI, Schnittstellen und Interoperabilität berücksichtigen.",
+    antwort_lang:
+      "Bei digitalen Versorgungsformen müssen die Anforderungen der Telematikinfrastruktur, der ePA-Nutzung und relevanter Schnittstellenvorgaben dargestellt werden. Die Leitfäden erwarten eine umsetzbare Integrationslogik für die Regelversorgung.",
+    verwandte_fragen: [
+      "Was gilt für Daten außerhalb der ePA?",
+      "Welche Datenschutzvorgaben gelten im Innovationsfonds?",
+    ],
+    quellen: [
+      {
+        dokumentId: "fbm-nvf1-l-to",
+        abschnittId: "fbm-nvf1-l-to-seite-9",
+        seite: 9,
+      },
+      {
+        dokumentId: "leitfaden-nvf1-l",
+        abschnittId: "leitfaden-nvf1-l-seite-5",
+        seite: 5,
+      },
+      {
+        dokumentId: "leitfaden-nvf2-l-s",
+        abschnittId: "leitfaden-nvf2-l-s-seite-6",
+        seite: 6,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "foerderausschluesse",
+    topicId: "foerderfaehigkeit",
+    frage: "Welche Projekte sind von der Förderung ausgeschlossen?",
+    antwort_kurz:
+      "Nicht förderfähig sind u. a. bestimmte Produktentwicklungen, klinische Prüfungen nach MDR-Fokus und Doppelstrukturen zu bestehenden Förderungen.",
+    antwort_lang:
+      "Die Bekanntmachungen und Leitfäden nennen explizit Ausschlüsse. Dazu zählen unter anderem Vorhaben mit primärem Produktentwicklungsfokus, bestimmte klinische Prüfungslogiken sowie Projekte, die nicht zum Gegenstand der Förderung passen.",
+    verwandte_fragen: [
+      "Was ist der Unterschied zwischen einstufigem und zweistufigem Verfahren?",
+      "Welche formalen Ausschlussgründe gibt es?",
+    ],
+    quellen: [
+      {
+        dokumentId: "fbm-nvf1-l-to",
+        abschnittId: "fbm-nvf1-l-to-seite-6",
+        seite: 6,
+      },
+      {
+        dokumentId: "fbm-nvf2-l-ts",
+        abschnittId: "fbm-nvf2-l-ts-seite-8",
+        seite: 8,
+      },
+      {
+        dokumentId: "leitfaden-nvf2-l-s",
+        abschnittId: "leitfaden-nvf2-l-s-seite-4",
+        seite: 4,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "formale-ausschlussgruende",
+    topicId: "formale_voraussetzungen",
+    frage: "Welche formalen Ausschlussgründe gibt es bei Antrag und Ideenskizze?",
+    antwort_kurz:
+      "Typische Ausschlussgründe sind falscher Einreichungsweg, Nichteinhaltung von Form/Umfang oder fehlende fristgerechte Originalunterlagen.",
+    antwort_lang:
+      "Leitfäden und FAQ benennen konkrete formale Ausschlussgründe. Dazu gehören insbesondere die Nichteinreichung über das vorgesehene Portal, unvollständige Unterlagen sowie fehlende Originalunterschriften innerhalb der vorgegebenen Frist.",
+    verwandte_fragen: [
+      "Müssen Formblätter im Original eingereicht werden?",
+      "Welche Seitenbegrenzung gilt für NVF2-Ideenskizzen?",
+    ],
+    quellen: [
+      {
+        dokumentId: "leitfaden-nvf1-l",
+        abschnittId: "leitfaden-nvf1-l-seite-8",
+        seite: 8,
+      },
+      {
+        dokumentId: "leitfaden-nvf2-l-s",
+        abschnittId: "leitfaden-nvf2-l-s-seite-9",
+        seite: 9,
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-14",
+        seite: 14,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "nachweise-nach-bewilligung",
+    topicId: "formale_voraussetzungen",
+    frage: "Welche Nachweise und Berichte sind nach Bewilligung erforderlich?",
+    antwort_kurz:
+      "Erforderlich sind insbesondere Zwischennachweise, Zwischenberichte und ein fristgerechter Verwendungsnachweis.",
+    antwort_lang:
+      "Nach Bewilligung gelten dokumentierte Nachweis- und Berichtspflichten. Dazu gehören je nach Zeitpunkt Zwischennachweise, Zwischenberichte und der abschließende Verwendungsnachweis innerhalb der festgelegten Fristen.",
+    verwandte_fragen: [
+      "Wie funktioniert der Verwendungsnachweis?",
+      "Wie wird die Infrastrukturpauschale abgerechnet?",
+    ],
+    quellen: [
+      {
+        dokumentId: "anbest-if-stand-juni-2025",
+        abschnittId: "anbest-if-stand-juni-2025-seite-4",
+        seite: 4,
+      },
+      {
+        dokumentId: "anbest-if-stand-juni-2025",
+        abschnittId: "anbest-if-stand-juni-2025-seite-8",
+        seite: 8,
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-32",
+        seite: 32,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "verwendungsnachweis-logik",
+    topicId: "formale_voraussetzungen",
+    frage: "Wie funktioniert der Verwendungsnachweis im Innovationsfonds?",
+    antwort_kurz:
+      "Der Verwendungsnachweis erfolgt auf Basis des tatsächlichen Aufwands und muss durch belegfähige Nachweise gestützt sein.",
+    antwort_lang:
+      "Die Abrechnung der Fördermittel erfolgt über den Verwendungsnachweis. Dabei sind die Vorgaben zu rechnerischen Nachweisen, Belegen und Aufbewahrungspflichten einzuhalten. Konsortien benötigen zusätzlich eine konsolidierte Gesamtdarstellung.",
+    verwandte_fragen: [
+      "Welche Nachweise und Berichte sind nach Bewilligung erforderlich?",
+      "Wie wird die Infrastrukturpauschale abgerechnet?",
+    ],
+    quellen: [
+      {
+        dokumentId: "anbest-if-stand-juni-2025",
+        abschnittId: "anbest-if-stand-juni-2025-seite-4",
+        seite: 4,
+      },
+      {
+        dokumentId: "anbest-if-stand-juni-2025",
+        abschnittId: "anbest-if-stand-juni-2025-seite-9",
+        seite: 9,
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-33",
+        seite: 33,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "infrastrukturpauschale-abrechnung",
+    topicId: "formale_voraussetzungen",
+    frage: "Wie wird die Infrastrukturpauschale abgerechnet?",
+    antwort_kurz:
+      "Die Infrastrukturpauschale wird prozentual auf tatsächliche Personalausgaben bezogen und ist im Nachweis zu bestätigen.",
+    antwort_lang:
+      "ANBest-IF und FAQ beschreiben die Abrechnung der Infrastrukturpauschale als prozentualen Anteil auf die tatsächlich entstandenen Personalausgaben. Im Verwendungsnachweis muss der projektbezogene Einsatz nachvollziehbar bestätigt werden.",
+    verwandte_fragen: [
+      "Wie funktioniert der Verwendungsnachweis im Innovationsfonds?",
+      "Welche Nachweise und Berichte sind nach Bewilligung erforderlich?",
+    ],
+    quellen: [
+      {
+        dokumentId: "anbest-if-stand-juni-2025",
+        abschnittId: "anbest-if-stand-juni-2025-seite-6",
+        seite: 6,
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-20",
+        seite: 20,
+      },
+      {
+        dokumentId: "leitfaden-nvf1-l",
+        abschnittId: "leitfaden-nvf1-l-seite-20",
+        seite: 20,
+      },
+      {
+        dokumentId: "personalmittelsaetze-if-2026",
+        abschnittId: "personalmittelsaetze-if-2026-seite-1",
+        seite: 1,
+      },
+    ],
+    status: "freigegeben",
+  },
+  {
+    slug: "rechtsgrundlagen-verstetigung",
+    topicId: "foerderfaehigkeit",
+    frage: "Welche Rechtsgrundlagen sind für die Verstetigung in der Versorgung relevant?",
+    antwort_kurz:
+      "Als zentrale Wege werden insbesondere Selektivverträge (§ 140a SGB V) und Modellvorhaben (§§ 63 ff. SGB V) genannt.",
+    antwort_lang:
+      "Die Förderunterlagen verlangen eine realistische Transfer- und Verstetigungslogik. Dafür werden als typische Rechtsgrundlagen insbesondere Selektivverträge und Modellvorhaben benannt. Welche Option passt, hängt vom konkreten Versorgungskonzept ab.",
+    verwandte_fragen: [
+      "Wer ist antragsberechtigt im Innovationsfonds?",
+      "Welche Projekte sind von der Förderung ausgeschlossen?",
+    ],
+    quellen: [
+      {
+        dokumentId: "fbm-nvf1-l-to",
+        abschnittId: "fbm-nvf1-l-to-seite-8",
+        seite: 8,
+      },
+      {
+        dokumentId: "leitfaden-nvf1-l",
+        abschnittId: "leitfaden-nvf1-l-seite-11",
+        seite: 11,
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-25",
+        seite: 25,
+      },
+      {
+        dokumentId: "faq-antragstellende",
+        abschnittId: "faq-antragstellende-seite-26",
+        seite: 26,
+      },
+    ],
+    status: "freigegeben",
   },
 ];

@@ -12,7 +12,7 @@ const navItems: NavItem[] = [
   { label: "Projekte", type: "section", section: "saveandsafe" },
   { label: "Team", type: "section", section: "team" },
   { label: "Methodik", type: "section", section: "methodik" },
-  { label: "Wissensindex", type: "route", to: "/wissensindex-prototyp" },
+  { label: "Wissensindex Beta", type: "route", to: "/wissensindex-beta" },
 ];
 
 const Navbar = () => {

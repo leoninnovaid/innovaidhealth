@@ -7,25 +7,25 @@ import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 const SOURCE_DOCUMENTS = [
   {
     id: "fbm-nvf1-l-to",
-    titel: "Foerderbekanntmachung NVF1 Langfassung",
+    titel: "Förderbekanntmachung NVF1 Langfassung",
     fileName: "2026-01-23_FBM_NVF1_L_TO.pdf",
     dokumenttyp: "Foerderbekanntmachung",
   },
   {
     id: "fbm-nvf1-k-to",
-    titel: "Foerderbekanntmachung NVF1 Kurzfassung",
+    titel: "Förderbekanntmachung NVF1 Kurzfassung",
     fileName: "F\u00f6rderbekanntmachung - 2026-01-23_FBM_NVF1_K_TO.pdf",
     dokumenttyp: "Foerderbekanntmachung",
   },
   {
     id: "fbm-nvf2-l-ts",
-    titel: "Foerderbekanntmachung NVF2 Langfassung TS",
+    titel: "Förderbekanntmachung NVF2 Langfassung TS",
     fileName: "2026-01-23_FBM_NVF2_L_TS.pdf",
     dokumenttyp: "Foerderbekanntmachung",
   },
   {
     id: "fbm-nvf2-l-to",
-    titel: "Foerderbekanntmachung NVF2 Langfassung TO",
+    titel: "Förderbekanntmachung NVF2 Langfassung TO",
     fileName: "2026-01-23_FBM_NVF2_L_TO.pdf",
     dokumenttyp: "Foerderbekanntmachung",
   },
@@ -55,7 +55,7 @@ const SOURCE_DOCUMENTS = [
   },
   {
     id: "personalmittelsaetze-if-2026",
-    titel: "Personalmittelsaetze IF 2026",
+    titel: "Personalmittelsätze IF 2026",
     fileName: "TV-L-West Musterberechnung NN-Personal 2015ff - 2026-01-23_Personalmittelsaetze_IF_2026.pdf",
     dokumenttyp: "Personalmittelsaetze",
   },

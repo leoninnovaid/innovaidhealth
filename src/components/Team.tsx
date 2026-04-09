@@ -25,9 +25,9 @@ const teamMembers: TeamMember[] = [
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(213_26%_92%),hsl(220_18%_86%))]",
     portraitClassName: "h-[126%] w-full object-cover object-[center_22%] scale-[1.08]",
     notes: [
-      "Digital Health und Versorgungsinnovation",
-      "Strategische Entwicklung im Gesundheitsmarkt",
-      "Partnerschaften zwischen Innovation und Versorgung",
+      "Leitet Konsortialentwicklung und Förderanträge mit Fokus auf Innovationsfonds-Projekte.",
+      "Verantwortet Geschäftsmodell- und Verstetigungsstrategie über die Förderphase hinaus.",
+      "Steuert Partnernetzwerke zwischen Kassen, Leistungserbringern und Digital-Health-Anbietern.",
     ],
   },
   {
@@ -39,9 +39,9 @@ const teamMembers: TeamMember[] = [
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(213_20%_96%),hsl(219_16%_90%))]",
     portraitClassName: "h-[98%] w-full object-cover object-[center_12%] scale-[0.98]",
     notes: [
-      "Operative Umsetzung und Projektsteuerung",
-      "Marktverständnis im deutschen Gesundheitswesen",
-      "Brücke zwischen Versorgung, Produkt und Umsetzung",
+      "Steuert operative Umsetzung und PMO in komplexen Digital-Health-Projekten.",
+      "Bringt konkrete Erfahrung aus MDR-Produktmanagement und DiGA-naher Umsetzung ein.",
+      "Verbindet regulatorische Anforderungen mit pragmatischer Implementierung in der Versorgung.",
     ],
   },
   {
@@ -53,9 +53,9 @@ const teamMembers: TeamMember[] = [
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(214_23%_95%),hsl(219_17%_89%))]",
     portraitClassName: "h-[118%] w-full object-cover object-[center_top] -translate-y-[8%] scale-[1.02]",
     notes: [
-      "Unterstützung der Geschäftsführung im Tagesgeschäft",
-      "Projektkoordination und interne Strukturierung",
-      "Operative Begleitung laufender Themen und Prozesse",
+      "Strukturiert Prioritäten, Termine und Follow-up zwischen Geschäftsführung und Projektteams.",
+      "Sichert transparente Projektkoordination über Arbeitspakete und operative Abstimmungen.",
+      "Unterstützt die laufende Umsetzung in PMO, Kommunikation und interner Steuerung.",
     ],
   },
 ];
@@ -75,8 +75,7 @@ const Team = () => (
           Die Menschen hinter INNOVAID:health
         </h2>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-          Drei Ansprechpartner mit gemeinsamem Fokus: Gesundheitsinnovationen mit Struktur, Relevanz und
-          Umsetzungsstärke voranbringen.
+          Drei Ansprechpartner mit klaren Rollen in Strategie, Umsetzung und operativer Steuerung.
         </p>
       </motion.div>
 

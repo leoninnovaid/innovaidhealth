@@ -8,6 +8,7 @@ import SaveAndSafe from "@/components/SaveAndSafe";
 import Team from "@/components/Team";
 import Process from "@/components/Process";
 import Impact from "@/components/Impact";
+import FailureReasons from "@/components/FailureReasons";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -59,6 +60,7 @@ const Index = () => {
       <Team />
       <Process />
       <Impact />
+      <FailureReasons />
       <Contact />
       <Footer />
     </div>

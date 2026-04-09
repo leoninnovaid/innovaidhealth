@@ -48,9 +48,6 @@ const Hero = () => {
                 Förderprojekt besprechen <ArrowRight className="ml-2" size={18} />
               </Link>
             </Button>
-            <Button size="lg" variant="hero-outline" className="px-8 py-6 text-base" asChild>
-              <Link to="/?section=kontakt">Vorhaben besprechen</Link>
-            </Button>
           </motion.div>
         </div>
       </div>

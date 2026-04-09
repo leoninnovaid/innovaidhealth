@@ -44,7 +44,7 @@ const teamMembers: TeamMember[] = [
     portraitClassName: "h-[98%] w-full object-cover object-[center_12%] scale-[0.98]",
     highlights: {
       doing: "Mit ihm steuern wir Produktentwicklung, PMO und Implementierung digitaler Therapiebegleitung.",
-      capability: "Wir bringen MDR/DiGA-Expertise und operative Umsetzungsstärke im Versorgungsalltag zusammen.",
+      capability: "Wir bringen regulatorisches Know-how und operative Umsetzungsstaerke im Versorgungsalltag zusammen.",
       impact: "Wir überführen digitale Produkte strukturiert von der Idee in die reale Versorgung.",
     },
   },

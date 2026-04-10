@@ -210,11 +210,14 @@ const WissensindexFrage = () => {
                 {answer.quellen.map((source, indexSource) => {
                   const title = documentMap.get(source.dokumentId) ?? source.dokumentId;
                   const pageLabel = source.seite ? ` · Seite ${source.seite}` : "";
+                  const queryParams = new URLSearchParams({ antwort: answer.slug });
+                  if (source.seite) {
+                    queryParams.set("seite", String(source.seite));
+                  }
+                  const baseHref = `/wissensindex-beta/dokument/${source.dokumentId}?${queryParams.toString()}`;
                   const documentHref = source.abschnittId
-                    ? `/wissensindex-beta/dokument/${source.dokumentId}#${source.abschnittId}`
-                    : source.seite
-                      ? `/wissensindex-beta/dokument/${source.dokumentId}?seite=${source.seite}`
-                      : `/wissensindex-beta/dokument/${source.dokumentId}`;
+                    ? `${baseHref}#${source.abschnittId}`
+                    : baseHref;
 
                   return (
                     <li
@@ -254,7 +257,7 @@ const WissensindexFrage = () => {
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-foreground">{snippet.text}</p>
                       <Link
-                        to={`/wissensindex-beta/dokument/${snippet.dokumentId}#${snippet.abschnittId}`}
+                        to={`/wissensindex-beta/dokument/${snippet.dokumentId}?antwort=${answer.slug}#${snippet.abschnittId}`}
                         className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
                       >
                         Im Dokument öffnen

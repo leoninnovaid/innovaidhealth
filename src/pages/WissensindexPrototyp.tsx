@@ -371,7 +371,7 @@ const WissensindexPrototyp = () => {
                                 {formatAnswerSources(result).map((source) => (
                                   <li key={`${result.slug}-${source.dokumentId}`} className="text-sm text-muted-foreground">
                                     <Link
-                                      to={`/wissensindex-beta/dokument/${source.dokumentId}${source.abschnittId ? `#${source.abschnittId}` : ""}`}
+                                      to={`/wissensindex-beta/dokument/${source.dokumentId}?antwort=${result.slug}${source.abschnittId ? `#${source.abschnittId}` : ""}`}
                                       className="font-medium text-accent hover:underline"
                                     >
                                       {source.titel}
@@ -390,7 +390,7 @@ const WissensindexPrototyp = () => {
                                 </p>
                                 <p className="mt-1 text-sm text-foreground">{result.snippets[0].text}</p>
                                 <Link
-                                  to={`/wissensindex-beta/dokument/${result.snippets[0].dokumentId}#${result.snippets[0].abschnittId}`}
+                                  to={`/wissensindex-beta/dokument/${result.snippets[0].dokumentId}?antwort=${result.slug}#${result.snippets[0].abschnittId}`}
                                   className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
                                 >
                                   Dokumentstelle öffnen

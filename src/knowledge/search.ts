@@ -1,5 +1,6 @@
 ﻿import { answerEntries } from "@/knowledge/answer-entries";
 import { questionRules } from "@/knowledge/question-rules";
+import { cleanSnippetText } from "@/knowledge/text-cleanup";
 import type {
   AnswerEntry,
   DocumentSearchResult,
@@ -100,7 +101,7 @@ function compileRulePatterns(rule: QuestionRule): RegExp[] {
 }
 
 function snippetFromText(text: string, tokens: string[]): string {
-  const cleaned = text.replace(/\s+/g, " ").trim();
+  const cleaned = cleanSnippetText(text).replace(/\s+/g, " ").trim();
   if (!cleaned) {
     return "";
   }

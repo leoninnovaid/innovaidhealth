@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import GlossaryText from "@/components/knowledge/GlossaryText";
 import { answerEntries } from "@/knowledge/answer-entries";
+import { cleanDocumentHeading, cleanDocumentText } from "@/knowledge/text-cleanup";
 import { statusMeta } from "@/knowledge/presentation";
 import type { KnowledgeDocumentType, KnowledgeIndex, ReviewStatus } from "@/knowledge/types";
 
@@ -27,6 +28,8 @@ const documentTypeLabel: Record<KnowledgeDocumentType, string> = {
 const WissensindexDokument = () => {
   const { documentId } = useParams<{ documentId: string }>();
   const location = useLocation();
+  const searchParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
+  const focusedAnswerSlug = searchParams.get("antwort");
   const [index, setIndex] = useState<KnowledgeIndex | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -132,6 +135,52 @@ const WissensindexDokument = () => {
     return citations;
   }, [documentEntry]);
 
+  const focusedAnswer = useMemo(() => {
+    if (!focusedAnswerSlug || !documentEntry) {
+      return null;
+    }
+
+    const candidate = answerEntries.find((entry) => entry.slug === focusedAnswerSlug);
+    if (!candidate) {
+      return null;
+    }
+
+    const hasDocumentSource = candidate.quellen.some((source) => source.dokumentId === documentEntry.id);
+    return hasDocumentSource ? candidate : null;
+  }, [documentEntry, focusedAnswerSlug]);
+
+  const focusedSectionIds = useMemo(() => {
+    const sectionIds = new Set<string>();
+    if (!focusedAnswer || !documentEntry) {
+      return sectionIds;
+    }
+
+    for (const source of focusedAnswer.quellen) {
+      if (source.dokumentId !== documentEntry.id) {
+        continue;
+      }
+
+      if (source.abschnittId) {
+        sectionIds.add(source.abschnittId);
+        continue;
+      }
+
+      if (source.seite) {
+        documentEntry.abschnitte
+          .filter((section) => section.seite === source.seite)
+          .forEach((section) => sectionIds.add(section.id));
+      }
+    }
+
+    return sectionIds;
+  }, [documentEntry, focusedAnswer]);
+
+  const hasFocusedSections = focusedSectionIds.size > 0;
+  const formattedTitle = useMemo(
+    () => cleanDocumentHeading(documentEntry?.titel ?? "Dokument"),
+    [documentEntry?.titel],
+  );
+
   const highlightedCount = useMemo(() => sectionCitations.size, [sectionCitations]);
 
   const citedQuestionCount = useMemo(() => {
@@ -145,10 +194,9 @@ const WissensindexDokument = () => {
       return;
     }
 
-    const search = new URLSearchParams(location.search);
     const hashSectionId = location.hash.replace("#", "");
-    const targetSectionId = search.get("abschnitt");
-    const targetPage = Number(search.get("seite"));
+    const targetSectionId = searchParams.get("abschnitt");
+    const targetPage = Number(searchParams.get("seite"));
 
     const scrollToTarget = () => {
       if (hashSectionId) {
@@ -177,7 +225,7 @@ const WissensindexDokument = () => {
 
     const timeout = window.setTimeout(scrollToTarget, 40);
     return () => window.clearTimeout(timeout);
-  }, [documentEntry, isLoading, loadError, location.hash, location.search]);
+  }, [documentEntry, isLoading, loadError, location.hash, searchParams]);
 
   if (!documentId) {
     return (
@@ -210,7 +258,7 @@ const WissensindexDokument = () => {
               Wissensindex-Suche
             </Link>
             <span> / </span>
-            <span>{documentEntry?.titel ?? "Dokument"}</span>
+            <span>{formattedTitle}</span>
           </nav>
 
           <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
@@ -255,11 +303,18 @@ const WissensindexDokument = () => {
                   </span>
                 </div>
 
-                <h1 className="text-2xl font-extrabold text-foreground md:text-3xl">{documentEntry.titel}</h1>
+                <h1 className="text-2xl font-extrabold text-foreground md:text-3xl">{formattedTitle}</h1>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   Dieses Dokument ist als Volltext verfügbar. Gelb markierte Abschnitte werden in Antworten des
                   Wissensindex zitiert.
                 </p>
+
+                {focusedAnswer && hasFocusedSections && (
+                  <p className="mt-3 rounded-lg border border-accent/25 bg-accent/10 px-3 py-2 text-sm text-foreground">
+                    Fokus aktiv: Es werden nur die für „{focusedAnswer.frage}“ relevanten Abschnitte markiert. Alle
+                    übrigen Inhalte sind ausgegraut.
+                  </p>
+                )}
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-xl border border-border/60 bg-background p-3">
@@ -284,15 +339,25 @@ const WissensindexDokument = () => {
 
                 <div className="mt-4 space-y-4">
                   {documentEntry.abschnitte.map((section) => {
-                    const citations = sectionCitations.get(section.id) ?? [];
-                    const cited = citations.length > 0;
+                    const allCitations = sectionCitations.get(section.id) ?? [];
+                    const citations = focusedAnswer
+                      ? allCitations.filter((citation) => citation.answerSlug === focusedAnswer.slug)
+                      : allCitations;
+                    const cited = focusedAnswer ? focusedSectionIds.has(section.id) : citations.length > 0;
+                    const dimmed = focusedAnswer && hasFocusedSections && !cited;
+                    const cleanedHeading = cleanDocumentHeading(section.ueberschrift || `Seite ${section.seite}`);
+                    const cleanedText = cleanDocumentText(section.volltext);
 
                     return (
                       <article
                         key={section.id}
                         id={`seite-${section.seite}`}
                         className={`rounded-xl border p-4 md:p-5 ${
-                          cited ? "border-amber-300 bg-amber-50/70" : "border-border/60 bg-background"
+                          cited
+                            ? "border-amber-300 bg-amber-50/70"
+                            : dimmed
+                              ? "border-border/40 bg-muted/35 opacity-60"
+                              : "border-border/60 bg-background"
                         }`}
                       >
                         <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
@@ -305,11 +370,11 @@ const WissensindexDokument = () => {
                         </div>
 
                         <h3 id={section.id} className="text-base font-bold text-foreground">
-                          {section.ueberschrift}
+                          {cleanedHeading}
                         </h3>
 
                         <GlossaryText
-                          text={section.volltext}
+                          text={cleanedText}
                           simplify={false}
                           className="mt-3 block text-sm leading-relaxed text-foreground"
                         />

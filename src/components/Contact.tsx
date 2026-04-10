@@ -15,6 +15,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 type TurnstileRenderOptions = {
   sitekey: string;
+  appearance?: "always" | "execute" | "interaction-only";
+  size?: "normal" | "flexible" | "compact";
+  theme?: "auto" | "light" | "dark";
   callback?: (token: string) => void;
   "error-callback"?: () => void;
   "expired-callback"?: () => void;
@@ -106,6 +109,9 @@ const Contact = () => {
       turnstileContainerRef.current.innerHTML = "";
       turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
         sitekey: turnstileSiteKey,
+        appearance: "interaction-only",
+        size: "flexible",
+        theme: "light",
         callback: (token) => {
           setTurnstileToken(token);
           setTurnstileError("");
@@ -392,26 +398,18 @@ const Contact = () => {
                     )}
                   />
 
-                  <div className="grid gap-3 md:grid-cols-3">
+                  <div className="grid gap-3 md:grid-cols-2">
                     <div className="rounded-xl border border-border/60 bg-background p-4">
                       <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">Anfrage senden</p>
                       <Button type="submit" className="w-full" size="lg" disabled={submitStatus === "loading"}>
                         {submitStatus === "loading" ? "Wird gesendet ..." : "Anfrage senden"}
                         <Send className="ml-2" size={18} />
                       </Button>
-                    </div>
-
-                    <div className="rounded-xl border border-border/60 bg-background p-4">
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">Cloudflare</p>
                       {isTurnstileEnabled ? (
-                        <div className="overflow-x-auto">
-                          <div ref={turnstileContainerRef} className="min-h-[65px] min-w-[300px]" />
+                        <div className="mt-3 overflow-hidden">
+                          <div ref={turnstileContainerRef} className="w-full max-w-[420px]" />
                         </div>
-                      ) : (
-                        <p className="text-sm text-muted-foreground">
-                          Sicherheitsprüfung wird geladen, sobald der Turnstile-Site-Key gesetzt ist.
-                        </p>
-                      )}
+                      ) : null}
                       {turnstileError && <p className="mt-2 text-sm text-destructive">{turnstileError}</p>}
                     </div>
 

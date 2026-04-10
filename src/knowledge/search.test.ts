@@ -1,38 +1,43 @@
 import { describe, expect, it } from "vitest";
+
 import { runKnowledgeDocumentSearch, runKnowledgeSearch } from "@/knowledge/search";
 import type { KnowledgeIndex } from "@/knowledge/types";
 
 const mockIndex: KnowledgeIndex = {
-  generatedAt: "2026-01-23T10:00:00.000Z",
+  generatedAt: "2026-04-10T10:00:00.000Z",
   sourceDir: "C:/mock",
   documents: [
     {
-      id: "fbm-nvf1-l-to",
-      titel: "Foerderbekanntmachung NVF1",
-      quelle_datei: "fbm-nvf1.pdf",
-      dokumenttyp: "Foerderbekanntmachung",
+      id: "praesentation-webseminar-nvf-2026",
+      titel: "Präsentation Webseminar NVF 2026",
+      quelle_datei: "webseminar.pdf",
+      dokumenttyp: "Praesentation",
       abschnitte: [
         {
-          id: "fbm-nvf1-l-to-seite-1",
-          ueberschrift: "Antragsberechtigung",
-          volltext: "Antragsberechtigte Institutionen koennen Projekte im Innovationsfonds einreichen.",
-          seite: 1,
+          id: "praesentation-webseminar-nvf-2026-wer-ist-antragsberechtigt",
+          ueberschrift: "Wer ist antragsberechtigt?",
+          volltext:
+            "Frage: Wer ist antragsberechtigt? Kernaussage: Antragsberechtigt sind rechtsfähige und unbeschränkt geschäftsfähige Personen und Personengesellschaften.",
+          seite: 21,
+          fundstelle: "S. 21",
           schlagwoerter: ["antragsrollen"],
         },
       ],
     },
     {
-      id: "faq-antragstellende",
-      titel: "FAQ Antragstellende",
-      quelle_datei: "faq.pdf",
-      dokumenttyp: "FAQ",
+      id: "innovationsfonds-stand-der-dinge-2026",
+      titel: "Der Innovationsfonds: Stand der Dinge",
+      quelle_datei: "stand-der-dinge.pdf",
+      dokumenttyp: "Praesentation",
       abschnitte: [
         {
-          id: "faq-antragstellende-seite-1",
-          ueberschrift: "Fristen",
-          volltext: "Die Einreichungsfrist endet zum angegebenen Stichtag laut FAQ.",
-          seite: 1,
-          schlagwoerter: ["fristen"],
+          id: "innovationsfonds-stand-der-dinge-2026-foerderfaehig",
+          ueberschrift: "Was ist nach § 92a Abs. 1 Satz 5 SGB V förderfähig?",
+          volltext:
+            "Frage: Was ist nach § 92a Abs. 1 Satz 5 SGB V förderfähig? Kernaussage: Förderfähig sind insbesondere Aufwendungen außerhalb der Regelversorgung.",
+          seite: 24,
+          fundstelle: "S. 24",
+          schlagwoerter: ["foerderfaehigkeit"],
         },
       ],
     },
@@ -40,9 +45,9 @@ const mockIndex: KnowledgeIndex = {
 };
 
 describe("runKnowledgeSearch", () => {
-  it("findet antragsrollen-bezogene Antworten per Regelmatch", () => {
+  it("findet antragsrollen-bezogene Antworten über Frage- und Token-Match", () => {
     const results = runKnowledgeSearch({
-      query: "Wer darf beantragen?",
+      query: "Wer ist antragsberechtigt?",
       index: mockIndex,
       topicFilter: "alle",
       statusFilter: "alle",
@@ -55,7 +60,7 @@ describe("runKnowledgeSearch", () => {
 
   it("filtert nach Status", () => {
     const results = runKnowledgeSearch({
-      query: "Welche Fristen gelten?",
+      query: "Welche Frist gilt?",
       index: mockIndex,
       topicFilter: "alle",
       statusFilter: "freigegeben",
@@ -66,9 +71,9 @@ describe("runKnowledgeSearch", () => {
     expect(results.every((result) => result.status === "freigegeben")).toBe(true);
   });
 
-  it("priorisiert exakte Fragen über allgemeine Regeltreffer", () => {
+  it("priorisiert exakte Fragen über allgemeinere Treffer", () => {
     const results = runKnowledgeSearch({
-      query: "Welche Einreichungsfristen gelten 2026 für NVF1 und NVF2?",
+      query: "Was ist nach § 92a Abs. 1 Satz 5 SGB V förderfähig?",
       index: mockIndex,
       topicFilter: "alle",
       statusFilter: "alle",
@@ -76,7 +81,7 @@ describe("runKnowledgeSearch", () => {
     });
 
     expect(results.length).toBeGreaterThan(0);
-    expect(results[0].slug).toBe("einreichungsfristen-2026");
+    expect(results[0].slug).toBe("was-ist-nach-paragraf-92a-abs-1-satz-5-sgb-v-foerderfaehig");
   });
 
   it("liefert ohne Query eine kuratierte Ergebnisliste", () => {
@@ -94,9 +99,9 @@ describe("runKnowledgeSearch", () => {
 });
 
 describe("runKnowledgeDocumentSearch", () => {
-  it("liefert dokumentbasierte Treffer fuer eine Query", () => {
+  it("liefert dokumentbasierte Treffer für eine Query", () => {
     const results = runKnowledgeDocumentSearch({
-      query: "Stichtag FAQ",
+      query: "Webseminar",
       index: mockIndex,
       topicFilter: "alle",
       statusFilter: "alle",
@@ -104,10 +109,10 @@ describe("runKnowledgeDocumentSearch", () => {
     });
 
     expect(results.length).toBeGreaterThan(0);
-    expect(results[0].dokumentId).toBe("faq-antragstellende");
+    expect(results[0].dokumentId).toBe("praesentation-webseminar-nvf-2026");
   });
 
-  it("beruecksichtigt Statusfilter auch fuer Dokumenttreffer", () => {
+  it("berücksichtigt Statusfilter auch für Dokumenttreffer", () => {
     const results = runKnowledgeDocumentSearch({
       query: "",
       index: mockIndex,

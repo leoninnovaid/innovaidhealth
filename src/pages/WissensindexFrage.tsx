@@ -209,7 +209,7 @@ const WissensindexFrage = () => {
               <ul className="mt-3 space-y-2">
                 {answer.quellen.map((source, indexSource) => {
                   const title = documentMap.get(source.dokumentId) ?? source.dokumentId;
-                  const pageLabel = source.seite ? ` · Seite ${source.seite}` : "";
+                  const pageLabel = source.fundstelle ?? (source.seite ? `Seite ${source.seite}` : "");
                   const queryParams = new URLSearchParams({ antwort: answer.slug });
                   if (source.seite) {
                     queryParams.set("seite", String(source.seite));
@@ -227,7 +227,7 @@ const WissensindexFrage = () => {
                       <Link to={documentHref} className="font-medium text-accent hover:underline">
                         {title}
                       </Link>
-                      {pageLabel}
+                      {pageLabel ? ` · ${pageLabel}` : ""}
                     </li>
                   );
                 })}
@@ -253,7 +253,8 @@ const WissensindexFrage = () => {
                   {snippets.map((snippet) => (
                     <div key={`${snippet.abschnittId}-${snippet.seite}`} className="rounded-lg border border-border/60 bg-background px-3 py-3">
                       <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                        {(documentMap.get(snippet.dokumentId) ?? snippet.dokumentId) + ` · Seite ${snippet.seite}`}
+                        {(documentMap.get(snippet.dokumentId) ?? snippet.dokumentId) +
+                          ` · ${snippet.fundstelle ?? `Seite ${snippet.seite}`}`}
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-foreground">{snippet.text}</p>
                       <Link

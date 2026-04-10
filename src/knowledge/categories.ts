@@ -8,53 +8,53 @@ export type KnowledgeCategoryMeta = {
 
 export const knowledgeCategoryMeta: Record<KnowledgeCategoryId, KnowledgeCategoryMeta> = {
   antragsverfahren: {
-    label: "Antragsverfahren",
-    description: "Portal, Unterlagen, Synopse und formale Anforderungen bei der Einreichung.",
-    topicIds: ["unterlagen", "fristen"],
+    label: "Verfahren und Fristen",
+    description: "Einstufig, zweistufig, Laufzeiten, Einreichung und Stichtage.",
+    topicIds: ["fristen", "formale_voraussetzungen"],
   },
   konsortium_und_rollen: {
-    label: "Konsortium und Rollen",
-    description: "Antragsberechtigung, Krankenkassenbeteiligung, Rollen- und Partnerlogik.",
-    topicIds: ["antragsrollen", "foerderfaehigkeit"],
+    label: "Akteure und Zuständigkeiten",
+    description: "Antragsberechtigte, Krankenkassen, Innovationsausschuss und Zuständigkeiten.",
+    topicIds: ["antragsrollen", "formale_voraussetzungen"],
   },
   fristen_und_formalia: {
-    label: "Fristen und Formalia",
-    description: "Stichtage, Seitenvorgaben, Formblätter und formale Ausschlussgründe.",
-    topicIds: ["fristen", "unterlagen", "formale_voraussetzungen"],
+    label: "Fundstellen und Quellen",
+    description: "Quellenlogik, Einordnung der Materialien und formale Fundstellen.",
+    topicIds: ["unterlagen", "formale_voraussetzungen"],
   },
   foerderkriterien_und_qualitaet: {
-    label: "Förderkriterien und Qualität",
-    description: "Relevanz, Evaluationsqualität, Machbarkeit und Umsetzungspotenzial.",
-    topicIds: ["foerderfaehigkeit", "formale_voraussetzungen"],
-  },
-  rechtsgrundlagen_und_transfer: {
-    label: "Rechtsgrundlagen und Transfer",
-    description: "Rechtslogik für Versorgungstransfer und Verstetigung in der GKV.",
-    topicIds: ["foerderfaehigkeit", "antragsrollen"],
-  },
-  digitalisierung_und_datenschutz: {
-    label: "Digitalisierung und Datenschutz",
-    description: "ePA, TI, Interoperabilität, Datenschutz und digitale Produktkontexte.",
+    label: "Voraussetzungen und Bewertung",
+    description: "Förderkriterien, Qualitätsanforderungen, Ausschlüsse und Bewertung.",
     topicIds: ["formale_voraussetzungen", "foerderfaehigkeit"],
   },
+  rechtsgrundlagen_und_transfer: {
+    label: "Rechtsgrundlagen und Einordnung",
+    description: "Förderzweck, Rechtsrahmen, themenspezifische und themenoffene Linien.",
+    topicIds: ["foerderfaehigkeit", "formale_voraussetzungen"],
+  },
+  digitalisierung_und_datenschutz: {
+    label: "Präsentationen und Überblicke",
+    description: "Kuratiertes Wissen aus Präsentationen, Überblicken und Einordnungen.",
+    topicIds: ["foerderfaehigkeit", "fristen", "formale_voraussetzungen"],
+  },
   finanzierung_und_kosten: {
-    label: "Finanzierung und Kosten",
-    description: "Förderfähige Ausgaben, Personalmittel, Finanzierungsplan und Mittelverwendung.",
+    label: "Budget und Fördermittel",
+    description: "Jahresbudget, Fördersumme, Fördermittelverteilung und Infrastrukturpauschale.",
     topicIds: ["foerderfaehigkeit", "formale_voraussetzungen"],
   },
   nachweise_und_berichtswesen: {
-    label: "Nachweise und Berichtswesen",
-    description: "Zwischenberichte, Verwendungsnachweise, Belege und Veröffentlichungspflichten.",
-    topicIds: ["formale_voraussetzungen", "fristen"],
+    label: "Prozesse und Berichtswesen",
+    description: "Prozessgrafiken, Berichtspflichten und Schritte bis zur Transferempfehlung.",
+    topicIds: ["unterlagen", "formale_voraussetzungen", "fristen"],
   },
 };
 
 const defaultCategoryByTopic: Record<TopicId, KnowledgeCategoryId[]> = {
-  foerderfaehigkeit: ["foerderkriterien_und_qualitaet", "rechtsgrundlagen_und_transfer"],
-  fristen: ["fristen_und_formalia", "antragsverfahren"],
-  unterlagen: ["antragsverfahren", "fristen_und_formalia"],
+  foerderfaehigkeit: ["finanzierung_und_kosten", "rechtsgrundlagen_und_transfer"],
+  fristen: ["antragsverfahren", "nachweise_und_berichtswesen"],
+  unterlagen: ["nachweise_und_berichtswesen", "fristen_und_formalia"],
   antragsrollen: ["konsortium_und_rollen", "rechtsgrundlagen_und_transfer"],
-  formale_voraussetzungen: ["nachweise_und_berichtswesen", "finanzierung_und_kosten"],
+  formale_voraussetzungen: ["foerderkriterien_und_qualitaet", "fristen_und_formalia"],
 };
 
 export const getCategoriesForEntry = (entry: AnswerEntry): KnowledgeCategoryId[] =>

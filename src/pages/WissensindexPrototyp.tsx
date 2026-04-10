@@ -20,7 +20,21 @@ const documentTypeLabel: Record<KnowledgeDocumentType, string> = {
   FAQ: "FAQ",
   ANBest: "ANBest",
   Personalmittelsaetze: "Personalmittelsätze",
+  Praesentation: "Präsentation",
+  Infoflyer: "Infoflyer",
+  Prozessgrafik: "Prozessgrafik",
 };
+
+const knowledgeDownloads = [
+  {
+    href: `${import.meta.env.BASE_URL}knowledge/uploads/faq-wissensdatenbank-innovationsfonds-60-fragen.pdf`,
+    label: "FAQ als PDF",
+  },
+  {
+    href: `${import.meta.env.BASE_URL}knowledge/uploads/faq-wissensdatenbank-innovationsfonds-60-fragen.docx`,
+    label: "FAQ als DOCX",
+  },
+];
 
 const WissensindexPrototyp = () => {
   const [index, setIndex] = useState<KnowledgeIndex | null>(null);
@@ -114,18 +128,19 @@ const WissensindexPrototyp = () => {
   }, []);
 
   const formatAnswerSources = (result: SearchResult) => {
-    const grouped = new Map<string, { titel: string; pages: number[]; abschnittId?: string }>();
+    const grouped = new Map<string, { titel: string; fundstellen: string[]; abschnittId?: string }>();
 
     result.answer.quellen.forEach((source) => {
       const meta = documentMeta.get(source.dokumentId);
       const current = grouped.get(source.dokumentId) ?? {
         titel: meta?.titel ?? source.dokumentId,
-        pages: [],
+        fundstellen: [],
         abschnittId: source.abschnittId,
       };
 
-      if (source.seite && !current.pages.includes(source.seite)) {
-        current.pages.push(source.seite);
+      const fundstelle = source.fundstelle ?? (source.seite ? `Seite ${source.seite}` : null);
+      if (fundstelle && !current.fundstellen.includes(fundstelle)) {
+        current.fundstellen.push(fundstelle);
       }
 
       if (!current.abschnittId && source.abschnittId) {
@@ -136,11 +151,10 @@ const WissensindexPrototyp = () => {
     });
 
     return Array.from(grouped.entries()).map(([dokumentId, entry]) => {
-      const pages = [...entry.pages].sort((a, b) => a - b);
       return {
         dokumentId,
         titel: entry.titel,
-        pages,
+        fundstellen: entry.fundstellen,
         abschnittId: entry.abschnittId,
       };
     });
@@ -173,6 +187,20 @@ const WissensindexPrototyp = () => {
               Geben Sie Ihre Frage ein. Sie erhalten direkt eine kurze, belastbare Antwort und bei Bedarf die passenden
               Quellen.
             </p>
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
+              <span className="text-muted-foreground">Neue Datenbasis: 60 kuratierte Fragen aus der aktualisierten Wissensdatenbank.</span>
+              {knowledgeDownloads.map((download) => (
+                <a
+                  key={download.href}
+                  href={download.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium text-accent hover:underline"
+                >
+                  {download.label}
+                </a>
+              ))}
+            </div>
             <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
               Beta-Hinweis: Inhalte werden laufend redaktionell geprüft und können sich ändern. Verbindlich sind
               ausschließlich die Originaldokumente.
@@ -376,7 +404,7 @@ const WissensindexPrototyp = () => {
                                     >
                                       {source.titel}
                                     </Link>
-                                    {source.pages.length > 0 ? ` · Seite ${source.pages.join(", ")}` : ""}
+                                    {source.fundstellen.length > 0 ? ` · ${source.fundstellen.join(", ")}` : ""}
                                   </li>
                                 ))}
                               </ul>
@@ -386,7 +414,7 @@ const WissensindexPrototyp = () => {
                               <div className="rounded-lg border border-border/60 p-3">
                                 <p className="text-xs text-muted-foreground">
                                   {(documentMeta.get(result.snippets[0].dokumentId)?.titel ?? result.snippets[0].dokumentId) +
-                                    ` · Seite ${result.snippets[0].seite}`}
+                                    ` · ${result.snippets[0].fundstelle ?? `Seite ${result.snippets[0].seite}`}`}
                                 </p>
                                 <p className="mt-1 text-sm text-foreground">{result.snippets[0].text}</p>
                                 <Link
@@ -424,7 +452,7 @@ const WissensindexPrototyp = () => {
                           {documentTypeLabel[result.dokumenttyp]}
                         </span>
                         <span>·</span>
-                        <span>Seite {result.seite}</span>
+                        <span>{result.fundstelle ?? `Seite ${result.seite}`}</span>
                       </div>
 
                       <h3 className="text-lg font-bold text-foreground">{result.dokumentTitel}</h3>

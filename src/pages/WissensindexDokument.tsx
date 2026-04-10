@@ -14,6 +14,7 @@ type SectionCitation = {
   frage: string;
   status: ReviewStatus;
   seite?: number;
+  fundstelle?: string;
   zitat?: string;
 };
 
@@ -23,7 +24,21 @@ const documentTypeLabel: Record<KnowledgeDocumentType, string> = {
   FAQ: "FAQ",
   ANBest: "ANBest",
   Personalmittelsaetze: "Personalmittelsätze",
+  Praesentation: "Präsentation",
+  Infoflyer: "Infoflyer",
+  Prozessgrafik: "Prozessgrafik",
 };
+
+const knowledgeDownloads = [
+  {
+    href: `${import.meta.env.BASE_URL}knowledge/uploads/faq-wissensdatenbank-innovationsfonds-60-fragen.pdf`,
+    label: "FAQ als PDF",
+  },
+  {
+    href: `${import.meta.env.BASE_URL}knowledge/uploads/faq-wissensdatenbank-innovationsfonds-60-fragen.docx`,
+    label: "FAQ als DOCX",
+  },
+];
 
 const WissensindexDokument = () => {
   const { documentId } = useParams<{ documentId: string }>();
@@ -114,6 +129,7 @@ const WissensindexDokument = () => {
             frage: answer.frage,
             status: answer.status,
             seite: source.seite,
+            fundstelle: source.fundstelle,
             zitat: source.zitat,
           };
 
@@ -305,8 +321,8 @@ const WissensindexDokument = () => {
 
                 <h1 className="text-2xl font-extrabold text-foreground md:text-3xl">{formattedTitle}</h1>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Dieses Dokument ist als Volltext verfügbar. Gelb markierte Abschnitte werden in Antworten des
-                  Wissensindex zitiert.
+                  Dieses Dokument wird als kuratierte Textansicht aus der neuen FAQ-Wissensdatenbank dargestellt. Gelb
+                  markierte Abschnitte werden in Antworten des Wissensindex zitiert.
                 </p>
 
                 {focusedAnswer && hasFocusedSections && (
@@ -331,6 +347,19 @@ const WissensindexDokument = () => {
                   <Link to="/wissensindex-beta" className="text-sm font-medium text-accent hover:underline">
                     Zurück zur Wissensindex-Suche
                   </Link>
+                </div>
+                <div className="mt-3 flex flex-wrap gap-3 text-sm">
+                  {knowledgeDownloads.map((download) => (
+                    <a
+                      key={download.href}
+                      href={download.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-medium text-accent hover:underline"
+                    >
+                      {download.label}
+                    </a>
+                  ))}
                 </div>
               </header>
 
@@ -361,7 +390,9 @@ const WissensindexDokument = () => {
                         }`}
                       >
                         <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                          <p className="text-xs uppercase tracking-widest text-muted-foreground">Seite {section.seite}</p>
+                          <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                            {section.fundstelle ?? `Seite ${section.seite}`}
+                          </p>
                           {cited && (
                             <span className="rounded-full border border-amber-300 bg-amber-100 px-2.5 py-1 text-[11px] font-medium text-amber-900">
                               Zitiert
@@ -399,8 +430,10 @@ const WissensindexDokument = () => {
                                   >
                                     {statusMeta[citation.status].label}
                                   </span>
-                                  {citation.seite ? (
-                                    <span className="ml-2 text-xs text-muted-foreground">Seite {citation.seite}</span>
+                                  {citation.fundstelle || citation.seite ? (
+                                    <span className="ml-2 text-xs text-muted-foreground">
+                                      {citation.fundstelle ?? `Seite ${citation.seite}`}
+                                    </span>
                                   ) : null}
                                   {citation.zitat ? (
                                     <p className="mt-1 rounded-md border border-amber-300/70 bg-white/80 px-2 py-1 text-xs leading-relaxed text-foreground">

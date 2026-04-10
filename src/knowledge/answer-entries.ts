@@ -1,1308 +1,1474 @@
-﻿import type { AnswerEntry } from "@/knowledge/types";
+import type { AnswerEntry } from "@/knowledge/types";
 
 export const answerEntries: AnswerEntry[] = [
   {
-    slug: "wer-ist-antragsberechtigt",
-    topicId: "antragsrollen",
-    frage: "Wer ist antragsberechtigt im Innovationsfonds?",
-    antwort_kurz:
-      "Antragsberechtigte Institutionen sind in den Förderbekanntmachungen definiert. In der Regel muss zusätzlich eine Krankenkasse beteiligt sein.",
-    antwort_lang:
-      "Die Förderbekanntmachungen NVF1 und NVF2 benennen die antragsberechtigten Akteure und fordern bei neuen Versorgungsformen in der Regel die Beteiligung einer Krankenkasse. Für das Konsortium bedeutet das: Rollen und Beteiligung müssen früh verbindlich geklärt und dokumentiert werden.",
-    verwandte_fragen: [
-      "Wann muss eine Krankenkasse beteiligt sein?",
-      "Wie wird die Krankenkassenbeteiligung im zweistufigen Verfahren nachgewiesen?",
+    "slug": "worum-ging-es-im-webseminar-vom-10-februar-2026",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-6",
-        seite: 6,
-        zitat: "Bei der Antragstellung ist in der Regel eine Krankenkasse zu beteiligen.",
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-9",
-        seite: 9,
-        zitat: "Bei der Antragstellung ist in der Regel eine Krankenkasse zu beteiligen.",
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-23",
-        seite: 23,
-      },
+    "frage": "Worum ging es im Webseminar vom 10. Februar 2026?",
+    "antwort_kurz": "Das Seminar erläutert die Förderung von Neuen Versorgungsformen nach § 92a Abs. 1 Satz 8 SGB V für das Jahr 2026.",
+    "antwort_lang": "Das Seminar erläutert die Förderung von Neuen Versorgungsformen nach § 92a Abs. 1 Satz 8 SGB V für das Jahr 2026. Das Dokument formuliert dazu: „Förderung von Neuen Versorgungsformen“. Fundstelle: Präsentation Webseminar NVF 2026, S. 2.",
+    "verwandte_fragen": [
+      "Welche drei NVF-Verfahrensalternativen wurden im Seminar genannt?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-worum-ging-es-im-webseminar-vom-10-februar-2026",
+        "seite": 2,
+        "fundstelle": "S. 2",
+        "zitat": "Förderung von Neuen Versorgungsformen"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "wie-erfolgt-die-antragseinreichung",
-    topicId: "unterlagen",
-    frage: "Wie erfolgt die Antragseinreichung für NVF1 und NVF2?",
-    antwort_kurz:
-      "Die Einreichung erfolgt elektronisch über PT-Outline. Je Förderlinie gibt es ein eigenes Portal.",
-    antwort_lang:
-      "Für NVF1 sowie die zweistufigen NVF2-Verfahren erfolgt die Einreichung über PT-Outline. Die Leitfäden nennen die konkreten Portal-Links und erläutern, welche Bestandteile elektronisch eingereicht werden müssen.",
-    verwandte_fragen: [
-      "Welche Unterlagen müssen in Stufe 1 des zweistufigen Verfahrens vorliegen?",
-      "Müssen Formblätter im Original eingereicht werden?",
+    "slug": "welche-drei-nvf-verfahrensalternativen-wurden-im-seminar-genannt",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-11",
-        seite: 11,
-        zitat: "Die Einreichung erfolgt elektronisch über das Internet-Portal.",
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-15",
-        seite: 15,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-7",
-        seite: 7,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-11",
-        seite: 11,
-      },
+    "frage": "Welche drei NVF-Verfahrensalternativen wurden im Seminar genannt?",
+    "antwort_kurz": "Genannt werden einstufig lang, einstufig kurz und zweistufig lang.",
+    "antwort_lang": "Genannt werden einstufig lang, einstufig kurz und zweistufig lang. Das Dokument formuliert dazu: „Erste Alternative (einstufig lang)“. Fundstelle: Präsentation Webseminar NVF 2026, S. 2.",
+    "verwandte_fragen": [
+      "Worum ging es im Webseminar vom 10. Februar 2026?",
+      "Wie verteilt sich das reguläre Jahresbudget des Innovationsfonds laut Seminarfolie?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-drei-nvf-verfahrensalternativen-wurden-im-seminar-genannt",
+        "seite": 2,
+        "fundstelle": "S. 2",
+        "zitat": "Erste Alternative (einstufig lang)"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "unterschied-einstufig-zweistufig",
-    topicId: "foerderfaehigkeit",
-    frage: "Was ist der Unterschied zwischen einstufigem und zweistufigem Verfahren?",
-    antwort_kurz:
-      "Einstufig: direkter Antrag. Zweistufig: zuerst Ideenskizze, danach Vollantrag nach Auswahl.",
-    antwort_lang:
-      "Im einstufigen Verfahren wird der Antrag direkt eingereicht. Im zweistufigen Verfahren startet der Prozess mit einer Ideenskizze. Nur ausgewählte Skizzen gehen in die Konzeptentwicklungsphase und werden als Vollantrag ausgearbeitet.",
-    verwandte_fragen: [
-      "Wie hoch ist die Förderung der Konzeptentwicklungsphase?",
-      "Welche formalen Ausschlussgründe gibt es bei Antrag und Ideenskizze?",
+    "slug": "wie-verteilt-sich-das-regulaere-jahresbudget-des-innovationsfonds-laut-seminarfolie",
+    "topicId": "foerderfaehigkeit",
+    "kategorien": [
+      "finanzierung_und_kosten",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-1",
-        seite: 1,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-3",
-        seite: 3,
-        zitat: "zunächst Ideenskizzen einzureichen",
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-7",
-        seite: 7,
-      },
+    "frage": "Wie verteilt sich das reguläre Jahresbudget des Innovationsfonds laut Seminarfolie?",
+    "antwort_kurz": "Regulär werden 200 Mio. Euro pro Jahr verteilt auf 160 Mio. Euro für NVF und 40 Mio. Euro für VSF, davon mindestens 5 Mio. Euro für Leitlinien.",
+    "antwort_lang": "Regulär werden 200 Mio. Euro pro Jahr verteilt auf 160 Mio. Euro für NVF und 40 Mio. Euro für VSF, davon mindestens 5 Mio. Euro für Leitlinien. Das Dokument formuliert dazu: „200 Mio. Euro jährlich“. Fundstelle: Präsentation Webseminar NVF 2026, S. 3.",
+    "verwandte_fragen": [
+      "Welche drei NVF-Verfahrensalternativen wurden im Seminar genannt?",
+      "Welche Sonderregel galt für die Fördersumme 2026?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-wie-verteilt-sich-das-regulaere-jahresbudget-des-innovationsfonds-laut-seminarfolie",
+        "seite": 3,
+        "fundstelle": "S. 3",
+        "zitat": "200 Mio. Euro jährlich"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "seitenumfang-nvf1-antrag",
-    topicId: "unterlagen",
-    frage: "Welche Seitenbegrenzung gilt für NVF1-Anträge?",
-    antwort_kurz:
-      "Der Antrag darf 20 DIN-A4-Seiten (Calibri 12, 1,5-zeilig) zuzüglich Anlagen nicht überschreiten.",
-    antwort_lang:
-      "Für NVF1 ist in Förderbekanntmachung und Leitfaden ein maximaler Umfang von 20 Seiten für den Antrag genannt; Anlagen kommen zusätzlich dazu. Diese formale Vorgabe ist eine harte Einreichungsanforderung.",
-    verwandte_fragen: [
-      "Welche Seitenbegrenzung gilt für NVF2-Ideenskizzen?",
-      "Welche formalen Ausschlussgründe gibt es bei Antrag und Ideenskizze?",
+    "slug": "welche-sonderregel-galt-fuer-die-foerdersumme-2026",
+    "topicId": "foerderfaehigkeit",
+    "kategorien": [
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-12",
-        seite: 12,
-        zitat: "Der Umfang des Antrags darf 20 DIN-A4-Seiten ... nicht überschreiten.",
-      },
-      {
-        dokumentId: "fbm-nvf1-k-to",
-        abschnittId: "fbm-nvf1-k-to-seite-12",
-        seite: 12,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-10",
-        seite: 10,
-      },
+    "frage": "Welche Sonderregel galt für die Fördersumme 2026?",
+    "antwort_kurz": "Für 2026 wurde die verfügbare Fördersumme einmalig auf 100 Mio. Euro abgesenkt.",
+    "antwort_lang": "Für 2026 wurde die verfügbare Fördersumme einmalig auf 100 Mio. Euro abgesenkt. Das Dokument formuliert dazu: „einmalig 100. Mio. Euro“. Fundstelle: Präsentation Webseminar NVF 2026, S. 4.",
+    "verwandte_fragen": [
+      "Wie verteilt sich das reguläre Jahresbudget des Innovationsfonds laut Seminarfolie?",
+      "Wie verteilen sich die Fördermittel 2026 laut Webseminar?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-sonderregel-galt-fuer-die-foerdersumme-2026",
+        "seite": 4,
+        "fundstelle": "S. 4",
+        "zitat": "einmalig 100. Mio. Euro"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "seitenumfang-nvf2-ideenskizze",
-    topicId: "unterlagen",
-    frage: "Welche Seitenbegrenzung gilt für NVF2-Ideenskizzen?",
-    antwort_kurz:
-      "Die Ideenskizze ist auf maximal 12 Seiten begrenzt (zuzüglich definierter Anlagen).",
-    antwort_lang:
-      "Im zweistufigen Verfahren ist der Umfang der Ideenskizze klar begrenzt. Der Leitfaden benennt 12 Seiten als Obergrenze und ergänzt formale Vorgaben zu Sprache, Layout und Anlagen.",
-    verwandte_fragen: [
-      "Wie erfolgt die Antragseinreichung für NVF1 und NVF2?",
-      "Welche formalen Ausschlussgründe gibt es bei Antrag und Ideenskizze?",
+    "slug": "wie-verteilen-sich-die-foerdermittel-2026-laut-webseminar",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "finanzierung_und_kosten"
     ],
-    quellen: [
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-1",
-        seite: 1,
-        zitat: "Kommentiertes Gliederungsschema Ideenskizzen (max. Umfang: 12 Seiten)",
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-8",
-        seite: 8,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-16",
-        seite: 16,
-      },
+    "frage": "Wie verteilen sich die Fördermittel 2026 laut Webseminar?",
+    "antwort_kurz": "2026 entfallen 80 Mio. Euro auf NVF, davon 10 Mio. Euro auf kurze Laufzeiten, und 20 Mio. Euro auf VSF, davon mindestens 2,5 Mio. Euro für Leitlinien.",
+    "antwort_lang": "2026 entfallen 80 Mio. Euro auf NVF, davon 10 Mio. Euro auf kurze Laufzeiten, und 20 Mio. Euro auf VSF, davon mindestens 2,5 Mio. Euro für Leitlinien. Das Dokument formuliert dazu: „Neue Versorgungsformen: 80 Mio. Euro“. Fundstelle: Präsentation Webseminar NVF 2026, S. 4.",
+    "verwandte_fragen": [
+      "Welche Sonderregel galt für die Fördersumme 2026?",
+      "Welche Förderbekanntmachungen wurden am 23. Januar 2026 aufgeführt?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-wie-verteilen-sich-die-foerdermittel-2026-laut-webseminar",
+        "seite": 4,
+        "fundstelle": "S. 4",
+        "zitat": "Neue Versorgungsformen: 80 Mio. Euro"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "formblaetter-original",
-    topicId: "formale_voraussetzungen",
-    frage: "Müssen Formblätter im Original eingereicht werden?",
-    antwort_kurz:
-      "Ja, die rechtsverbindlich unterschriebenen Formblätter müssen fristgerecht im Original vorliegen.",
-    antwort_lang:
-      "Neben der elektronischen Einreichung müssen bestimmte Formblätter rechtsverbindlich unterschrieben und fristgerecht im Original an den Projektträger geschickt werden. Wird diese Vorgabe nicht erfüllt, droht ein formaler Ausschluss.",
-    verwandte_fragen: [
-      "Welche Fristen gelten für Originalunterschriften und Formblätter?",
-      "Welche formalen Ausschlussgründe gibt es bei Antrag und Ideenskizze?",
+    "slug": "welche-foerderbekanntmachungen-wurden-am-23-januar-2026-aufgefuehrt",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "digitalisierung_und_datenschutz",
+      "rechtsgrundlagen_und_transfer"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-k-to",
-        abschnittId: "fbm-nvf1-k-to-seite-12",
-        seite: 12,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-8",
-        seite: 8,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-14",
-        seite: 14,
-      },
+    "frage": "Welche Förderbekanntmachungen wurden am 23. Januar 2026 aufgeführt?",
+    "antwort_kurz": "Die Folie zeigt für NVF: themenoffen einstufig lang, themenoffen einstufig kurz, themenoffen zweistufig lang und themenspezifisch zweistufig lang; für VSF: themenspezifische und themenoffene Forschungsprojekte sowie Leitlinienentwicklung.",
+    "antwort_lang": "Die Folie zeigt für NVF: themenoffen einstufig lang, themenoffen einstufig kurz, themenoffen zweistufig lang und themenspezifisch zweistufig lang; für VSF: themenspezifische und themenoffene Forschungsprojekte sowie Leitlinienentwicklung. Das Dokument formuliert dazu: „Förderbekanntmachungen vom 23. Januar 2026“. Fundstelle: Präsentation Webseminar NVF 2026, S. 5.",
+    "verwandte_fragen": [
+      "Wie verteilen sich die Fördermittel 2026 laut Webseminar?",
+      "Was ist der Kernunterschied zwischen einstufigen und zweistufigen NVF-Verfahren?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-foerderbekanntmachungen-wurden-am-23-januar-2026-aufgefuehrt",
+        "seite": 5,
+        "fundstelle": "S. 5",
+        "zitat": "Förderbekanntmachungen vom 23. Januar 2026"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "fristen-originalunterschriften",
-    topicId: "fristen",
-    frage: "Welche Fristen gelten für Originalunterschriften und Formblätter?",
-    antwort_kurz:
-      "Die Fristen sind je Förderlinie verbindlich vorgegeben (z. B. 14 Tage Nachreichung oder feste Stichtage).",
-    antwort_lang:
-      "Für einzelne Linien gelten konkrete Fristregeln: etwa die Nachreichung unterschriebener Formblätter innerhalb von 14 Tagen nach elektronischer Einreichung oder feste Stichtage für Ideenskizzen. Maßgeblich sind immer Förderbekanntmachung und Leitfaden der jeweiligen Runde.",
-    verwandte_fragen: [
-      "Müssen Formblätter im Original eingereicht werden?",
-      "Wie erfolgt die Antragseinreichung für NVF1 und NVF2?",
+    "slug": "was-ist-der-kernunterschied-zwischen-einstufigen-und-zweistufigen-nvf-verfahren",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-k-to",
-        abschnittId: "fbm-nvf1-k-to-seite-12",
-        seite: 12,
-        zitat: "innerhalb von 14 Tagen nach der elektronischen Einreichung",
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-16",
-        seite: 16,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-8",
-        seite: 8,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-15",
-        seite: 15,
-      },
+    "frage": "Was ist der Kernunterschied zwischen einstufigen und zweistufigen NVF-Verfahren?",
+    "antwort_kurz": "Der Unterschied liegt im Reifegrad der Projektidee. Einstufig setzt eine weitgehend ausformulierte Idee voraus, zweistufig eine vorbereitungsbedürftige Idee.",
+    "antwort_lang": "Der Unterschied liegt im Reifegrad der Projektidee. Einstufig setzt eine weitgehend ausformulierte Idee voraus, zweistufig eine vorbereitungsbedürftige Idee. Das Dokument formuliert dazu: „Unterschied: Reifegrad der Projektidee!“. Fundstelle: Präsentation Webseminar NVF 2026, S. 6.",
+    "verwandte_fragen": [
+      "Welche Förderbekanntmachungen wurden am 23. Januar 2026 aufgeführt?",
+      "Wann ist ein einstufiges Verfahren angezeigt?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-was-ist-der-kernunterschied-zwischen-einstufigen-und-zweistufigen-nvf-verfahren",
+        "seite": 6,
+        "fundstelle": "S. 6",
+        "zitat": "Unterschied: Reifegrad der Projektidee!"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "krankenkasse-beteiligung",
-    topicId: "antragsrollen",
-    frage: "Wann muss eine Krankenkasse beteiligt sein?",
-    antwort_kurz:
-      "Im Bereich neue Versorgungsformen ist in der Regel eine Krankenkasse zu beteiligen.",
-    antwort_lang:
-      "Die Förderbekanntmachungen sehen in der Regel eine Krankenkassenbeteiligung vor. Diese Beteiligung muss im Antrag nachweisbar beschrieben und formal dokumentiert sein.",
-    verwandte_fragen: [
-      "Wer ist antragsberechtigt im Innovationsfonds?",
-      "Wie wird die Krankenkassenbeteiligung im zweistufigen Verfahren nachgewiesen?",
+    "slug": "wann-ist-ein-einstufiges-verfahren-angezeigt",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "foerderkriterien_und_qualitaet"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-6",
-        seite: 6,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-9",
-        seite: 9,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-23",
-        seite: 23,
-      },
+    "frage": "Wann ist ein einstufiges Verfahren angezeigt?",
+    "antwort_kurz": "Wenn Evaluationskonzept, Arbeits- und Zeitplan, Finanzierungsplan und Konsortium bereits detailliert vorliegen.",
+    "antwort_lang": "Wenn Evaluationskonzept, Arbeits- und Zeitplan, Finanzierungsplan und Konsortium bereits detailliert vorliegen. Das Dokument formuliert dazu: „Projektidee bereits detailliert ausgearbeitet“. Fundstelle: Präsentation Webseminar NVF 2026, S. 6.",
+    "verwandte_fragen": [
+      "Was ist der Kernunterschied zwischen einstufigen und zweistufigen NVF-Verfahren?",
+      "Wann ist ein zweistufiges Verfahren angezeigt?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-wann-ist-ein-einstufiges-verfahren-angezeigt",
+        "seite": 6,
+        "fundstelle": "S. 6",
+        "zitat": "Projektidee bereits detailliert ausgearbeitet"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "nachweis-krankenkasse-zweistufig",
-    topicId: "antragsrollen",
-    frage: "Wie wird die Krankenkassenbeteiligung im zweistufigen Verfahren nachgewiesen?",
-    antwort_kurz:
-      "Bereits bei der Ideenskizze ist eine Absichtserklärung der Krankenkasse(n) vorgesehen.",
-    antwort_lang:
-      "Im zweistufigen Verfahren muss die Krankenkassenbeteiligung schon in der Ideenskizze nachvollziehbar sein. Die Förderbekanntmachungen nennen dazu eine Absichtserklärung als Nachweisinstrument.",
-    verwandte_fragen: [
-      "Wann muss eine Krankenkasse beteiligt sein?",
-      "Was ist der Unterschied zwischen einstufigem und zweistufigem Verfahren?",
+    "slug": "wann-ist-ein-zweistufiges-verfahren-angezeigt",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-9",
-        seite: 9,
-        zitat: "bereits bei der Einreichung der Ideenskizze durch eine Absichtserklärung",
-      },
-      {
-        dokumentId: "fbm-nvf2-l-to",
-        abschnittId: "fbm-nvf2-l-to-seite-7",
-        seite: 7,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-14",
-        seite: 14,
-      },
+    "frage": "Wann ist ein zweistufiges Verfahren angezeigt?",
+    "antwort_kurz": "Wenn eine Projektidee noch umfangreiche Vorbereitung benötigt und zunächst eine Konzeptentwicklungsphase gefördert werden soll.",
+    "antwort_lang": "Wenn eine Projektidee noch umfangreiche Vorbereitung benötigt und zunächst eine Konzeptentwicklungsphase gefördert werden soll. Das Dokument formuliert dazu: „Projektidee benötigt umfangreiche Vorbereitung“. Fundstelle: Präsentation Webseminar NVF 2026, S. 6.",
+    "verwandte_fragen": [
+      "Wann ist ein einstufiges Verfahren angezeigt?",
+      "Wofür ist das einstufig kurze Verfahren gedacht?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-wann-ist-ein-zweistufiges-verfahren-angezeigt",
+        "seite": 6,
+        "fundstelle": "S. 6",
+        "zitat": "Projektidee benötigt umfangreiche Vorbereitung"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "foerderung-konzeptentwicklungsphase",
-    topicId: "foerderfaehigkeit",
-    frage: "Wie hoch ist die Förderung der Konzeptentwicklungsphase?",
-    antwort_kurz:
-      "Für die Konzeptentwicklungsphase können bis zu 75.000 € bei bis zu sechs Monaten Laufzeit beantragt werden.",
-    antwort_lang:
-      "In den zweistufigen Verfahren ist die Konzeptentwicklungsphase auf bis zu sechs Monate angelegt. Für diese Phase wird eine Förderung von bis zu 75.000 € als Obergrenze genannt, die nach Aufwand abgerechnet wird.",
-    verwandte_fragen: [
-      "Was ist der Unterschied zwischen einstufigem und zweistufigem Verfahren?",
-      "Wie lang dürfen Projekte in der Durchführungsphase laufen?",
+    "slug": "wofuer-ist-das-einstufig-kurze-verfahren-gedacht",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-13",
-        seite: 13,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-18",
-        seite: 18,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-19",
-        seite: 19,
-      },
+    "frage": "Wofür ist das einstufig kurze Verfahren gedacht?",
+    "antwort_kurz": "Für Vorhaben, die binnen zwei Jahren gesundheitsbezogene Verbesserungen oder patientenrelevante Struktur- bzw. Verfahrensverbesserungen nachweisen oder komplexe Ansätze pilotieren.",
+    "antwort_lang": "Für Vorhaben, die binnen zwei Jahren gesundheitsbezogene Verbesserungen oder patientenrelevante Struktur- bzw. Verfahrensverbesserungen nachweisen oder komplexe Ansätze pilotieren. Das Dokument formuliert dazu: „innerhalb von zwei Jahren“. Fundstelle: Präsentation Webseminar NVF 2026, S. 6.",
+    "verwandte_fragen": [
+      "Wann ist ein zweistufiges Verfahren angezeigt?",
+      "Welche Laufzeit und Frist gelten für das einstufig lange NVF-Verfahren 2026?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-wofuer-ist-das-einstufig-kurze-verfahren-gedacht",
+        "seite": 6,
+        "fundstelle": "S. 6",
+        "zitat": "innerhalb von zwei Jahren"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "projektlaufzeit-maximal",
-    topicId: "fristen",
-    frage: "Wie lang dürfen Projekte in der Durchführungsphase laufen?",
-    antwort_kurz:
-      "Regelhaft 36 Monate, in begründeten Fällen bis maximal 48 Monate.",
-    antwort_lang:
-      "Die Förderdokumente nennen in der Regel 36 Monate Laufzeit. In begründeten Ausnahmefällen sind bis zu 48 Monate möglich. Für eng getaktete Planung empfehlen die Leitfäden, den Puffer nicht vollständig zu verbrauchen.",
-    verwandte_fragen: [
-      "Wie hoch ist die Förderung der Konzeptentwicklungsphase?",
-      "Welche Fristen gelten für Originalunterschriften und Formblätter?",
+    "slug": "welche-laufzeit-und-frist-gelten-fuer-das-einstufig-lange-nvf-verfahren-2026",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-9",
-        seite: 9,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-13",
-        seite: 13,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-16",
-        seite: 16,
-      },
+    "frage": "Welche Laufzeit und Frist gelten für das einstufig lange NVF-Verfahren 2026?",
+    "antwort_kurz": "Die Laufzeit beträgt in der Regel 36, maximal 48 Monate; Einreichungsfrist ist der 19. Mai 2026.",
+    "antwort_lang": "Die Laufzeit beträgt in der Regel 36, maximal 48 Monate; Einreichungsfrist ist der 19. Mai 2026. Das Dokument formuliert dazu: „Frist zur Antragseinreichung: 19. Mai 2026“. Fundstelle: Präsentation Webseminar NVF 2026, S. 7.",
+    "verwandte_fragen": [
+      "Wofür ist das einstufig kurze Verfahren gedacht?",
+      "Welche Laufzeit und Frist gelten für das zweistufig lange NVF-Verfahren 2026?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-laufzeit-und-frist-gelten-fuer-das-einstufig-lange-nvf-verfahren-2026",
+        "seite": 7,
+        "fundstelle": "S. 7",
+        "zitat": "Frist zur Antragseinreichung: 19. Mai 2026"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "datenschutzvorgaben",
-    topicId: "formale_voraussetzungen",
-    frage: "Welche Datenschutzvorgaben gelten im Innovationsfonds?",
-    antwort_kurz:
-      "Es gelten die einschlägigen Datenschutzvorschriften (u. a. DSGVO, BDSG, SGB V/SGB X).",
-    antwort_lang:
-      "Die Förderbekanntmachungen verpflichten zur Einhaltung datenschutzrechtlicher Bestimmungen. Die Leitfäden konkretisieren die rechtlichen Rahmenbedingungen für personenbezogene Patientendaten und verweisen auf DSGVO, BDSG sowie sozialrechtliche Vorgaben.",
-    verwandte_fragen: [
-      "Was gilt für Daten außerhalb der ePA?",
-      "Welche Anforderungen gelten für TI und Interoperabilität?",
+    "slug": "welche-laufzeit-und-frist-gelten-fuer-das-zweistufig-lange-nvf-verfahren-2026",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-9",
-        seite: 9,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-3",
-        seite: 3,
-      },
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-3",
-        seite: 3,
-      },
+    "frage": "Welche Laufzeit und Frist gelten für das zweistufig lange NVF-Verfahren 2026?",
+    "antwort_kurz": "Die Laufzeit beträgt in der Regel 36, maximal 48 Monate; hinzu kommt eine obligatorische sechsmonatige Konzeptentwicklungsphase; Einreichungsfrist ist der 21. April 2026.",
+    "antwort_lang": "Die Laufzeit beträgt in der Regel 36, maximal 48 Monate; hinzu kommt eine obligatorische sechsmonatige Konzeptentwicklungsphase; Einreichungsfrist ist der 21. April 2026. Das Dokument formuliert dazu: „obligatorische Konzeptentwicklungsphase (6 Monate)“. Fundstelle: Präsentation Webseminar NVF 2026, S. 7.",
+    "verwandte_fragen": [
+      "Welche Laufzeit und Frist gelten für das einstufig lange NVF-Verfahren 2026?",
+      "Wie funktioniert die Einreichung im einstufig kurzen Verfahren 2026?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-laufzeit-und-frist-gelten-fuer-das-zweistufig-lange-nvf-verfahren-2026",
+        "seite": 7,
+        "fundstelle": "S. 7",
+        "zitat": "obligatorische Konzeptentwicklungsphase (6 Monate)"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "daten-ausserhalb-epa",
-    topicId: "formale_voraussetzungen",
-    frage: "Was gilt für Daten außerhalb der ePA?",
-    antwort_kurz:
-      "Wenn Patientendaten außerhalb der ePA gespeichert werden, muss dies begründet werden.",
-    antwort_lang:
-      "Die Leitfäden verlangen eine nachvollziehbare Begründung, falls Daten für die Versorgungsform nicht in der ePA gehalten werden. Zusätzlich ist die Übertragbarkeit in die Regelversorgung mit ePA/TI-Bezug darzustellen.",
-    verwandte_fragen: [
-      "Welche Datenschutzvorgaben gelten im Innovationsfonds?",
-      "Welche Anforderungen gelten für TI und Interoperabilität?",
+    "slug": "wie-funktioniert-die-einreichung-im-einstufig-kurzen-verfahren-2026",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-14",
-        seite: 14,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-5",
-        seite: 5,
-      },
+    "frage": "Wie funktioniert die Einreichung im einstufig kurzen Verfahren 2026?",
+    "antwort_kurz": "Einreichungen erfolgen fortlaufend im Jahr 2026 per E-Mail; die Laufzeit ist auf maximal 24 Monate begrenzt.",
+    "antwort_lang": "Einreichungen erfolgen fortlaufend im Jahr 2026 per E-Mail; die Laufzeit ist auf maximal 24 Monate begrenzt. Das Dokument formuliert dazu: „keine, fortlaufend in 2026 per E-Mail“. Fundstelle: Präsentation Webseminar NVF 2026, S. 7.",
+    "verwandte_fragen": [
+      "Welche Laufzeit und Frist gelten für das zweistufig lange NVF-Verfahren 2026?",
+      "Was ist das übergeordnete Ziel der NVF-Förderung?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-wie-funktioniert-die-einreichung-im-einstufig-kurzen-verfahren-2026",
+        "seite": 7,
+        "fundstelle": "S. 7",
+        "zitat": "keine, fortlaufend in 2026 per E-Mail"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "ti-und-interoperabilitaet",
-    topicId: "formale_voraussetzungen",
-    frage: "Welche Anforderungen gelten für TI und Interoperabilität?",
-    antwort_kurz:
-      "Projekte mit IT-/Telemedizinbezug müssen Anforderungen zu TI, Schnittstellen und Interoperabilität berücksichtigen.",
-    antwort_lang:
-      "Bei digitalen Versorgungsformen müssen die Anforderungen der Telematikinfrastruktur, der ePA-Nutzung und relevanter Schnittstellenvorgaben dargestellt werden. Die Leitfäden erwarten eine umsetzbare Integrationslogik für die Regelversorgung.",
-    verwandte_fragen: [
-      "Was gilt für Daten außerhalb der ePA?",
-      "Welche Datenschutzvorgaben gelten im Innovationsfonds?",
+    "slug": "was-ist-das-uebergeordnete-ziel-der-nvf-foerderung",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-9",
-        seite: 9,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-5",
-        seite: 5,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-6",
-        seite: 6,
-      },
+    "frage": "Was ist das übergeordnete Ziel der NVF-Förderung?",
+    "antwort_kurz": "Ziel ist die Weiterentwicklung der Versorgung in der gesetzlichen Krankenversicherung.",
+    "antwort_lang": "Ziel ist die Weiterentwicklung der Versorgung in der gesetzlichen Krankenversicherung. Das Dokument formuliert dazu: „Weiterentwicklung der Versorgung“. Fundstelle: Präsentation Webseminar NVF 2026, S. 9.",
+    "verwandte_fragen": [
+      "Wie funktioniert die Einreichung im einstufig kurzen Verfahren 2026?",
+      "Wie werden neue Versorgungsformen in der Verfahrensordnung beschrieben?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-was-ist-das-uebergeordnete-ziel-der-nvf-foerderung",
+        "seite": 9,
+        "fundstelle": "S. 9",
+        "zitat": "Weiterentwicklung der Versorgung"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "foerderausschluesse",
-    topicId: "foerderfaehigkeit",
-    frage: "Welche Projekte sind von der Förderung ausgeschlossen?",
-    antwort_kurz:
-      "Nicht förderfähig sind u. a. bestimmte Produktentwicklungen, klinische Prüfungen nach MDR-Fokus und Doppelstrukturen zu bestehenden Förderungen.",
-    antwort_lang:
-      "Die Bekanntmachungen und Leitfäden nennen explizit Ausschlüsse. Dazu zählen unter anderem Vorhaben mit primärem Produktentwicklungsfokus, bestimmte klinische Prüfungslogiken sowie Projekte, die nicht zum Gegenstand der Förderung passen.",
-    verwandte_fragen: [
-      "Was ist der Unterschied zwischen einstufigem und zweistufigem Verfahren?",
-      "Welche formalen Ausschlussgründe gibt es bei Antrag und Ideenskizze?",
+    "slug": "wie-werden-neue-versorgungsformen-in-der-verfahrensordnung-beschrieben",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-6",
-        seite: 6,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-8",
-        seite: 8,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-4",
-        seite: 4,
-      },
+    "frage": "Wie werden neue Versorgungsformen in der Verfahrensordnung beschrieben?",
+    "antwort_kurz": "Sie sind Versorgungsformen, die über die bisherige Regelversorgung hinausgehen; dazu zählen insbesondere sektorenübergreifende Modelle.",
+    "antwort_lang": "Sie sind Versorgungsformen, die über die bisherige Regelversorgung hinausgehen; dazu zählen insbesondere sektorenübergreifende Modelle. Das Dokument formuliert dazu: „über die bisherige Regelversorgung hinausgehen“. Fundstelle: Präsentation Webseminar NVF 2026, S. 9.",
+    "verwandte_fragen": [
+      "Was ist das übergeordnete Ziel der NVF-Förderung?",
+      "Wofür sollten die Evaluationsergebnisse neuer Versorgungsformen geeignet sein?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-wie-werden-neue-versorgungsformen-in-der-verfahrensordnung-beschrieben",
+        "seite": 9,
+        "fundstelle": "S. 9",
+        "zitat": "über die bisherige Regelversorgung hinausgehen"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "formale-ausschlussgruende",
-    topicId: "formale_voraussetzungen",
-    frage: "Welche formalen Ausschlussgründe gibt es bei Antrag und Ideenskizze?",
-    antwort_kurz:
-      "Typische Ausschlussgründe sind falscher Einreichungsweg, Nichteinhaltung von Form/Umfang oder fehlende fristgerechte Originalunterlagen.",
-    antwort_lang:
-      "Leitfäden und FAQ benennen konkrete formale Ausschlussgründe. Dazu gehören insbesondere die Nichteinreichung über das vorgesehene Portal, unvollständige Unterlagen sowie fehlende Originalunterschriften innerhalb der vorgegebenen Frist.",
-    verwandte_fragen: [
-      "Müssen Formblätter im Original eingereicht werden?",
-      "Welche Seitenbegrenzung gilt für NVF2-Ideenskizzen?",
+    "slug": "wofuer-sollten-die-evaluationsergebnisse-neuer-versorgungsformen-geeignet-sein",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "foerderkriterien_und_qualitaet",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-8",
-        seite: 8,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-9",
-        seite: 9,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-14",
-        seite: 14,
-      },
+    "frage": "Wofür sollten die Evaluationsergebnisse neuer Versorgungsformen geeignet sein?",
+    "antwort_kurz": "Sie sollen für Richtlinien des G-BA nutzbar sein oder dem Gesetzgeber als Grundlage für strukturelle Änderungen dienen.",
+    "antwort_lang": "Sie sollen für Richtlinien des G-BA nutzbar sein oder dem Gesetzgeber als Grundlage für strukturelle Änderungen dienen. Das Dokument formuliert dazu: „dem Gesetzgeber als Grundlage“. Fundstelle: Präsentation Webseminar NVF 2026, S. 9.",
+    "verwandte_fragen": [
+      "Wie werden neue Versorgungsformen in der Verfahrensordnung beschrieben?",
+      "Welche Ausrichtung der Förderung wird besonders betont?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-wofuer-sollten-die-evaluationsergebnisse-neuer-versorgungsformen-geeignet-sein",
+        "seite": 9,
+        "fundstelle": "S. 9",
+        "zitat": "dem Gesetzgeber als Grundlage"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "nachweise-nach-bewilligung",
-    topicId: "formale_voraussetzungen",
-    frage: "Welche Nachweise und Berichte sind nach Bewilligung erforderlich?",
-    antwort_kurz:
-      "Erforderlich sind insbesondere Zwischennachweise, Zwischenberichte und ein fristgerechter Verwendungsnachweis.",
-    antwort_lang:
-      "Nach Bewilligung gelten dokumentierte Nachweis- und Berichtspflichten. Dazu gehören je nach Zeitpunkt Zwischennachweise, Zwischenberichte und der abschließende Verwendungsnachweis innerhalb der festgelegten Fristen.",
-    verwandte_fragen: [
-      "Wie funktioniert der Verwendungsnachweis im Innovationsfonds?",
-      "Wie wird die Infrastrukturpauschale abgerechnet?",
+    "slug": "welche-ausrichtung-der-foerderung-wird-besonders-betont",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-4",
-        seite: 4,
-      },
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-8",
-        seite: 8,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-32",
-        seite: 32,
-      },
+    "frage": "Welche Ausrichtung der Förderung wird besonders betont?",
+    "antwort_kurz": "Gefördert werden insbesondere Vorhaben zur sektorenübergreifenden Versorgung, zur Optimierung intersektoraler Schnittstellen und zur Weiterentwicklung selektivvertraglicher Versorgung.",
+    "antwort_lang": "Gefördert werden insbesondere Vorhaben zur sektorenübergreifenden Versorgung, zur Optimierung intersektoraler Schnittstellen und zur Weiterentwicklung selektivvertraglicher Versorgung. Das Dokument formuliert dazu: „Überwindung der Trennung der Sektoren“. Fundstelle: Präsentation Webseminar NVF 2026, S. 10.",
+    "verwandte_fragen": [
+      "Wofür sollten die Evaluationsergebnisse neuer Versorgungsformen geeignet sein?",
+      "Welche zwei zusätzlichen Qualitätsanforderungen nennt die Folie zur Ausrichtung?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-ausrichtung-der-foerderung-wird-besonders-betont",
+        "seite": 10,
+        "fundstelle": "S. 10",
+        "zitat": "Überwindung der Trennung der Sektoren"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "verwendungsnachweis-logik",
-    topicId: "formale_voraussetzungen",
-    frage: "Wie funktioniert der Verwendungsnachweis im Innovationsfonds?",
-    antwort_kurz:
-      "Der Verwendungsnachweis erfolgt auf Basis des tatsächlichen Aufwands und muss durch belegfähige Nachweise gestützt sein.",
-    antwort_lang:
-      "Die Abrechnung der Fördermittel erfolgt über den Verwendungsnachweis. Dabei sind die Vorgaben zu rechnerischen Nachweisen, Belegen und Aufbewahrungspflichten einzuhalten. Konsortien benötigen zusätzlich eine konsolidierte Gesamtdarstellung.",
-    verwandte_fragen: [
-      "Welche Nachweise und Berichte sind nach Bewilligung erforderlich?",
-      "Wie wird die Infrastrukturpauschale abgerechnet?",
+    "slug": "welche-zwei-zusaetzlichen-qualitaetsanforderungen-nennt-die-folie-zur-ausrichtung",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "foerderkriterien_und_qualitaet",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-4",
-        seite: 4,
-      },
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-9",
-        seite: 9,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-33",
-        seite: 33,
-      },
+    "frage": "Welche zwei zusätzlichen Qualitätsanforderungen nennt die Folie zur Ausrichtung?",
+    "antwort_kurz": "Ein tragfähiges Evaluationskonzept und ein hinreichendes Umsetzungspotenzial für die dauerhafte Aufnahme in die Versorgung.",
+    "antwort_lang": "Ein tragfähiges Evaluationskonzept und ein hinreichendes Umsetzungspotenzial für die dauerhafte Aufnahme in die Versorgung. Das Dokument formuliert dazu: „tragfähiges Evaluationskonzept“. Fundstelle: Präsentation Webseminar NVF 2026, S. 10.",
+    "verwandte_fragen": [
+      "Welche Ausrichtung der Förderung wird besonders betont?",
+      "Welche übergeordneten Aspekte können themenübergreifend vorgesehen werden?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-zwei-zusaetzlichen-qualitaetsanforderungen-nennt-die-folie-zur-ausrichtung",
+        "seite": 10,
+        "fundstelle": "S. 10",
+        "zitat": "tragfähiges Evaluationskonzept"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "infrastrukturpauschale-abrechnung",
-    topicId: "formale_voraussetzungen",
-    frage: "Wie wird die Infrastrukturpauschale abgerechnet?",
-    antwort_kurz:
-      "Die Infrastrukturpauschale wird prozentual auf tatsächliche Personalausgaben bezogen und ist im Nachweis zu bestätigen.",
-    antwort_lang:
-      "ANBest-IF und FAQ beschreiben die Abrechnung der Infrastrukturpauschale als prozentualen Anteil auf die tatsächlich entstandenen Personalausgaben. Im Verwendungsnachweis muss der projektbezogene Einsatz nachvollziehbar bestätigt werden.",
-    verwandte_fragen: [
-      "Wie funktioniert der Verwendungsnachweis im Innovationsfonds?",
-      "Welche Nachweise und Berichte sind nach Bewilligung erforderlich?",
+    "slug": "welche-uebergeordneten-aspekte-koennen-themenuebergreifend-vorgesehen-werden",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-6",
-        seite: 6,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-20",
-        seite: 20,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-20",
-        seite: 20,
-      },
-      {
-        dokumentId: "personalmittelsaetze-if-2026",
-        abschnittId: "personalmittelsaetze-if-2026-seite-1",
-        seite: 1,
-      },
+    "frage": "Welche übergeordneten Aspekte können themenübergreifend vorgesehen werden?",
+    "antwort_kurz": "Besondere Projektstrukturen und -elemente wie Digitalisierung und Patient-Empowerment-Strukturen.",
+    "antwort_lang": "Besondere Projektstrukturen und -elemente wie Digitalisierung und Patient-Empowerment-Strukturen. Das Dokument formuliert dazu: „Elemente der Digitalisierung“. Fundstelle: Präsentation Webseminar NVF 2026, S. 11.",
+    "verwandte_fragen": [
+      "Welche zwei zusätzlichen Qualitätsanforderungen nennt die Folie zur Ausrichtung?",
+      "Unter welcher Bedingung sind Kooperationen außerhalb der GKV möglich?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-uebergeordneten-aspekte-koennen-themenuebergreifend-vorgesehen-werden",
+        "seite": 11,
+        "fundstelle": "S. 11",
+        "zitat": "Elemente der Digitalisierung"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "rechtsgrundlagen-verstetigung",
-    topicId: "foerderfaehigkeit",
-    frage: "Welche Rechtsgrundlagen sind für die Verstetigung in der Versorgung relevant?",
-    antwort_kurz:
-      "Als zentrale Wege werden insbesondere Selektivverträge (§ 140a SGB V) und Modellvorhaben (§§ 63 ff. SGB V) genannt.",
-    antwort_lang:
-      "Die Förderunterlagen verlangen eine realistische Transfer- und Verstetigungslogik. Dafür werden als typische Rechtsgrundlagen insbesondere Selektivverträge und Modellvorhaben benannt. Welche Option passt, hängt vom konkreten Versorgungskonzept ab.",
-    verwandte_fragen: [
-      "Wer ist antragsberechtigt im Innovationsfonds?",
-      "Welche Projekte sind von der Förderung ausgeschlossen?",
+    "slug": "unter-welcher-bedingung-sind-kooperationen-ausserhalb-der-gkv-moeglich",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-8",
-        seite: 8,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-11",
-        seite: 11,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-25",
-        seite: 25,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-26",
-        seite: 26,
-      },
+    "frage": "Unter welcher Bedingung sind Kooperationen außerhalb der GKV möglich?",
+    "antwort_kurz": "Nur wenn sich diese Akteure entsprechend ihrer Zuständigkeit finanziell beteiligen; Form und Umfang der Beteiligung sind nachzuweisen.",
+    "antwort_lang": "Nur wenn sich diese Akteure entsprechend ihrer Zuständigkeit finanziell beteiligen; Form und Umfang der Beteiligung sind nachzuweisen. Das Dokument formuliert dazu: „finanziellen Umfang der Beteiligung“. Fundstelle: Präsentation Webseminar NVF 2026, S. 11.",
+    "verwandte_fragen": [
+      "Welche übergeordneten Aspekte können themenübergreifend vorgesehen werden?",
+      "Was ist das themenspezifische Themenfeld im zweistufig langen Verfahren 2026?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-unter-welcher-bedingung-sind-kooperationen-ausserhalb-der-gkv-moeglich",
+        "seite": 11,
+        "fundstelle": "S. 11",
+        "zitat": "finanziellen Umfang der Beteiligung"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "antrags-id-bedeutung",
-    topicId: "unterlagen",
-    kategorien: ["antragsverfahren", "fristen_und_formalia"],
-    frage: "Was ist die Antrags-ID und warum ist sie wichtig?",
-    antwort_kurz:
-      "Die Antrags-ID wird beim Anlegen des Vorhabens in PT-Outline vergeben und muss konsistent in den Formblättern geführt werden.",
-    antwort_lang:
-      "Die Antrags-ID ist das zentrale Zuordnungsmerkmal zwischen elektronischem Antrag und unterschriebenen Originalunterlagen. Sie stellt sicher, dass Formblätter, Anlagen und Portalvorgang korrekt zusammengeführt werden können. In der Praxis sollte die ID unmittelbar nach Anlage des Projekts in interne Checklisten und Dokumentvorlagen übernommen werden.",
-    verwandte_fragen: [
-      "Wie erfolgt die Antragseinreichung für NVF1 und NVF2?",
-      "Müssen Formblätter im Original eingereicht werden?",
-      "Welche Unterlagen müssen in Stufe 1 des zweistufigen Verfahrens vorliegen?",
+    "slug": "was-ist-das-themenspezifische-themenfeld-im-zweistufig-langen-verfahren-2026",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-15",
-        seite: 15,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-11",
-        seite: 11,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-12",
-        seite: 12,
-      },
+    "frage": "Was ist das themenspezifische Themenfeld im zweistufig langen Verfahren 2026?",
+    "antwort_kurz": "Das Themenfeld lautet Erhöhung der Bedarfsgerechtigkeit und Effizienz der gesundheitlichen Versorgung.",
+    "antwort_lang": "Das Themenfeld lautet Erhöhung der Bedarfsgerechtigkeit und Effizienz der gesundheitlichen Versorgung. Das Dokument formuliert dazu: „Erhöhung der Bedarfsgerechtigkeit“. Fundstelle: Präsentation Webseminar NVF 2026, S. 12.",
+    "verwandte_fragen": [
+      "Unter welcher Bedingung sind Kooperationen außerhalb der GKV möglich?",
+      "Was gilt für die themenoffene Förderbekanntmachung?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-was-ist-das-themenspezifische-themenfeld-im-zweistufig-langen-verfahren-2026",
+        "seite": 12,
+        "fundstelle": "S. 12",
+        "zitat": "Erhöhung der Bedarfsgerechtigkeit"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "einreichungsfristen-2026",
-    topicId: "fristen",
-    kategorien: ["fristen_und_formalia", "antragsverfahren"],
-    frage: "Welche Einreichungsfristen gelten 2026 für NVF1 und NVF2?",
-    antwort_kurz:
-      "Für die Runde 2026 sind feste Fristen genannt, u. a. der 2. Juni 2026 (NVF1) und der 5. Mai 2026 (NVF2-Ideenskizzenformblatt).",
-    antwort_lang:
-      "Die Fristen sind je Förderlinie verbindlich und kombinieren elektronische Einreichung mit Originalvorlage unterschriebener Formblätter. Für NVF1 ist in den Unterlagen der 2. Juni 2026 als maßgeblicher Termin genannt. Für NVF2 wird für das Formblatt der Ideenskizze der 5. Mai 2026 als Frist ausgewiesen.",
-    verwandte_fragen: [
-      "Welche Fristen gelten für Originalunterschriften und Formblätter?",
-      "Müssen Formblätter im Original eingereicht werden?",
-      "Welche Seitenbegrenzung gilt für NVF2-Ideenskizzen?",
+    "slug": "was-gilt-fuer-die-themenoffene-foerderbekanntmachung",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "digitalisierung_und_datenschutz",
+      "rechtsgrundlagen_und_transfer"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-12",
-        seite: 12,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-16",
-        seite: 16,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-to",
-        abschnittId: "fbm-nvf2-l-to-seite-14",
-        seite: 14,
-      },
+    "frage": "Was gilt für die themenoffene Förderbekanntmachung?",
+    "antwort_kurz": "Es ist keine Themensetzung vorgegeben, aber die Relevanz für die GKV-Versorgung muss begründet werden.",
+    "antwort_lang": "Es ist keine Themensetzung vorgegeben, aber die Relevanz für die GKV-Versorgung muss begründet werden. Das Dokument formuliert dazu: „keine Themensetzung vorgegeben“. Fundstelle: Präsentation Webseminar NVF 2026, S. 12.",
+    "verwandte_fragen": [
+      "Was ist das themenspezifische Themenfeld im zweistufig langen Verfahren 2026?",
+      "Ist eine Doppeleinreichung desselben Themas zulässig?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-was-gilt-fuer-die-themenoffene-foerderbekanntmachung",
+        "seite": 12,
+        "fundstelle": "S. 12",
+        "zitat": "keine Themensetzung vorgegeben"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "unterlagen-zweistufig-stufe1",
-    topicId: "unterlagen",
-    kategorien: ["antragsverfahren", "fristen_und_formalia"],
-    frage: "Welche Unterlagen müssen in Stufe 1 des zweistufigen Verfahrens vorliegen?",
-    antwort_kurz:
-      "Benötigt werden eine formgerechte Ideenskizze, die geforderten Anlagen sowie das fristgerecht unterschriebene Formblatt.",
-    antwort_lang:
-      "Stufe 1 im zweistufigen Verfahren verlangt ein vollständig nachvollziehbares Unterlagenset. Dazu gehören Ideenskizze mit vorgegebener Gliederung, verpflichtende Anlagen und die formale Beantragung mit unterschriebenem Formblatt. Zusätzlich sind Nachweise zu Partnern und Beteiligungen früh einzuplanen.",
-    verwandte_fragen: [
-      "Welche Seitenbegrenzung gilt für NVF2-Ideenskizzen?",
-      "Wie wird die Krankenkassenbeteiligung im zweistufigen Verfahren nachgewiesen?",
-      "Welche Einreichungsfristen gelten 2026 für NVF1 und NVF2?",
+    "slug": "ist-eine-doppeleinreichung-desselben-themas-zulaessig",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-8",
-        seite: 8,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-20",
-        seite: 20,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-16",
-        seite: 16,
-      },
+    "frage": "Ist eine Doppeleinreichung desselben Themas zulässig?",
+    "antwort_kurz": "Nein. Dasselbe Thema darf nicht parallel themenspezifisch und themenoffen oder in mehreren NVF-Verfahren 2026 eingereicht werden.",
+    "antwort_lang": "Nein. Dasselbe Thema darf nicht parallel themenspezifisch und themenoffen oder in mehreren NVF-Verfahren 2026 eingereicht werden. Das Dokument formuliert dazu: „keine Doppeleinreichung möglich“. Fundstelle: Präsentation Webseminar NVF 2026, S. 12.",
+    "verwandte_fragen": [
+      "Was gilt für die themenoffene Förderbekanntmachung?",
+      "Welche grundlegenden Fördervoraussetzungen nennt die Seminarfolie?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-ist-eine-doppeleinreichung-desselben-themas-zulaessig",
+        "seite": 12,
+        "fundstelle": "S. 12",
+        "zitat": "keine Doppeleinreichung möglich"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "synopse-inhalte",
-    topicId: "unterlagen",
-    kategorien: ["antragsverfahren", "foerderkriterien_und_qualitaet"],
-    frage: "Welche Inhalte gehören in die Synopse?",
-    antwort_kurz:
-      "Die Synopse bündelt Projektrahmen, Partnerstruktur, Kernziel, Thema und Fördermittelbedarf in kompakter Form.",
-    antwort_lang:
-      "Die Synopse dient als strukturierter Einstieg in Antrag und Ideenskizze. Sie verdichtet die wichtigsten Projektinformationen so, dass die Bewertung schnell orientiert erfolgen kann. Eine präzise Synopse verbessert die Verständlichkeit des gesamten Antragsdokuments und reduziert Rückfragen in der Begutachtung.",
-    verwandte_fragen: [
-      "Welche Seitenbegrenzung gilt für NVF1-Anträge?",
-      "Welche Unterlagen müssen in Stufe 1 des zweistufigen Verfahrens vorliegen?",
-      "Welche Förderkriterien sind für die Bewertung zentral?",
+    "slug": "welche-grundlegenden-foerdervoraussetzungen-nennt-die-seminarfolie",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "foerderkriterien_und_qualitaet",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-10",
-        seite: 10,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-11",
-        seite: 11,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-8",
-        seite: 8,
-      },
+    "frage": "Welche grundlegenden Fördervoraussetzungen nennt die Seminarfolie?",
+    "antwort_kurz": "Die neue Versorgungsform muss auf geltendem Recht beruhen, Datenschutz sowie ethische und wissenschaftliche Standards einhalten und interoperabel sein.",
+    "antwort_lang": "Die neue Versorgungsform muss auf geltendem Recht beruhen, Datenschutz sowie ethische und wissenschaftliche Standards einhalten und interoperabel sein. Das Dokument formuliert dazu: „Einhaltung ethischer und wissenschaftlicher Standards“. Fundstelle: Präsentation Webseminar NVF 2026, S. 13.",
+    "verwandte_fragen": [
+      "Ist eine Doppeleinreichung desselben Themas zulässig?",
+      "Welche Interoperabilitätsanforderungen werden ausdrücklich genannt?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-grundlegenden-foerdervoraussetzungen-nennt-die-seminarfolie",
+        "seite": 13,
+        "fundstelle": "S. 13",
+        "zitat": "Einhaltung ethischer und wissenschaftlicher Standards"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "foerderkriterien-bewertung",
-    topicId: "foerderfaehigkeit",
-    kategorien: ["foerderkriterien_und_qualitaet", "rechtsgrundlagen_und_transfer"],
-    frage: "Welche Förderkriterien sind für die Bewertung zentral?",
-    antwort_kurz:
-      "Kernkriterien sind Relevanz, Versorgungsverbesserung, Umsetzungspotenzial, Übertragbarkeit, Evaluierbarkeit und Machbarkeit.",
-    antwort_lang:
-      "Der Innovationsausschuss bewertet Projekte entlang eines klar strukturierten Kriterienrahmens. Neben dem inhaltlichen Nutzen zählt, wie belastbar die Umsetzung geplant ist und ob ein realistischer Weg in die Versorgung erkennbar wird. Förderfähig sind vor allem Vorhaben, die Versorgungseffekt, Methodik und Transfer konsistent verbinden.",
-    verwandte_fragen: [
-      "Welche Anforderungen gelten an das Evaluationskonzept?",
-      "Was muss der Arbeits-, Zeit- und Meilensteinplan enthalten?",
-      "Welche Rechtsgrundlagen sind für die Verstetigung in der Versorgung relevant?",
+    "slug": "welche-interoperabilitaetsanforderungen-werden-ausdruecklich-genannt",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "foerderkriterien_und_qualitaet",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-7",
-        seite: 7,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-10",
-        seite: 10,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-15",
-        seite: 15,
-      },
+    "frage": "Welche Interoperabilitätsanforderungen werden ausdrücklich genannt?",
+    "antwort_kurz": "Zu beachten sind die Regelungen der §§ 385 ff. SGB V, relevante Festlegungen nach § 327 SGB V, Anforderungen nach §§ 371 ff. SGB V, TI-Kompatibilität und offene Schnittstellen.",
+    "antwort_lang": "Zu beachten sind die Regelungen der §§ 385 ff. SGB V, relevante Festlegungen nach § 327 SGB V, Anforderungen nach §§ 371 ff. SGB V, TI-Kompatibilität und offene Schnittstellen. Das Dokument formuliert dazu: „Kompatibilität mit der Telematikinfrastruktur“. Fundstelle: Präsentation Webseminar NVF 2026, S. 13.",
+    "verwandte_fragen": [
+      "Welche grundlegenden Fördervoraussetzungen nennt die Seminarfolie?",
+      "Was bedeutet Zugänglichkeit der Ergebnisse im Förderkontext?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-interoperabilitaetsanforderungen-werden-ausdruecklich-genannt",
+        "seite": 13,
+        "fundstelle": "S. 13",
+        "zitat": "Kompatibilität mit der Telematikinfrastruktur"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "evaluationskonzept-anforderungen",
-    topicId: "foerderfaehigkeit",
-    kategorien: ["foerderkriterien_und_qualitaet", "rechtsgrundlagen_und_transfer"],
-    frage: "Welche Anforderungen gelten an das Evaluationskonzept?",
-    antwort_kurz:
-      "Gefordert ist ein methodisch belastbares Evaluationskonzept mit Endpunkten, Studiendesign, Datengrundlage und realistischer Fallzahlplanung.",
-    antwort_lang:
-      "Die Unterlagen machen die Qualität der Evaluation zu einem zentralen Förderkriterium. In der Ideenskizze reicht zunächst eine grobe methodische Skizze, im Vollantrag wird eine deutlich ausdifferenzierte Planung erwartet. Entscheidend ist, dass Ergebnisse belastbar für Entscheidungen zur Weiterentwicklung der Versorgung nutzbar sind.",
-    verwandte_fragen: [
-      "Welche Förderkriterien sind für die Bewertung zentral?",
-      "Wie hoch ist die Förderung der Konzeptentwicklungsphase?",
-      "Was muss der Arbeits-, Zeit- und Meilensteinplan enthalten?",
+    "slug": "was-bedeutet-zugaenglichkeit-der-ergebnisse-im-foerderkontext",
+    "topicId": "unterlagen",
+    "kategorien": [
+      "foerderkriterien_und_qualitaet",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-7",
-        seite: 7,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-11",
-        seite: 11,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-25",
-        seite: 25,
-      },
+    "frage": "Was bedeutet Zugänglichkeit der Ergebnisse im Förderkontext?",
+    "antwort_kurz": "Es wird eine umfassende Transparenz in der Berichterstattung verlangt, einschließlich ergebnisunabhängiger Veröffentlichung der Evaluationsergebnisse.",
+    "antwort_lang": "Es wird eine umfassende Transparenz in der Berichterstattung verlangt, einschließlich ergebnisunabhängiger Veröffentlichung der Evaluationsergebnisse. Das Dokument formuliert dazu: „ergebnisunabhängige Publikation der Evaluationsergebnisse“. Fundstelle: Präsentation Webseminar NVF 2026, S. 13.",
+    "verwandte_fragen": [
+      "Welche Interoperabilitätsanforderungen werden ausdrücklich genannt?",
+      "Welche Rechtsgrundlage wird für Projekte mit Krankenkassenbeteiligung in der Regel favorisiert?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-was-bedeutet-zugaenglichkeit-der-ergebnisse-im-foerderkontext",
+        "seite": 13,
+        "fundstelle": "S. 13",
+        "zitat": "ergebnisunabhängige Publikation der Evaluationsergebnisse"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "patientenbeteiligung-nachweis",
-    topicId: "foerderfaehigkeit",
-    kategorien: ["foerderkriterien_und_qualitaet", "konsortium_und_rollen"],
-    frage: "Wie wird die Patientenbeteiligung im Antrag nachgewiesen?",
-    antwort_kurz:
-      "Die aktive Einbindung von Patientinnen und Patienten muss beschrieben oder bei Nicht-Umsetzbarkeit nachvollziehbar begründet werden.",
-    antwort_lang:
-      "Patientenbeteiligung ist als Qualitätsmerkmal in den Förderkriterien verankert. Anträge sollten konkret zeigen, wie Betroffene oder ihre Vertretungen in Entwicklung und Umsetzung eingebunden werden. Fehlt diese Beteiligung, muss die Begründung überzeugend und projektbezogen sein.",
-    verwandte_fragen: [
-      "Welche Förderkriterien sind für die Bewertung zentral?",
-      "Welche Anforderungen gelten an das Evaluationskonzept?",
-      "Welche Unterlagen müssen in Stufe 1 des zweistufigen Verfahrens vorliegen?",
+    "slug": "welche-rechtsgrundlage-wird-fuer-projekte-mit-krankenkassenbeteiligung-in-der-regel-favorisiert",
+    "topicId": "antragsrollen",
+    "kategorien": [
+      "konsortium_und_rollen",
+      "foerderkriterien_und_qualitaet"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-4",
-        seite: 4,
-      },
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-8",
-        seite: 8,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-24",
-        seite: 24,
-      },
+    "frage": "Welche Rechtsgrundlage wird für Projekte mit Krankenkassenbeteiligung in der Regel favorisiert?",
+    "antwort_kurz": "In der Regel ein Selektivvertrag nach § 140a SGB V oder ein Modellvorhaben nach §§ 63 ff. SGB V.",
+    "antwort_lang": "In der Regel ein Selektivvertrag nach § 140a SGB V oder ein Modellvorhaben nach §§ 63 ff. SGB V. Das Dokument formuliert dazu: „Selektivvertrag nach § 140a SGB V“. Fundstelle: Präsentation Webseminar NVF 2026, S. 14.",
+    "verwandte_fragen": [
+      "Was bedeutet Zugänglichkeit der Ergebnisse im Förderkontext?",
+      "Warum wird § 140a SGB V besonders favorisiert?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-rechtsgrundlage-wird-fuer-projekte-mit-krankenkassenbeteiligung-in-der-regel-favorisiert",
+        "seite": 14,
+        "fundstelle": "S. 14",
+        "zitat": "Selektivvertrag nach § 140a SGB V"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "arbeitsplan-meilensteine",
-    topicId: "formale_voraussetzungen",
-    kategorien: ["foerderkriterien_und_qualitaet", "antragsverfahren"],
-    frage: "Was muss der Arbeits-, Zeit- und Meilensteinplan enthalten?",
-    antwort_kurz:
-      "Gefordert sind Arbeitspakete, Meilensteine, ein visualisierter Zeitplan (z. B. Gantt) sowie eine realistische Ressourcen- und Partnerplanung.",
-    antwort_lang:
-      "Machbarkeit wird explizit als Förderkriterium geprüft. Deshalb müssen Arbeits- und Zeitplanung den Projektverlauf von Implementierung bis Evaluation nachvollziehbar abbilden. Gute Planungen zeigen nicht nur Termine, sondern auch Abhängigkeiten, Ressourcen und Risiken.",
-    verwandte_fragen: [
-      "Welche Förderkriterien sind für die Bewertung zentral?",
-      "Welche Anforderungen gelten an das Evaluationskonzept?",
-      "Wie lang dürfen Projekte in der Durchführungsphase laufen?",
+    "slug": "warum-wird-paragraf-140a-sgb-v-besonders-favorisiert",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "foerderkriterien_und_qualitaet",
+      "nachweise_und_berichtswesen"
     ],
-    quellen: [
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-16",
-        seite: 16,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-17",
-        seite: 17,
-      },
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-8",
-        seite: 8,
-      },
+    "frage": "Warum wird § 140a SGB V besonders favorisiert?",
+    "antwort_kurz": "Weil diese Rechtsgrundlage insbesondere im Hinblick auf den Transfer im Bereich neuer Versorgungsformen bevorzugt werden soll.",
+    "antwort_lang": "Weil diese Rechtsgrundlage insbesondere im Hinblick auf den Transfer im Bereich neuer Versorgungsformen bevorzugt werden soll. Das Dokument formuliert dazu: „im Hinblick auf den Transfer“. Fundstelle: Präsentation Webseminar NVF 2026, S. 14.",
+    "verwandte_fragen": [
+      "Welche Rechtsgrundlage wird für Projekte mit Krankenkassenbeteiligung in der Regel favorisiert?",
+      "Welche zusätzliche Möglichkeit besteht bei Versorgung von Versicherten aller Krankenkassen?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-warum-wird-paragraf-140a-sgb-v-besonders-favorisiert",
+        "seite": 14,
+        "fundstelle": "S. 14",
+        "zitat": "im Hinblick auf den Transfer"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "ehealth-telemedizin-anforderungen",
-    topicId: "formale_voraussetzungen",
-    kategorien: ["digitalisierung_und_datenschutz", "rechtsgrundlagen_und_transfer"],
-    frage: "Welche Anforderungen gelten für E-Health-Lösungen und Telemedizin?",
-    antwort_kurz:
-      "Digitale Komponenten müssen Interoperabilität, Cybersicherheit und den TI-/ePA-Kontext adressieren.",
-    antwort_lang:
-      "Die Förderunterlagen erwarten bei E-Health- und Telemedizinvorhaben eine belastbare Integrationslogik. Dazu gehören Interoperabilität, sichere Übermittlungsverfahren und die Einbindung bestehender Versorgungsstrukturen. Bewertet wird damit nicht nur die Funktionalität, sondern vor allem die Anschlussfähigkeit in der Regelversorgung.",
-    verwandte_fragen: [
-      "Welche Anforderungen gelten für TI und Interoperabilität?",
-      "Was gilt für Daten außerhalb der ePA?",
-      "Welche Datenschutzvorgaben gelten im Innovationsfonds?",
+    "slug": "welche-zusaetzliche-moeglichkeit-besteht-bei-versorgung-von-versicherten-aller-krankenkassen",
+    "topicId": "antragsrollen",
+    "kategorien": [
+      "konsortium_und_rollen",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-9",
-        seite: 9,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-12",
-        seite: 12,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-14",
-        seite: 14,
-      },
+    "frage": "Welche zusätzliche Möglichkeit besteht bei Versorgung von Versicherten aller Krankenkassen?",
+    "antwort_kurz": "Neben beteiligten Kassen können für andere Versicherte Behandlungsverträge nach § 630a BGB abgeschlossen werden, wenn Teilnahme- und Einwilligungsregelungen den Vorgaben von § 140a Abs. 4 und 5 SGB V sowie der DSGVO folgen.",
+    "antwort_lang": "Neben beteiligten Kassen können für andere Versicherte Behandlungsverträge nach § 630a BGB abgeschlossen werden, wenn Teilnahme- und Einwilligungsregelungen den Vorgaben von § 140a Abs. 4 und 5 SGB V sowie der DSGVO folgen. Das Dokument formuliert dazu: „Behandlungsvertrag nach § 630a BGB“. Fundstelle: Präsentation Webseminar NVF 2026, S. 15.",
+    "verwandte_fragen": [
+      "Warum wird § 140a SGB V besonders favorisiert?",
+      "Welche Option gibt es für Projekte ohne Krankenkassenbeteiligung oder mit Kassen als Kooperationspartner?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-zusaetzliche-moeglichkeit-besteht-bei-versorgung-von-versicherten-aller-krankenkassen",
+        "seite": 15,
+        "fundstelle": "S. 15",
+        "zitat": "Behandlungsvertrag nach § 630a BGB"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "produktinnovationen-mittel-zum-zweck",
-    topicId: "foerderfaehigkeit",
-    kategorien: ["digitalisierung_und_datenschutz", "foerderkriterien_und_qualitaet"],
-    frage: "Was ist bei Produktinnovationen im Antrag zu beachten?",
-    antwort_kurz:
-      "Produktinnovationen sind nur tragfähig, wenn sie als Mittel zur Umsetzung der Versorgungsform dienen und nicht den Projektschwerpunkt bilden.",
-    antwort_lang:
-      "Die Förderunterlagen verlangen eine klare Abgrenzung zwischen Versorgungsinnovation und reiner Produktentwicklung. Wird ein Produkt eingesetzt, muss nachvollziehbar dargelegt werden, dass es der Versorgung dient, regulatorisch abgesichert ist und in der Projektlaufzeit einsetzbar bleibt. Je konkreter diese Einbettung ist, desto belastbarer die Förderfähigkeit.",
-    verwandte_fragen: [
-      "Welche Projekte sind von der Förderung ausgeschlossen?",
-      "Welche Studientypen im Digitalbereich sind ausdrücklich ausgeschlossen?",
-      "Welche Förderkriterien sind für die Bewertung zentral?",
+    "slug": "welche-option-gibt-es-fuer-projekte-ohne-krankenkassenbeteiligung-oder-mit-kassen-als-kooperationspartner",
+    "topicId": "antragsrollen",
+    "kategorien": [
+      "konsortium_und_rollen",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-13",
-        seite: 13,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-14",
-        seite: 14,
-      },
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-6",
-        seite: 6,
-      },
+    "frage": "Welche Option gibt es für Projekte ohne Krankenkassenbeteiligung oder mit Kassen als Kooperationspartner?",
+    "antwort_kurz": "Auch hier kann im Verhältnis Behandelnder-Patient ein Behandlungsvertrag nach § 630a BGB gewählt werden.",
+    "antwort_lang": "Auch hier kann im Verhältnis Behandelnder-Patient ein Behandlungsvertrag nach § 630a BGB gewählt werden. Das Dokument formuliert dazu: „Projekte ohne Krankenkassenbeteiligung“. Fundstelle: Präsentation Webseminar NVF 2026, S. 15.",
+    "verwandte_fragen": [
+      "Welche zusätzliche Möglichkeit besteht bei Versorgung von Versicherten aller Krankenkassen?",
+      "Welche Projekte sind wegen Produkt- oder Industrienähe ausgeschlossen?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-option-gibt-es-fuer-projekte-ohne-krankenkassenbeteiligung-oder-mit-kassen-als-kooperationspartner",
+        "seite": 15,
+        "fundstelle": "S. 15",
+        "zitat": "Projekte ohne Krankenkassenbeteiligung"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "ausgeschlossene-studientypen-digital",
-    topicId: "foerderfaehigkeit",
-    kategorien: ["digitalisierung_und_datenschutz", "foerderkriterien_und_qualitaet"],
-    frage: "Welche Studientypen im Digitalbereich sind ausdrücklich ausgeschlossen?",
-    antwort_kurz:
-      "Ausgeschlossen sind u. a. bestimmte DiGA-/DiPA-Nachweisstudien sowie definierte produktbezogene Studienpfade.",
-    antwort_lang:
-      "Die Förderbekanntmachungen führen klare Ausschlüsse auf, um Doppelstrukturen zu anderen Regulierungs- und Evidenzwegen zu vermeiden. Gerade im digitalen Umfeld muss deutlich gemacht werden, dass das Vorhaben eine neue Versorgungsform adressiert und nicht primär einen Produktzulassungs- oder Nachweisweg abbildet. Diese Trennlinie sollte im Antrag explizit begründet werden.",
-    verwandte_fragen: [
-      "Was ist bei Produktinnovationen im Antrag zu beachten?",
-      "Welche Projekte sind von der Förderung ausgeschlossen?",
-      "Welche formalen Ausschlussgründe gibt es bei Antrag und Ideenskizze?",
+    "slug": "welche-projekte-sind-wegen-produkt-oder-industrienaehe-ausgeschlossen",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-6",
-        seite: 6,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-8",
-        seite: 8,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-4",
-        seite: 4,
-      },
+    "frage": "Welche Projekte sind wegen Produkt- oder Industrienähe ausgeschlossen?",
+    "antwort_kurz": "Nicht gefördert werden Produktinnovationen und Projekte mit unmittelbarem wirtschaftlichen Interesse gewerblicher Unternehmen.",
+    "antwort_lang": "Nicht gefördert werden Produktinnovationen und Projekte mit unmittelbarem wirtschaftlichen Interesse gewerblicher Unternehmen. Das Dokument formuliert dazu: „unmittelbares wirtschaftliches Interesse“. Fundstelle: Präsentation Webseminar NVF 2026, S. 16.",
+    "verwandte_fragen": [
+      "Welche Option gibt es für Projekte ohne Krankenkassenbeteiligung oder mit Kassen als Kooperationspartner?",
+      "Welche studienbezogenen Projektarten sind ausgeschlossen?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-projekte-sind-wegen-produkt-oder-industrienaehe-ausgeschlossen",
+        "seite": 16,
+        "fundstelle": "S. 16",
+        "zitat": "unmittelbares wirtschaftliches Interesse"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "sozialleistungstraeger-finanzierungsbeteiligung",
-    topicId: "foerderfaehigkeit",
-    kategorien: ["rechtsgrundlagen_und_transfer", "konsortium_und_rollen"],
-    frage: "Wann sind Sozialleistungsträger außerhalb der GKV finanziell zu beteiligen?",
-    antwort_kurz:
-      "Bei sozialleistungsträgerübergreifenden Vorhaben müssen zuständige Träger außerhalb der GKV entsprechend ihrer Zuständigkeit finanziell beitragen.",
-    antwort_lang:
-      "Da der Innovationsfonds aus GKV-Mitteln finanziert wird, ist bei trägerübergreifenden Leistungen eine saubere Finanzierungsabgrenzung erforderlich. Für Leistungen außerhalb der GKV-Zuständigkeit müssen die jeweils zuständigen Träger beteiligt werden. Die Beiträge und Zusagen sind im Antrag nachvollziehbar zu dokumentieren.",
-    verwandte_fragen: [
-      "Welche Rechtsgrundlagen sind für die Verstetigung in der Versorgung relevant?",
-      "Welche Projektstrukturen sind als Einzel- oder Konsortialprojekt möglich?",
-      "Welche Ausgaben sind grundsätzlich förderfähig?",
+    "slug": "welche-studienbezogenen-projektarten-sind-ausgeschlossen",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-5",
-        seite: 5,
-      },
-      {
-        dokumentId: "fbm-nvf1-k-to",
-        abschnittId: "fbm-nvf1-k-to-seite-5",
-        seite: 5,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-3",
-        seite: 3,
-      },
+    "frage": "Welche studienbezogenen Projektarten sind ausgeschlossen?",
+    "antwort_kurz": "Ausgeschlossen sind klinische Prüfungen für Medizinprodukte, klinische Studien zum Wirksamkeits- und Nutzennachweis sowie AMNOG-Studien.",
+    "antwort_lang": "Ausgeschlossen sind klinische Prüfungen für Medizinprodukte, klinische Studien zum Wirksamkeits- und Nutzennachweis sowie AMNOG-Studien. Das Dokument formuliert dazu: „Klinische Prüfungen für Medizinprodukte“. Fundstelle: Präsentation Webseminar NVF 2026, S. 16.",
+    "verwandte_fragen": [
+      "Welche Projekte sind wegen Produkt- oder Industrienähe ausgeschlossen?",
+      "Welche weiteren Ausschlüsse nennt die zweite Ausschlussfolie?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-studienbezogenen-projektarten-sind-ausgeschlossen",
+        "seite": 16,
+        "fundstelle": "S. 16",
+        "zitat": "Klinische Prüfungen für Medizinprodukte"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "projektstrukturen-einzel-konsortial",
-    topicId: "antragsrollen",
-    kategorien: ["konsortium_und_rollen", "antragsverfahren"],
-    frage: "Welche Projektstrukturen sind als Einzel- oder Konsortialprojekt möglich?",
-    antwort_kurz:
-      "Einreichungen sind als Einzelprojekt oder Konsortialprojekt möglich; bei Konsortien müssen Arbeitspakete und Verantwortlichkeiten sauber abgegrenzt sein.",
-    antwort_lang:
-      "Die FAQ beschreibt beide Strukturtypen mit klaren Verantwortungsregeln. Bei Konsortialprojekten ist jeder Partner für sein Teilprojekt verantwortlich, während die Konsortialführung die Gesamtkoordination trägt. Für die Förderfähigkeit entscheidend ist die nachvollziehbare Rollen- und Aufgabenverteilung im Antrag.",
-    verwandte_fragen: [
-      "Wer ist antragsberechtigt im Innovationsfonds?",
-      "Wann müssen Konsortialpartner im Vollantrag verbindlich benannt sein?",
-      "Wie wird die Krankenkassenbeteiligung im zweistufigen Verfahren nachgewiesen?",
+    "slug": "welche-weiteren-ausschluesse-nennt-die-zweite-ausschlussfolie",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "foerderkriterien_und_qualitaet",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-17",
-        seite: 17,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-12",
-        seite: 12,
-      },
-      {
-        dokumentId: "leitfaden-nvf2-l-s",
-        abschnittId: "leitfaden-nvf2-l-s-seite-13",
-        seite: 13,
-      },
+    "frage": "Welche weiteren Ausschlüsse nennt die zweite Ausschlussfolie?",
+    "antwort_kurz": "Ausgeschlossen sind § 137e-Erprobungsstudien, DiGA-/DiPA-Nachweise, bereits laufende Umsetzungsprojekte, bereits öffentlich geförderte Projekte und Mehrfachbewerbungen 2026.",
+    "antwort_lang": "Ausgeschlossen sind § 137e-Erprobungsstudien, DiGA-/DiPA-Nachweise, bereits laufende Umsetzungsprojekte, bereits öffentlich geförderte Projekte und Mehrfachbewerbungen 2026. Das Dokument formuliert dazu: „bereits in der Umsetzungsphase“. Fundstelle: Präsentation Webseminar NVF 2026, S. 17.",
+    "verwandte_fragen": [
+      "Welche studienbezogenen Projektarten sind ausgeschlossen?",
+      "Nach welchen Kriterien werden NVF-Anträge bewertet?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-weiteren-ausschluesse-nennt-die-zweite-ausschlussfolie",
+        "seite": 17,
+        "fundstelle": "S. 17",
+        "zitat": "bereits in der Umsetzungsphase"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "vollantrag-partner-verbindlich",
-    topicId: "antragsrollen",
-    kategorien: ["konsortium_und_rollen", "fristen_und_formalia"],
-    frage: "Wann müssen Konsortialpartner im Vollantrag verbindlich benannt sein?",
-    antwort_kurz:
-      "Im Vollantrag müssen Konsortial- und Kooperationspartner verbindlich benannt sein; für geförderte Partner ist ein Finanzierungsplan einzureichen.",
-    antwort_lang:
-      "Spätestens in der Vollantragsphase verlangt das Verfahren ein verbindliches Partnerbild. Neben der Nennung der Partner sind Rollen, Zuständigkeiten und Finanzierungsbeiträge konsistent auszuweisen. Diese Verbindlichkeit ist zentral für die Bewertung der Umsetzbarkeit in der Durchführungsphase.",
-    verwandte_fragen: [
-      "Welche Projektstrukturen sind als Einzel- oder Konsortialprojekt möglich?",
-      "Wie wird die Krankenkassenbeteiligung im zweistufigen Verfahren nachgewiesen?",
-      "Welche Anforderungen gelten an das Evaluationskonzept?",
+    "slug": "nach-welchen-kriterien-werden-nvf-antraege-bewertet",
+    "topicId": "antragsrollen",
+    "kategorien": [
+      "konsortium_und_rollen",
+      "foerderkriterien_und_qualitaet"
     ],
-    quellen: [
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-18",
-        seite: 18,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-12",
-        seite: 12,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-25",
-        seite: 25,
-      },
+    "frage": "Nach welchen Kriterien werden NVF-Anträge bewertet?",
+    "antwort_kurz": "Die Folie nennt Relevanz, Verbesserung der Versorgung, Umsetzungspotenzial, Übertragbarkeit, Evaluierbarkeit, Machbarkeit, Verhältnismäßigkeit von Kosten und Nutzen sowie Patientenbeteiligung.",
+    "antwort_lang": "Die Folie nennt Relevanz, Verbesserung der Versorgung, Umsetzungspotenzial, Übertragbarkeit, Evaluierbarkeit, Machbarkeit, Verhältnismäßigkeit von Kosten und Nutzen sowie Patientenbeteiligung. Das Dokument formuliert dazu: „Patientenbeteiligung (4.8)“. Fundstelle: Präsentation Webseminar NVF 2026, S. 18.",
+    "verwandte_fragen": [
+      "Welche weiteren Ausschlüsse nennt die zweite Ausschlussfolie?",
+      "Was muss ein Antrag erfüllen, damit er in die Auswahl kommt?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-nach-welchen-kriterien-werden-nvf-antraege-bewertet",
+        "seite": 18,
+        "fundstelle": "S. 18",
+        "zitat": "Patientenbeteiligung (4.8)"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "finanzierungsplan-flexibilitaet",
-    topicId: "formale_voraussetzungen",
-    kategorien: ["finanzierung_und_kosten", "nachweise_und_berichtswesen"],
-    frage: "Wie flexibel ist der Finanzierungsplan nach Bewilligung?",
-    antwort_kurz:
-      "Die Gesamtfördersumme bleibt verbindlich; Umverteilungen sind nur begrenzt und teils mit vorheriger Zustimmung zulässig.",
-    antwort_lang:
-      "Die ANBest erlauben nur einen kontrollierten Flexibilitätsrahmen im Finanzierungsplan. Wesentliche Änderungen, insbesondere bei Personal, Aufträgen oder Weiterleitungen, sind zustimmungspflichtig. Für die Projektsteuerung ist daher ein aktives Budget- und Änderungsmonitoring erforderlich.",
-    verwandte_fragen: [
-      "Welche Änderungen sind zustimmungspflichtig?",
-      "Welche Ausgaben sind grundsätzlich förderfähig?",
-      "Wie funktioniert der Verwendungsnachweis im Innovationsfonds?",
+    "slug": "was-muss-ein-antrag-erfuellen-damit-er-in-die-auswahl-kommt",
+    "topicId": "formale_voraussetzungen",
+    "kategorien": [
+      "foerderkriterien_und_qualitaet",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-5",
-        seite: 5,
-      },
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-6",
-        seite: 6,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-19",
-        seite: 19,
-      },
+    "frage": "Was muss ein Antrag erfüllen, damit er in die Auswahl kommt?",
+    "antwort_kurz": "Er muss die formalen Anforderungen, den Gegenstand der Förderung und die Fördervoraussetzungen erfüllen.",
+    "antwort_lang": "Er muss die formalen Anforderungen, den Gegenstand der Förderung und die Fördervoraussetzungen erfüllen. Das Dokument formuliert dazu: „formalen Anforderungen“. Fundstelle: Präsentation Webseminar NVF 2026, S. 19.",
+    "verwandte_fragen": [
+      "Nach welchen Kriterien werden NVF-Anträge bewertet?",
+      "Wer bewertet die Anträge und wer entscheidet über die Förderung?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-was-muss-ein-antrag-erfuellen-damit-er-in-die-auswahl-kommt",
+        "seite": 19,
+        "fundstelle": "S. 19",
+        "zitat": "formalen Anforderungen"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "zustimmungspflichtige-aenderungen",
-    topicId: "formale_voraussetzungen",
-    kategorien: ["nachweise_und_berichtswesen", "finanzierung_und_kosten"],
-    frage: "Welche Änderungen sind zustimmungspflichtig?",
-    antwort_kurz:
-      "Zustimmungspflichtig sind u. a. wesentliche Abweichungen in Arbeitsprogramm, Meilensteinen, Projektleitung, Partnerstruktur und Finanzierungsplan.",
-    antwort_lang:
-      "Die ANBest definieren klar, wann vorab die Zustimmung des Förderers einzuholen ist. Das betrifft inhaltliche, organisatorische und finanzielle Änderungen gleichermaßen. Wer Änderungen zu spät adressiert, riskiert Verzögerungen in der Mittelverwendung und Berichtslogik.",
-    verwandte_fragen: [
-      "Wie flexibel ist der Finanzierungsplan nach Bewilligung?",
-      "Welche Nachweise und Berichte sind nach Bewilligung erforderlich?",
-      "Was muss der Arbeits-, Zeit- und Meilensteinplan enthalten?",
+    "slug": "wer-bewertet-die-antraege-und-wer-entscheidet-ueber-die-foerderung",
+    "topicId": "antragsrollen",
+    "kategorien": [
+      "konsortium_und_rollen",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-8",
-        seite: 8,
-      },
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-5",
-        seite: 5,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-31",
-        seite: 31,
-      },
+    "frage": "Wer bewertet die Anträge und wer entscheidet über die Förderung?",
+    "antwort_kurz": "Expertenpool und Innovationsausschuss bewerten; der Innovationsausschuss entscheidet unter Berücksichtigung der Expertenpool-Empfehlungen.",
+    "antwort_lang": "Expertenpool und Innovationsausschuss bewerten; der Innovationsausschuss entscheidet unter Berücksichtigung der Expertenpool-Empfehlungen. Das Dokument formuliert dazu: „unter Berücksichtigung der Empfehlungen“. Fundstelle: Präsentation Webseminar NVF 2026, S. 19.",
+    "verwandte_fragen": [
+      "Was muss ein Antrag erfüllen, damit er in die Auswahl kommt?",
+      "Wer ist antragsberechtigt?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-wer-bewertet-die-antraege-und-wer-entscheidet-ueber-die-foerderung",
+        "seite": 19,
+        "fundstelle": "S. 19",
+        "zitat": "unter Berücksichtigung der Empfehlungen"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "belegaufbewahrung-fristen",
-    topicId: "formale_voraussetzungen",
-    kategorien: ["nachweise_und_berichtswesen", "fristen_und_formalia"],
-    frage: "Welche Anforderungen gelten für Belege und Aufbewahrungsfristen?",
-    antwort_kurz:
-      "Belege müssen prüffähig und projektzuordenbar sein; die Aufbewahrung erfolgt in der Regel fünf Jahre nach Vorlage des Verwendungsnachweises.",
-    antwort_lang:
-      "Für die Abrechnung reicht nicht nur eine Summenmeldung, sondern eine durchgängige Beleglogik mit klarer Projektzuordnung. Die ANBest regeln Mindestangaben, Aufbewahrungsfristen und Anforderungen an elektronische Dokumentation. Diese Anforderungen gelten auch für Vergabeunterlagen und projektbezogene Verträge.",
-    verwandte_fragen: [
-      "Wie funktioniert der Verwendungsnachweis im Innovationsfonds?",
-      "Welche Nachweise und Berichte sind nach Bewilligung erforderlich?",
-      "Welche Veröffentlichungspflichten gelten nach Projektabschluss?",
+    "slug": "wer-ist-antragsberechtigt",
+    "topicId": "antragsrollen",
+    "kategorien": [
+      "konsortium_und_rollen",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-9",
-        seite: 9,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-32",
-        seite: 32,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-33",
-        seite: 33,
-      },
+    "frage": "Wer ist antragsberechtigt?",
+    "antwort_kurz": "Antragsberechtigt sind alle rechtsfähigen und unbeschränkt geschäftsfähigen Personen und Personengesellschaften.",
+    "antwort_lang": "Antragsberechtigt sind alle rechtsfähigen und unbeschränkt geschäftsfähigen Personen und Personengesellschaften. Das Dokument formuliert dazu: „rechtsfähigen und unbeschränkt geschäftsfähigen“. Fundstelle: Präsentation Webseminar NVF 2026, S. 21.",
+    "verwandte_fragen": [
+      "Wer bewertet die Anträge und wer entscheidet über die Förderung?",
+      "Was gilt, wenn keine Krankenkasse am Antrag beteiligt ist?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-wer-ist-antragsberechtigt",
+        "seite": 21,
+        "fundstelle": "S. 21",
+        "zitat": "rechtsfähigen und unbeschränkt geschäftsfähigen"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "veroeffentlichungspflichten-ergebnisse",
-    topicId: "formale_voraussetzungen",
-    kategorien: ["nachweise_und_berichtswesen", "rechtsgrundlagen_und_transfer"],
-    frage: "Welche Veröffentlichungspflichten gelten nach Projektabschluss?",
-    antwort_kurz:
-      "Ergebnisse sind nach Projektabschluss in geeigneter Form der Fachöffentlichkeit zugänglich zu machen; zugleich bestehen definierte Veröffentlichungsrechte des Förderers.",
-    antwort_lang:
-      "Die ANBest enthalten eine explizite Regel zur Veröffentlichung des Projektergebnisses in einem zeitlichen Rahmen nach Abschluss. Zusätzlich ist festgelegt, welche Projektdaten der Förderer öffentlich machen darf. Antragstellende sollten daher früh klären, wie Ergebnisbericht, Fachkommunikation und Verwertungslogik zusammengeführt werden.",
-    verwandte_fragen: [
-      "Welche Nachweise und Berichte sind nach Bewilligung erforderlich?",
-      "Wie funktioniert der Verwendungsnachweis im Innovationsfonds?",
-      "Welche Förderkriterien sind für die Bewertung zentral?",
+    "slug": "was-gilt-wenn-keine-krankenkasse-am-antrag-beteiligt-ist",
+    "topicId": "antragsrollen",
+    "kategorien": [
+      "konsortium_und_rollen",
+      "foerderkriterien_und_qualitaet"
     ],
-    quellen: [
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-10",
-        seite: 10,
-      },
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-4",
-        seite: 4,
-      },
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-9",
-        seite: 9,
-      },
+    "frage": "Was gilt, wenn keine Krankenkasse am Antrag beteiligt ist?",
+    "antwort_kurz": "Das ist zu begründen; insbesondere muss erklärt werden, wie GKV-Bezug und Evaluation trotzdem sichergestellt werden.",
+    "antwort_lang": "Das ist zu begründen; insbesondere muss erklärt werden, wie GKV-Bezug und Evaluation trotzdem sichergestellt werden. Das Dokument formuliert dazu: „Wird keine Krankenkasse beteiligt“. Fundstelle: Präsentation Webseminar NVF 2026, S. 21.",
+    "verwandte_fragen": [
+      "Wer ist antragsberechtigt?",
+      "Was ist nach § 92a Abs. 1 Satz 5 SGB V förderfähig?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-was-gilt-wenn-keine-krankenkasse-am-antrag-beteiligt-ist",
+        "seite": 21,
+        "fundstelle": "S. 21",
+        "zitat": "Wird keine Krankenkasse beteiligt"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "foerderfaehige-ausgaben-grundsatz",
-    topicId: "foerderfaehigkeit",
-    kategorien: ["finanzierung_und_kosten", "foerderkriterien_und_qualitaet"],
-    frage: "Welche Ausgaben sind grundsätzlich förderfähig?",
-    antwort_kurz:
-      "Förderfähig sind projektbezogene Aufwendungen außerhalb der Vergütungssysteme der Regelversorgung, insbesondere für Projektmanagement, Koordination und Evaluation.",
-    antwort_lang:
-      "Die Förderunterlagen legen den Fokus auf Ausgaben, die unmittelbar dem Projektziel dienen und nicht bereits durch Regelvergütung abgedeckt sind. Zusätzlich gelten Anforderungen an Wirtschaftlichkeit, Nachweisbarkeit und Zweckbindung. Für die Antragstellung ist eine saubere Ausgabenlogik pro Kostenposition entscheidend.",
-    verwandte_fragen: [
-      "Wie wird die Infrastrukturpauschale abgerechnet?",
-      "Wie flexibel ist der Finanzierungsplan nach Bewilligung?",
-      "Wie werden Personalmittel in Förderprojekten kalkuliert und abgerechnet?",
+    "slug": "was-ist-nach-paragraf-92a-abs-1-satz-5-sgb-v-foerderfaehig",
+    "topicId": "foerderfaehigkeit",
+    "kategorien": [
+      "finanzierung_und_kosten",
+      "foerderkriterien_und_qualitaet"
     ],
-    quellen: [
-      {
-        dokumentId: "fbm-nvf1-l-to",
-        abschnittId: "fbm-nvf1-l-to-seite-10",
-        seite: 10,
-      },
-      {
-        dokumentId: "fbm-nvf2-l-ts",
-        abschnittId: "fbm-nvf2-l-ts-seite-14",
-        seite: 14,
-      },
-      {
-        dokumentId: "faq-antragstellende",
-        abschnittId: "faq-antragstellende-seite-19",
-        seite: 19,
-      },
+    "frage": "Was ist nach § 92a Abs. 1 Satz 5 SGB V förderfähig?",
+    "antwort_kurz": "Förderfähig sind nur Aufwendungen, die dem Grunde nach nicht von den Vergütungssystemen der Regelversorgung umfasst sind, etwa zusätzliche Versorgungsleistungen, Projektmanagement, Evaluation, Investitionen und projektbegleitende Entwicklungen.",
+    "antwort_lang": "Förderfähig sind nur Aufwendungen, die dem Grunde nach nicht von den Vergütungssystemen der Regelversorgung umfasst sind, etwa zusätzliche Versorgungsleistungen, Projektmanagement, Evaluation, Investitionen und projektbegleitende Entwicklungen. Das Dokument formuliert dazu: „nicht von den Vergütungssystemen“. Fundstelle: Präsentation Webseminar NVF 2026, S. 24.",
+    "verwandte_fragen": [
+      "Was gilt, wenn keine Krankenkasse am Antrag beteiligt ist?",
+      "Welche Grenze gilt für die Infrastrukturpauschale?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-was-ist-nach-paragraf-92a-abs-1-satz-5-sgb-v-foerderfaehig",
+        "seite": 24,
+        "fundstelle": "S. 24",
+        "zitat": "nicht von den Vergütungssystemen"
+      }
+    ],
+    "status": "freigegeben"
   },
   {
-    slug: "personalmittel-kalkulation-abrechnung",
-    topicId: "formale_voraussetzungen",
-    kategorien: ["finanzierung_und_kosten", "nachweise_und_berichtswesen"],
-    frage: "Wie werden Personalmittel in Förderprojekten kalkuliert und abgerechnet?",
-    antwort_kurz:
-      "Personalmittel orientieren sich an bewilligten Ansätzen; abgerechnet wird auf Basis der tatsächlichen projektbezogenen Ausgaben mit tarif- und belegkonformer Dokumentation.",
-    antwort_lang:
-      "Für die Abrechnung von Personalmitteln gelten klare Regeln zu Eingruppierung, Erfahrungsstufe, Projektanteilen und Nachweisführung. Höhergruppige Abrechnungen gegenüber dem Bewilligungsstand sind grundsätzlich nicht zulässig. Eine belastbare Personal- und Zeitdokumentation ist daher zwingend für spätere Prüfbarkeit.",
-    verwandte_fragen: [
-      "Welche Ausgaben sind grundsätzlich förderfähig?",
-      "Wie wird die Infrastrukturpauschale abgerechnet?",
-      "Welche Anforderungen gelten für Belege und Aufbewahrungsfristen?",
+    "slug": "welche-grenze-gilt-fuer-die-infrastrukturpauschale",
+    "topicId": "foerderfaehigkeit",
+    "kategorien": [
+      "finanzierung_und_kosten",
+      "digitalisierung_und_datenschutz"
     ],
-    quellen: [
-      {
-        dokumentId: "anbest-if-stand-juni-2025",
-        abschnittId: "anbest-if-stand-juni-2025-seite-6",
-        seite: 6,
-      },
-      {
-        dokumentId: "leitfaden-nvf1-l",
-        abschnittId: "leitfaden-nvf1-l-seite-20",
-        seite: 20,
-      },
-      {
-        dokumentId: "personalmittelsaetze-if-2026",
-        abschnittId: "personalmittelsaetze-if-2026-seite-1",
-        seite: 1,
-      },
+    "frage": "Welche Grenze gilt für die Infrastrukturpauschale?",
+    "antwort_kurz": "Sie darf bis zu 25 % der beantragten Personalausgaben betragen.",
+    "antwort_lang": "Sie darf bis zu 25 % der beantragten Personalausgaben betragen. Das Dokument formuliert dazu: „bis zu 25 %“. Fundstelle: Präsentation Webseminar NVF 2026, S. 24.",
+    "verwandte_fragen": [
+      "Was ist nach § 92a Abs. 1 Satz 5 SGB V förderfähig?"
     ],
-    status: "freigegeben",
+    "quellen": [
+      {
+        "dokumentId": "praesentation-webseminar-nvf-2026",
+        "abschnittId": "praesentation-webseminar-nvf-2026-welche-grenze-gilt-fuer-die-infrastrukturpauschale",
+        "seite": 24,
+        "fundstelle": "S. 24",
+        "zitat": "bis zu 25 %"
+      }
+    ],
+    "status": "freigegeben"
   },
+  {
+    "slug": "wie-wird-der-innovationsfonds-in-der-uebersicht-januar-2026-charakterisiert",
+    "topicId": "foerderfaehigkeit",
+    "kategorien": [
+      "finanzierung_und_kosten"
+    ],
+    "frage": "Wie wird der Innovationsfonds in der Übersicht Januar 2026 charakterisiert?",
+    "antwort_kurz": "Er wird als dauerhaftes Förderinstrument mit regulär 200 Mio. Euro jährlich beschrieben, vorbehaltlich der Sonderregel 2026.",
+    "antwort_lang": "Er wird als dauerhaftes Förderinstrument mit regulär 200 Mio. Euro jährlich beschrieben, vorbehaltlich der Sonderregel 2026. Das Dokument formuliert dazu: „dauerhaft mit 200 Mio. €“. Fundstelle: Der Innovationsfonds: Stand der Dinge, S. 2.",
+    "verwandte_fragen": [
+      "Welche Auswirkungen der Mittelreduzierung 2026 werden genannt?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "innovationsfonds-stand-der-dinge-2026",
+        "abschnittId": "innovationsfonds-stand-der-dinge-2026-wie-wird-der-innovationsfonds-in-der-uebersicht-januar-2026-charakterisiert",
+        "seite": 2,
+        "fundstelle": "S. 2",
+        "zitat": "dauerhaft mit 200 Mio. €"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-auswirkungen-der-mittelreduzierung-2026-werden-genannt",
+    "topicId": "foerderfaehigkeit",
+    "kategorien": [
+      "finanzierung_und_kosten"
+    ],
+    "frage": "Welche Auswirkungen der Mittelreduzierung 2026 werden genannt?",
+    "antwort_kurz": "Laufende Projekte seien nicht betroffen, Förderentscheidungen 2026 weiterhin möglich und die Funktionsfähigkeit bleibe gewahrt.",
+    "antwort_lang": "Laufende Projekte seien nicht betroffen, Förderentscheidungen 2026 weiterhin möglich und die Funktionsfähigkeit bleibe gewahrt. Das Dokument formuliert dazu: „Funktionsfähigkeit des Innovationsfonds bleibt gewahrt“. Fundstelle: Der Innovationsfonds: Stand der Dinge, S. 3.",
+    "verwandte_fragen": [
+      "Wie wird der Innovationsfonds in der Übersicht Januar 2026 charakterisiert?",
+      "Welche Größenordnung und Wirkung des Fonds werden hervorgehoben?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "innovationsfonds-stand-der-dinge-2026",
+        "abschnittId": "innovationsfonds-stand-der-dinge-2026-welche-auswirkungen-der-mittelreduzierung-2026-werden-genannt",
+        "seite": 3,
+        "fundstelle": "S. 3",
+        "zitat": "Funktionsfähigkeit des Innovationsfonds bleibt gewahrt"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-groessenordnung-und-wirkung-des-fonds-werden-hervorgehoben",
+    "topicId": "foerderfaehigkeit",
+    "kategorien": [
+      "finanzierung_und_kosten"
+    ],
+    "frage": "Welche Größenordnung und Wirkung des Fonds werden hervorgehoben?",
+    "antwort_kurz": "Seit 2016 wurden 60 Förderbekanntmachungen veröffentlicht; insgesamt 791 Projekte wurden gefördert, davon 329 noch in Umsetzung. Als Wirkungen nennt die Präsentation unter anderem Telemedizin, Prävention, Leitlinien und sektorenübergreifende Kooperation.",
+    "antwort_lang": "Seit 2016 wurden 60 Förderbekanntmachungen veröffentlicht; insgesamt 791 Projekte wurden gefördert, davon 329 noch in Umsetzung. Als Wirkungen nennt die Präsentation unter anderem Telemedizin, Prävention, Leitlinien und sektorenübergreifende Kooperation. Das Dokument formuliert dazu: „791 geförderte Projekte“. Fundstelle: Der Innovationsfonds: Stand der Dinge, S. 5.",
+    "verwandte_fragen": [
+      "Welche Auswirkungen der Mittelreduzierung 2026 werden genannt?",
+      "Seit wann nutzt der Innovationsausschuss ein vorgeschaltetes Konsultationsverfahren?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "innovationsfonds-stand-der-dinge-2026",
+        "abschnittId": "innovationsfonds-stand-der-dinge-2026-welche-groessenordnung-und-wirkung-des-fonds-werden-hervorgehoben",
+        "seite": 5,
+        "fundstelle": "S. 5",
+        "zitat": "791 geförderte Projekte"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "seit-wann-nutzt-der-innovationsausschuss-ein-vorgeschaltetes-konsultationsverfahren",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "konsortium_und_rollen"
+    ],
+    "frage": "Seit wann nutzt der Innovationsausschuss ein vorgeschaltetes Konsultationsverfahren?",
+    "antwort_kurz": "Seit 2020 werden Förderschwerpunkte themenspezifischer NVF- und VSF-Bekanntmachungen nach einem Konsultationsverfahren festgelegt.",
+    "antwort_lang": "Seit 2020 werden Förderschwerpunkte themenspezifischer NVF- und VSF-Bekanntmachungen nach einem Konsultationsverfahren festgelegt. Das Dokument formuliert dazu: „Seit 2020“. Fundstelle: Der Innovationsfonds: Stand der Dinge, S. 6.",
+    "verwandte_fragen": [
+      "Welche Größenordnung und Wirkung des Fonds werden hervorgehoben?",
+      "Welche Förderverfahren für NVF und VSF werden in der Überblicksfolie 2026 genannt?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "innovationsfonds-stand-der-dinge-2026",
+        "abschnittId": "innovationsfonds-stand-der-dinge-2026-seit-wann-nutzt-der-innovationsausschuss-ein-vorgeschaltetes-konsultationsverfahren",
+        "seite": 6,
+        "fundstelle": "S. 6",
+        "zitat": "Seit 2020"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-foerderverfahren-fuer-nvf-und-vsf-werden-in-der-ueberblicksfolie-2026-genannt",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "finanzierung_und_kosten"
+    ],
+    "frage": "Welche Förderverfahren für NVF und VSF werden in der Überblicksfolie 2026 genannt?",
+    "antwort_kurz": "Für NVF: zweistufig lang themenspezifisch/themenoffen, einstufig lang themenoffen, einstufig kurz themenoffen. Für VSF: Forschungsprojekte einstufig lang themenspezifisch/themenoffen und medizinische Leitlinien themenspezifisch.",
+    "antwort_lang": "Für NVF: zweistufig lang themenspezifisch/themenoffen, einstufig lang themenoffen, einstufig kurz themenoffen. Für VSF: Forschungsprojekte einstufig lang themenspezifisch/themenoffen und medizinische Leitlinien themenspezifisch. Das Dokument formuliert dazu: „Förderbekanntmachungen 2026“. Fundstelle: Der Innovationsfonds: Stand der Dinge, S. 7.",
+    "verwandte_fragen": [
+      "Seit wann nutzt der Innovationsausschuss ein vorgeschaltetes Konsultationsverfahren?",
+      "Welche Veröffentlichungstermine 2026 nennt die Übersicht?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "innovationsfonds-stand-der-dinge-2026",
+        "abschnittId": "innovationsfonds-stand-der-dinge-2026-welche-foerderverfahren-fuer-nvf-und-vsf-werden-in-der-ueberblicksfolie-2026-genannt",
+        "seite": 7,
+        "fundstelle": "S. 7",
+        "zitat": "Förderbekanntmachungen 2026"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-veroeffentlichungstermine-2026-nennt-die-uebersicht",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "finanzierung_und_kosten"
+    ],
+    "frage": "Welche Veröffentlichungstermine 2026 nennt die Übersicht?",
+    "antwort_kurz": "Voraussichtlich 23. Januar 2026 für NVF und 19. Juni 2026 für VSF.",
+    "antwort_lang": "Voraussichtlich 23. Januar 2026 für NVF und 19. Juni 2026 für VSF. Das Dokument formuliert dazu: „voraussichtlich am 23. Januar 2026“. Fundstelle: Der Innovationsfonds: Stand der Dinge, S. 8.",
+    "verwandte_fragen": [
+      "Welche Förderverfahren für NVF und VSF werden in der Überblicksfolie 2026 genannt?",
+      "Welche Änderung brachte das Digital-Gesetz für NVF mit langer Laufzeit?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "innovationsfonds-stand-der-dinge-2026",
+        "abschnittId": "innovationsfonds-stand-der-dinge-2026-welche-veroeffentlichungstermine-2026-nennt-die-uebersicht",
+        "seite": 8,
+        "fundstelle": "S. 8",
+        "zitat": "voraussichtlich am 23. Januar 2026"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-aenderung-brachte-das-digital-gesetz-fuer-nvf-mit-langer-laufzeit",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "finanzierung_und_kosten"
+    ],
+    "frage": "Welche Änderung brachte das Digital-Gesetz für NVF mit langer Laufzeit?",
+    "antwort_kurz": "Es wurde ein neues einstufiges Verfahren eingeführt, das sich an Antragstellende mit bereits weit entwickelten Vorhaben richtet.",
+    "antwort_lang": "Es wurde ein neues einstufiges Verfahren eingeführt, das sich an Antragstellende mit bereits weit entwickelten Vorhaben richtet. Das Dokument formuliert dazu: „neues einstufiges Förderverfahren“. Fundstelle: Der Innovationsfonds: Stand der Dinge, S. 11.",
+    "verwandte_fragen": [
+      "Welche Veröffentlichungstermine 2026 nennt die Übersicht?",
+      "Welche Logik verfolgt das kurze NVF-Verfahren laut Digital-Gesetz?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "innovationsfonds-stand-der-dinge-2026",
+        "abschnittId": "innovationsfonds-stand-der-dinge-2026-welche-aenderung-brachte-das-digital-gesetz-fuer-nvf-mit-langer-laufzeit",
+        "seite": 11,
+        "fundstelle": "S. 11",
+        "zitat": "neues einstufiges Förderverfahren"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-logik-verfolgt-das-kurze-nvf-verfahren-laut-digital-gesetz",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "finanzierung_und_kosten"
+    ],
+    "frage": "Welche Logik verfolgt das kurze NVF-Verfahren laut Digital-Gesetz?",
+    "antwort_kurz": "Es adressiert Vorhaben, die innerhalb von zwei Jahren valide und verwertbare Erkenntnisse generieren können, ist themenoffen und kann im Haushaltsjahr jederzeit eingereicht werden.",
+    "antwort_lang": "Es adressiert Vorhaben, die innerhalb von zwei Jahren valide und verwertbare Erkenntnisse generieren können, ist themenoffen und kann im Haushaltsjahr jederzeit eingereicht werden. Das Dokument formuliert dazu: „innerhalb von 2 Jahren“. Fundstelle: Der Innovationsfonds: Stand der Dinge, S. 12.",
+    "verwandte_fragen": [
+      "Welche Änderung brachte das Digital-Gesetz für NVF mit langer Laufzeit?",
+      "Welche weiteren Neuerungen seit 2024 werden hervorgehoben?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "innovationsfonds-stand-der-dinge-2026",
+        "abschnittId": "innovationsfonds-stand-der-dinge-2026-welche-logik-verfolgt-das-kurze-nvf-verfahren-laut-digital-gesetz",
+        "seite": 12,
+        "fundstelle": "S. 12",
+        "zitat": "innerhalb von 2 Jahren"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-weiteren-neuerungen-seit-2024-werden-hervorgehoben",
+    "topicId": "foerderfaehigkeit",
+    "kategorien": [
+      "finanzierung_und_kosten",
+      "foerderkriterien_und_qualitaet"
+    ],
+    "frage": "Welche weiteren Neuerungen seit 2024 werden hervorgehoben?",
+    "antwort_kurz": "Genannt werden der Wegfall der 20-%-Grenze für themenoffene NVF-Förderung, Patientenbeteiligung als neues Förderkriterium und mehr Transparenz bei der Überführung.",
+    "antwort_lang": "Genannt werden der Wegfall der 20-%-Grenze für themenoffene NVF-Förderung, Patientenbeteiligung als neues Förderkriterium und mehr Transparenz bei der Überführung. Das Dokument formuliert dazu: „Patientenbeteiligung“. Fundstelle: Der Innovationsfonds: Stand der Dinge, S. 13.",
+    "verwandte_fragen": [
+      "Welche Logik verfolgt das kurze NVF-Verfahren laut Digital-Gesetz?",
+      "Was ist der Förderzweck neuer Versorgungsformen laut Überblickspräsentation?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "innovationsfonds-stand-der-dinge-2026",
+        "abschnittId": "innovationsfonds-stand-der-dinge-2026-welche-weiteren-neuerungen-seit-2024-werden-hervorgehoben",
+        "seite": 13,
+        "fundstelle": "S. 13",
+        "zitat": "Patientenbeteiligung"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "was-ist-der-foerderzweck-neuer-versorgungsformen-laut-ueberblickspraesentation",
+    "topicId": "foerderfaehigkeit",
+    "kategorien": [
+      "finanzierung_und_kosten",
+      "rechtsgrundlagen_und_transfer"
+    ],
+    "frage": "Was ist der Förderzweck neuer Versorgungsformen laut Überblickspräsentation?",
+    "antwort_kurz": "Neue Versorgungsformen müssen über die Regelversorgung hinausgehen, sektorenübergreifende Versorgung verbessern, dauerhaftes Aufnahmepotenzial haben und evaluiert werden.",
+    "antwort_lang": "Neue Versorgungsformen müssen über die Regelversorgung hinausgehen, sektorenübergreifende Versorgung verbessern, dauerhaftes Aufnahmepotenzial haben und evaluiert werden. Das Dokument formuliert dazu: „müssen über die bisherige Regelversorgung“. Fundstelle: Der Innovationsfonds: Stand der Dinge, S. 15.",
+    "verwandte_fragen": [
+      "Welche weiteren Neuerungen seit 2024 werden hervorgehoben?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "innovationsfonds-stand-der-dinge-2026",
+        "abschnittId": "innovationsfonds-stand-der-dinge-2026-was-ist-der-foerderzweck-neuer-versorgungsformen-laut-ueberblickspraesentation",
+        "seite": 15,
+        "fundstelle": "S. 15",
+        "zitat": "müssen über die bisherige Regelversorgung"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "wie-beschreibt-der-infoflyer-die-institutionelle-einordnung-des-innovationsausschusses",
+    "topicId": "antragsrollen",
+    "kategorien": [
+      "konsortium_und_rollen",
+      "fristen_und_formalia"
+    ],
+    "frage": "Wie beschreibt der Infoflyer die institutionelle Einordnung des Innovationsausschusses?",
+    "antwort_kurz": "Der Innovationsausschuss ist ein beim G-BA eingerichtetes Gremium des Gesetzgebers, das seit 2016 Projekte mit innovativen Ansätzen für die GKV fördert.",
+    "antwort_lang": "Der Innovationsausschuss ist ein beim G-BA eingerichtetes Gremium des Gesetzgebers, das seit 2016 Projekte mit innovativen Ansätzen für die GKV fördert. Das Dokument formuliert dazu: „Seit dem Jahr 2016“. Fundstelle: Infoflyer Innovationsausschuss, S. 2.",
+    "verwandte_fragen": [
+      "Welche zwei Hauptförderbereiche stellt der Infoflyer heraus?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "g-ba-innovationsausschuss-infoflyer",
+        "abschnittId": "g-ba-innovationsausschuss-infoflyer-wie-beschreibt-der-infoflyer-die-institutionelle-einordnung-des-innovationsausschusses",
+        "seite": 2,
+        "fundstelle": "S. 2",
+        "zitat": "Seit dem Jahr 2016"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "wer-ist-im-innovationsausschuss-vertreten",
+    "topicId": "antragsrollen",
+    "kategorien": [
+      "konsortium_und_rollen",
+      "fristen_und_formalia"
+    ],
+    "frage": "Wer ist im Innovationsausschuss vertreten?",
+    "antwort_kurz": "Vertreten sind GKV-Spitzenverband, KBV, KZBV, DKG, BMG und Bundesministerium für Forschung, Technologie und Raumfahrt; Patient:innenvertretungen haben Mitberatungs- und Antragsrecht.",
+    "antwort_lang": "Vertreten sind GKV-Spitzenverband, KBV, KZBV, DKG, BMG und Bundesministerium für Forschung, Technologie und Raumfahrt; Patient:innenvertretungen haben Mitberatungs- und Antragsrecht. Das Dokument formuliert dazu: „Mitberatungs- und Antragsrecht“. Fundstelle: Infoflyer und Stimmverteilung des Innovationsausschusses, S. 2 des Flyers / S. 1 der Stimmverteilungs-PDF.",
+    "verwandte_fragen": [],
+    "quellen": [
+      {
+        "dokumentId": "innovationsausschuss-infoflyer-und-stimmverteilung",
+        "abschnittId": "innovationsausschuss-infoflyer-und-stimmverteilung-wer-ist-im-innovationsausschuss-vertreten",
+        "seite": 2,
+        "fundstelle": "S. 2 des Flyers / S. 1 der Stimmverteilungs-PDF",
+        "zitat": "Mitberatungs- und Antragsrecht"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-zwei-hauptfoerderbereiche-stellt-der-infoflyer-heraus",
+    "topicId": "antragsrollen",
+    "kategorien": [
+      "konsortium_und_rollen",
+      "foerderkriterien_und_qualitaet"
+    ],
+    "frage": "Welche zwei Hauptförderbereiche stellt der Infoflyer heraus?",
+    "antwort_kurz": "Gefördert werden Neue Versorgungsformen und Versorgungsforschung einschließlich Leitlinienentwicklung und Evaluation von G-BA-Richtlinien.",
+    "antwort_lang": "Gefördert werden Neue Versorgungsformen und Versorgungsforschung einschließlich Leitlinienentwicklung und Evaluation von G-BA-Richtlinien. Das Dokument formuliert dazu: „Neue Versorgungsformen“. Fundstelle: Infoflyer Innovationsausschuss, S. 3.",
+    "verwandte_fragen": [
+      "Wie beschreibt der Infoflyer die institutionelle Einordnung des Innovationsausschusses?",
+      "Wie werden Ergebnisse laut Infoflyer genutzt?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "g-ba-innovationsausschuss-infoflyer",
+        "abschnittId": "g-ba-innovationsausschuss-infoflyer-welche-zwei-hauptfoerderbereiche-stellt-der-infoflyer-heraus",
+        "seite": 3,
+        "fundstelle": "S. 3",
+        "zitat": "Neue Versorgungsformen"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "wie-werden-ergebnisse-laut-infoflyer-genutzt",
+    "topicId": "antragsrollen",
+    "kategorien": [
+      "konsortium_und_rollen",
+      "nachweise_und_berichtswesen"
+    ],
+    "frage": "Wie werden Ergebnisse laut Infoflyer genutzt?",
+    "antwort_kurz": "Drei Monate nach vollständigem Abschlussbericht beschließt der Innovationsausschuss Transferempfehlungen; Berichte, Beschlüsse und Rückmeldungen werden veröffentlicht.",
+    "antwort_lang": "Drei Monate nach vollständigem Abschlussbericht beschließt der Innovationsausschuss Transferempfehlungen; Berichte, Beschlüsse und Rückmeldungen werden veröffentlicht. Das Dokument formuliert dazu: „Drei Monate nach Vorliegen“. Fundstelle: Infoflyer Innovationsausschuss, S. 5.",
+    "verwandte_fragen": [
+      "Welche zwei Hauptförderbereiche stellt der Infoflyer heraus?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "g-ba-innovationsausschuss-infoflyer",
+        "abschnittId": "g-ba-innovationsausschuss-infoflyer-wie-werden-ergebnisse-laut-infoflyer-genutzt",
+        "seite": 5,
+        "fundstelle": "S. 5",
+        "zitat": "Drei Monate nach Vorliegen"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "wie-beginnt-der-prozess-der-themenfindung-fuer-foerderbekanntmachungen",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "foerderkriterien_und_qualitaet"
+    ],
+    "frage": "Wie beginnt der Prozess der Themenfindung für Förderbekanntmachungen?",
+    "antwort_kurz": "Er startet mit der Bekanntmachung des Konsultationsverfahrens und der Einreichung externer Vorschläge zu Förderthemen und -kriterien; dafür sind zwei Monate vorgesehen.",
+    "antwort_lang": "Er startet mit der Bekanntmachung des Konsultationsverfahrens und der Einreichung externer Vorschläge zu Förderthemen und -kriterien; dafür sind zwei Monate vorgesehen. Das Dokument formuliert dazu: „Einreichung von Vorschlägen“. Fundstelle: IA-Prozessgrafik: Themenfindung, Folie 1.",
+    "verwandte_fragen": [
+      "Welche Dauer ist in der Prozessgrafik für die Auswertung der Themenvorschläge vorgesehen?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "ia-prozessgrafiken-themenfindung",
+        "abschnittId": "ia-prozessgrafiken-themenfindung-wie-beginnt-der-prozess-der-themenfindung-fuer-foerderbekanntmachungen",
+        "seite": 1,
+        "fundstelle": "Folie 1",
+        "zitat": "Einreichung von Vorschlägen"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-dauer-ist-in-der-prozessgrafik-fuer-die-auswertung-der-themenvorschlaege-vorgesehen",
+    "topicId": "unterlagen",
+    "kategorien": [
+      "nachweise_und_berichtswesen",
+      "digitalisierung_und_datenschutz"
+    ],
+    "frage": "Welche Dauer ist in der Prozessgrafik für die Auswertung der Themenvorschläge vorgesehen?",
+    "antwort_kurz": "Die Auswertung und Abstimmung der Themenvorschläge durch den Arbeitsausschuss dauert etwa sechs Monate.",
+    "antwort_lang": "Die Auswertung und Abstimmung der Themenvorschläge durch den Arbeitsausschuss dauert etwa sechs Monate. Das Dokument formuliert dazu: „ca. 6 Monate“. Fundstelle: IA-Prozessgrafik: Themenfindung, Folie 2.",
+    "verwandte_fragen": [
+      "Wie beginnt der Prozess der Themenfindung für Förderbekanntmachungen?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "ia-prozessgrafiken-themenfindung",
+        "abschnittId": "ia-prozessgrafiken-themenfindung-welche-dauer-ist-in-der-prozessgrafik-fuer-die-auswertung-der-themenvorschlaege-vorgesehen",
+        "seite": 2,
+        "fundstelle": "Folie 2",
+        "zitat": "ca. 6 Monate"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-schritte-zeigt-die-grafik-von-der-antragstellung-bis-zum-foerderbescheid",
+    "topicId": "unterlagen",
+    "kategorien": [
+      "nachweise_und_berichtswesen",
+      "digitalisierung_und_datenschutz"
+    ],
+    "frage": "Welche Schritte zeigt die Grafik 'Von der Antragstellung bis zum Förderbescheid'?",
+    "antwort_kurz": "Sie zeigt Veröffentlichung der Förderbekanntmachung, Antragstellung, Bewertung der Anträge, Förderentscheidung, Benachrichtigung und Annahme der Förderung.",
+    "antwort_lang": "Sie zeigt Veröffentlichung der Förderbekanntmachung, Antragstellung, Bewertung der Anträge, Förderentscheidung, Benachrichtigung und Annahme der Förderung. Das Dokument formuliert dazu: „von der Antragstellung bis zum Förderbescheid“. Fundstelle: IA-Prozessgrafik: Antrag bis Förderbescheid, Folie 1.",
+    "verwandte_fragen": [],
+    "quellen": [
+      {
+        "dokumentId": "ia-prozessgrafiken-antrag-bis-bescheid",
+        "abschnittId": "ia-prozessgrafiken-antrag-bis-bescheid-welche-schritte-zeigt-die-grafik-von-der-antragstellung-bis-zum-foerderbescheid",
+        "seite": 1,
+        "fundstelle": "Folie 1",
+        "zitat": "von der Antragstellung bis zum Förderbescheid"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-berichtspflichten-zeigt-die-grafik-vom-foerderbescheid-bis-zur-vorlage-des-abschlussberichts",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "nachweise_und_berichtswesen"
+    ],
+    "frage": "Welche Berichtspflichten zeigt die Grafik 'Vom Förderbescheid bis zur Vorlage des Abschlussberichts'?",
+    "antwort_kurz": "Während der Projektlaufzeit gibt es quartalsweise Statusberichte und Zahlungsanforderungen sowie jährliche Zwischenberichte und Zwischennachweise.",
+    "antwort_lang": "Während der Projektlaufzeit gibt es quartalsweise Statusberichte und Zahlungsanforderungen sowie jährliche Zwischenberichte und Zwischennachweise. Das Dokument formuliert dazu: „quartalsweise“. Fundstelle: IA-Prozessgrafik: Förderbescheid bis Abschlussbericht, Folie 3.",
+    "verwandte_fragen": [
+      "Welche zusätzlichen Unterlagen können am Projektende erforderlich sein?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "ia-prozessgrafiken-bescheid-bis-abschlussbericht",
+        "abschnittId": "ia-prozessgrafiken-bescheid-bis-abschlussbericht-welche-berichtspflichten-zeigt-die-grafik-vom-foerderbescheid-bis-zur-vorlage-des-abschlussberichts",
+        "seite": 3,
+        "fundstelle": "Folie 3",
+        "zitat": "quartalsweise"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-zusaetzlichen-unterlagen-koennen-am-projektende-erforderlich-sein",
+    "topicId": "unterlagen",
+    "kategorien": [
+      "foerderkriterien_und_qualitaet",
+      "nachweise_und_berichtswesen"
+    ],
+    "frage": "Welche zusätzlichen Unterlagen können am Projektende erforderlich sein?",
+    "antwort_kurz": "Je nach Förderbereich kommen zusätzlich Evaluationsberichte bei NVF oder Leitliniendokumente bei medizinischen Leitlinien hinzu.",
+    "antwort_lang": "Je nach Förderbereich kommen zusätzlich Evaluationsberichte bei NVF oder Leitliniendokumente bei medizinischen Leitlinien hinzu. Das Dokument formuliert dazu: „zusätzlich: Evaluationsbericht“. Fundstelle: IA-Prozessgrafik: Förderbescheid bis Abschlussbericht, Folie 3.",
+    "verwandte_fragen": [
+      "Welche Berichtspflichten zeigt die Grafik 'Vom Förderbescheid bis zur Vorlage des Abschlussberichts'?"
+    ],
+    "quellen": [
+      {
+        "dokumentId": "ia-prozessgrafiken-bescheid-bis-abschlussbericht",
+        "abschnittId": "ia-prozessgrafiken-bescheid-bis-abschlussbericht-welche-zusaetzlichen-unterlagen-koennen-am-projektende-erforderlich-sein",
+        "seite": 3,
+        "fundstelle": "Folie 3",
+        "zitat": "zusätzlich: Evaluationsbericht"
+      }
+    ],
+    "status": "freigegeben"
+  },
+  {
+    "slug": "welche-frist-gilt-laut-transferprozessgrafik-fuer-die-ueberarbeitung-eines-mangelhaften-abschlussberichts",
+    "topicId": "fristen",
+    "kategorien": [
+      "antragsverfahren",
+      "nachweise_und_berichtswesen"
+    ],
+    "frage": "Welche Frist gilt laut Transferprozessgrafik für die Überarbeitung eines mangelhaften Abschlussberichts?",
+    "antwort_kurz": "Bei Nachforderungen wegen Unvollständigkeit oder Mängeln ist eine Überarbeitung innerhalb von vier Wochen vorgesehen.",
+    "antwort_lang": "Bei Nachforderungen wegen Unvollständigkeit oder Mängeln ist eine Überarbeitung innerhalb von vier Wochen vorgesehen. Das Dokument formuliert dazu: „Frist: 4 Wochen“. Fundstelle: IA-Prozessgrafik: Abschlussbericht bis Transferempfehlung, Folie 4.",
+    "verwandte_fragen": [],
+    "quellen": [
+      {
+        "dokumentId": "ia-prozessgrafiken-abschlussbericht-bis-transfer",
+        "abschnittId": "ia-prozessgrafiken-abschlussbericht-bis-transfer-welche-frist-gilt-laut-transferprozessgrafik-fuer-die-ueberarbeitung-eines-mangelhaften-abschlussberichts",
+        "seite": 4,
+        "fundstelle": "Folie 4",
+        "zitat": "Frist: 4 Wochen"
+      }
+    ],
+    "status": "freigegeben"
+  }
 ];
-

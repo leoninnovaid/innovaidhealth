@@ -182,6 +182,7 @@ function buildSnippetsForAnswer(
       dokumentId: document.id,
       abschnittId: section.id,
       seite: section.seite,
+      fundstelle: source.fundstelle ?? section.fundstelle,
       text: snippetFromText(section.volltext, queryTokens),
     });
   }
@@ -402,6 +403,7 @@ export function runKnowledgeDocumentSearch({
         abschnittId: section.id,
         abschnittTitel: section.ueberschrift,
         seite: section.seite,
+        fundstelle: section.fundstelle,
         status: displayStatus,
         score,
         snippet: snippetFromText(section.volltext, queryTokens),

@@ -1,35 +1,33 @@
 # Innovationsfonds Wissensindex
 
-- Generiert: 2026-04-09T14:26:46.442Z
-- Quelle: C:\Users\Leon\Downloads
-- Dokumente: 9
+- Generiert: 2026-04-10T09:25:21.025031Z
+- Quelle: C:\Users\Leon\Documents\GitHub\innovaidhealth\public\knowledge\uploads
+- Dokumente: 8
+- Fragen: 60
 
 ## Dokumente
 
-- Förderbekanntmachung NVF1 Langfassung (Foerderbekanntmachung)
-  - Datei: 2026-01-23_FBM_NVF1_L_TO.pdf
-  - Abschnitte: 13
-- Förderbekanntmachung NVF1 Kurzfassung (Foerderbekanntmachung)
-  - Datei: Förderbekanntmachung - 2026-01-23_FBM_NVF1_K_TO.pdf
-  - Abschnitte: 13
-- Förderbekanntmachung NVF2 Langfassung TS (Foerderbekanntmachung)
-  - Datei: 2026-01-23_FBM_NVF2_L_TS.pdf
-  - Abschnitte: 18
-- Förderbekanntmachung NVF2 Langfassung TO (Foerderbekanntmachung)
-  - Datei: 2026-01-23_FBM_NVF2_L_TO.pdf
-  - Abschnitte: 15
-- Leitfaden NVF1 (Leitfaden)
-  - Datei: 2026-01-23_Leitfaden_NVF1_L.pdf
-  - Abschnitte: 24
-- Leitfaden NVF2 (Leitfaden)
-  - Datei: 2026-01-23_Leitfaden_NVF2_L_S.pdf
-  - Abschnitte: 20
-- ANBest-IF Stand Juni 2025 (ANBest)
-  - Datei: ANBest-IF_Stand_Juni_2025.pdf
+- Präsentation Webseminar NVF 2026 (Praesentation)
+  - Datei: 2026-01-23_Präsentation_Webseminar_NVF.pdf
+  - Abschnitte: 40
+- Der Innovationsfonds: Stand der Dinge (Praesentation)
+  - Datei: Der Innovationsfonds_ Stand der Dinge - 2026-01-06_Der-Innovationsfonds_Stand-der-Dinge.pdf
   - Abschnitte: 10
-- FAQ Antragstellende (FAQ)
-  - Datei: 2026-01-23_FAQ_Antragstellende.pdf
-  - Abschnitte: 35
-- Personalmittelsätze IF 2026 (Personalmittelsaetze)
-  - Datei: TV-L-West Musterberechnung NN-Personal 2015ff - 2026-01-23_Personalmittelsaetze_IF_2026.pdf
+- Infoflyer Innovationsausschuss (Infoflyer)
+  - Datei: Innovationen für die Versicherten der gesetzlichen _Krankenversicherung - 2025-06-23_G-BA_Innovationsausschuss_Infoflyer_bf.pdf
+  - Abschnitte: 3
+- Infoflyer und Stimmverteilung des Innovationsausschusses (Infoflyer)
+  - Datei: Innovationen für die Versicherten der gesetzlichen _Krankenversicherung - 2025-06-23_G-BA_Innovationsausschuss_Infoflyer_bf.pdf / Innovationsausschuss beim Gemeinsamen Bundesausschuss_ Zusammensetzung und Stimmverteilung - Innovationsausschuss_Zusammensetzung_Mai2025-barrierefrei.pdf
+  - Abschnitte: 1
+- IA-Prozessgrafik: Themenfindung (Prozessgrafik)
+  - Datei: 2025-12-03_IA-Prozessgrafiken_1-Themenfindung-Foerderbekanntmachungen.png
+  - Abschnitte: 2
+- IA-Prozessgrafik: Antrag bis Förderbescheid (Prozessgrafik)
+  - Datei: 2025-12-03_IA-Prozessgrafiken_2-Antragstellung-bis-Foerderbescheid.png
+  - Abschnitte: 1
+- IA-Prozessgrafik: Förderbescheid bis Abschlussbericht (Prozessgrafik)
+  - Datei: 2025-12-03_IA-Prozessgrafiken_3-Foerderbescheid-bis-Abschlussbericht.png
+  - Abschnitte: 2
+- IA-Prozessgrafik: Abschlussbericht bis Transferempfehlung (Prozessgrafik)
+  - Datei: 2025-12-03_IA-Prozessgrafiken_4-Abschlussbericht-bis-Transferempfehlung.png
   - Abschnitte: 1

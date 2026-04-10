@@ -16,8 +16,8 @@ export const statusMeta: Record<ReviewStatus, { label: string; className: string
 };
 
 export const featuredQuestionSlugs: string[] = [
+  "was-ist-der-kernunterschied-zwischen-einstufigen-und-zweistufigen-nvf-verfahren",
+  "welche-laufzeit-und-frist-gelten-fuer-das-einstufig-lange-nvf-verfahren-2026",
   "wer-ist-antragsberechtigt",
-  "wie-erfolgt-die-antragseinreichung",
-  "einreichungsfristen-2026",
-  "foerderfaehige-ausgaben-grundsatz",
+  "was-ist-nach-paragraf-92a-abs-1-satz-5-sgb-v-foerderfaehig",
 ];

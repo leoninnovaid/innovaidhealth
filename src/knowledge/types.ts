@@ -3,7 +3,10 @@ export type KnowledgeDocumentType =
   | "Leitfaden"
   | "Foerderbekanntmachung"
   | "ANBest"
-  | "Personalmittelsaetze";
+  | "Personalmittelsaetze"
+  | "Praesentation"
+  | "Infoflyer"
+  | "Prozessgrafik";
 
 export type TopicId =
   | "foerderfaehigkeit"
@@ -29,6 +32,7 @@ export type KnowledgeSection = {
   ueberschrift: string;
   volltext: string;
   seite: number;
+  fundstelle?: string;
   schlagwoerter?: string[];
 };
 
@@ -44,6 +48,7 @@ export type SourceReference = {
   dokumentId: string;
   abschnittId?: string;
   seite?: number;
+  fundstelle?: string;
   zitat?: string;
 };
 
@@ -80,6 +85,7 @@ export type MatchedSnippet = {
   dokumentId: string;
   abschnittId: string;
   seite: number;
+  fundstelle?: string;
   text: string;
 };
 
@@ -104,6 +110,7 @@ export type DocumentSearchResult = {
   abschnittId: string;
   abschnittTitel: string;
   seite: number;
+  fundstelle?: string;
   status: ReviewStatus;
   score: number;
   snippet: string;

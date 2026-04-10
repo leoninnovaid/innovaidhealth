@@ -2,24 +2,24 @@
 
 export const topicMeta: Record<TopicId, { label: string; description: string }> = {
   foerderfaehigkeit: {
-    label: "Förderfähigkeit",
-    description: "Wer ist förderfähig, welche Vorhaben passen in den Innovationsfonds?",
+    label: "Budget und Förderlogik",
+    description: "Budget, Fördermittel, Förderzweck und förderfähige Ausgaben im Innovationsfonds.",
   },
   fristen: {
-    label: "Fristen und Einreichung",
-    description: "Welche Stichtage, Verfahren und Einreichungswege gelten?",
+    label: "Verfahren und Fristen",
+    description: "Verfahrensarten, Laufzeiten, Einreichung und wichtige Stichtage 2026.",
   },
   unterlagen: {
-    label: "Erforderliche Unterlagen",
-    description: "Welche Dokumente sind für Antrag und Einreichung notwendig?",
+    label: "Prozesse und Unterlagen",
+    description: "Prozessgrafiken, Berichtspflichten, Fundstellen und Unterlagenlogik.",
   },
   antragsrollen: {
-    label: "Antragsrollen",
-    description: "Wer darf beantragen, welche Rollen sind im Konsortium vorgesehen?",
+    label: "Akteure und Zuständigkeiten",
+    description: "Antragsberechtigung, Krankenkassenrolle, Gremien und Zuständigkeiten.",
   },
   formale_voraussetzungen: {
-    label: "Formale Voraussetzungen",
-    description: "Welche formalen Bedingungen und Regelwerke müssen eingehalten werden?",
+    label: "Voraussetzungen und Bewertung",
+    description: "Fördervoraussetzungen, Ausschlüsse, Bewertungskriterien und Qualitätsanforderungen.",
   },
 };
 
@@ -30,40 +30,40 @@ export const wisdomTree: Array<{
   fragen: string[];
 }> = [
   {
-    id: "eignung",
-    label: "1) Eignung und Scope",
-    topics: ["foerderfaehigkeit", "antragsrollen"],
+    id: "verfahren",
+    label: "1) Verfahren und Fristen",
+    topics: ["fristen", "formale_voraussetzungen"],
     fragen: [
-      "Wer ist antragsberechtigt im Innovationsfonds?",
-      "Welche Projekte sind von der Förderung ausgeschlossen?",
-      "Wann muss eine Krankenkasse beteiligt sein?",
+      "Was ist der Kernunterschied zwischen einstufigen und zweistufigen NVF-Verfahren?",
+      "Welche Laufzeit und Frist gelten für das einstufig lange NVF-Verfahren 2026?",
+      "Wie funktioniert die Einreichung im einstufig kurzen Verfahren 2026?",
     ],
   },
   {
-    id: "einreichung",
-    label: "2) Fristen und Ablauf",
-    topics: ["fristen", "unterlagen"],
+    id: "foerderlogik",
+    label: "2) Förderlogik und Budget",
+    topics: ["foerderfaehigkeit", "formale_voraussetzungen"],
     fragen: [
-      "Welche Einreichungsfristen gelten 2026 für NVF1 und NVF2?",
-      "Welche Unterlagen müssen in Stufe 1 des zweistufigen Verfahrens vorliegen?",
-      "Müssen Formblätter im Original eingereicht werden?",
+      "Wie verteilt sich das reguläre Jahresbudget des Innovationsfonds laut Seminarfolie?",
+      "Welche Sonderregel galt für die Fördersumme 2026?",
+      "Was ist nach § 92a Abs. 1 Satz 5 SGB V förderfähig?",
     ],
   },
   {
-    id: "compliance",
-    label: "3) Formale Compliance",
-    topics: ["formale_voraussetzungen"],
+    id: "akteure",
+    label: "3) Akteure und Prozesse",
+    topics: ["antragsrollen", "unterlagen"],
     fragen: [
-      "Welche Änderungen sind zustimmungspflichtig?",
-      "Welche Anforderungen gelten für Belege und Aufbewahrungsfristen?",
-      "Wie funktioniert der Verwendungsnachweis im Innovationsfonds?",
+      "Wer ist antragsberechtigt?",
+      "Wer bewertet die Anträge und wer entscheidet über die Förderung?",
+      "Welche Berichtspflichten zeigt die Grafik 'Vom Förderbescheid bis zur Vorlage des Abschlussberichts'?",
     ],
   },
 ];
 
 export const initialSuggestedQuestions = [
-  "Wer ist antragsberechtigt im Innovationsfonds?",
-  "Wie erfolgt die Antragseinreichung für NVF1 und NVF2?",
-  "Welche Einreichungsfristen gelten 2026 für NVF1 und NVF2?",
-  "Welche Ausgaben sind grundsätzlich förderfähig?",
+  "Was ist der Kernunterschied zwischen einstufigen und zweistufigen NVF-Verfahren?",
+  "Welche Laufzeit und Frist gelten für das einstufig lange NVF-Verfahren 2026?",
+  "Wer ist antragsberechtigt?",
+  "Was ist nach § 92a Abs. 1 Satz 5 SGB V förderfähig?",
 ];

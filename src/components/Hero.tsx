@@ -10,7 +10,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative hero-gradient min-h-[90vh] flex items-center overflow-hidden">
+    <section id="hero" className="relative hero-gradient min-h-[90vh] flex items-center overflow-hidden">
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{

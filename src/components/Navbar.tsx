@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
@@ -18,15 +18,38 @@ const navItems: NavItem[] = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const isSubpage = location.pathname !== "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    if (isSubpage) {
+      setScrolled(true);
+      return;
+    }
+
+    const updateNavbarState = () => {
+      const hero = document.getElementById("hero");
+      if (!hero) {
+        setScrolled(window.scrollY > 20);
+        return;
+      }
+
+      const navHeight = navRef.current?.offsetHeight ?? 80;
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      setScrolled(heroBottom <= navHeight);
+    };
+
+    updateNavbarState();
+    window.addEventListener("scroll", updateNavbarState, { passive: true });
+    window.addEventListener("resize", updateNavbarState);
+
+    return () => {
+      window.removeEventListener("scroll", updateNavbarState);
+      window.removeEventListener("resize", updateNavbarState);
+    };
+  }, [isSubpage]);
 
   const solidHeader = scrolled || isSubpage;
 
@@ -68,6 +91,7 @@ const Navbar = () => {
 
   return (
     <nav
+      ref={navRef}
       aria-label="Hauptnavigation"
       role="navigation"
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
@@ -146,4 +170,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

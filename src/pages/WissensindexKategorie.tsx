@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+﻿import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import Footer from "@/components/Footer";
@@ -50,7 +50,7 @@ const WissensindexKategorie = () => {
         <div className="container mx-auto max-w-5xl space-y-6">
           <nav className="text-sm text-muted-foreground">
             <Link to="/wissensindex-beta" className="text-accent hover:underline">
-              Wissensindex Beta
+              Wissensindex-Suche
             </Link>
             <span> / </span>
             <span>{category.label}</span>

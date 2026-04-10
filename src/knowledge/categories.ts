@@ -1,4 +1,4 @@
-import type { AnswerEntry, KnowledgeCategoryId, TopicId } from "@/knowledge/types";
+﻿import type { AnswerEntry, KnowledgeCategoryId, TopicId } from "@/knowledge/types";
 
 export type KnowledgeCategoryMeta = {
   label: string;

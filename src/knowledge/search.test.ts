@@ -66,6 +66,19 @@ describe("runKnowledgeSearch", () => {
     expect(results.every((result) => result.status === "freigegeben")).toBe(true);
   });
 
+  it("priorisiert exakte Fragen über allgemeine Regeltreffer", () => {
+    const results = runKnowledgeSearch({
+      query: "Welche Einreichungsfristen gelten 2026 für NVF1 und NVF2?",
+      index: mockIndex,
+      topicFilter: "alle",
+      statusFilter: "alle",
+      maxResults: 10,
+    });
+
+    expect(results.length).toBeGreaterThan(0);
+    expect(results[0].slug).toBe("einreichungsfristen-2026");
+  });
+
   it("liefert ohne Query eine kuratierte Ergebnisliste", () => {
     const results = runKnowledgeSearch({
       query: "",

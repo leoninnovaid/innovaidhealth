@@ -14,3 +14,10 @@ export const statusMeta: Record<ReviewStatus, { label: string; className: string
     className: "bg-emerald-100 text-emerald-900 border-emerald-300",
   },
 };
+
+export const featuredQuestionSlugs: string[] = [
+  "wer-ist-antragsberechtigt",
+  "wie-erfolgt-die-antragseinreichung",
+  "einreichungsfristen-2026",
+  "foerderfaehige-ausgaben-grundsatz",
+];

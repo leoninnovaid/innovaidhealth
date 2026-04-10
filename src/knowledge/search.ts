@@ -1,4 +1,4 @@
-import { answerEntries } from "@/knowledge/answer-entries";
+﻿import { answerEntries } from "@/knowledge/answer-entries";
 import { questionRules } from "@/knowledge/question-rules";
 import type {
   AnswerEntry,
@@ -79,6 +79,10 @@ function normalize(input: string): string {
     .replace(/ö/g, "oe")
     .replace(/ü/g, "ue")
     .replace(/ß/g, "ss")
+    .replace(/Ã¤/g, "ae")
+    .replace(/Ã¶/g, "oe")
+    .replace(/Ã¼/g, "ue")
+    .replace(/ÃŸ/g, "ss")
     .replace(/[^\w\s-]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
@@ -294,18 +298,29 @@ export function runKnowledgeSearch({
     })
     .map((entry) => {
       let score = isEmptyQuery ? 15 : 0;
+      const normalizedFrage = normalize(entry.frage);
+      const normalizedKurz = normalize(entry.antwort_kurz);
+      const normalizedLang = normalize(entry.antwort_lang);
+      const exactQuestionMatch = normalizedQuery.length > 0 && normalizedFrage === normalizedQuery;
+      const phraseQuestionMatch = normalizedQuery.length > 2 && normalizedFrage.includes(normalizedQuery);
+      const questionTokenHits = queryTokens.filter((token) => normalizedFrage.includes(token)).length;
+      const answerTokenHits = queryTokens.filter(
+        (token) => normalizedKurz.includes(token) || normalizedLang.includes(token),
+      ).length;
 
-      const contentBlob = normalize(
-        `${entry.frage} ${entry.antwort_kurz} ${entry.antwort_lang} ${entry.verwandte_fragen.join(" ")}`,
-      );
-      const contentTokenHits = queryTokens.filter((token) => contentBlob.includes(token)).length;
-      score += contentTokenHits * 6;
+      if (exactQuestionMatch) {
+        score += 220;
+      } else if (phraseQuestionMatch) {
+        score += 90;
+      }
+      score += questionTokenHits * 14;
 
       const ruleScore = computeRuleScore(normalizedQuery, queryTokens, entry.slug);
       score += ruleScore.score;
+      score += answerTokenHits * 3;
 
       const snippets = buildSnippetsForAnswer(entry, documents, queryTokens);
-      score += snippets.length * 4;
+      score += snippets.length * 2;
 
       if (topicFilter !== "alle" && topicFilter === entry.topicId) {
         score += 8;

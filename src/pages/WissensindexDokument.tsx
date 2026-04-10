@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 
 import Footer from "@/components/Footer";
@@ -207,10 +207,10 @@ const WissensindexDokument = () => {
         <div className="container mx-auto max-w-5xl space-y-6">
           <nav className="text-sm text-muted-foreground">
             <Link to="/wissensindex-beta" className="text-accent hover:underline">
-              Wissensindex Beta
+              Wissensindex-Suche
             </Link>
             <span> / </span>
-            <span>Dokument</span>
+            <span>{documentEntry?.titel ?? "Dokument"}</span>
           </nav>
 
           <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
@@ -270,6 +270,12 @@ const WissensindexDokument = () => {
                     <p className="text-xs uppercase tracking-widest text-muted-foreground">Verknüpfte Fragen</p>
                     <p className="mt-1 text-lg font-bold text-foreground">{citedQuestionCount}</p>
                   </div>
+                </div>
+
+                <div className="mt-4">
+                  <Link to="/wissensindex-beta" className="text-sm font-medium text-accent hover:underline">
+                    Zurück zur Wissensindex-Suche
+                  </Link>
                 </div>
               </header>
 

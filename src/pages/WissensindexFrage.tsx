@@ -138,7 +138,7 @@ const WissensindexFrage = () => {
         <div className="container mx-auto max-w-4xl space-y-6">
           <nav className="text-sm text-muted-foreground">
             <Link to="/wissensindex-beta" className="text-accent hover:underline">
-              Wissensindex Beta
+              Wissensindex-Suche
             </Link>
             <span> / </span>
             <span>{answer.frage}</span>
@@ -194,6 +194,15 @@ const WissensindexFrage = () => {
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               <GlossaryText text={answer.antwort_lang} />
             </p>
+
+            <div className="mt-4">
+              <Link
+                to="/wissensindex-beta"
+                className="inline-block text-sm font-medium text-accent hover:underline"
+              >
+                Neue Suche starten
+              </Link>
+            </div>
 
             <div className="mt-6">
               <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">Quellen</h2>

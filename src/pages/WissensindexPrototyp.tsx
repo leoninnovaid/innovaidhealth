@@ -1,27 +1,18 @@
 ﻿import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { CheckSquare, ChevronDown, ChevronUp, FileText, Filter, Search } from "lucide-react";
+import { FileText, Search } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import GlossaryText from "@/components/knowledge/GlossaryText";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { getCategoriesForEntry, knowledgeCategoryMeta } from "@/knowledge/categories";
-import { statusMeta } from "@/knowledge/presentation";
+import { answerEntries } from "@/knowledge/answer-entries";
+import { featuredQuestionSlugs, statusMeta } from "@/knowledge/presentation";
 import { runKnowledgeDocumentSearch, runKnowledgeSearch } from "@/knowledge/search";
 import { topicMeta } from "@/knowledge/topics";
-import type {
-  KnowledgeCategoryId,
-  KnowledgeDocumentType,
-  KnowledgeIndex,
-  ReviewStatus,
-  SearchResult,
-  TopicId,
-} from "@/knowledge/types";
+import type { KnowledgeDocumentType, KnowledgeIndex, SearchResult } from "@/knowledge/types";
 
-type ContentFilter = "alle" | "antworten" | "dokumente";
+type ContentFilter = "antworten" | "dokumente";
 
 const documentTypeLabel: Record<KnowledgeDocumentType, string> = {
   Foerderbekanntmachung: "Förderbekanntmachung",
@@ -35,17 +26,14 @@ const WissensindexPrototyp = () => {
   const [index, setIndex] = useState<KnowledgeIndex | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const [reloadToken, setReloadToken] = useState(0);
 
   const [query, setQuery] = useState("");
-  const [contentFilter, setContentFilter] = useState<ContentFilter>("alle");
-  const [topicFilter, setTopicFilter] = useState<TopicId | "alle">("alle");
-  const [categoryFilter, setCategoryFilter] = useState<KnowledgeCategoryId | "alle">("alle");
-  const [statusFilter, setStatusFilter] = useState<ReviewStatus | "alle">("alle");
-  const [selectedDocTypes, setSelectedDocTypes] = useState<KnowledgeDocumentType[]>([]);
+  const [contentFilter, setContentFilter] = useState<ContentFilter>("antworten");
   const [expandedAnswerSlug, setExpandedAnswerSlug] = useState<string | null>(null);
-  const [filtersOpen, setFiltersOpen] = useState(true);
 
   const deferredQuery = useDeferredValue(query);
+  const trimmedQuery = deferredQuery.trim();
 
   useEffect(() => {
     let active = true;
@@ -70,9 +58,6 @@ const WissensindexPrototyp = () => {
         }
 
         setIndex(data);
-
-        const uniqueTypes = Array.from(new Set(data.documents.map((document) => document.dokumenttyp)));
-        setSelectedDocTypes(uniqueTypes);
       } catch (error) {
         if (active) {
           setLoadError(error instanceof Error ? error.message : "Unbekannter Ladefehler");
@@ -89,34 +74,28 @@ const WissensindexPrototyp = () => {
     return () => {
       active = false;
     };
-  }, []);
-
-  useEffect(() => {
-    if (window.matchMedia("(max-width: 1023px)").matches) {
-      setFiltersOpen(false);
-    }
-  }, []);
+  }, [reloadToken]);
 
   const qaResults = useMemo(
     () =>
       runKnowledgeSearch({
-        query: deferredQuery,
-        topicFilter,
-        statusFilter,
+        query: trimmedQuery,
+        topicFilter: "alle",
+        statusFilter: "alle",
         index,
       }),
-    [deferredQuery, index, statusFilter, topicFilter],
+    [index, trimmedQuery],
   );
 
   const docResults = useMemo(
     () =>
       runKnowledgeDocumentSearch({
-        query: deferredQuery,
-        topicFilter,
-        statusFilter,
+        query: trimmedQuery,
+        topicFilter: "alle",
+        statusFilter: "alle",
         index,
       }),
-    [deferredQuery, index, statusFilter, topicFilter],
+    [index, trimmedQuery],
   );
 
   const documentMeta = useMemo(() => {
@@ -127,70 +106,19 @@ const WissensindexPrototyp = () => {
     return map;
   }, [index]);
 
-  const availableDocTypes = useMemo(
-    () => Array.from(new Set(index?.documents.map((document) => document.dokumenttyp) ?? [])),
-    [index],
-  );
-
-  const filteredAnswers = useMemo(() => {
-    return qaResults.filter((result) => {
-      const sourceTypes = result.answer.quellen
-        .map((source) => documentMeta.get(source.dokumentId)?.dokumenttyp)
-        .filter((type): type is KnowledgeDocumentType => Boolean(type));
-      const docTypeMatch = selectedDocTypes.length === 0 || sourceTypes.some((type) => selectedDocTypes.includes(type));
-      const categoryMatch =
-        categoryFilter === "alle" || getCategoriesForEntry(result.answer).includes(categoryFilter);
-
-      return docTypeMatch && categoryMatch;
-    });
-  }, [categoryFilter, documentMeta, qaResults, selectedDocTypes]);
-
-  const filteredDocs = useMemo(() => {
-    return docResults.filter((result) => {
-      const docTypeMatch = selectedDocTypes.length === 0 || selectedDocTypes.includes(result.dokumenttyp);
-      if (categoryFilter === "alle") {
-        return docTypeMatch;
-      }
-
-      const categoryTopics = knowledgeCategoryMeta[categoryFilter].topicIds;
-      const categoryMatch = result.matchedTopicIds.some((topicId) => categoryTopics.includes(topicId));
-      return docTypeMatch && categoryMatch;
-    });
-  }, [categoryFilter, docResults, selectedDocTypes]);
-
-  const showAnswers = contentFilter !== "dokumente";
-  const showDocs = contentFilter !== "antworten";
-
-  const toggleDocType = (docType: KnowledgeDocumentType, checked: boolean) => {
-    setSelectedDocTypes((previous) => {
-      if (checked) {
-        if (previous.includes(docType)) {
-          return previous;
-        }
-        return [...previous, docType];
-      }
-
-      return previous.filter((type) => type !== docType);
-    });
-  };
-
-  const resetFilters = () => {
-    setQuery("");
-    setContentFilter("alle");
-    setTopicFilter("alle");
-    setCategoryFilter("alle");
-    setStatusFilter("alle");
-    setSelectedDocTypes(availableDocTypes);
-    setExpandedAnswerSlug(null);
-  };
+  const featuredEntries = useMemo(() => {
+    return featuredQuestionSlugs
+      .map((slug) => answerEntries.find((entry) => entry.slug === slug))
+      .filter((entry): entry is (typeof answerEntries)[number] => Boolean(entry))
+      .filter((entry) => entry.status === "freigegeben");
+  }, []);
 
   const formatAnswerSources = (result: SearchResult) => {
     const grouped = new Map<string, { titel: string; pages: number[]; abschnittId?: string }>();
 
     result.answer.quellen.forEach((source) => {
       const meta = documentMeta.get(source.dokumentId);
-      const key = source.dokumentId;
-      const current = grouped.get(key) ?? {
+      const current = grouped.get(source.dokumentId) ?? {
         titel: meta?.titel ?? source.dokumentId,
         pages: [],
         abschnittId: source.abschnittId,
@@ -204,7 +132,7 @@ const WissensindexPrototyp = () => {
         current.abschnittId = source.abschnittId;
       }
 
-      grouped.set(key, current);
+      grouped.set(source.dokumentId, current);
     });
 
     return Array.from(grouped.entries()).map(([dokumentId, entry]) => {
@@ -218,383 +146,303 @@ const WissensindexPrototyp = () => {
     });
   };
 
+  const clearSearch = () => {
+    setQuery("");
+    setExpandedAnswerSlug(null);
+  };
+
+  const applyQuickStart = (question: string) => {
+    setContentFilter("antworten");
+    setQuery(question);
+    setExpandedAnswerSlug(null);
+  };
+
+  const answerModeEmpty = contentFilter === "antworten" && qaResults.length === 0;
+  const docModeEmpty = contentFilter === "dokumente" && docResults.length === 0;
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
       <main className="section-padding pt-24 md:pt-32">
-        <div className="container mx-auto">
-          <header className="mb-8 rounded-3xl border border-border/70 bg-card p-6 md:p-8">
+        <div className="container mx-auto max-w-6xl">
+          <header className="mb-6 rounded-3xl border border-border/70 bg-card p-6 md:p-8">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">Wissensindex Beta</p>
-            <h1 className="text-2xl font-extrabold text-foreground md:text-4xl">Kuratierte Antworten und Quellen</h1>
+            <h1 className="text-2xl font-extrabold text-foreground md:text-4xl">Schnell Antworten finden</h1>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
-              Minimaler Einstieg wie in einem Q&amp;A-Feed: links filtern, rechts direkt lesen.
+              Geben Sie Ihre Frage ein. Sie erhalten direkt eine kurze, belastbare Antwort und bei Bedarf die passenden
+              Quellen.
             </p>
             <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
               Beta-Hinweis: Inhalte werden laufend redaktionell geprüft und können sich ändern. Verbindlich sind
               ausschließlich die Originaldokumente.
             </p>
+          </header>
 
-            <div className="mt-4 flex flex-wrap gap-2">
-              {Object.entries(knowledgeCategoryMeta).map(([categoryId, meta]) => (
-                <Link
-                  key={categoryId}
-                  to={`/wissensindex-beta/kategorie/${categoryId}`}
-                  className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-foreground transition-colors hover:border-accent/40 hover:text-accent"
-                >
-                  {meta.label}
-                </Link>
-              ))}
+          <section className="sticky top-20 z-20 mb-6 rounded-2xl border border-border/70 bg-card/95 p-4 shadow-sm backdrop-blur-md md:p-5">
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setContentFilter("antworten")}
+                className={`rounded-lg border px-4 py-2 text-sm font-medium transition-colors ${
+                  contentFilter === "antworten"
+                    ? "border-accent bg-accent/10 text-accent"
+                    : "border-border bg-background text-foreground hover:border-accent/40"
+                }`}
+              >
+                Antworten
+              </button>
+              <button
+                type="button"
+                onClick={() => setContentFilter("dokumente")}
+                className={`rounded-lg border px-4 py-2 text-sm font-medium transition-colors ${
+                  contentFilter === "dokumente"
+                    ? "border-accent bg-accent/10 text-accent"
+                    : "border-border bg-background text-foreground hover:border-accent/40"
+                }`}
+              >
+                Dokumente
+              </button>
             </div>
 
-            <div className="relative mt-6">
+            <div className="relative mt-3">
               <Search className="pointer-events-none absolute left-3 top-3.5 text-muted-foreground" size={16} />
               <input
                 value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Suche nach Frage, Begriff oder Dokument ..."
-                className="w-full rounded-xl border border-border bg-background py-3 pl-10 pr-10 text-sm text-foreground outline-none transition-colors focus:border-accent"
+                onChange={(event) => {
+                  setQuery(event.target.value);
+                  setExpandedAnswerSlug(null);
+                }}
+                placeholder={
+                  contentFilter === "antworten"
+                    ? "Frage eingeben, z. B. Wer ist antragsberechtigt?"
+                    : "Dokumente und Fundstellen durchsuchen ..."
+                }
+                className="w-full rounded-xl border border-border bg-background py-3 pl-10 pr-24 text-sm text-foreground outline-none transition-colors focus:border-accent"
               />
               {query && (
                 <button
                   type="button"
-                  onClick={() => setQuery("")}
-                  className="absolute right-3 top-3 text-muted-foreground transition-colors hover:text-foreground"
+                  onClick={clearSearch}
+                  className="absolute right-2 top-2 rounded-md px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                   title="Suche leeren"
                 >
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 18 6M6 6l12 12" />
-                  </svg>
+                  Leeren
                 </button>
               )}
             </div>
-          </header>
+          </section>
 
-          <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
-            <aside className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:pr-1">
-              <section className="rounded-2xl border border-border/70 bg-card p-4">
+          {contentFilter === "antworten" && !trimmedQuery && !isLoading && !loadError && (
+            <section className="mb-6 rounded-2xl border border-border/70 bg-card p-5 md:p-6">
+              <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">Schnellstarts</h2>
+              <p className="mt-1 text-sm text-muted-foreground">Häufige Fragen für den direkten Einstieg.</p>
+
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                {featuredEntries.map((entry) => (
+                  <button
+                    key={entry.slug}
+                    type="button"
+                    onClick={() => applyQuickStart(entry.frage)}
+                    className="rounded-xl border border-border/60 bg-background px-4 py-3 text-left text-sm font-medium text-foreground transition-colors hover:border-accent/50 hover:text-accent"
+                  >
+                    <GlossaryText text={entry.frage} />
+                  </button>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section className="space-y-6">
+            {isLoading && (
+              <div className="rounded-2xl border border-border/70 bg-card p-6 text-sm text-muted-foreground">
+                Wir laden den Wissensindex. Das dauert nur einen Moment.
+              </div>
+            )}
+
+            {loadError && (
+              <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-sm text-red-800">
+                <h2 className="font-semibold text-red-900">Laden fehlgeschlagen</h2>
+                <p className="mt-1">{loadError}</p>
                 <button
                   type="button"
-                  onClick={() => setFiltersOpen((previous) => !previous)}
-                  aria-expanded={filtersOpen}
-                  aria-controls="wissensindex-filter-panel"
-                  className="flex w-full items-center justify-between gap-3 rounded-xl px-1 py-1 text-left"
+                  onClick={() => setReloadToken((previous) => previous + 1)}
+                  className="mt-3 rounded-lg border border-red-300 bg-white px-3 py-2 text-sm font-medium text-red-900 hover:bg-red-100"
                 >
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-foreground">
-                    <Filter size={16} className="text-accent" />
-                    Filterung
-                  </span>
-                  {filtersOpen ? (
-                    <ChevronUp size={18} className="text-muted-foreground" />
-                  ) : (
-                    <ChevronDown size={18} className="text-muted-foreground" />
-                  )}
+                  Erneut versuchen
                 </button>
-                <p className="mt-2 px-1 text-xs text-muted-foreground">Thema, Kategorie, Status und Dokumenttypen</p>
+              </div>
+            )}
 
-                {filtersOpen && (
-                  <div id="wissensindex-filter-panel" className="mt-4 space-y-5">
-                    <section className="border-t border-border/60 pt-4">
-                      <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
-                        <Filter size={16} className="text-accent" />
-                        Inhalt
-                      </p>
-                      <div className="space-y-2">
-                        {([
-                          { value: "alle", label: "Alle" },
-                          { value: "antworten", label: "Antworten" },
-                          { value: "dokumente", label: "Dokumente" },
-                        ] as const).map((option) => (
-                          <button
-                            key={option.value}
-                            type="button"
-                            onClick={() => setContentFilter(option.value)}
-                            className={`w-full rounded-lg border px-3 py-2 text-left text-sm transition-colors ${
-                              contentFilter === option.value
-                                ? "border-accent bg-accent/10 text-accent"
-                                : "border-border/60 bg-background text-foreground hover:border-accent/40"
-                            }`}
-                          >
-                            {option.label}
-                          </button>
-                        ))}
-                      </div>
-                    </section>
-
-                    <section className="border-t border-border/60 pt-4">
-                      <p className="mb-3 text-sm font-semibold text-foreground">Thema</p>
-                      <Select value={topicFilter} onValueChange={(value) => setTopicFilter(value as TopicId | "alle")}>
-                        <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
-                          <SelectValue placeholder="Alle Themen" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="alle">Alle Themen</SelectItem>
-                          {Object.entries(topicMeta).map(([topicId, meta]) => (
-                            <SelectItem key={topicId} value={topicId}>
-                              {meta.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </section>
-
-                    <section className="border-t border-border/60 pt-4">
-                      <p className="mb-3 text-sm font-semibold text-foreground">Kategorie</p>
-                      <Select
-                        value={categoryFilter}
-                        onValueChange={(value) => setCategoryFilter(value as KnowledgeCategoryId | "alle")}
-                      >
-                        <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
-                          <SelectValue placeholder="Alle Kategorien" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="alle">Alle Kategorien</SelectItem>
-                          {Object.entries(knowledgeCategoryMeta).map(([categoryId, meta]) => (
-                            <SelectItem key={categoryId} value={categoryId}>
-                              {meta.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </section>
-
-                    <section className="border-t border-border/60 pt-4">
-                      <p className="mb-3 text-sm font-semibold text-foreground">Status</p>
-                      <Select
-                        value={statusFilter}
-                        onValueChange={(value) => setStatusFilter(value as ReviewStatus | "alle")}
-                      >
-                        <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
-                          <SelectValue placeholder="Alle Status" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="alle">Alle Status</SelectItem>
-                          <SelectItem value="roh">{statusMeta.roh.label}</SelectItem>
-                          <SelectItem value="in_review">{statusMeta.in_review.label}</SelectItem>
-                          <SelectItem value="freigegeben">{statusMeta.freigegeben.label}</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </section>
-
-                    <section className="border-t border-border/60 pt-4">
-                      <div className="mb-3 flex items-center justify-between gap-3">
-                        <p className="inline-flex items-center gap-2 text-sm font-semibold text-foreground">
-                          <CheckSquare size={16} className="text-accent" />
-                          Dokumenttypen
-                        </p>
-                        <button type="button" onClick={resetFilters} className="text-xs text-accent hover:underline">
-                          Zurücksetzen
-                        </button>
-                      </div>
-
-                      <div className="space-y-2">
-                        {availableDocTypes.map((docType) => (
-                          <label key={docType} className="flex items-start gap-3 rounded-md px-1 py-1">
-                            <Checkbox
-                              checked={selectedDocTypes.includes(docType)}
-                              onCheckedChange={(checked) => toggleDocType(docType, checked === true)}
-                            />
-                            <span className="text-sm text-foreground">{documentTypeLabel[docType]}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </section>
-                  </div>
+            {!isLoading && !loadError && answerModeEmpty && (
+              <div className="rounded-2xl border border-border/70 bg-card p-6">
+                <h2 className="text-base font-bold text-foreground">Keine passende Antwort gefunden</h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Formulieren Sie die Frage kürzer oder nutzen Sie andere Stichwörter.
+                </p>
+                {query && (
+                  <button
+                    type="button"
+                    onClick={clearSearch}
+                    className="mt-3 text-sm font-medium text-accent hover:underline"
+                  >
+                    Suche zurücksetzen
+                  </button>
                 )}
-              </section>
-            </aside>
+              </div>
+            )}
 
-            <section className="space-y-6">
-              {isLoading && (
-                <div className="rounded-2xl border border-border/70 bg-card p-6 text-sm text-muted-foreground">
-                  Wissensindex wird geladen ...
+            {!isLoading && !loadError && docModeEmpty && (
+              <div className="rounded-2xl border border-border/70 bg-card p-6">
+                <h2 className="text-base font-bold text-foreground">Keine passenden Dokumentstellen gefunden</h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Prüfen Sie andere Begriffe oder wechseln Sie in den Antworten-Modus.
+                </p>
+                {query && (
+                  <button
+                    type="button"
+                    onClick={clearSearch}
+                    className="mt-3 text-sm font-medium text-accent hover:underline"
+                  >
+                    Suche zurücksetzen
+                  </button>
+                )}
+              </div>
+            )}
+
+            {!isLoading && !loadError && contentFilter === "antworten" && qaResults.length > 0 && (
+              <section className="rounded-2xl border border-border/70 bg-card p-5 md:p-6">
+                <div className="mb-4 flex items-center justify-between gap-3">
+                  <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">Antworten</h2>
+                  <span className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">
+                    {qaResults.length} Treffer
+                  </span>
                 </div>
-              )}
 
-              {loadError && (
-                <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-sm text-red-800">
-                  <h3 className="font-semibold text-red-900">Fehler beim Laden des Wissensindex</h3>
-                  <p className="mt-1 text-red-700">{loadError}</p>
-                </div>
-              )}
+                <div className="space-y-4">
+                  {qaResults.map((result) => {
+                    const isExpanded = expandedAnswerSlug === result.slug;
 
-              {!isLoading && !loadError && (
-                <>
-                  {showAnswers && (
-                    <section className="rounded-2xl border border-border/70 bg-card p-5 md:p-6">
-                      <div className="mb-4 flex items-center gap-2">
-                        <span className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">
-                          Antworten
-                        </span>
-                        <span className="text-sm text-muted-foreground">{filteredAnswers.length} Treffer</span>
-                      </div>
-
-                      {filteredAnswers.length === 0 ? (
-                        <p className="rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-muted-foreground">
-                          Keine passenden Antworten gefunden.
-                        </p>
-                      ) : (
-                        <div className="space-y-4">
-                          {filteredAnswers.map((result) => {
-                            const isExpanded = expandedAnswerSlug === result.slug;
-
-                            return (
-                              <article key={result.slug} className="rounded-xl border border-border/60 bg-background p-4">
-                                <div className="mb-2 flex items-center justify-between gap-3">
-                                  <span className="text-xs uppercase tracking-widest text-muted-foreground">
-                                    {topicMeta[result.topicId].label}
-                                  </span>
-                                  <span
-                                    className={`rounded-full border px-2 py-0.5 text-[11px] ${statusMeta[result.status].className}`}
-                                  >
-                                    {statusMeta[result.status].label}
-                                  </span>
-                                </div>
-
-                                <h2 className="text-base font-bold text-foreground">
-                                  <GlossaryText text={result.frage} />
-                                </h2>
-                                <Link
-                                  to={`/wissensindex-beta/${result.slug}`}
-                                  className="mt-1 inline-block text-sm font-medium text-accent hover:underline"
-                                >
-                                  Unterseite öffnen
-                                </Link>
-                                <div className="mt-2 flex flex-wrap gap-2">
-                                  {getCategoriesForEntry(result.answer).map((categoryId) => (
-                                    <Link
-                                      key={`${result.slug}-${categoryId}`}
-                                      to={`/wissensindex-beta/kategorie/${categoryId}`}
-                                      className="rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground transition-colors hover:border-accent/40 hover:text-accent"
-                                    >
-                                      {knowledgeCategoryMeta[categoryId].label}
-                                    </Link>
-                                  ))}
-                                </div>
-                                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                                  <GlossaryText text={result.answer.antwort_kurz} />
-                                </p>
-
-                                <button
-                                  type="button"
-                                  onClick={() => setExpandedAnswerSlug(isExpanded ? null : result.slug)}
-                                  className="mt-3 text-sm font-medium text-accent hover:underline"
-                                >
-                                  {isExpanded ? "Antwort ausblenden" : "Antwort anzeigen"}
-                                </button>
-
-                                {isExpanded && (
-                                  <div className="mt-4 space-y-4 border-t border-border/60 pt-4">
-                                    <p className="text-sm leading-relaxed text-foreground">
-                                      <GlossaryText text={result.answer.antwort_lang} />
-                                    </p>
-
-                                    <div>
-                                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                                        Quellen
-                                      </p>
-                                      <ul className="space-y-2">
-                                        {formatAnswerSources(result).map((source) => (
-                                          <li key={`${result.slug}-${source.dokumentId}`} className="text-sm text-muted-foreground">
-                                            <Link
-                                              to={`/wissensindex-beta/dokument/${source.dokumentId}${source.abschnittId ? `#${source.abschnittId}` : ""}`}
-                                              className="font-medium text-accent hover:underline"
-                                            >
-                                              {source.titel}
-                                            </Link>
-                                            {source.pages.length > 0 ? ` · Seite ${source.pages.join(", ")}` : ""}
-                                          </li>
-                                        ))}
-                                      </ul>
-                                    </div>
-
-                                    {result.snippets.length > 0 && (
-                                      <div>
-                                        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                                          Fundstellen
-                                        </p>
-                                        <div className="space-y-2">
-                                          {result.snippets.map((snippet) => (
-                                            <div
-                                              key={`${result.slug}-${snippet.abschnittId}`}
-                                              className="rounded-lg border border-border/60 p-3"
-                                            >
-                                              <p className="text-xs text-muted-foreground">
-                                                {(documentMeta.get(snippet.dokumentId)?.titel ?? snippet.dokumentId) +
-                                                  ` · Seite ${snippet.seite}`}
-                                              </p>
-                                              <p className="mt-1 text-sm text-foreground">{snippet.text}</p>
-                                              <Link
-                                                to={`/wissensindex-beta/dokument/${snippet.dokumentId}#${snippet.abschnittId}`}
-                                                className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
-                                              >
-                                                Im Dokument öffnen
-                                              </Link>
-                                            </div>
-                                          ))}
-                                        </div>
-                                      </div>
-                                    )}
-                                  </div>
-                                )}
-                              </article>
-                            );
-                          })}
+                    return (
+                      <article key={result.slug} className="rounded-xl border border-border/60 bg-background p-4 md:p-5">
+                        <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                          <span>{topicMeta[result.topicId].label}</span>
+                          <span>·</span>
+                          <span className={`rounded-full border px-2 py-0.5 ${statusMeta[result.status].className}`}>
+                            {statusMeta[result.status].label}
+                          </span>
                         </div>
-                      )}
-                    </section>
-                  )}
 
-                  {showDocs && (
-                    <section className="rounded-2xl border border-border/70 bg-card p-5 md:p-6">
-                      <div className="mb-4 flex items-center gap-2">
-                        <span className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">
-                          Dokumente
-                        </span>
-                        <span className="text-sm text-muted-foreground">{filteredDocs.length} Treffer</span>
-                      </div>
+                        <h3 className="text-lg font-bold text-foreground md:text-xl">
+                          <GlossaryText text={result.frage} />
+                        </h3>
 
-                      {filteredDocs.length === 0 ? (
-                        <p className="rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-muted-foreground">
-                          Keine passenden Dokumenttreffer gefunden.
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                          <GlossaryText text={result.answer.antwort_kurz} />
                         </p>
-                      ) : (
-                        <div className="space-y-4">
-                          {filteredDocs.map((result) => (
-                            <article key={result.id} className="rounded-xl border border-border/60 bg-background p-4">
-                              <div className="mb-2 flex items-center justify-between gap-2">
-                                <span className="inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground">
-                                  <FileText size={12} />
-                                  {documentTypeLabel[result.dokumenttyp]}
-                                </span>
-                                <span
-                                  className={`rounded-full border px-2 py-0.5 text-[11px] ${statusMeta[result.status].className}`}
-                                >
-                                  {statusMeta[result.status].label}
-                                </span>
-                              </div>
 
-                              <h3 className="text-base font-bold text-foreground">{result.dokumentTitel}</h3>
-                              <p className="mt-1 text-sm text-muted-foreground">
-                                {result.abschnittTitel} · Seite {result.seite}
+                        <div className="mt-3 flex flex-wrap items-center gap-4">
+                          <Link
+                            to={`/wissensindex-beta/${result.slug}`}
+                            className="rounded-lg bg-accent px-3 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+                          >
+                            Antwort öffnen
+                          </Link>
+                          <button
+                            type="button"
+                            onClick={() => setExpandedAnswerSlug(isExpanded ? null : result.slug)}
+                            className="text-sm font-medium text-accent hover:underline"
+                          >
+                            {isExpanded ? "Details ausblenden" : "Details anzeigen"}
+                          </button>
+                        </div>
+
+                        {isExpanded && (
+                          <div className="mt-4 space-y-4 border-t border-border/60 pt-4">
+                            <p className="text-sm leading-relaxed text-foreground">
+                              <GlossaryText text={result.answer.antwort_lang} />
+                            </p>
+
+                            <div>
+                              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                Quellen
                               </p>
-                              <p className="mt-3 text-sm leading-relaxed text-foreground">{result.snippet}</p>
-                              <Link
-                                to={`/wissensindex-beta/dokument/${result.dokumentId}#${result.abschnittId}`}
-                                className="mt-3 inline-block text-sm font-medium text-accent hover:underline"
-                              >
-                                Volltext-Unterseite öffnen
-                              </Link>
-                            </article>
-                          ))}
-                        </div>
-                      )}
-                    </section>
-                  )}
-                </>
-              )}
-            </section>
-          </div>
+                              <ul className="space-y-2">
+                                {formatAnswerSources(result).map((source) => (
+                                  <li key={`${result.slug}-${source.dokumentId}`} className="text-sm text-muted-foreground">
+                                    <Link
+                                      to={`/wissensindex-beta/dokument/${source.dokumentId}${source.abschnittId ? `#${source.abschnittId}` : ""}`}
+                                      className="font-medium text-accent hover:underline"
+                                    >
+                                      {source.titel}
+                                    </Link>
+                                    {source.pages.length > 0 ? ` · Seite ${source.pages.join(", ")}` : ""}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            {result.snippets[0] && (
+                              <div className="rounded-lg border border-border/60 p-3">
+                                <p className="text-xs text-muted-foreground">
+                                  {(documentMeta.get(result.snippets[0].dokumentId)?.titel ?? result.snippets[0].dokumentId) +
+                                    ` · Seite ${result.snippets[0].seite}`}
+                                </p>
+                                <p className="mt-1 text-sm text-foreground">{result.snippets[0].text}</p>
+                                <Link
+                                  to={`/wissensindex-beta/dokument/${result.snippets[0].dokumentId}#${result.snippets[0].abschnittId}`}
+                                  className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
+                                >
+                                  Dokumentstelle öffnen
+                                </Link>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </article>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
+
+            {!isLoading && !loadError && contentFilter === "dokumente" && docResults.length > 0 && (
+              <section className="rounded-2xl border border-border/70 bg-card p-5 md:p-6">
+                <div className="mb-4 flex items-center justify-between gap-3">
+                  <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">Dokumente</h2>
+                  <span className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">
+                    {docResults.length} Treffer
+                  </span>
+                </div>
+
+                <div className="space-y-4">
+                  {docResults.map((result) => (
+                    <article key={result.id} className="rounded-xl border border-border/60 bg-background p-4 md:p-5">
+                      <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                        <span className="inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5">
+                          <FileText size={12} />
+                          {documentTypeLabel[result.dokumenttyp]}
+                        </span>
+                        <span>·</span>
+                        <span>Seite {result.seite}</span>
+                      </div>
+
+                      <h3 className="text-lg font-bold text-foreground">{result.dokumentTitel}</h3>
+                      <p className="mt-1 text-sm text-muted-foreground">{result.abschnittTitel}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-foreground">{result.snippet}</p>
+
+                      <Link
+                        to={`/wissensindex-beta/dokument/${result.dokumentId}#${result.abschnittId}`}
+                        className="mt-3 inline-block rounded-lg bg-accent px-3 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
+                      >
+                        Dokument öffnen
+                      </Link>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
+          </section>
         </div>
       </main>
 
@@ -604,5 +452,3 @@ const WissensindexPrototyp = () => {
 };
 
 export default WissensindexPrototyp;
-
-

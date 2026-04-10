@@ -5,6 +5,7 @@ import { CheckSquare, ChevronDown, ChevronUp, FileText, Filter, Search } from "l
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import GlossaryText from "@/components/knowledge/GlossaryText";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getCategoriesForEntry, knowledgeCategoryMeta } from "@/knowledge/categories";
@@ -443,7 +444,9 @@ const WissensindexPrototyp = () => {
                                   </span>
                                 </div>
 
-                                <h2 className="text-base font-bold text-foreground">{result.frage}</h2>
+                                <h2 className="text-base font-bold text-foreground">
+                                  <GlossaryText text={result.frage} />
+                                </h2>
                                 <Link
                                   to={`/wissensindex-beta/${result.slug}`}
                                   className="mt-1 inline-block text-sm font-medium text-accent hover:underline"
@@ -461,7 +464,9 @@ const WissensindexPrototyp = () => {
                                     </Link>
                                   ))}
                                 </div>
-                                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{result.answer.antwort_kurz}</p>
+                                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                                  <GlossaryText text={result.answer.antwort_kurz} />
+                                </p>
 
                                 <button
                                   type="button"
@@ -473,7 +478,9 @@ const WissensindexPrototyp = () => {
 
                                 {isExpanded && (
                                   <div className="mt-4 space-y-4 border-t border-border/60 pt-4">
-                                    <p className="text-sm leading-relaxed text-foreground">{result.answer.antwort_lang}</p>
+                                    <p className="text-sm leading-relaxed text-foreground">
+                                      <GlossaryText text={result.answer.antwort_lang} />
+                                    </p>
 
                                     <div>
                                       <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">

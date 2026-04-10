@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import GlossaryText from "@/components/knowledge/GlossaryText";
 import { answerEntries } from "@/knowledge/answer-entries";
 import { getCategoriesForEntry, knowledgeCategoryMeta } from "@/knowledge/categories";
 import { statusMeta } from "@/knowledge/presentation";
@@ -184,9 +185,15 @@ const WissensindexFrage = () => {
               </div>
             )}
 
-            <h1 className="text-2xl font-extrabold text-foreground md:text-3xl">{answer.frage}</h1>
-            <p className="mt-4 text-base font-semibold text-foreground">{answer.antwort_kurz}</p>
-            <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">{answer.antwort_lang}</p>
+            <h1 className="text-2xl font-extrabold text-foreground md:text-3xl">
+              <GlossaryText text={answer.frage} />
+            </h1>
+            <p className="mt-4 text-base font-semibold text-foreground">
+              <GlossaryText text={answer.antwort_kurz} />
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              <GlossaryText text={answer.antwort_lang} />
+            </p>
 
             <div className="mt-6">
               <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">Quellen</h2>
@@ -246,7 +253,7 @@ const WissensindexFrage = () => {
                     to={`/wissensindex-beta/${entry.slug}`}
                     className="rounded-lg border border-border/60 bg-background px-3 py-3 text-sm text-foreground transition-colors hover:border-accent/40 hover:text-accent"
                   >
-                    {entry.frage}
+                    <GlossaryText text={entry.frage} />
                   </Link>
                 ))}
               </div>

@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import GlossaryText from "@/components/knowledge/GlossaryText";
 import { answerEntries } from "@/knowledge/answer-entries";
 import { getCategoriesForEntry, knowledgeCategoryMeta } from "@/knowledge/categories";
 import { statusMeta } from "@/knowledge/presentation";
@@ -98,8 +99,12 @@ const WissensindexKategorie = () => {
                         {statusMeta[entry.status].label}
                       </span>
                     </div>
-                    <h3 className="text-base font-bold text-foreground">{entry.frage}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{entry.antwort_kurz}</p>
+                    <h3 className="text-base font-bold text-foreground">
+                      <GlossaryText text={entry.frage} />
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      <GlossaryText text={entry.antwort_kurz} />
+                    </p>
                     <Link
                       to={`/wissensindex-beta/${entry.slug}`}
                       className="mt-3 inline-block text-sm font-medium text-accent hover:underline"

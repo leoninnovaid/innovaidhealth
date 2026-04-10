@@ -1,7 +1,7 @@
 ﻿import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { CheckSquare, FileText, Filter, Search } from "lucide-react";
+import { CheckSquare, ChevronDown, ChevronUp, FileText, Filter, Search } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -42,6 +42,7 @@ const WissensindexPrototyp = () => {
   const [statusFilter, setStatusFilter] = useState<ReviewStatus | "alle">("alle");
   const [selectedDocTypes, setSelectedDocTypes] = useState<KnowledgeDocumentType[]>([]);
   const [expandedAnswerSlug, setExpandedAnswerSlug] = useState<string | null>(null);
+  const [filtersOpen, setFiltersOpen] = useState(true);
 
   const deferredQuery = useDeferredValue(query);
 
@@ -87,6 +88,12 @@ const WissensindexPrototyp = () => {
     return () => {
       active = false;
     };
+  }, []);
+
+  useEffect(() => {
+    if (window.matchMedia("(max-width: 1023px)").matches) {
+      setFiltersOpen(false);
+    }
   }, []);
 
   const qaResults = useMemo(
@@ -254,111 +261,139 @@ const WissensindexPrototyp = () => {
 
           <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
             <aside className="space-y-5 lg:sticky lg:top-24 lg:h-fit">
-              <section className="rounded-2xl border border-border/70 bg-card p-5">
-                <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
-                  <Filter size={16} className="text-accent" />
-                  Inhalt
-                </p>
-                <div className="space-y-2">
-                  {([
-                    { value: "alle", label: "Alle" },
-                    { value: "antworten", label: "Antworten" },
-                    { value: "dokumente", label: "Dokumente" },
-                  ] as const).map((option) => (
-                    <button
-                      key={option.value}
-                      type="button"
-                      onClick={() => setContentFilter(option.value)}
-                      className={`w-full rounded-lg border px-3 py-2 text-left text-sm transition-colors ${
-                        contentFilter === option.value
-                          ? "border-accent bg-accent/10 text-accent"
-                          : "border-border/60 bg-background text-foreground hover:border-accent/40"
-                      }`}
+              <section className="rounded-2xl border border-border/70 bg-card p-4">
+                <button
+                  type="button"
+                  onClick={() => setFiltersOpen((previous) => !previous)}
+                  aria-expanded={filtersOpen}
+                  aria-controls="wissensindex-filter-panel"
+                  className="flex w-full items-center justify-between gap-3 rounded-xl px-1 py-1 text-left"
+                >
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-foreground">
+                    <Filter size={16} className="text-accent" />
+                    Filterung
+                  </span>
+                  {filtersOpen ? (
+                    <ChevronUp size={18} className="text-muted-foreground" />
+                  ) : (
+                    <ChevronDown size={18} className="text-muted-foreground" />
+                  )}
+                </button>
+                <p className="mt-2 px-1 text-xs text-muted-foreground">Thema, Kategorie, Status und Dokumenttypen</p>
+              </section>
+
+              {filtersOpen && (
+                <div id="wissensindex-filter-panel" className="space-y-5">
+                  <section className="rounded-2xl border border-border/70 bg-card p-5">
+                    <p className="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
+                      <Filter size={16} className="text-accent" />
+                      Inhalt
+                    </p>
+                    <div className="space-y-2">
+                      {([
+                        { value: "alle", label: "Alle" },
+                        { value: "antworten", label: "Antworten" },
+                        { value: "dokumente", label: "Dokumente" },
+                      ] as const).map((option) => (
+                        <button
+                          key={option.value}
+                          type="button"
+                          onClick={() => setContentFilter(option.value)}
+                          className={`w-full rounded-lg border px-3 py-2 text-left text-sm transition-colors ${
+                            contentFilter === option.value
+                              ? "border-accent bg-accent/10 text-accent"
+                              : "border-border/60 bg-background text-foreground hover:border-accent/40"
+                          }`}
+                        >
+                          {option.label}
+                        </button>
+                      ))}
+                    </div>
+                  </section>
+
+                  <section className="rounded-2xl border border-border/70 bg-card p-5">
+                    <p className="mb-3 text-sm font-semibold text-foreground">Thema</p>
+                    <Select value={topicFilter} onValueChange={(value) => setTopicFilter(value as TopicId | "alle")}>
+                      <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
+                        <SelectValue placeholder="Alle Themen" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="alle">Alle Themen</SelectItem>
+                        {Object.entries(topicMeta).map(([topicId, meta]) => (
+                          <SelectItem key={topicId} value={topicId}>
+                            {meta.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </section>
+
+                  <section className="rounded-2xl border border-border/70 bg-card p-5">
+                    <p className="mb-3 text-sm font-semibold text-foreground">Kategorie</p>
+                    <Select
+                      value={categoryFilter}
+                      onValueChange={(value) => setCategoryFilter(value as KnowledgeCategoryId | "alle")}
                     >
-                      {option.label}
-                    </button>
-                  ))}
+                      <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
+                        <SelectValue placeholder="Alle Kategorien" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="alle">Alle Kategorien</SelectItem>
+                        {Object.entries(knowledgeCategoryMeta).map(([categoryId, meta]) => (
+                          <SelectItem key={categoryId} value={categoryId}>
+                            {meta.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </section>
+
+                  <section className="rounded-2xl border border-border/70 bg-card p-5">
+                    <p className="mb-3 text-sm font-semibold text-foreground">Status</p>
+                    <Select
+                      value={statusFilter}
+                      onValueChange={(value) => setStatusFilter(value as ReviewStatus | "alle")}
+                    >
+                      <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
+                        <SelectValue placeholder="Alle Status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="alle">Alle Status</SelectItem>
+                        <SelectItem value="roh">{statusMeta.roh.label}</SelectItem>
+                        <SelectItem value="in_review">{statusMeta.in_review.label}</SelectItem>
+                        <SelectItem value="freigegeben">{statusMeta.freigegeben.label}</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </section>
+
+                  <section className="rounded-2xl border border-border/70 bg-card p-5">
+                    <div className="mb-3 flex items-center justify-between gap-3">
+                      <p className="inline-flex items-center gap-2 text-sm font-semibold text-foreground">
+                        <CheckSquare size={16} className="text-accent" />
+                        Dokumenttypen
+                      </p>
+                      <button type="button" onClick={resetFilters} className="text-xs text-accent hover:underline">
+                        Zurücksetzen
+                      </button>
+                    </div>
+
+                    <div className="space-y-3">
+                      {availableDocTypes.map((docType) => (
+                        <label
+                          key={docType}
+                          className="flex items-start gap-3 rounded-lg border border-border/60 bg-background p-3"
+                        >
+                          <Checkbox
+                            checked={selectedDocTypes.includes(docType)}
+                            onCheckedChange={(checked) => toggleDocType(docType, checked === true)}
+                          />
+                          <span className="text-sm text-foreground">{documentTypeLabel[docType]}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </section>
                 </div>
-              </section>
-
-              <section className="rounded-2xl border border-border/70 bg-card p-5">
-                <p className="mb-3 text-sm font-semibold text-foreground">Thema</p>
-                <Select value={topicFilter} onValueChange={(value) => setTopicFilter(value as TopicId | "alle")}>
-                  <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
-                    <SelectValue placeholder="Alle Themen" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="alle">Alle Themen</SelectItem>
-                    {Object.entries(topicMeta).map(([topicId, meta]) => (
-                      <SelectItem key={topicId} value={topicId}>
-                        {meta.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </section>
-
-              <section className="rounded-2xl border border-border/70 bg-card p-5">
-                <p className="mb-3 text-sm font-semibold text-foreground">Kategorie</p>
-                <Select
-                  value={categoryFilter}
-                  onValueChange={(value) => setCategoryFilter(value as KnowledgeCategoryId | "alle")}
-                >
-                  <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
-                    <SelectValue placeholder="Alle Kategorien" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="alle">Alle Kategorien</SelectItem>
-                    {Object.entries(knowledgeCategoryMeta).map(([categoryId, meta]) => (
-                      <SelectItem key={categoryId} value={categoryId}>
-                        {meta.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </section>
-
-              <section className="rounded-2xl border border-border/70 bg-card p-5">
-                <p className="mb-3 text-sm font-semibold text-foreground">Status</p>
-                <Select
-                  value={statusFilter}
-                  onValueChange={(value) => setStatusFilter(value as ReviewStatus | "alle")}
-                >
-                  <SelectTrigger className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent">
-                    <SelectValue placeholder="Alle Status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="alle">Alle Status</SelectItem>
-                    <SelectItem value="roh">{statusMeta.roh.label}</SelectItem>
-                    <SelectItem value="in_review">{statusMeta.in_review.label}</SelectItem>
-                    <SelectItem value="freigegeben">{statusMeta.freigegeben.label}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </section>
-
-              <section className="rounded-2xl border border-border/70 bg-card p-5">
-                <div className="mb-3 flex items-center justify-between gap-3">
-                  <p className="inline-flex items-center gap-2 text-sm font-semibold text-foreground">
-                    <CheckSquare size={16} className="text-accent" />
-                    Dokumenttypen
-                  </p>
-                  <button type="button" onClick={resetFilters} className="text-xs text-accent hover:underline">
-                    Zurücksetzen
-                  </button>
-                </div>
-
-                <div className="space-y-3">
-                  {availableDocTypes.map((docType) => (
-                    <label key={docType} className="flex items-start gap-3 rounded-lg border border-border/60 bg-background p-3">
-                      <Checkbox
-                        checked={selectedDocTypes.includes(docType)}
-                        onCheckedChange={(checked) => toggleDocType(docType, checked === true)}
-                      />
-                      <span className="text-sm text-foreground">{documentTypeLabel[docType]}</span>
-                    </label>
-                  ))}
-                </div>
-              </section>
+              )}
             </aside>
 
             <section className="space-y-6">

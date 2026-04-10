@@ -185,7 +185,7 @@ const WissensindexPrototyp = () => {
   };
 
   const formatAnswerSources = (result: SearchResult) => {
-    const grouped = new Map<string, { titel: string; pages: number[] }>();
+    const grouped = new Map<string, { titel: string; pages: number[]; abschnittId?: string }>();
 
     result.answer.quellen.forEach((source) => {
       const meta = documentMeta.get(source.dokumentId);
@@ -193,18 +193,28 @@ const WissensindexPrototyp = () => {
       const current = grouped.get(key) ?? {
         titel: meta?.titel ?? source.dokumentId,
         pages: [],
+        abschnittId: source.abschnittId,
       };
 
       if (source.seite && !current.pages.includes(source.seite)) {
         current.pages.push(source.seite);
       }
 
+      if (!current.abschnittId && source.abschnittId) {
+        current.abschnittId = source.abschnittId;
+      }
+
       grouped.set(key, current);
     });
 
-    return Array.from(grouped.values()).map((entry) => {
-      const pageLabel = entry.pages.length > 0 ? ` · Seite ${entry.pages.sort((a, b) => a - b).join(", ")}` : "";
-      return `${entry.titel}${pageLabel}`;
+    return Array.from(grouped.entries()).map(([dokumentId, entry]) => {
+      const pages = [...entry.pages].sort((a, b) => a - b);
+      return {
+        dokumentId,
+        titel: entry.titel,
+        pages,
+        abschnittId: entry.abschnittId,
+      };
     });
   };
 
@@ -484,9 +494,15 @@ const WissensindexPrototyp = () => {
                                         Quellen
                                       </p>
                                       <ul className="space-y-2">
-                                        {formatAnswerSources(result).map((sourceLabel) => (
-                                          <li key={`${result.slug}-${sourceLabel}`} className="text-sm text-muted-foreground">
-                                            {sourceLabel}
+                                        {formatAnswerSources(result).map((source) => (
+                                          <li key={`${result.slug}-${source.dokumentId}`} className="text-sm text-muted-foreground">
+                                            <Link
+                                              to={`/wissensindex-beta/dokument/${source.dokumentId}${source.abschnittId ? `#${source.abschnittId}` : ""}`}
+                                              className="font-medium text-accent hover:underline"
+                                            >
+                                              {source.titel}
+                                            </Link>
+                                            {source.pages.length > 0 ? ` · Seite ${source.pages.join(", ")}` : ""}
                                           </li>
                                         ))}
                                       </ul>
@@ -508,6 +524,12 @@ const WissensindexPrototyp = () => {
                                                   ` · Seite ${snippet.seite}`}
                                               </p>
                                               <p className="mt-1 text-sm text-foreground">{snippet.text}</p>
+                                              <Link
+                                                to={`/wissensindex-beta/dokument/${snippet.dokumentId}#${snippet.abschnittId}`}
+                                                className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
+                                              >
+                                                Im Dokument öffnen
+                                              </Link>
                                             </div>
                                           ))}
                                         </div>
@@ -557,6 +579,12 @@ const WissensindexPrototyp = () => {
                                 {result.abschnittTitel} · Seite {result.seite}
                               </p>
                               <p className="mt-3 text-sm leading-relaxed text-foreground">{result.snippet}</p>
+                              <Link
+                                to={`/wissensindex-beta/dokument/${result.dokumentId}#${result.abschnittId}`}
+                                className="mt-3 inline-block text-sm font-medium text-accent hover:underline"
+                              >
+                                Volltext-Unterseite öffnen
+                              </Link>
                             </article>
                           ))}
                         </div>

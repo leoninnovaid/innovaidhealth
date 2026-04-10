@@ -201,12 +201,20 @@ const WissensindexFrage = () => {
                 {answer.quellen.map((source, indexSource) => {
                   const title = documentMap.get(source.dokumentId) ?? source.dokumentId;
                   const pageLabel = source.seite ? ` · Seite ${source.seite}` : "";
+                  const documentHref = source.abschnittId
+                    ? `/wissensindex-beta/dokument/${source.dokumentId}#${source.abschnittId}`
+                    : source.seite
+                      ? `/wissensindex-beta/dokument/${source.dokumentId}?seite=${source.seite}`
+                      : `/wissensindex-beta/dokument/${source.dokumentId}`;
+
                   return (
                     <li
                       key={`${source.dokumentId}-${source.abschnittId ?? indexSource}`}
                       className="rounded-lg border border-border/60 bg-background px-3 py-2 text-sm text-foreground"
                     >
-                      {title}
+                      <Link to={documentHref} className="font-medium text-accent hover:underline">
+                        {title}
+                      </Link>
                       {pageLabel}
                     </li>
                   );
@@ -236,6 +244,12 @@ const WissensindexFrage = () => {
                         {(documentMap.get(snippet.dokumentId) ?? snippet.dokumentId) + ` · Seite ${snippet.seite}`}
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-foreground">{snippet.text}</p>
+                      <Link
+                        to={`/wissensindex-beta/dokument/${snippet.dokumentId}#${snippet.abschnittId}`}
+                        className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
+                      >
+                        Im Dokument öffnen
+                      </Link>
                     </div>
                   ))}
                 </div>

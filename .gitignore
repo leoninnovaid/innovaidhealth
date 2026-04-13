@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+public/knowledge/uploads/
+public/knowledge/innovation-fund-index.md
 
 # Editor directories and files
 .vscode/*

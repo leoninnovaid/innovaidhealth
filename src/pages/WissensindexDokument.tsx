@@ -29,17 +29,6 @@ const documentTypeLabel: Record<KnowledgeDocumentType, string> = {
   Prozessgrafik: "Prozessgrafik",
 };
 
-const knowledgeDownloads = [
-  {
-    href: `${import.meta.env.BASE_URL}knowledge/uploads/faq-wissensdatenbank-innovationsfonds-60-fragen.pdf`,
-    label: "FAQ als PDF",
-  },
-  {
-    href: `${import.meta.env.BASE_URL}knowledge/uploads/faq-wissensdatenbank-innovationsfonds-60-fragen.docx`,
-    label: "FAQ als DOCX",
-  },
-];
-
 const WissensindexDokument = () => {
   const { documentId } = useParams<{ documentId: string }>();
   const location = useLocation();
@@ -347,19 +336,6 @@ const WissensindexDokument = () => {
                   <Link to="/wissensindex-beta" className="text-sm font-medium text-accent hover:underline">
                     Zurück zur Wissensindex-Suche
                   </Link>
-                </div>
-                <div className="mt-3 flex flex-wrap gap-3 text-sm">
-                  {knowledgeDownloads.map((download) => (
-                    <a
-                      key={download.href}
-                      href={download.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-medium text-accent hover:underline"
-                    >
-                      {download.label}
-                    </a>
-                  ))}
                 </div>
               </header>
 

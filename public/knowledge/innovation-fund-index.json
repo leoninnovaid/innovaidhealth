@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-04-10T09:25:21.025031Z",
-  "sourceDir": "C:\\Users\\Leon\\Documents\\GitHub\\innovaidhealth\\public\\knowledge\\uploads",
+  "generatedAt": "2026-04-13T07:25:46.785289Z",
+  "sourceDir": "redaktionell-gepflegte-quellen",
   "documents": [
     {
       "id": "praesentation-webseminar-nvf-2026",
       "titel": "Präsentation Webseminar NVF 2026",
-      "quelle_datei": "2026-01-23_Präsentation_Webseminar_NVF.pdf",
+      "quelle_datei": "praesentation-webseminar-nvf-2026.source",
       "dokumenttyp": "Praesentation",
       "abschnitte": [
         {
@@ -453,7 +453,7 @@
     {
       "id": "innovationsfonds-stand-der-dinge-2026",
       "titel": "Der Innovationsfonds: Stand der Dinge",
-      "quelle_datei": "Der Innovationsfonds_ Stand der Dinge - 2026-01-06_Der-Innovationsfonds_Stand-der-Dinge.pdf",
+      "quelle_datei": "innovationsfonds-stand-der-dinge-2026.source",
       "dokumenttyp": "Praesentation",
       "abschnitte": [
         {
@@ -571,7 +571,7 @@
     {
       "id": "g-ba-innovationsausschuss-infoflyer",
       "titel": "Infoflyer Innovationsausschuss",
-      "quelle_datei": "Innovationen für die Versicherten der gesetzlichen _Krankenversicherung - 2025-06-23_G-BA_Innovationsausschuss_Infoflyer_bf.pdf",
+      "quelle_datei": "g-ba-innovationsausschuss-infoflyer.source",
       "dokumenttyp": "Infoflyer",
       "abschnitte": [
         {
@@ -612,7 +612,7 @@
     {
       "id": "innovationsausschuss-infoflyer-und-stimmverteilung",
       "titel": "Infoflyer und Stimmverteilung des Innovationsausschusses",
-      "quelle_datei": "Innovationen für die Versicherten der gesetzlichen _Krankenversicherung - 2025-06-23_G-BA_Innovationsausschuss_Infoflyer_bf.pdf / Innovationsausschuss beim Gemeinsamen Bundesausschuss_ Zusammensetzung und Stimmverteilung - Innovationsausschuss_Zusammensetzung_Mai2025-barrierefrei.pdf",
+      "quelle_datei": "innovationsausschuss-infoflyer-und-stimmverteilung.source",
       "dokumenttyp": "Infoflyer",
       "abschnitte": [
         {
@@ -631,7 +631,7 @@
     {
       "id": "ia-prozessgrafiken-themenfindung",
       "titel": "IA-Prozessgrafik: Themenfindung",
-      "quelle_datei": "2025-12-03_IA-Prozessgrafiken_1-Themenfindung-Foerderbekanntmachungen.png",
+      "quelle_datei": "ia-prozessgrafiken-themenfindung.source",
       "dokumenttyp": "Prozessgrafik",
       "abschnitte": [
         {
@@ -661,7 +661,7 @@
     {
       "id": "ia-prozessgrafiken-antrag-bis-bescheid",
       "titel": "IA-Prozessgrafik: Antrag bis Förderbescheid",
-      "quelle_datei": "2025-12-03_IA-Prozessgrafiken_2-Antragstellung-bis-Foerderbescheid.png",
+      "quelle_datei": "ia-prozessgrafiken-antrag-bis-bescheid.source",
       "dokumenttyp": "Prozessgrafik",
       "abschnitte": [
         {
@@ -680,7 +680,7 @@
     {
       "id": "ia-prozessgrafiken-bescheid-bis-abschlussbericht",
       "titel": "IA-Prozessgrafik: Förderbescheid bis Abschlussbericht",
-      "quelle_datei": "2025-12-03_IA-Prozessgrafiken_3-Foerderbescheid-bis-Abschlussbericht.png",
+      "quelle_datei": "ia-prozessgrafiken-bescheid-bis-abschlussbericht.source",
       "dokumenttyp": "Prozessgrafik",
       "abschnitte": [
         {
@@ -710,7 +710,7 @@
     {
       "id": "ia-prozessgrafiken-abschlussbericht-bis-transfer",
       "titel": "IA-Prozessgrafik: Abschlussbericht bis Transferempfehlung",
-      "quelle_datei": "2025-12-03_IA-Prozessgrafiken_4-Abschlussbericht-bis-Transferempfehlung.png",
+      "quelle_datei": "ia-prozessgrafiken-abschlussbericht-bis-transfer.source",
       "dokumenttyp": "Prozessgrafik",
       "abschnitte": [
         {

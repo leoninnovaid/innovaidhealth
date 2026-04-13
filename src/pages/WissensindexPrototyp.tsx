@@ -25,17 +25,6 @@ const documentTypeLabel: Record<KnowledgeDocumentType, string> = {
   Prozessgrafik: "Prozessgrafik",
 };
 
-const knowledgeDownloads = [
-  {
-    href: `${import.meta.env.BASE_URL}knowledge/uploads/faq-wissensdatenbank-innovationsfonds-60-fragen.pdf`,
-    label: "FAQ als PDF",
-  },
-  {
-    href: `${import.meta.env.BASE_URL}knowledge/uploads/faq-wissensdatenbank-innovationsfonds-60-fragen.docx`,
-    label: "FAQ als DOCX",
-  },
-];
-
 const WissensindexPrototyp = () => {
   const [index, setIndex] = useState<KnowledgeIndex | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -187,20 +176,9 @@ const WissensindexPrototyp = () => {
               Geben Sie Ihre Frage ein. Sie erhalten direkt eine kurze, belastbare Antwort und bei Bedarf die passenden
               Quellen.
             </p>
-            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
-              <span className="text-muted-foreground">Neue Datenbasis: 60 kuratierte Fragen aus der aktualisierten Wissensdatenbank.</span>
-              {knowledgeDownloads.map((download) => (
-                <a
-                  key={download.href}
-                  href={download.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-medium text-accent hover:underline"
-                >
-                  {download.label}
-                </a>
-              ))}
-            </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Neue Datenbasis: 60 kuratierte Fragen aus der aktualisierten Wissensdatenbank.
+            </p>
             <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
               Beta-Hinweis: Inhalte werden laufend redaktionell geprüft und können sich ändern. Verbindlich sind
               ausschließlich die Originaldokumente.

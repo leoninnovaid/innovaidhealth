@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import re
-import shutil
 import sys
 import unicodedata
 import zipfile
@@ -15,10 +14,8 @@ NS = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_KNOWLEDGE_DIR = ROOT / "public" / "knowledge"
-UPLOADS_DIR = PUBLIC_KNOWLEDGE_DIR / "uploads"
 ANSWER_ENTRIES_PATH = ROOT / "src" / "knowledge" / "answer-entries.ts"
 INDEX_JSON_PATH = PUBLIC_KNOWLEDGE_DIR / "innovation-fund-index.json"
-INDEX_MD_PATH = PUBLIC_KNOWLEDGE_DIR / "innovation-fund-index.md"
 
 
 SOURCE_META = {
@@ -140,6 +137,10 @@ def build_long_answer(statement: str, quote: str, fundstelle: str, source_title:
         parts.append(f"Das Dokument formuliert dazu: „{quote.strip()}“.")
     parts.append(f"Fundstelle: {source_title}, {fundstelle.strip()}.")
     return " ".join(parts)
+
+
+def safe_source_label(document_id: str) -> str:
+    return f"{document_id}.source"
 
 
 @dataclass
@@ -271,7 +272,7 @@ def write_index(rows: list[FaqRow]) -> None:
             {
                 "id": document_id,
                 "titel": title,
-                "quelle_datei": source_name,
+                "quelle_datei": safe_source_label(document_id),
                 "dokumenttyp": document_type,
                 "abschnitte": sections,
             }
@@ -279,65 +280,35 @@ def write_index(rows: list[FaqRow]) -> None:
 
     payload = {
         "generatedAt": __import__("datetime").datetime.utcnow().isoformat() + "Z",
-        "sourceDir": str(UPLOADS_DIR),
+        "sourceDir": "redaktionell-gepflegte-quellen",
         "documents": documents,
     }
 
     INDEX_JSON_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    markdown_lines = [
-        "# Innovationsfonds Wissensindex",
-        "",
-        f"- Generiert: {payload['generatedAt']}",
-        f"- Quelle: {UPLOADS_DIR}",
-        f"- Dokumente: {len(documents)}",
-        f"- Fragen: {len(rows)}",
-        "",
-        "## Dokumente",
-        "",
-    ]
-
-    for document in documents:
-        markdown_lines.extend(
-            [
-                f"- {document['titel']} ({document['dokumenttyp']})",
-                f"  - Datei: {document['quelle_datei']}",
-                f"  - Abschnitte: {len(document['abschnitte'])}",
-            ]
-        )
-
-    INDEX_MD_PATH.write_text("\n".join(markdown_lines) + "\n", encoding="utf-8")
-
 
 def main() -> int:
-    if len(sys.argv) != 3:
-        print("Usage: python scripts/import_faq_knowledge.py <docx-path> <pdf-path>")
+    if len(sys.argv) not in {2, 3}:
+        print("Usage: python scripts/import_faq_knowledge.py <docx-path> [pdf-path]")
         return 1
 
     docx_path = Path(sys.argv[1]).expanduser().resolve()
-    pdf_path = Path(sys.argv[2]).expanduser().resolve()
 
     if not docx_path.exists():
         print(f"DOCX nicht gefunden: {docx_path}")
         return 1
-    if not pdf_path.exists():
-        print(f"PDF nicht gefunden: {pdf_path}")
-        return 1
 
-    UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+    if len(sys.argv) == 3:
+        pdf_path = Path(sys.argv[2]).expanduser().resolve()
+        if not pdf_path.exists():
+            print(f"PDF nicht gefunden: {pdf_path}")
+            return 1
 
-    target_docx = UPLOADS_DIR / "faq-wissensdatenbank-innovationsfonds-60-fragen.docx"
-    target_pdf = UPLOADS_DIR / "faq-wissensdatenbank-innovationsfonds-60-fragen.pdf"
-    shutil.copy2(docx_path, target_docx)
-    shutil.copy2(pdf_path, target_pdf)
-
-    rows = parse_docx_rows(target_docx)
+    rows = parse_docx_rows(docx_path)
     write_answer_entries(rows)
     write_index(rows)
 
     print(f"Importiert: {len(rows)} Fragen")
-    print(f"DOCX kopiert nach: {target_docx}")
-    print(f"PDF kopiert nach: {target_pdf}")
     print(f"Antworten geschrieben: {ANSWER_ENTRIES_PATH}")
     print(f"Index geschrieben: {INDEX_JSON_PATH}")
     return 0

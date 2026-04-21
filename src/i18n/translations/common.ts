@@ -56,11 +56,14 @@ export const commonTranslations = {
       offerings: [
         {
           title: "Funded projects with long-term continuity",
-          text: "We support funded projects from consortium design and proposal strategy to reliable implementation and continuity.",
+          text: "We orchestrate funded projects from consortium design and proposal strategy to reliable implementation and continuity.",
           points: [
-            "Consortium development, proposal support, and partner alignment",
+            "We orchestrate funded projects across partners, workstreams, and milestones",
             "Structured PMO, reporting, and steering in complex multi-partner projects",
             "Continuity, financing, and business model logic beyond the funding period",
+            "Stakeholder communication between insurers, care providers, and implementation partners",
+            "Risk and milestone management with clear ownership and escalation paths",
+            "Transfer of project results into routine care and scalable follow-up structures",
           ],
         },
         {
@@ -68,8 +71,11 @@ export const commonTranslations = {
           text: "We support the development, market preparation, and practical rollout of digital solutions in healthcare.",
           points: [
             "MDR/DiGA-oriented product strategy and regulatory structuring",
-            "Operational PMO execution with clear roles, timelines, and follow-up",
+            "Operational PMO execution",
             "Integration into real-world care processes with team adoption and continuity",
+            "Requirements and use-case translation between clinical practice, product, and operations",
+            "Support for evidence strategy and measurable benefit validation in care settings",
+            "Quality, privacy, and security alignment without blocking usability",
           ],
         },
       ],
@@ -339,11 +345,14 @@ export const commonTranslations = {
       offerings: [
         {
           title: "Förderprojekte mit Verstetigung",
-          text: "Wir begleiten Förderprojekte von der Konsortialentwicklung und Antragsschärfung bis zur belastbaren Umsetzung und Verstetigung.",
+          text: "Wir orchestrieren Förderprojekte von der Konsortialentwicklung und Antragsschärfung bis zur erfolgreichen Umsetzung und Verstetigung.",
           points: [
-            "Konsortialaufbau, Antragsunterstützung und Partnerabstimmung",
+            "Wir orchestrieren Förderprojekte über Partner, Arbeitspakete und Meilensteine hinweg",
             "Strukturiertes PMO mit Reporting und Steuerung in komplexen Verbünden",
             "Verstetigungs-, Finanzierungs- und Geschäftsmodelllogik nach Förderende",
+            "Stakeholder-Kommunikation zwischen Kassen, Leistungserbringern und Umsetzungspartnern",
+            "Risikosteuerung und Meilensteinmanagement mit klaren Verantwortlichkeiten",
+            "Überführung von Projektergebnissen in die Regelversorgung und skalierbare Anschlussstrukturen",
           ],
         },
         {
@@ -351,8 +360,11 @@ export const commonTranslations = {
           text: "Wir unterstützen bei Entwicklung, Marktvorbereitung und pragmatischer Implementierung digitaler Lösungen im Gesundheitswesen.",
           points: [
             "MDR- und DiGA-nahe Produktstrategie und regulatorische Einordnung",
-            "Operative PMO-Umsetzung mit klaren Rollen, Terminen und Follow-up",
+            "Operative PMO-Umsetzung",
             "Integration in reale Versorgungsprozesse mit Team-Akzeptanz und Verstetigung",
+            "Übersetzung von Anforderungen zwischen Versorgungspraxis, Produktentwicklung und Betrieb",
+            "Unterstützung bei Evidenzstrategie und messbarem Nutzennachweis im Versorgungsalltag",
+            "Abstimmung von Qualität, Datenschutz und Sicherheit ohne Verlust der Gebrauchstauglichkeit",
           ],
         },
       ],

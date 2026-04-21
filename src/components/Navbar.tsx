@@ -155,7 +155,7 @@ const Navbar = () => {
           onClick={handleHomeClick}
           className="shrink-0"
         >
-          <img src={innovaidLogo} alt="INNOVAID:health" className="h-8 w-auto md:h-9" />
+          <img src={innovaidLogo} alt="INNOVAID:health" className="h-10 w-auto md:h-11" />
         </Link>
 
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">

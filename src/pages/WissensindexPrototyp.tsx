@@ -1,6 +1,5 @@
 ﻿import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { FileText, Search } from "lucide-react";
 
 import Footer from "@/components/Footer";
@@ -9,21 +8,10 @@ import GlossaryText from "@/components/knowledge/GlossaryText";
 import { answerEntries } from "@/knowledge/answer-entries";
 import { featuredQuestionSlugs, statusMeta } from "@/knowledge/presentation";
 import { runKnowledgeDocumentSearch, runKnowledgeSearch } from "@/knowledge/search";
-import { topicMeta } from "@/knowledge/topics";
-import type { KnowledgeDocumentType, KnowledgeIndex, SearchResult } from "@/knowledge/types";
+import type { KnowledgeIndex, SearchResult } from "@/knowledge/types";
+import { useI18n } from "@/i18n/LocaleContext";
 
 type ContentFilter = "antworten" | "dokumente";
-
-const documentTypeLabel: Record<KnowledgeDocumentType, string> = {
-  Foerderbekanntmachung: "Förderbekanntmachung",
-  Leitfaden: "Leitfaden",
-  FAQ: "FAQ",
-  ANBest: "ANBest",
-  Personalmittelsaetze: "Personalmittelsätze",
-  Praesentation: "Präsentation",
-  Infoflyer: "Infoflyer",
-  Prozessgrafik: "Prozessgrafik",
-};
 
 const WissensindexPrototyp = () => {
   const [index, setIndex] = useState<KnowledgeIndex | null>(null);
@@ -34,6 +22,17 @@ const WissensindexPrototyp = () => {
   const [query, setQuery] = useState("");
   const [contentFilter, setContentFilter] = useState<ContentFilter>("antworten");
   const [expandedAnswerSlug, setExpandedAnswerSlug] = useState<string | null>(null);
+
+  const { copy, withLocalePath } = useI18n();
+
+  useEffect(() => {
+    document.title = copy.seo.knowledgeTitle;
+
+    const descriptionTag = document.querySelector('meta[name="description"]');
+    if (descriptionTag) {
+      descriptionTag.setAttribute("content", copy.seo.knowledgeDescription);
+    }
+  }, [copy.seo.knowledgeDescription, copy.seo.knowledgeTitle]);
 
   const deferredQuery = useDeferredValue(query);
   const trimmedQuery = deferredQuery.trim();
@@ -51,7 +50,7 @@ const WissensindexPrototyp = () => {
         });
 
         if (!response.ok) {
-          throw new Error(`Wissensindex konnte nicht geladen werden (${response.status}).`);
+          throw new Error(`${copy.knowledge.search.loadErrorTitle} (${response.status}).`);
         }
 
         const data = (await response.json()) as KnowledgeIndex;
@@ -63,7 +62,7 @@ const WissensindexPrototyp = () => {
         setIndex(data);
       } catch (error) {
         if (active) {
-          setLoadError(error instanceof Error ? error.message : "Unbekannter Ladefehler");
+          setLoadError(error instanceof Error ? error.message : copy.knowledge.search.loadErrorTitle);
         }
       } finally {
         if (active) {
@@ -77,7 +76,7 @@ const WissensindexPrototyp = () => {
     return () => {
       active = false;
     };
-  }, [reloadToken]);
+  }, [copy.knowledge.search.loadErrorTitle, reloadToken]);
 
   const qaResults = useMemo(
     () =>
@@ -102,9 +101,9 @@ const WissensindexPrototyp = () => {
   );
 
   const documentMeta = useMemo(() => {
-    const map = new Map<string, { titel: string; dokumenttyp: KnowledgeDocumentType }>();
+    const map = new Map<string, { titel: string }>();
     index?.documents.forEach((document) => {
-      map.set(document.id, { titel: document.titel, dokumenttyp: document.dokumenttyp });
+      map.set(document.id, { titel: document.titel });
     });
     return map;
   }, [index]);
@@ -139,14 +138,12 @@ const WissensindexPrototyp = () => {
       grouped.set(source.dokumentId, current);
     });
 
-    return Array.from(grouped.entries()).map(([dokumentId, entry]) => {
-      return {
-        dokumentId,
-        titel: entry.titel,
-        fundstellen: entry.fundstellen,
-        abschnittId: entry.abschnittId,
-      };
-    });
+    return Array.from(grouped.entries()).map(([dokumentId, entry]) => ({
+      dokumentId,
+      titel: entry.titel,
+      fundstellen: entry.fundstellen,
+      abschnittId: entry.abschnittId,
+    }));
   };
 
   const clearSearch = () => {
@@ -170,19 +167,11 @@ const WissensindexPrototyp = () => {
       <main className="section-padding pt-24 md:pt-32">
         <div className="container mx-auto max-w-6xl">
           <header className="mb-6 rounded-3xl border border-border/70 bg-card p-6 md:p-8">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">Wissensindex Beta</p>
-            <h1 className="text-2xl font-extrabold text-foreground md:text-4xl">Schnell Antworten finden</h1>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
-              Geben Sie Ihre Frage ein. Sie erhalten direkt eine kurze, belastbare Antwort und bei Bedarf die passenden
-              Quellen.
-            </p>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Neue Datenbasis: 60 kuratierte Fragen aus der aktualisierten Wissensdatenbank.
-            </p>
-            <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-              Beta-Hinweis: Inhalte werden laufend redaktionell geprüft und können sich ändern. Verbindlich sind
-              ausschließlich die Originaldokumente.
-            </p>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-accent">{copy.knowledge.search.eyebrow}</p>
+            <h1 className="text-2xl font-extrabold text-foreground md:text-4xl">{copy.knowledge.search.title}</h1>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">{copy.knowledge.search.description}</p>
+            <p className="mt-4 text-sm text-muted-foreground">{copy.knowledge.search.newDataset}</p>
+            <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">{copy.common.betaNotice}</p>
           </header>
 
           <section className="sticky top-20 z-20 mb-6 rounded-2xl border border-border/70 bg-card/95 p-4 shadow-sm backdrop-blur-md md:p-5">
@@ -196,7 +185,7 @@ const WissensindexPrototyp = () => {
                     : "border-border bg-background text-foreground hover:border-accent/40"
                 }`}
               >
-                Antworten
+                {copy.knowledge.search.answersTab}
               </button>
               <button
                 type="button"
@@ -207,7 +196,7 @@ const WissensindexPrototyp = () => {
                     : "border-border bg-background text-foreground hover:border-accent/40"
                 }`}
               >
-                Dokumente
+                {copy.knowledge.search.documentsTab}
               </button>
             </div>
 
@@ -221,8 +210,8 @@ const WissensindexPrototyp = () => {
                 }}
                 placeholder={
                   contentFilter === "antworten"
-                    ? "Frage eingeben, z. B. Wer ist antragsberechtigt?"
-                    : "Dokumente und Fundstellen durchsuchen ..."
+                    ? copy.knowledge.search.answerPlaceholder
+                    : copy.knowledge.search.docsPlaceholder
                 }
                 className="w-full rounded-xl border border-border bg-background py-3 pl-10 pr-24 text-sm text-foreground outline-none transition-colors focus:border-accent"
               />
@@ -231,9 +220,9 @@ const WissensindexPrototyp = () => {
                   type="button"
                   onClick={clearSearch}
                   className="absolute right-2 top-2 rounded-md px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                  title="Suche leeren"
+                  title={copy.knowledge.search.clear}
                 >
-                  Leeren
+                  {copy.knowledge.search.clear}
                 </button>
               )}
             </div>
@@ -241,8 +230,8 @@ const WissensindexPrototyp = () => {
 
           {contentFilter === "antworten" && !trimmedQuery && !isLoading && !loadError && (
             <section className="mb-6 rounded-2xl border border-border/70 bg-card p-5 md:p-6">
-              <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">Schnellstarts</h2>
-              <p className="mt-1 text-sm text-muted-foreground">Häufige Fragen für den direkten Einstieg.</p>
+              <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">{copy.knowledge.search.quickStartsTitle}</h2>
+              <p className="mt-1 text-sm text-muted-foreground">{copy.knowledge.search.quickStartsDescription}</p>
 
               <div className="mt-4 grid gap-3 md:grid-cols-2">
                 {featuredEntries.map((entry) => (
@@ -262,37 +251,31 @@ const WissensindexPrototyp = () => {
           <section className="space-y-6">
             {isLoading && (
               <div className="rounded-2xl border border-border/70 bg-card p-6 text-sm text-muted-foreground">
-                Wir laden den Wissensindex. Das dauert nur einen Moment.
+                {copy.knowledge.search.loading}
               </div>
             )}
 
             {loadError && (
               <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-sm text-red-800">
-                <h2 className="font-semibold text-red-900">Laden fehlgeschlagen</h2>
+                <h2 className="font-semibold text-red-900">{copy.knowledge.search.loadErrorTitle}</h2>
                 <p className="mt-1">{loadError}</p>
                 <button
                   type="button"
                   onClick={() => setReloadToken((previous) => previous + 1)}
                   className="mt-3 rounded-lg border border-red-300 bg-white px-3 py-2 text-sm font-medium text-red-900 hover:bg-red-100"
                 >
-                  Erneut versuchen
+                  {copy.common.retry}
                 </button>
               </div>
             )}
 
             {!isLoading && !loadError && answerModeEmpty && (
               <div className="rounded-2xl border border-border/70 bg-card p-6">
-                <h2 className="text-base font-bold text-foreground">Keine passende Antwort gefunden</h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Formulieren Sie die Frage kürzer oder nutzen Sie andere Stichwörter.
-                </p>
+                <h2 className="text-base font-bold text-foreground">{copy.knowledge.search.noAnswersTitle}</h2>
+                <p className="mt-2 text-sm text-muted-foreground">{copy.knowledge.search.noAnswersText}</p>
                 {query && (
-                  <button
-                    type="button"
-                    onClick={clearSearch}
-                    className="mt-3 text-sm font-medium text-accent hover:underline"
-                  >
-                    Suche zurücksetzen
+                  <button type="button" onClick={clearSearch} className="mt-3 text-sm font-medium text-accent hover:underline">
+                    {copy.common.searchReset}
                   </button>
                 )}
               </div>
@@ -300,17 +283,11 @@ const WissensindexPrototyp = () => {
 
             {!isLoading && !loadError && docModeEmpty && (
               <div className="rounded-2xl border border-border/70 bg-card p-6">
-                <h2 className="text-base font-bold text-foreground">Keine passenden Dokumentstellen gefunden</h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Prüfen Sie andere Begriffe oder wechseln Sie in den Antworten-Modus.
-                </p>
+                <h2 className="text-base font-bold text-foreground">{copy.knowledge.search.noDocsTitle}</h2>
+                <p className="mt-2 text-sm text-muted-foreground">{copy.knowledge.search.noDocsText}</p>
                 {query && (
-                  <button
-                    type="button"
-                    onClick={clearSearch}
-                    className="mt-3 text-sm font-medium text-accent hover:underline"
-                  >
-                    Suche zurücksetzen
+                  <button type="button" onClick={clearSearch} className="mt-3 text-sm font-medium text-accent hover:underline">
+                    {copy.common.searchReset}
                   </button>
                 )}
               </div>
@@ -319,9 +296,9 @@ const WissensindexPrototyp = () => {
             {!isLoading && !loadError && contentFilter === "antworten" && qaResults.length > 0 && (
               <section className="rounded-2xl border border-border/70 bg-card p-5 md:p-6">
                 <div className="mb-4 flex items-center justify-between gap-3">
-                  <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">Antworten</h2>
+                  <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">{copy.knowledge.search.answersTitle}</h2>
                   <span className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">
-                    {qaResults.length} Treffer
+                    {qaResults.length} {copy.knowledge.search.hits}
                   </span>
                 </div>
 
@@ -332,10 +309,10 @@ const WissensindexPrototyp = () => {
                     return (
                       <article key={result.slug} className="rounded-xl border border-border/60 bg-background p-4 md:p-5">
                         <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                          <span>{topicMeta[result.topicId].label}</span>
+                          <span>{copy.knowledge.topicLabels[result.topicId]}</span>
                           <span>·</span>
                           <span className={`rounded-full border px-2 py-0.5 ${statusMeta[result.status].className}`}>
-                            {statusMeta[result.status].label}
+                            {copy.common.status[result.status]}
                           </span>
                         </div>
 
@@ -349,17 +326,17 @@ const WissensindexPrototyp = () => {
 
                         <div className="mt-3 flex flex-wrap items-center gap-4">
                           <Link
-                            to={`/wissensindex-beta/${result.slug}`}
+                            to={withLocalePath(`/wissensindex-beta/${result.slug}`)}
                             className="rounded-lg bg-accent px-3 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
                           >
-                            Antwort öffnen
+                            {copy.knowledge.search.openAnswer}
                           </Link>
                           <button
                             type="button"
                             onClick={() => setExpandedAnswerSlug(isExpanded ? null : result.slug)}
                             className="text-sm font-medium text-accent hover:underline"
                           >
-                            {isExpanded ? "Details ausblenden" : "Details anzeigen"}
+                            {isExpanded ? copy.knowledge.search.hideDetails : copy.knowledge.search.showDetails}
                           </button>
                         </div>
 
@@ -371,13 +348,13 @@ const WissensindexPrototyp = () => {
 
                             <div>
                               <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                                Quellen
+                                {copy.knowledge.search.sources}
                               </p>
                               <ul className="space-y-2">
                                 {formatAnswerSources(result).map((source) => (
                                   <li key={`${result.slug}-${source.dokumentId}`} className="text-sm text-muted-foreground">
                                     <Link
-                                      to={`/wissensindex-beta/dokument/${source.dokumentId}?antwort=${result.slug}${source.abschnittId ? `#${source.abschnittId}` : ""}`}
+                                      to={withLocalePath(`/wissensindex-beta/dokument/${source.dokumentId}?antwort=${result.slug}${source.abschnittId ? `#${source.abschnittId}` : ""}`)}
                                       className="font-medium text-accent hover:underline"
                                     >
                                       {source.titel}
@@ -396,10 +373,10 @@ const WissensindexPrototyp = () => {
                                 </p>
                                 <p className="mt-1 text-sm text-foreground">{result.snippets[0].text}</p>
                                 <Link
-                                  to={`/wissensindex-beta/dokument/${result.snippets[0].dokumentId}?antwort=${result.slug}#${result.snippets[0].abschnittId}`}
+                                  to={withLocalePath(`/wissensindex-beta/dokument/${result.snippets[0].dokumentId}?antwort=${result.slug}#${result.snippets[0].abschnittId}`)}
                                   className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
                                 >
-                                  Dokumentstelle öffnen
+                                  {copy.knowledge.search.openDocSection}
                                 </Link>
                               </div>
                             )}
@@ -415,9 +392,9 @@ const WissensindexPrototyp = () => {
             {!isLoading && !loadError && contentFilter === "dokumente" && docResults.length > 0 && (
               <section className="rounded-2xl border border-border/70 bg-card p-5 md:p-6">
                 <div className="mb-4 flex items-center justify-between gap-3">
-                  <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">Dokumente</h2>
+                  <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">{copy.knowledge.search.docsTitle}</h2>
                   <span className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">
-                    {docResults.length} Treffer
+                    {docResults.length} {copy.knowledge.search.hits}
                   </span>
                 </div>
 
@@ -427,7 +404,7 @@ const WissensindexPrototyp = () => {
                       <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                         <span className="inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5">
                           <FileText size={12} />
-                          {documentTypeLabel[result.dokumenttyp]}
+                          {copy.knowledge.docTypes[result.dokumenttyp]}
                         </span>
                         <span>·</span>
                         <span>{result.fundstelle ?? `Seite ${result.seite}`}</span>
@@ -438,10 +415,10 @@ const WissensindexPrototyp = () => {
                       <p className="mt-2 text-sm leading-relaxed text-foreground">{result.snippet}</p>
 
                       <Link
-                        to={`/wissensindex-beta/dokument/${result.dokumentId}#${result.abschnittId}`}
+                        to={withLocalePath(`/wissensindex-beta/dokument/${result.dokumentId}#${result.abschnittId}`)}
                         className="mt-3 inline-block rounded-lg bg-accent px-3 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90"
                       >
-                        Dokument öffnen
+                        {copy.knowledge.search.openDocument}
                       </Link>
                     </article>
                   ))}

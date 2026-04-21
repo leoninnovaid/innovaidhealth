@@ -1,16 +1,20 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import innovaidLogo from "@/assets/innovaid-logo.png";
+import { useI18n } from "@/i18n/LocaleContext";
 
 const Hero = () => {
+  const { copy } = useI18n();
+
   const handleContactScroll = () => {
     const contactSection = document.getElementById("kontakt");
     contactSection?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <section id="hero" className="relative hero-gradient min-h-[90vh] flex items-center overflow-hidden">
+    <section id="hero" className="relative flex min-h-[90vh] items-center overflow-hidden hero-gradient">
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -19,7 +23,7 @@ const Hero = () => {
         }}
       />
 
-      <div className="container mx-auto relative z-10 py-32 md:py-40">
+      <div className="container relative z-10 mx-auto py-32 md:py-40">
         <div className="max-w-3xl">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <img
@@ -30,15 +34,12 @@ const Hero = () => {
               className="mb-8 h-auto w-[220px] md:w-[300px] lg:w-[340px]"
             />
             <p className="mb-6 text-sm font-semibold uppercase tracking-widest" style={{ color: "hsl(207, 62%, 65%)" }}>
-              Health Innovation | Market Access | Impact
+              {copy.hero.eyebrow}
             </p>
             <h1 className="mb-6 text-4xl font-extrabold leading-tight text-primary-foreground md:text-5xl lg:text-6xl">
-              Wir bringen Innovation in die Versorgung
+              {copy.hero.title}
             </h1>
-            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-primary-foreground/80 md:text-xl">
-              Wir vernetzen Startups, Krankenkassen und Leistungserbringer, damit aus innovativen Projekten tragfähige
-              Versorgungslösungen werden.
-            </p>
+            <p className="mb-10 max-w-2xl text-lg leading-relaxed text-primary-foreground/80 md:text-xl">{copy.hero.description}</p>
           </motion.div>
 
           <motion.div
@@ -48,7 +49,7 @@ const Hero = () => {
             className="flex flex-col gap-4 sm:flex-row"
           >
             <Button size="lg" variant="accent" className="px-8 py-6 text-base" onClick={handleContactScroll}>
-              Förderprojekt besprechen <ArrowRight className="ml-2" size={18} />
+              {copy.hero.cta} <ArrowRight className="ml-2" size={18} />
             </Button>
           </motion.div>
         </div>

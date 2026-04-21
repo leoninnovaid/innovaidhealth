@@ -7,7 +7,8 @@ import GlossaryText from "@/components/knowledge/GlossaryText";
 import { answerEntries } from "@/knowledge/answer-entries";
 import { cleanDocumentHeading, cleanDocumentText } from "@/knowledge/text-cleanup";
 import { statusMeta } from "@/knowledge/presentation";
-import type { KnowledgeDocumentType, KnowledgeIndex, ReviewStatus } from "@/knowledge/types";
+import type { KnowledgeIndex, ReviewStatus } from "@/knowledge/types";
+import { useI18n } from "@/i18n/LocaleContext";
 
 type SectionCitation = {
   answerSlug: string;
@@ -18,17 +19,6 @@ type SectionCitation = {
   zitat?: string;
 };
 
-const documentTypeLabel: Record<KnowledgeDocumentType, string> = {
-  Foerderbekanntmachung: "Förderbekanntmachung",
-  Leitfaden: "Leitfaden",
-  FAQ: "FAQ",
-  ANBest: "ANBest",
-  Personalmittelsaetze: "Personalmittelsätze",
-  Praesentation: "Präsentation",
-  Infoflyer: "Infoflyer",
-  Prozessgrafik: "Prozessgrafik",
-};
-
 const WissensindexDokument = () => {
   const { documentId } = useParams<{ documentId: string }>();
   const location = useLocation();
@@ -37,6 +27,7 @@ const WissensindexDokument = () => {
   const [index, setIndex] = useState<KnowledgeIndex | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const { copy, withLocalePath } = useI18n();
 
   useEffect(() => {
     let active = true;
@@ -51,7 +42,7 @@ const WissensindexDokument = () => {
         });
 
         if (!response.ok) {
-          throw new Error(`Wissensindex konnte nicht geladen werden (${response.status}).`);
+          throw new Error(`${copy.knowledge.document.loadErrorTitle} (${response.status}).`);
         }
 
         const data = (await response.json()) as KnowledgeIndex;
@@ -63,7 +54,7 @@ const WissensindexDokument = () => {
         setIndex(data);
       } catch (error) {
         if (active) {
-          setLoadError(error instanceof Error ? error.message : "Unbekannter Ladefehler");
+          setLoadError(error instanceof Error ? error.message : copy.knowledge.document.loadErrorTitle);
         }
       } finally {
         if (active) {
@@ -77,7 +68,7 @@ const WissensindexDokument = () => {
     return () => {
       active = false;
     };
-  }, []);
+  }, [copy.knowledge.document.loadErrorTitle]);
 
   const documentEntry = useMemo(() => {
     if (!index || !documentId) {
@@ -181,10 +172,7 @@ const WissensindexDokument = () => {
   }, [documentEntry, focusedAnswer]);
 
   const hasFocusedSections = focusedSectionIds.size > 0;
-  const formattedTitle = useMemo(
-    () => cleanDocumentHeading(documentEntry?.titel ?? "Dokument"),
-    [documentEntry?.titel],
-  );
+  const formattedTitle = useMemo(() => cleanDocumentHeading(documentEntry?.titel ?? "Dokument"), [documentEntry?.titel]);
 
   const highlightedCount = useMemo(() => sectionCitations.size, [sectionCitations]);
 
@@ -193,6 +181,14 @@ const WissensindexDokument = () => {
     sectionCitations.forEach((entries) => entries.forEach((entry) => slugs.add(entry.answerSlug)));
     return slugs.size;
   }, [sectionCitations]);
+
+  useEffect(() => {
+    if (!documentEntry) {
+      return;
+    }
+
+    document.title = `${formattedTitle} | ${copy.seo.knowledgeTitle}`;
+  }, [copy.seo.knowledgeTitle, documentEntry, formattedTitle]);
 
   useEffect(() => {
     if (isLoading || loadError || !documentEntry) {
@@ -238,12 +234,10 @@ const WissensindexDokument = () => {
         <Navbar />
         <main className="section-padding pt-24 md:pt-32">
           <div className="container mx-auto max-w-3xl rounded-2xl border border-border/70 bg-card p-6">
-            <h1 className="text-xl font-bold text-foreground">Dokument nicht gefunden</h1>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Für dieses Dokument wurde keine gültige Kennung übergeben.
-            </p>
-            <Link to="/wissensindex-beta" className="mt-4 inline-block text-sm font-medium text-accent hover:underline">
-              Zurück zum Wissensindex Beta
+            <h1 className="text-xl font-bold text-foreground">{copy.knowledge.document.notFoundTitle}</h1>
+            <p className="mt-2 text-sm text-muted-foreground">{copy.knowledge.document.invalidIdText}</p>
+            <Link to={withLocalePath("/wissensindex-beta")} className="mt-4 inline-block text-sm font-medium text-accent hover:underline">
+              {copy.common.backToKnowledge}
             </Link>
           </div>
         </main>
@@ -259,39 +253,32 @@ const WissensindexDokument = () => {
       <main className="section-padding pt-24 md:pt-32">
         <div className="container mx-auto max-w-5xl space-y-6">
           <nav className="text-sm text-muted-foreground">
-            <Link to="/wissensindex-beta" className="text-accent hover:underline">
-              Wissensindex-Suche
+            <Link to={withLocalePath("/wissensindex-beta")} className="text-accent hover:underline">
+              {copy.knowledge.document.breadcrumbSearch}
             </Link>
             <span> / </span>
             <span>{formattedTitle}</span>
           </nav>
 
-          <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-            Beta-Hinweis: Inhalte werden laufend redaktionell geprüft und können sich ändern. Verbindlich sind
-            ausschließlich die Originaldokumente.
-          </div>
+          <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">{copy.common.betaNotice}</div>
 
           {isLoading && (
-            <div className="rounded-2xl border border-border/70 bg-card p-6 text-sm text-muted-foreground">
-              Dokument wird geladen ...
-            </div>
+            <div className="rounded-2xl border border-border/70 bg-card p-6 text-sm text-muted-foreground">{copy.knowledge.document.loading}</div>
           )}
 
           {loadError && (
             <div className="rounded-2xl border border-red-200 bg-red-50 p-6 text-sm text-red-800">
-              <h1 className="text-base font-bold text-red-900">Fehler beim Laden</h1>
+              <h1 className="text-base font-bold text-red-900">{copy.knowledge.document.loadErrorTitle}</h1>
               <p className="mt-1">{loadError}</p>
             </div>
           )}
 
           {!isLoading && !loadError && !documentEntry && (
             <div className="rounded-2xl border border-border/70 bg-card p-6">
-              <h1 className="text-xl font-bold text-foreground">Dokument nicht gefunden</h1>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Dieses Dokument ist derzeit nicht verfügbar oder wurde umbenannt.
-              </p>
-              <Link to="/wissensindex-beta" className="mt-4 inline-block text-sm font-medium text-accent hover:underline">
-                Zurück zum Wissensindex Beta
+              <h1 className="text-xl font-bold text-foreground">{copy.knowledge.document.notFoundTitle}</h1>
+              <p className="mt-2 text-sm text-muted-foreground">{copy.knowledge.document.notFoundText}</p>
+              <Link to={withLocalePath("/wissensindex-beta")} className="mt-4 inline-block text-sm font-medium text-accent hover:underline">
+                {copy.common.backToKnowledge}
               </Link>
             </div>
           )}
@@ -301,46 +288,42 @@ const WissensindexDokument = () => {
               <header className="rounded-2xl border border-border/70 bg-card p-6 md:p-8">
                 <div className="mb-3 flex flex-wrap items-center gap-2">
                   <span className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">
-                    {documentTypeLabel[documentEntry.dokumenttyp]}
+                    {copy.knowledge.docTypes[documentEntry.dokumenttyp]}
                   </span>
                   <span className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">
-                    {documentEntry.abschnitte.length} Abschnitte
+                    {documentEntry.abschnitte.length} {copy.knowledge.document.sections}
                   </span>
                 </div>
 
                 <h1 className="text-2xl font-extrabold text-foreground md:text-3xl">{formattedTitle}</h1>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Dieses Dokument wird als kuratierte Textansicht aus der neuen FAQ-Wissensdatenbank dargestellt. Gelb
-                  markierte Abschnitte werden in Antworten des Wissensindex zitiert.
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{copy.knowledge.document.intro}</p>
 
                 {focusedAnswer && hasFocusedSections && (
                   <p className="mt-3 rounded-lg border border-accent/25 bg-accent/10 px-3 py-2 text-sm text-foreground">
-                    Fokus aktiv: Es werden nur die für „{focusedAnswer.frage}“ relevanten Abschnitte markiert. Alle
-                    übrigen Inhalte sind ausgegraut.
+                    {copy.knowledge.document.focusActivePrefix} „{focusedAnswer.frage}“ {copy.knowledge.document.focusActiveSuffix}
                   </p>
                 )}
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-xl border border-border/60 bg-background p-3">
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground">Markierte Abschnitte</p>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground">{copy.knowledge.document.highlightedSections}</p>
                     <p className="mt-1 text-lg font-bold text-foreground">{highlightedCount}</p>
                   </div>
                   <div className="rounded-xl border border-border/60 bg-background p-3">
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground">Verknüpfte Fragen</p>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground">{copy.knowledge.document.linkedQuestions}</p>
                     <p className="mt-1 text-lg font-bold text-foreground">{citedQuestionCount}</p>
                   </div>
                 </div>
 
                 <div className="mt-4">
-                  <Link to="/wissensindex-beta" className="text-sm font-medium text-accent hover:underline">
-                    Zurück zur Wissensindex-Suche
+                  <Link to={withLocalePath("/wissensindex-beta")} className="text-sm font-medium text-accent hover:underline">
+                    {copy.knowledge.document.backToSearch}
                   </Link>
                 </div>
               </header>
 
               <section className="rounded-2xl border border-border/70 bg-card p-5 md:p-6">
-                <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">Dokumenttext</h2>
+                <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">{copy.knowledge.document.textTitle}</h2>
 
                 <div className="mt-4 space-y-4">
                   {documentEntry.abschnitte.map((section) => {
@@ -371,7 +354,7 @@ const WissensindexDokument = () => {
                           </p>
                           {cited && (
                             <span className="rounded-full border border-amber-300 bg-amber-100 px-2.5 py-1 text-[11px] font-medium text-amber-900">
-                              Zitiert
+                              {copy.knowledge.document.citedBadge}
                             </span>
                           )}
                         </div>
@@ -380,31 +363,23 @@ const WissensindexDokument = () => {
                           {cleanedHeading}
                         </h3>
 
-                        <GlossaryText
-                          text={cleanedText}
-                          simplify={false}
-                          className="mt-3 block text-sm leading-relaxed text-foreground"
-                        />
+                        <GlossaryText text={cleanedText} simplify={false} className="mt-3 block text-sm leading-relaxed text-foreground" />
 
                         {citations.length > 0 && (
                           <div className="mt-4 rounded-lg border border-amber-300 bg-amber-100/60 p-3">
-                            <p className="text-xs font-semibold uppercase tracking-wider text-amber-900">
-                              Zitiert in Antworten
-                            </p>
+                            <p className="text-xs font-semibold uppercase tracking-wider text-amber-900">{copy.knowledge.document.citedInAnswers}</p>
                             <ul className="mt-2 space-y-2">
                               {citations.map((citation, index) => (
                                 <li key={`${section.id}-${citation.answerSlug}-${index}`} className="text-sm text-amber-950">
                                   <Link
-                                    to={`/wissensindex-beta/${citation.answerSlug}`}
+                                    to={withLocalePath(`/wissensindex-beta/${citation.answerSlug}`)}
                                     className="font-medium text-accent hover:underline"
                                   >
                                     {citation.frage}
                                   </Link>
                                   <span className="mx-1 text-muted-foreground">·</span>
-                                  <span
-                                    className={`rounded-full border px-2 py-0.5 text-[11px] ${statusMeta[citation.status].className}`}
-                                  >
-                                    {statusMeta[citation.status].label}
+                                  <span className={`rounded-full border px-2 py-0.5 text-[11px] ${statusMeta[citation.status].className}`}>
+                                    {copy.common.status[citation.status]}
                                   </span>
                                   {citation.fundstelle || citation.seite ? (
                                     <span className="ml-2 text-xs text-muted-foreground">

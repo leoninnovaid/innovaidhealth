@@ -2,17 +2,20 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
+import { withLocaleInSearch } from "@/i18n/routing";
+import { useI18n } from "@/i18n/LocaleContext";
+import innovaidSymbol from "@/assets/innovaid-symbol.png";
+
 type NavItem =
-  | { label: string; type: "section"; section: string }
-  | { label: string; type: "route"; to: string };
+  | { key: "services" | "audiences" | "inAction" | "team"; type: "section"; section: string }
+  | { key: "knowledgeIndexBeta"; type: "route"; to: string };
 
 const navItems: NavItem[] = [
-  { label: "Leistungen", type: "section", section: "warum" },
-  { label: "Zielgruppen", type: "section", section: "zielgruppen" },
-  { label: "Projekte", type: "section", section: "saveandsafe" },
-  { label: "Team", type: "section", section: "team" },
-  { label: "Methodik", type: "section", section: "methodik" },
-  { label: "Wissensindex Beta", type: "route", to: "/wissensindex-beta" },
+  { key: "services", type: "section", section: "warum" },
+  { key: "audiences", type: "section", section: "zielgruppen" },
+  { key: "inAction", type: "section", section: "saveandsafe" },
+  { key: "team", type: "section", section: "team" },
+  { key: "knowledgeIndexBeta", type: "route", to: "/wissensindex-beta" },
 ];
 
 const Navbar = () => {
@@ -21,6 +24,7 @@ const Navbar = () => {
   const navRef = useRef<HTMLElement | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const { copy, locale, setLocale, withLocalePath } = useI18n();
   const isSubpage = location.pathname !== "/";
 
   useEffect(() => {
@@ -61,7 +65,15 @@ const Navbar = () => {
     }
 
     element.scrollIntoView({ behavior: "smooth", block: "start" });
-    navigate("/", { replace: true });
+
+    navigate(
+      {
+        pathname: "/",
+        search: withLocaleInSearch("", locale),
+      },
+      { replace: true },
+    );
+
     return true;
   };
 
@@ -73,7 +85,13 @@ const Navbar = () => {
       return;
     }
 
-    navigate("/", { state: { sectionToScroll: section } });
+    navigate(
+      {
+        pathname: "/",
+        search: withLocaleInSearch("", locale),
+      },
+      { state: { sectionToScroll: section } },
+    );
   };
 
   const handleHomeClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -82,50 +100,84 @@ const Navbar = () => {
 
     if (location.pathname === "/") {
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      navigate("/", { replace: true });
+      navigate(
+        {
+          pathname: "/",
+          search: withLocaleInSearch("", locale),
+        },
+        { replace: true },
+      );
       return;
     }
 
-    navigate("/");
+    navigate({ pathname: "/", search: withLocaleInSearch("", locale) });
   };
+
+  const renderLanguageSwitcher = (className: string) => (
+    <div role="group" aria-label={copy.common.languageSwitcherLabel} className={className}>
+      <button
+        type="button"
+        onClick={() => setLocale("en")}
+        className={`rounded-md border px-2.5 py-1 text-xs font-semibold transition-colors ${
+          locale === "en"
+            ? "border-accent bg-accent text-accent-foreground"
+            : "border-border bg-background text-foreground hover:border-accent/40"
+        }`}
+      >
+        {copy.common.languageOptionEn}
+      </button>
+      <button
+        type="button"
+        onClick={() => setLocale("de")}
+        className={`rounded-md border px-2.5 py-1 text-xs font-semibold transition-colors ${
+          locale === "de"
+            ? "border-accent bg-accent text-accent-foreground"
+            : "border-border bg-background text-foreground hover:border-accent/40"
+        }`}
+      >
+        {copy.common.languageOptionDe}
+      </button>
+    </div>
+  );
 
   return (
     <nav
       ref={navRef}
-      aria-label="Hauptnavigation"
+      aria-label={locale === "de" ? "Hauptnavigation" : "Main navigation"}
       role="navigation"
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        solidHeader ? "bg-card/95 shadow-sm backdrop-blur-md" : "bg-transparent"
+        solidHeader ? "bg-primary/95 shadow-sm backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto flex h-16 items-center justify-between md:h-20">
         <Link
-          to="/"
+          to={withLocalePath("/")}
           onClick={handleHomeClick}
-          className={`shrink-0 text-xl font-extrabold tracking-tight ${solidHeader ? "text-primary" : "text-primary-foreground"}`}
+          className="shrink-0"
         >
-          INNOVAID<span className="text-left text-accent">:health</span>
+          <img src={innovaidSymbol} alt="INNOVAID:health" className="h-10 w-auto md:h-11" />
         </Link>
 
-        <div className="hidden items-center gap-5 lg:flex xl:gap-8">
+        <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           {navItems.map((item) => (
             <Link
-              key={item.label}
-              to={item.type === "route" ? item.to : "/"}
+              key={item.key}
+              to={item.type === "route" ? withLocalePath(item.to) : withLocalePath("/")}
               onClick={item.type === "route" ? () => setOpen(false) : handleSectionClick(item.section)}
-              className={`whitespace-nowrap text-[13px] font-medium transition-colors hover:text-accent xl:text-sm ${
-                solidHeader ? "text-foreground" : "text-primary-foreground/80"
-              }`}
+              className="whitespace-nowrap text-[13px] font-medium text-primary-foreground/85 transition-colors hover:text-primary-foreground xl:text-sm"
             >
-              {item.label}
+              {copy.navbar[item.key]}
             </Link>
           ))}
+
+          {renderLanguageSwitcher("flex items-center gap-2")}
+
           <Link
-            to="/"
+            to={withLocalePath("/")}
             onClick={handleSectionClick("kontakt")}
             className="shrink-0 whitespace-nowrap rounded-lg bg-accent px-4 py-2 text-[13px] font-semibold text-accent-foreground transition-colors hover:bg-accent/90 xl:px-5 xl:py-2.5 xl:text-sm"
           >
-            Gespräch vereinbaren
+            {copy.navbar.cta}
           </Link>
         </div>
 
@@ -133,9 +185,9 @@ const Navbar = () => {
           type="button"
           aria-expanded={open}
           aria-controls="mobile-navigation"
-          aria-label={open ? "Menü schließen" : "Menü öffnen"}
+          aria-label={open ? copy.navbar.menuCloseAria : copy.navbar.menuOpenAria}
           onClick={() => setOpen(!open)}
-          className={`lg:hidden ${solidHeader ? "text-foreground" : "text-primary-foreground"}`}
+          className="text-primary-foreground lg:hidden"
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -144,24 +196,31 @@ const Navbar = () => {
       {open && (
         <div
           id="mobile-navigation"
-          className="border-t border-border bg-card px-4 pb-5 pt-2 shadow-[0_20px_50px_-32px_hsl(222_70%_10%_/_0.4)] lg:hidden"
+          className="border-t border-border bg-background px-4 pb-5 pt-2 shadow-[0_20px_50px_-32px_hsl(222_70%_10%_/_0.4)] lg:hidden"
         >
+          <div className="mb-3 rounded-xl border border-border/70 bg-background p-3">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              {copy.common.languageSwitcherLabel}
+            </p>
+            {renderLanguageSwitcher("flex items-center gap-2")}
+          </div>
+
           {navItems.map((item) => (
             <Link
-              key={item.label}
-              to={item.type === "route" ? item.to : "/"}
+              key={item.key}
+              to={item.type === "route" ? withLocalePath(item.to) : withLocalePath("/")}
               onClick={item.type === "route" ? () => setOpen(false) : handleSectionClick(item.section)}
               className="block rounded-xl px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-accent"
             >
-              {item.label}
+              {copy.navbar[item.key]}
             </Link>
           ))}
           <Link
-            to="/"
+            to={withLocalePath("/")}
             onClick={handleSectionClick("kontakt")}
             className="mt-3 block rounded-xl bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground"
           >
-            Gespräch vereinbaren
+            {copy.navbar.cta}
           </Link>
         </div>
       )}

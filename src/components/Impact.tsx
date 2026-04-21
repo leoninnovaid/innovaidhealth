@@ -1,59 +1,46 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
-const kpis = [
-  {
-    label: "Verstetigte Förderprojekte",
-    desc: "Wir schaffen die Grundlage, damit erfolgreiche Projektresultate nach der Förderphase in der Versorgung weitergeführt werden.",
-  },
-  {
-    label: "Klarer Marktzugang",
-    desc: "Wir verbinden regulatorische Anforderungen mit umsetzbaren Schritten für Erstattung und breite Anwendung.",
-  },
-  {
-    label: "Entlastung in der Versorgung",
-    desc: "Wir richten digitale Lösungen auf konkrete Nutzen in Klinik, Praxis und Pflege aus.",
-  },
-  {
-    label: "Verlässliche Umsetzung",
-    desc: "Wir sorgen mit strukturiertem PMO für klare Verantwortungen, Transparenz und Umsetzungstempo.",
-  },
-];
+import { useI18n } from "@/i18n/LocaleContext";
 
-const Impact = () => (
-  <section className="section-padding bg-background">
-    <div className="container mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="mx-auto mb-12 max-w-2xl text-center md:mb-16"
-      >
-        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Wirkung</p>
-        <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Was wir gemeinsam erreichen</h2>
-      </motion.div>
+const Impact = () => {
+  const { copy } = useI18n();
 
-      <div className="mx-auto grid max-w-3xl gap-5 sm:grid-cols-2 md:gap-6">
-        {kpis.map((k, i) => (
-          <motion.div
-            key={k.label}
-            initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="flex gap-4 rounded-xl border border-border/50 bg-card p-5 card-elevated md:p-6"
-          >
-            <CheckCircle2 className="mt-0.5 shrink-0 text-accent" size={22} />
-            <div>
-              <h3 className="mb-1 font-bold text-foreground">{k.label}</h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">{k.desc}</p>
-            </div>
-          </motion.div>
-        ))}
+  return (
+    <section className="section-padding bg-background">
+      <div className="container mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto mb-12 max-w-2xl text-center md:mb-16"
+        >
+          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">{copy.impact.label}</p>
+          <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">{copy.impact.title}</h2>
+        </motion.div>
+
+        <div className="mx-auto grid max-w-3xl gap-5 sm:grid-cols-2 md:gap-6">
+          {copy.impact.kpis.map((kpi, index) => (
+            <motion.div
+              key={kpi.label}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="card-elevated flex gap-4 rounded-xl border border-border/50 bg-card p-5 md:p-6"
+            >
+              <CheckCircle2 className="mt-0.5 shrink-0 text-accent" size={22} />
+              <div>
+                <h3 className="mb-1 font-bold text-foreground">{kpi.label}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">{kpi.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Impact;

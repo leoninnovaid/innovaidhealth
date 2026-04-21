@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Mail, Send } from "lucide-react";
@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useI18n } from "@/i18n/LocaleContext";
 
 type TurnstileRenderOptions = {
   sitekey: string;
@@ -34,33 +35,17 @@ declare global {
   }
 }
 
-const inquiryOptions = [
-  { value: "foerderprojekte", label: "Förderprojekte" },
-  { value: "mdr_diga", label: "MDR/DiGA" },
-  { value: "allgemein", label: "Allgemeine Anfrage" },
-] as const;
+type InquiryValue = "foerderprojekte" | "mdr_diga" | "allgemein";
 
-const inquiryLabelMap: Record<(typeof inquiryOptions)[number]["value"], string> = {
-  foerderprojekte: "Förderprojekte",
-  mdr_diga: "MDR/DiGA",
-  allgemein: "Allgemeine Anfrage",
+type ContactFormValues = {
+  name: string;
+  email: string;
+  organization?: string;
+  inquiryType: InquiryValue;
+  message: string;
+  privacyAccepted: boolean;
+  website?: string;
 };
-
-const contactFormSchema = z.object({
-  name: z.string().trim().min(2, "Bitte geben Sie Ihren Namen ein."),
-  email: z.string().trim().email("Bitte geben Sie eine gültige E-Mail-Adresse ein."),
-  organization: z.string().trim().optional(),
-  inquiryType: z.enum(["foerderprojekte", "mdr_diga", "allgemein"], {
-    required_error: "Bitte wählen Sie ein Anliegen aus.",
-  }),
-  message: z.string().trim().min(20, "Bitte beschreiben Sie Ihr Anliegen mit mindestens 20 Zeichen."),
-  privacyAccepted: z.boolean().refine((value) => value, {
-    message: "Bitte stimmen Sie der Datenschutzerklärung zu.",
-  }),
-  website: z.string().optional(),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 type SubmitStatus = "idle" | "loading" | "success" | "error";
 
@@ -77,7 +62,23 @@ const defaultValues = {
 const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
 const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
 
+const buildContactSchema = (copy: ReturnType<typeof useI18n>["copy"]["contact"]) =>
+  z.object({
+    name: z.string().trim().min(2, copy.validation.name),
+    email: z.string().trim().email(copy.validation.email),
+    organization: z.string().trim().optional(),
+    inquiryType: z.enum(["foerderprojekte", "mdr_diga", "allgemein"], {
+      required_error: copy.validation.inquiry,
+    }),
+    message: z.string().trim().min(20, copy.validation.message),
+    privacyAccepted: z.boolean().refine((value) => value, {
+      message: copy.validation.privacy,
+    }),
+    website: z.string().optional(),
+  });
+
 const Contact = () => {
+  const { copy, withLocalePath } = useI18n();
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
   const [submitMessage, setSubmitMessage] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
@@ -85,8 +86,28 @@ const Contact = () => {
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
 
+  const inquiryOptions = useMemo(
+    () => [
+      { value: "foerderprojekte" as const, label: copy.contact.inquiryOptions.foerderprojekte },
+      { value: "mdr_diga" as const, label: copy.contact.inquiryOptions.mdr_diga },
+      { value: "allgemein" as const, label: copy.contact.inquiryOptions.allgemein },
+    ],
+    [copy.contact.inquiryOptions],
+  );
+
+  const inquiryLabelMap = useMemo(
+    () => ({
+      foerderprojekte: copy.contact.inquiryOptions.foerderprojekte,
+      mdr_diga: copy.contact.inquiryOptions.mdr_diga,
+      allgemein: copy.contact.inquiryOptions.allgemein,
+    }),
+    [copy.contact.inquiryOptions],
+  );
+
+  const formSchema = useMemo(() => buildContactSchema(copy.contact), [copy.contact]);
+
   const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(formSchema),
     defaultValues,
     mode: "onTouched",
   });
@@ -118,11 +139,11 @@ const Contact = () => {
         },
         "error-callback": () => {
           setTurnstileToken("");
-          setTurnstileError("Spam-Schutz konnte nicht geladen werden. Bitte Seite neu laden.");
+          setTurnstileError(copy.contact.turnstileLoadError);
         },
         "expired-callback": () => {
           setTurnstileToken("");
-          setTurnstileError("Die Sicherheitsprüfung ist abgelaufen. Bitte erneut bestätigen.");
+          setTurnstileError(copy.contact.turnstileExpired);
         },
       });
     };
@@ -139,7 +160,7 @@ const Contact = () => {
         existingScript.addEventListener(
           "error",
           () => {
-            setTurnstileError("Spam-Schutz konnte nicht geladen werden. Bitte Seite neu laden.");
+            setTurnstileError(copy.contact.turnstileLoadError);
           },
           { once: true },
         );
@@ -153,7 +174,7 @@ const Contact = () => {
       script.defer = true;
       script.onload = renderWidget;
       script.onerror = () => {
-        setTurnstileError("Spam-Schutz konnte nicht geladen werden. Bitte Seite neu laden.");
+        setTurnstileError(copy.contact.turnstileLoadError);
       };
       document.head.appendChild(script);
     };
@@ -163,7 +184,7 @@ const Contact = () => {
     return () => {
       isCancelled = true;
     };
-  }, [isTurnstileEnabled]);
+  }, [copy.contact.turnstileExpired, copy.contact.turnstileLoadError, isTurnstileEnabled]);
 
   const resetTurnstile = () => {
     setTurnstileToken("");
@@ -177,22 +198,20 @@ const Contact = () => {
   const onSubmit = async (values: ContactFormValues) => {
     if (values.website?.trim()) {
       setSubmitStatus("success");
-      setSubmitMessage("Vielen Dank. Wir melden uns zeitnah bei Ihnen.");
+      setSubmitMessage(copy.contact.successGeneric);
       form.reset(defaultValues);
       return;
     }
 
     if (!formspreeEndpoint) {
       setSubmitStatus("error");
-      setSubmitMessage(
-        "Das Kontaktformular ist aktuell noch nicht vollständig konfiguriert. Bitte schreiben Sie uns direkt an info@innovaid.health.",
-      );
+      setSubmitMessage(copy.contact.errorMissingConfig);
       return;
     }
 
     if (isTurnstileEnabled && !turnstileToken) {
       setSubmitStatus("error");
-      setSubmitMessage("Bitte bestätigen Sie zuerst den Spam-Schutz.");
+      setSubmitMessage(copy.contact.turnstileRequired);
       return;
     }
 
@@ -203,7 +222,7 @@ const Contact = () => {
       const formData = new FormData();
       formData.set("name", values.name);
       formData.set("email", values.email);
-      formData.set("organization", values.organization || "Nicht angegeben");
+      formData.set("organization", values.organization || "Not specified");
       formData.set("anliegen", inquiryLabelMap[values.inquiryType]);
       formData.set("message", values.message);
 
@@ -225,20 +244,20 @@ const Contact = () => {
         const message =
           typeof firstApiError === "string" && firstApiError.trim().length > 0
             ? firstApiError
-            : "Die Anfrage konnte nicht versendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt per E-Mail.";
+            : copy.contact.errorSendFallback;
 
         throw new Error(message);
       }
 
       setSubmitStatus("success");
-      setSubmitMessage("Vielen Dank. Ihre Anfrage wurde erfolgreich übermittelt. Wir melden uns zeitnah bei Ihnen.");
+      setSubmitMessage(copy.contact.successSubmitted);
       form.reset(defaultValues);
 
       if (isTurnstileEnabled) {
         resetTurnstile();
       }
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Beim Versand ist ein unbekannter Fehler aufgetreten.";
+      const message = error instanceof Error ? error.message : copy.contact.errorUnknown;
       setSubmitStatus("error");
       setSubmitMessage(message);
 
@@ -249,7 +268,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="kontakt" className="section-padding bg-muted/50">
+    <section id="kontakt" className="section-padding scroll-mt-24 bg-muted/50 md:scroll-mt-28">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -259,18 +278,15 @@ const Contact = () => {
           className="mx-auto max-w-5xl"
         >
           <div className="mb-10 text-center md:mb-12">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">Kontakt</p>
-            <h2 className="mb-6 text-3xl font-extrabold text-foreground md:text-4xl">Kontakt aufnehmen</h2>
-            <p className="leading-relaxed text-muted-foreground">
-              Wir klären in einem unverbindlichen Erstgespräch, wie wir Ihr Vorhaben von der Strategie bis zur Umsetzung
-              begleiten können.
-            </p>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-accent">{copy.contact.label}</p>
+            <h2 className="mb-6 text-3xl font-extrabold text-foreground md:text-4xl">{copy.contact.title}</h2>
+            <p className="leading-relaxed text-muted-foreground">{copy.contact.description}</p>
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-border/50 bg-card card-elevated">
+          <div className="card-elevated overflow-hidden rounded-3xl border border-border/50 bg-card">
             <div className="hero-gradient px-6 py-5 md:px-8">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">Kontaktformular</p>
-              <h3 className="text-xl font-extrabold text-primary-foreground md:text-2xl">Erzählen Sie uns von Ihrem Vorhaben</h3>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">{copy.contact.formLabel}</p>
+              <h3 className="text-xl font-extrabold text-primary-foreground md:text-2xl">{copy.contact.formTitle}</h3>
             </div>
 
             <div className="p-6 md:p-8">
@@ -282,7 +298,7 @@ const Contact = () => {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Name *</FormLabel>
+                          <FormLabel>{copy.contact.fields.name}</FormLabel>
                           <FormControl>
                             <Input autoComplete="off" {...field} />
                           </FormControl>
@@ -296,7 +312,7 @@ const Contact = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>E-Mail *</FormLabel>
+                          <FormLabel>{copy.contact.fields.email}</FormLabel>
                           <FormControl>
                             <Input type="email" autoComplete="off" {...field} />
                           </FormControl>
@@ -312,7 +328,7 @@ const Contact = () => {
                       name="organization"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Organisation</FormLabel>
+                          <FormLabel>{copy.contact.fields.organization}</FormLabel>
                           <FormControl>
                             <Input autoComplete="off" {...field} />
                           </FormControl>
@@ -326,7 +342,7 @@ const Contact = () => {
                       name="inquiryType"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Anliegen *</FormLabel>
+                          <FormLabel>{copy.contact.fields.inquiry}</FormLabel>
                           <Select modal={false} onValueChange={field.onChange} value={field.value}>
                             <FormControl>
                               <SelectTrigger>
@@ -352,7 +368,7 @@ const Contact = () => {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Nachricht *</FormLabel>
+                        <FormLabel>{copy.contact.fields.message}</FormLabel>
                         <FormControl>
                           <Textarea className="min-h-[140px]" {...field} />
                         </FormControl>
@@ -361,14 +377,7 @@ const Contact = () => {
                     )}
                   />
 
-                  <input
-                    type="text"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    aria-hidden="true"
-                    className="hidden"
-                    {...form.register("website")}
-                  />
+                  <input type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" {...form.register("website")} />
 
                   <FormField
                     control={form.control}
@@ -377,19 +386,15 @@ const Contact = () => {
                       <FormItem>
                         <div className="grid grid-cols-[auto_1fr] items-start gap-3 rounded-lg border border-border/50 bg-muted/40 p-4">
                           <FormControl>
-                            <Checkbox
-                              className="mt-0.5"
-                              checked={field.value}
-                              onCheckedChange={(checked) => field.onChange(checked === true)}
-                            />
+                            <Checkbox className="mt-0.5" checked={field.value} onCheckedChange={(checked) => field.onChange(checked === true)} />
                           </FormControl>
                           <div>
                             <FormLabel className="block text-sm font-normal leading-relaxed">
-                              Ich stimme der Verarbeitung meiner Daten gemäß der{" "}
-                              <Link to="/datenschutz" className="font-medium text-accent underline-offset-2 hover:underline">
-                                Datenschutzerklärung
+                              {copy.contact.fields.privacyPrefix}{" "}
+                              <Link to={withLocalePath("/datenschutz")} className="font-medium text-accent underline-offset-2 hover:underline">
+                                {copy.contact.fields.privacyLink}
                               </Link>{" "}
-                              zu. *
+                              {copy.contact.fields.privacySuffix}
                             </FormLabel>
                             <FormMessage className="mt-1" />
                           </div>
@@ -400,9 +405,9 @@ const Contact = () => {
 
                   <div className="grid gap-3 md:grid-cols-2">
                     <div className="rounded-xl border border-border/60 bg-background p-4">
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">Anfrage senden</p>
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">{copy.contact.submitCardTitle}</p>
                       <Button type="submit" className="w-full" size="lg" disabled={submitStatus === "loading"}>
-                        {submitStatus === "loading" ? "Wird gesendet ..." : "Anfrage senden"}
+                        {submitStatus === "loading" ? copy.contact.submitLoading : copy.contact.submitIdle}
                         <Send className="ml-2" size={18} />
                       </Button>
                       {isTurnstileEnabled ? (
@@ -414,7 +419,7 @@ const Contact = () => {
                     </div>
 
                     <div className="rounded-xl border border-border/60 bg-background p-4">
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">Direkter Kontakt</p>
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">{copy.contact.directCardTitle}</p>
                       <Button variant="outline" asChild className="w-full">
                         <a href="mailto:info@innovaid.health">
                           <Mail className="mr-2" size={18} /> info@innovaid.health
@@ -428,9 +433,7 @@ const Contact = () => {
                   )}
 
                   {submitStatus === "error" && (
-                    <p className="rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
-                      {submitMessage}
-                    </p>
+                    <p className="rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">{submitMessage}</p>
                   )}
                 </form>
               </Form>

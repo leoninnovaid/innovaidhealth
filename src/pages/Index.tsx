@@ -1,16 +1,17 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import WhyUs from "@/components/WhyUs";
 import Audiences from "@/components/Audiences";
 import SaveAndSafe from "@/components/SaveAndSafe";
 import Team from "@/components/Team";
-import Process from "@/components/Process";
 import Impact from "@/components/Impact";
 import FailureReasons from "@/components/FailureReasons";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { useI18n } from "@/i18n/LocaleContext";
 
 type SectionState = {
   sectionToScroll?: string;
@@ -19,6 +20,16 @@ type SectionState = {
 const Index = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { copy } = useI18n();
+
+  useEffect(() => {
+    document.title = copy.seo.homeTitle;
+
+    const descriptionTag = document.querySelector('meta[name="description"]');
+    if (descriptionTag) {
+      descriptionTag.setAttribute("content", copy.seo.homeDescription);
+    }
+  }, [copy.seo.homeDescription, copy.seo.homeTitle]);
 
   useEffect(() => {
     const state = location.state as SectionState;
@@ -26,7 +37,6 @@ const Index = () => {
     const section = state?.sectionToScroll ?? params.get("section");
 
     if (!section) {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
       return;
     }
 
@@ -38,7 +48,18 @@ const Index = () => {
       }
 
       element.scrollIntoView({ behavior: "smooth", block: "start" });
-      navigate("/", { replace: true, state: null });
+
+      const nextParams = new URLSearchParams(location.search);
+      nextParams.delete("section");
+
+      navigate(
+        {
+          pathname: "/",
+          search: nextParams.toString() ? `?${nextParams.toString()}` : "",
+        },
+        { replace: true, state: null },
+      );
+
       return true;
     };
 
@@ -58,7 +79,6 @@ const Index = () => {
       <Audiences />
       <SaveAndSafe />
       <Team />
-      <Process />
       <Impact />
       <FailureReasons />
       <Contact />

@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
-import christophMeyerDelphoPortrait from "@/assets/team-christoph-meyer-delpho.jpg";
-import christophRiesePortrait from "@/assets/team-christoph-riese.jpg";
-import leonUschwaPortrait from "@/assets/team-leon-uschwa.jpg";
+import christophMeyerDelphoPortrait from "@/assets/team-christoph-meyer-delpho.webp";
+import christophRiesePortrait from "@/assets/team-christoph-riese.webp";
+import leonUschwaPortrait from "@/assets/team-leon-uschwa.webp";
 
 type TeamMember = {
   name: string;

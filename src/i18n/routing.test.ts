@@ -12,7 +12,7 @@ describe("i18n routing helpers", () => {
   it("resolves locale with priority query > storage > default", () => {
     expect(resolveLocale("?lang=de", "en")).toBe("de");
     expect(resolveLocale("", "de")).toBe("de");
-    expect(resolveLocale("", null)).toBe("en");
+    expect(resolveLocale("", null)).toBe("de");
   });
 
   it("merges locale into existing search params", () => {

@@ -3,7 +3,6 @@ import { ExternalLink, HeartPulse, Shield, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import sasaLogo from "@/assets/saveandsafe-logo.png";
-import medizinNrwLogo from "@/assets/medizin-nrw-logo.png";
 import { useI18n } from "@/i18n/LocaleContext";
 
 const icons = [HeartPulse, Shield, Users] as const;
@@ -69,30 +68,6 @@ const SaveAndSafe = () => {
               <div className="text-center sm:text-left">
                 <h4 className="text-base font-semibold text-foreground md:text-lg">{copy.saveAndSafe.sloganTitle}</h4>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">{copy.saveAndSafe.sloganText}</p>
-              </div>
-            </div>
-
-            <div className="mb-6 flex flex-col gap-4 rounded-xl border border-border/50 bg-muted/50 p-4 md:mb-8 md:flex-row md:items-center md:gap-6 md:p-6">
-              <img
-                src={medizinNrwLogo}
-                alt="Medizin.NRW Logo"
-                width="260"
-                height="120"
-                className="h-auto w-full max-w-[240px] shrink-0 object-contain"
-                loading="lazy"
-              />
-              <div>
-                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">{copy.saveAndSafe.networkLabel}</p>
-                <h4 className="text-base font-semibold text-foreground md:text-lg">{copy.saveAndSafe.networkTitle}</h4>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">{copy.saveAndSafe.networkText}</p>
-                <a
-                  href="https://www.medizin.nrw/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center text-sm font-semibold text-accent transition-colors hover:text-accent/80"
-                >
-                  {copy.saveAndSafe.networkCta} <ExternalLink className="ml-2" size={14} />
-                </a>
               </div>
             </div>
 

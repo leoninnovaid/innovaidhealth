@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 
 import { withLocaleInSearch } from "@/i18n/routing";
 import { useI18n } from "@/i18n/LocaleContext";
-import innovaidSymbol from "@/assets/innovaid-symbol.png";
+import innovaidLogo from "@/assets/innovaid-logo.png";
 
 type NavItem =
   | { key: "services" | "audiences" | "inAction" | "team"; type: "section"; section: string }
@@ -155,7 +155,7 @@ const Navbar = () => {
           onClick={handleHomeClick}
           className="shrink-0"
         >
-          <img src={innovaidSymbol} alt="INNOVAID:health" className="h-10 w-auto md:h-11" />
+          <img src={innovaidLogo} alt="INNOVAID:health" className="h-8 w-auto md:h-9" />
         </Link>
 
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">

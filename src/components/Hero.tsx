@@ -36,7 +36,7 @@ const Hero = () => {
             <p className="mb-6 text-sm font-semibold uppercase tracking-widest" style={{ color: "hsl(207, 62%, 65%)" }}>
               {copy.hero.eyebrow}
             </p>
-            <h1 className="mb-6 text-4xl font-extrabold leading-tight text-primary-foreground md:text-5xl lg:text-6xl">
+            <h1 className="mb-6 whitespace-pre-line text-4xl font-extrabold leading-tight text-primary-foreground md:text-5xl lg:text-6xl">
               {copy.hero.title}
             </h1>
             <p className="mb-10 max-w-2xl text-lg leading-relaxed text-primary-foreground/80 md:text-xl">{copy.hero.description}</p>

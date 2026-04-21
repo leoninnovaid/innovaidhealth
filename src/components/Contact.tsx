@@ -19,14 +19,17 @@ type TurnstileRenderOptions = {
   appearance?: "always" | "execute" | "interaction-only";
   size?: "normal" | "flexible" | "compact";
   theme?: "auto" | "light" | "dark";
+  retry?: "auto" | "never";
+  "retry-interval"?: number;
   callback?: (token: string) => void;
-  "error-callback"?: () => void;
-  "expired-callback"?: () => void;
+  "error-callback"?: (errorCode: string | number) => boolean | void;
+  "expired-callback"?: () => boolean | void;
 };
 
 type TurnstileApi = {
   render: (container: HTMLElement, options: TurnstileRenderOptions) => string;
   reset: (widgetId: string) => void;
+  remove: (widgetId: string) => void;
 };
 
 declare global {
@@ -121,18 +124,35 @@ const Contact = () => {
 
     const scriptId = "cf-turnstile-script";
     let isCancelled = false;
+    let attachedScript: HTMLScriptElement | null = null;
+    let handleScriptLoad: (() => void) | null = null;
+    let handleScriptError: (() => void) | null = null;
+
+    const destroyWidget = () => {
+      if (window.turnstile && turnstileWidgetIdRef.current) {
+        window.turnstile.remove(turnstileWidgetIdRef.current);
+      }
+
+      turnstileWidgetIdRef.current = null;
+
+      if (turnstileContainerRef.current) {
+        turnstileContainerRef.current.innerHTML = "";
+      }
+    };
 
     const renderWidget = () => {
       if (isCancelled || !window.turnstile || !turnstileContainerRef.current) {
         return;
       }
 
-      turnstileContainerRef.current.innerHTML = "";
+      destroyWidget();
       turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
         sitekey: turnstileSiteKey,
-        appearance: "interaction-only",
-        size: "flexible",
+        appearance: "always",
+        size: "normal",
         theme: "light",
+        retry: "auto",
+        "retry-interval": 3000,
         callback: (token) => {
           setTurnstileToken(token);
           setTurnstileError("");
@@ -140,10 +160,12 @@ const Contact = () => {
         "error-callback": () => {
           setTurnstileToken("");
           setTurnstileError(copy.contact.turnstileLoadError);
+          return true;
         },
         "expired-callback": () => {
           setTurnstileToken("");
           setTurnstileError(copy.contact.turnstileExpired);
+          return true;
         },
       });
     };
@@ -155,15 +177,13 @@ const Contact = () => {
       }
 
       const existingScript = document.getElementById(scriptId) as HTMLScriptElement | null;
+      handleScriptLoad = () => renderWidget();
+      handleScriptError = () => setTurnstileError(copy.contact.turnstileLoadError);
+
       if (existingScript) {
-        existingScript.addEventListener("load", renderWidget, { once: true });
-        existingScript.addEventListener(
-          "error",
-          () => {
-            setTurnstileError(copy.contact.turnstileLoadError);
-          },
-          { once: true },
-        );
+        attachedScript = existingScript;
+        existingScript.addEventListener("load", handleScriptLoad, { once: true });
+        existingScript.addEventListener("error", handleScriptError, { once: true });
         return;
       }
 
@@ -172,10 +192,10 @@ const Contact = () => {
       script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
       script.async = true;
       script.defer = true;
-      script.onload = renderWidget;
-      script.onerror = () => {
-        setTurnstileError(copy.contact.turnstileLoadError);
-      };
+
+      attachedScript = script;
+      script.addEventListener("load", handleScriptLoad, { once: true });
+      script.addEventListener("error", handleScriptError, { once: true });
       document.head.appendChild(script);
     };
 
@@ -183,6 +203,16 @@ const Contact = () => {
 
     return () => {
       isCancelled = true;
+
+      if (attachedScript && handleScriptLoad) {
+        attachedScript.removeEventListener("load", handleScriptLoad);
+      }
+
+      if (attachedScript && handleScriptError) {
+        attachedScript.removeEventListener("error", handleScriptError);
+      }
+
+      destroyWidget();
     };
   }, [copy.contact.turnstileExpired, copy.contact.turnstileLoadError, isTurnstileEnabled]);
 

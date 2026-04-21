@@ -1,8 +1,7 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import innovaidLogo from "@/assets/innovaid-logo.png";
 import { useI18n } from "@/i18n/LocaleContext";
 
 const Hero = () => {
@@ -26,13 +25,6 @@ const Hero = () => {
       <div className="container relative z-10 mx-auto py-32 md:py-40">
         <div className="max-w-3xl">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <img
-              src={innovaidLogo}
-              alt="INNOVAID:health Logo"
-              width="1798"
-              height="722"
-              className="mb-8 h-auto w-[220px] md:w-[300px] lg:w-[340px]"
-            />
             <p className="mb-6 text-sm font-semibold uppercase tracking-widest" style={{ color: "hsl(207, 62%, 65%)" }}>
               {copy.hero.eyebrow}
             </p>

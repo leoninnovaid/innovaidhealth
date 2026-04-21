@@ -44,7 +44,7 @@ export const commonTranslations = {
     },
     hero: {
       eyebrow: "Health Innovation | Go to market | Impact",
-      title: "TOGETHER DIGITAL HEALTH",
+      title: "TOGETHER we get stuff done\nin DIGITAL HEALTH",
       description: "Wir bringen digitale Innovation in die Versorgung",
       cta: "Discuss your project",
     },
@@ -327,7 +327,7 @@ export const commonTranslations = {
     },
     hero: {
       eyebrow: "Health Innovation | Go to market | Impact",
-      title: "TOGETHER DIGITAL HEALTH",
+      title: "TOGETHER we get stuff done\nin DIGITAL HEALTH",
       description: "Wir bringen digitale Innovation in die Versorgung",
       cta: "Förderprojekt besprechen",
     },

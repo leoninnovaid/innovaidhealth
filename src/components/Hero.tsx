@@ -25,7 +25,7 @@ const Hero = () => {
       <div className="container relative z-10 mx-auto py-32 md:py-40">
         <div className="max-w-5xl">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <p className="mb-6 text-sm font-semibold uppercase tracking-widest" style={{ color: "hsl(207, 62%, 65%)" }}>
+            <p className="mb-6 text-sm font-extrabold uppercase tracking-widest" style={{ color: "hsl(207, 62%, 65%)" }}>
               {copy.hero.eyebrow}
             </p>
             <h1 className="mb-6 whitespace-pre-line text-4xl font-extrabold leading-tight text-primary-foreground md:text-5xl lg:text-6xl">

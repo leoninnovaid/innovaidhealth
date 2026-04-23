@@ -7,15 +7,13 @@ import { useI18n } from "@/i18n/LocaleContext";
 import innovaidLogo from "@/assets/innovaid-logo.png";
 
 type NavItem =
-  | { key: "services" | "audiences" | "inAction" | "team"; type: "section"; section: string }
-  | { key: "knowledgeIndexBeta"; type: "route"; to: string };
+  | { key: "services" | "audiences" | "inAction" | "team"; type: "section"; section: string };
 
 const navItems: NavItem[] = [
   { key: "services", type: "section", section: "warum" },
   { key: "audiences", type: "section", section: "zielgruppen" },
   { key: "inAction", type: "section", section: "saveandsafe" },
   { key: "team", type: "section", section: "team" },
-  { key: "knowledgeIndexBeta", type: "route", to: "/wissensindex-beta" },
 ];
 
 const Navbar = () => {
@@ -155,15 +153,15 @@ const Navbar = () => {
           onClick={handleHomeClick}
           className="shrink-0"
         >
-          <img src={innovaidLogo} alt="INNOVAID:health" className="h-10 w-auto md:h-11" />
+          <img src={innovaidLogo} alt="INNOVAID:health" className="h-12 w-auto md:h-14" />
         </Link>
 
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           {navItems.map((item) => (
             <Link
               key={item.key}
-              to={item.type === "route" ? withLocalePath(item.to) : withLocalePath("/")}
-              onClick={item.type === "route" ? () => setOpen(false) : handleSectionClick(item.section)}
+              to={withLocalePath("/")}
+              onClick={handleSectionClick(item.section)}
               className="whitespace-nowrap text-[13px] font-medium text-primary-foreground/85 transition-colors hover:text-primary-foreground xl:text-sm"
             >
               {copy.navbar[item.key]}
@@ -208,8 +206,8 @@ const Navbar = () => {
           {navItems.map((item) => (
             <Link
               key={item.key}
-              to={item.type === "route" ? withLocalePath(item.to) : withLocalePath("/")}
-              onClick={item.type === "route" ? () => setOpen(false) : handleSectionClick(item.section)}
+              to={withLocalePath("/")}
+              onClick={handleSectionClick(item.section)}
               className="block rounded-xl px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-accent"
             >
               {copy.navbar[item.key]}

@@ -11,9 +11,6 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} INNOVAID:health GmbH. {copy.footer.rights}
         </p>
         <div className="flex gap-6">
-          <LocaleLink to="/wissensindex-beta" className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground">
-            {copy.footer.knowledgeIndexBeta}
-          </LocaleLink>
           <LocaleLink to="/impressum" className="text-sm text-primary-foreground/60 transition-colors hover:text-primary-foreground">
             {copy.footer.imprint}
           </LocaleLink>

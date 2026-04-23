@@ -1,9 +1,9 @@
 ﻿import { motion } from "framer-motion";
-import { BriefcaseBusiness, LightbulbOff, Workflow } from "lucide-react";
+import { Handshake, Lightbulb, Target } from "lucide-react";
 
 import { useI18n } from "@/i18n/LocaleContext";
 
-const icons = [BriefcaseBusiness, Workflow, LightbulbOff] as const;
+const icons = [Target, Handshake, Lightbulb] as const;
 
 const FailureReasons = () => {
   const { copy } = useI18n();

@@ -3,7 +3,7 @@ export const commonTranslations = {
     seo: {
       homeTitle: "INNOVAID:health - Digital Health Implementation and Go to market",
       homeDescription:
-        "INNOVAID:health connects startups, insurers, and care providers to turn digital health projects into sustainable care solutions.",
+        "INNOVAID:health connects technology providers, insurers, and care providers to turn digital health projects into sustainable care solutions.",
       imprintTitle: "Imprint | INNOVAID:health",
       privacyTitle: "Privacy Policy | INNOVAID:health",
       knowledgeTitle: "Knowledge Index Beta | INNOVAID:health",
@@ -43,16 +43,16 @@ export const commonTranslations = {
       privacy: "Privacy Policy",
     },
     hero: {
-      eyebrow: "Health Innovation | Go to market | Impact",
+      eyebrow: "TOGETHER DIGITAL HEALTH",
       title: "TOGETHER we get stuff done\nin DIGITAL HEALTH",
       description: "Wir bringen digitale Innovation in die Versorgung",
-      cta: "Discuss your project",
+      cta: "Discuss project",
     },
     whyUs: {
       label: "Services",
-      title: "Our two core services",
+      title: "Our core services",
       description:
-        "Our core services combine funding expertise, PMO execution, regulatory know-how, and practical implementation in care delivery.",
+        "We combine funding expertise, PMO execution, regulatory know-how, and practical implementation in care delivery.",
       offerings: [
         {
           title: "Funded projects with long-term continuity",
@@ -60,7 +60,7 @@ export const commonTranslations = {
           points: [
             "We orchestrate funded projects across partners, workstreams, and milestones",
             "Structured PMO, reporting, and steering in complex multi-partner projects",
-            "Continuity, financing, and business model logic beyond the funding period",
+            "Continuity, financing, and business model development for sustainable care solutions",
             "Stakeholder communication between insurers, care providers, and implementation partners",
             "Risk and milestone management with clear ownership and escalation paths",
             "Transfer of project results into routine care and scalable follow-up structures",
@@ -72,6 +72,7 @@ export const commonTranslations = {
           points: [
             "MDR/DiGA-oriented product strategy and regulatory structuring",
             "Operational PMO execution",
+            "Continuity, financing, and business model development for scalable implementation",
             "Integration into real-world care processes with team adoption and continuity",
             "Requirements and use-case translation between clinical practice, product, and operations",
             "Support for evidence strategy and measurable benefit validation in care settings",
@@ -87,10 +88,10 @@ export const commonTranslations = {
       approach: "Our approach",
       cards: [
         {
-          title: "Startups",
+          title: "Technology providers",
           pain: "Many innovations fail because of highly regulated market access and unclear reimbursement logic.",
           solution:
-            "We define a clear implementation path with startups, from product idea to sustainable structures in care.",
+            "We build with digital health companies — from startup to enterprise — from product idea to a sustainable business model.",
           cta: "Discuss market access",
         },
         {
@@ -98,7 +99,7 @@ export const commonTranslations = {
           pain: "Innovative care ideas exist, but resources for consortium work, PMO, and continuity are often missing.",
           solution:
             "We support funded projects, partner integration, and transfer into routine care.",
-          cta: "Plan funded project",
+          cta: "Discuss project",
         },
         {
           title: "Care providers",
@@ -185,8 +186,8 @@ export const commonTranslations = {
         },
         {
           step: "03",
-          title: "Stakeholder integration",
-          text: "We involve insurers, providers, and relevant partners early in implementation.",
+          title: "Network & stakeholder integration",
+          text: "We integrate our network of insurers, care providers, and other relevant partners into implementation.",
         },
         {
           step: "04",
@@ -204,7 +205,7 @@ export const commonTranslations = {
           desc: "We create the basis for successful project outcomes to continue beyond funding periods.",
         },
         {
-          label: "Clear market access",
+          label: "Market access",
           desc: "We combine regulatory requirements with practical steps for reimbursement and broad adoption.",
         },
         {
@@ -219,8 +220,8 @@ export const commonTranslations = {
     },
     failureReasons: {
       label: "Success factors",
-      title: "What creates decisive added value for success",
-      subtitle: "Successful projects combine clear delivery, early continuity planning, and practical implementation logic.",
+      title: "Our added value for success",
+      subtitle: "We combine practical implementation, clear steering, and business model development.",
       reasons: [
         {
           step: "01",
@@ -292,7 +293,7 @@ export const commonTranslations = {
     seo: {
       homeTitle: "INNOVAID:health - Gesundheitsinnovationen in Versorgung und Markt",
       homeDescription:
-        "INNOVAID:health vernetzt Startups, Krankenkassen und Leistungserbringer für tragfähige Versorgungslösungen im deutschen Gesundheitsmarkt.",
+        "INNOVAID:health vernetzt Technologieanbieter, Krankenkassen und Leistungserbringer für tragfähige Versorgungslösungen im deutschen Gesundheitsmarkt.",
       imprintTitle: "Impressum | INNOVAID:health",
       privacyTitle: "Datenschutzerklärung | INNOVAID:health",
       knowledgeTitle: "Wissensindex Beta | INNOVAID:health",
@@ -332,16 +333,16 @@ export const commonTranslations = {
       privacy: "Datenschutz",
     },
     hero: {
-      eyebrow: "Health Innovation | Go to market | Impact",
+      eyebrow: "TOGETHER DIGITAL HEALTH",
       title: "TOGETHER we get stuff done\nin DIGITAL HEALTH",
       description: "Wir bringen digitale Innovation in die Versorgung",
-      cta: "Förderprojekt besprechen",
+      cta: "Projekt besprechen",
     },
     whyUs: {
       label: "Leistungen",
-      title: "Unsere zwei Kernleistungen",
+      title: "Unsere Kernleistungen",
       description:
-        "Unsere Kernleistungen bündeln Fördermittelkompetenz, PMO-Steuerung, regulatorisches Know-how und praxisnahe Umsetzung in der Versorgung.",
+        "Wir bündeln Fördermittelkompetenz, PMO-Steuerung, regulatorisches Know-how und praxisnahe Umsetzung in der Versorgung.",
       offerings: [
         {
           title: "Förderprojekte mit Verstetigung",
@@ -349,7 +350,7 @@ export const commonTranslations = {
           points: [
             "Wir orchestrieren Förderprojekte über Partner, Arbeitspakete und Meilensteine hinweg",
             "Strukturiertes PMO mit Reporting und Steuerung in komplexen Verbünden",
-            "Verstetigungs-, Finanzierungs- und Geschäftsmodelllogik nach Förderende",
+            "Verstetigungs-, Finanzierungs- und Geschäftsmodellentwicklung für tragfähige Versorgungslösungen",
             "Stakeholder-Kommunikation zwischen Kassen, Leistungserbringern und Umsetzungspartnern",
             "Risikosteuerung und Meilensteinmanagement mit klaren Verantwortlichkeiten",
             "Überführung von Projektergebnissen in die Regelversorgung und skalierbare Anschlussstrukturen",
@@ -361,6 +362,7 @@ export const commonTranslations = {
           points: [
             "MDR- und DiGA-nahe Produktstrategie und regulatorische Einordnung",
             "Operative PMO-Umsetzung",
+            "Verstetigungs-, Finanzierungs- und Geschäftsmodellentwicklung für skalierbare Implementierung",
             "Integration in reale Versorgungsprozesse mit Team-Akzeptanz und Verstetigung",
             "Übersetzung von Anforderungen zwischen Versorgungspraxis, Produktentwicklung und Betrieb",
             "Unterstützung bei Evidenzstrategie und messbarem Nutzennachweis im Versorgungsalltag",
@@ -376,10 +378,10 @@ export const commonTranslations = {
       approach: "Unser Ansatz",
       cards: [
         {
-          title: "Startups",
+          title: "Technologieanbieter",
           pain: "Viele Innovationen scheitern am hochregulierten Marktzugang und an fehlender Erstattungslogik.",
           solution:
-            "Wir entwickeln mit Startups einen klaren Umsetzungsweg von der Produktidee bis zu tragfähigen Strukturen in der Versorgung.",
+            "Wir entwickeln mit der digitalen Gesundheitswirtschaft — von Startup bis Konzern — von der Produktidee bis zum tragfähigen Geschäftsmodell.",
           cta: "Marktzugang besprechen",
         },
         {
@@ -387,7 +389,7 @@ export const commonTranslations = {
           pain: "Innovative Versorgungsideen sind da, aber Ressourcen für Konsortialarbeit, PMO und Verstetigung fehlen oft.",
           solution:
             "Wir unterstützen bei Förderprojekten, bei der Einbindung relevanter Partner und bei der Überführung in die Regelversorgung.",
-          cta: "Förderprojekt planen",
+          cta: "Projekt besprechen",
         },
         {
           title: "Leistungserbringer",
@@ -474,8 +476,8 @@ export const commonTranslations = {
         },
         {
           step: "03",
-          title: "Stakeholder-Integration",
-          text: "Wir binden Krankenkassen, Leistungserbringer und weitere relevante Partner frühzeitig in die Umsetzung ein.",
+          title: "Vernetzung & Stakeholder-Integration",
+          text: "Wir binden unser Netzwerk mit Krankenkassen, Leistungserbringern und weiteren relevanten Partnern in die Umsetzung ein.",
         },
         {
           step: "04",
@@ -493,7 +495,7 @@ export const commonTranslations = {
           desc: "Wir schaffen die Grundlage, damit erfolgreiche Projektresultate nach der Förderphase in der Versorgung weitergeführt werden.",
         },
         {
-          label: "Klarer Marktzugang",
+          label: "Marktzugang",
           desc: "Wir verbinden regulatorische Anforderungen mit umsetzbaren Schritten für Erstattung und breite Anwendung.",
         },
         {
@@ -508,8 +510,8 @@ export const commonTranslations = {
     },
     failureReasons: {
       label: "Erfolgsfaktoren",
-      title: "Was den ausschlaggebenden Mehrwert zum Erfolg bringt",
-      subtitle: "Erfolgreiche Projekte verbinden klare Steuerung, frühe Verstetigung und praxisnahe Umsetzung.",
+      title: "Unser Mehrwert zum Erfolg",
+      subtitle: "Wir verbinden praxisnahe Umsetzung, klare Steuerung und Geschäftsmodellentwicklung.",
       reasons: [
         {
           step: "01",

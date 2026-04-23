@@ -8,11 +8,6 @@ const icons = [Rocket, Building2, Hospital] as const;
 const Audiences = () => {
   const { copy } = useI18n();
 
-  const handleContactScroll = () => {
-    const contactSection = document.getElementById("kontakt");
-    contactSection?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <section id="zielgruppen" className="section-padding bg-muted/50">
       <div className="container mx-auto">
@@ -38,9 +33,9 @@ const Audiences = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="card-elevated flex flex-col overflow-hidden rounded-xl border border-border/50 bg-card"
+                className="card-elevated overflow-hidden rounded-xl border border-border/50 bg-card"
               >
-                <div className="flex-1 p-6 md:p-8">
+                <div className="p-6 md:p-8">
                   <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl hero-gradient">
                     <Icon className="text-primary-foreground" size={28} />
                   </div>
@@ -55,15 +50,6 @@ const Audiences = () => {
                     <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">{copy.audiences.approach}</p>
                     <p className="text-sm leading-relaxed text-foreground">{audience.solution}</p>
                   </div>
-                </div>
-                <div className="px-6 pb-6 md:px-8 md:pb-8">
-                  <button
-                    type="button"
-                    onClick={handleContactScroll}
-                    className="inline-flex items-center text-sm font-semibold text-accent transition-colors hover:text-accent/80"
-                  >
-                    {audience.cta} <span className="ml-1" aria-hidden="true">&rarr;</span>
-                  </button>
                 </div>
               </motion.div>
             );

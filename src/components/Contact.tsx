@@ -86,6 +86,8 @@ const Contact = () => {
   const [submitMessage, setSubmitMessage] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileError, setTurnstileError] = useState("");
+  const [shouldLoadTurnstile, setShouldLoadTurnstile] = useState(false);
+  const contactSectionRef = useRef<HTMLElement | null>(null);
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
 
@@ -118,7 +120,38 @@ const Contact = () => {
   const isTurnstileEnabled = Boolean(turnstileSiteKey?.trim());
 
   useEffect(() => {
-    if (!isTurnstileEnabled || !turnstileSiteKey || !turnstileContainerRef.current) {
+    if (!isTurnstileEnabled || shouldLoadTurnstile) {
+      return;
+    }
+
+    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
+      setShouldLoadTurnstile(true);
+      return;
+    }
+
+    const section = contactSectionRef.current;
+    if (!section) {
+      setShouldLoadTurnstile(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const isVisible = entries.some((entry) => entry.isIntersecting);
+        if (isVisible) {
+          setShouldLoadTurnstile(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "240px 0px" },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [isTurnstileEnabled, shouldLoadTurnstile]);
+
+  useEffect(() => {
+    if (!isTurnstileEnabled || !turnstileSiteKey || !turnstileContainerRef.current || !shouldLoadTurnstile) {
       return;
     }
 
@@ -148,9 +181,9 @@ const Contact = () => {
       destroyWidget();
       turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
         sitekey: turnstileSiteKey,
-        appearance: "always",
-        size: "normal",
-        theme: "light",
+        appearance: "interaction-only",
+        size: "flexible",
+        theme: "auto",
         retry: "auto",
         "retry-interval": 3000,
         callback: (token) => {
@@ -214,7 +247,7 @@ const Contact = () => {
 
       destroyWidget();
     };
-  }, [copy.contact.turnstileExpired, copy.contact.turnstileLoadError, isTurnstileEnabled]);
+  }, [copy.contact.turnstileExpired, copy.contact.turnstileLoadError, isTurnstileEnabled, shouldLoadTurnstile]);
 
   const resetTurnstile = () => {
     setTurnstileToken("");
@@ -298,7 +331,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="kontakt" className="section-padding scroll-mt-24 bg-muted/50 md:scroll-mt-28">
+    <section ref={contactSectionRef} id="kontakt" className="section-padding scroll-mt-24 bg-muted/50 md:scroll-mt-28">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -321,7 +354,16 @@ const Contact = () => {
 
             <div className="p-6 md:p-8">
               <Form {...form}>
-                <form className="space-y-6" noValidate onSubmit={form.handleSubmit(onSubmit)}>
+                <form
+                  className="space-y-6"
+                  noValidate
+                  onFocusCapture={() => {
+                    if (isTurnstileEnabled) {
+                      setShouldLoadTurnstile(true);
+                    }
+                  }}
+                  onSubmit={form.handleSubmit(onSubmit)}
+                >
                   <div className="grid gap-4 md:grid-cols-2">
                     <FormField
                       control={form.control}

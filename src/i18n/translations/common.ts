@@ -27,9 +27,9 @@ export const commonTranslations = {
     },
     navbar: {
       services: "Services",
-      audiences: "Target groups",
+      audiences: "Partners",
       inAction: "In action",
-      team: "Team",
+      team: "People",
       methodology: "Method",
       knowledgeIndexBeta: "Knowledge Index Beta",
       cta: "Book a call",
@@ -82,7 +82,7 @@ export const commonTranslations = {
       ],
     },
     audiences: {
-      label: "Target groups",
+      label: "Partners",
       title: "We connect",
       challenge: "Challenge",
       approach: "Our approach",
@@ -140,7 +140,7 @@ export const commonTranslations = {
       detailsCta: "Request project details",
     },
     team: {
-      label: "Team",
+      label: "People",
       title: "The people behind INNOVAID:health",
       subtitle: "Three points of contact with clear roles in strategy, execution, and operations.",
       members: [
@@ -317,9 +317,9 @@ export const commonTranslations = {
     },
     navbar: {
       services: "Leistungen",
-      audiences: "Zielgruppen",
+      audiences: "Partner",
       inAction: "In Aktion",
-      team: "Team",
+      team: "People",
       methodology: "Methodik",
       knowledgeIndexBeta: "Wissensindex Beta",
       cta: "Gespräch vereinbaren",
@@ -372,7 +372,7 @@ export const commonTranslations = {
       ],
     },
     audiences: {
-      label: "Zielgruppen",
+      label: "Partner",
       title: "Wir verbinden",
       challenge: "Herausforderung",
       approach: "Unser Ansatz",
@@ -430,7 +430,7 @@ export const commonTranslations = {
       detailsCta: "Projektdetails anfragen",
     },
     team: {
-      label: "Team",
+      label: "People",
       title: "Die Menschen hinter INNOVAID:health",
       subtitle: "Drei Ansprechpartner mit klaren Rollen in Strategie, Umsetzung und operativer Steuerung.",
       members: [

@@ -1,7 +1,9 @@
-﻿import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
+import { CheckCircle2, HeartPulse, Rocket, TrendingUp } from "lucide-react";
 
 import { useI18n } from "@/i18n/LocaleContext";
+
+const icons = [CheckCircle2, TrendingUp, HeartPulse, Rocket] as const;
 
 const Impact = () => {
   const { copy } = useI18n();
@@ -21,22 +23,26 @@ const Impact = () => {
         </motion.div>
 
         <div className="mx-auto grid max-w-3xl gap-5 sm:grid-cols-2 md:gap-6">
-          {copy.impact.kpis.map((kpi, index) => (
-            <motion.div
-              key={kpi.label}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card-elevated flex gap-4 rounded-xl border border-border/50 bg-card p-5 md:p-6"
-            >
-              <CheckCircle2 className="mt-0.5 shrink-0 text-accent" size={22} />
-              <div>
-                <h3 className="mb-1 font-bold text-foreground">{kpi.label}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{kpi.desc}</p>
-              </div>
-            </motion.div>
-          ))}
+          {copy.impact.kpis.map((kpi, index) => {
+            const Icon = icons[index] ?? CheckCircle2;
+
+            return (
+              <motion.div
+                key={kpi.label}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="card-elevated flex gap-4 rounded-xl border border-border/50 bg-card p-5 md:p-6"
+              >
+                <Icon className="mt-0.5 shrink-0 text-accent" size={22} />
+                <div>
+                  <h3 className="mb-1 font-bold text-foreground">{kpi.label}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{kpi.desc}</p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

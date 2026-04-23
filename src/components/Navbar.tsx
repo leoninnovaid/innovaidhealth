@@ -38,9 +38,8 @@ const Navbar = () => {
         return;
       }
 
-      const navHeight = navRef.current?.offsetHeight ?? 80;
       const heroBottom = hero.getBoundingClientRect().bottom;
-      setScrolled(heroBottom <= navHeight);
+      setScrolled(heroBottom <= 0);
     };
 
     updateNavbarState();
@@ -143,7 +142,7 @@ const Navbar = () => {
       ref={navRef}
       aria-label={locale === "de" ? "Hauptnavigation" : "Main navigation"}
       role="navigation"
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed left-0 right-0 top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-500 ease-out ${
         solidHeader ? "bg-primary/95 shadow-sm backdrop-blur-md" : "bg-transparent"
       }`}
     >

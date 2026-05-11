@@ -3,7 +3,7 @@ import { Linkedin } from "lucide-react";
 
 import christophMeyerDelphoPortrait from "@/assets/team-christoph-meyer-delpho.webp";
 import christophRiesePortrait from "@/assets/team-christoph-riese.webp";
-import leonUschwaPortrait from "@/assets/team-leon-uschwa.webp";
+import leonUschwaPortrait from "@/assets/team-leon-uschwa-2026.jpg";
 import { useI18n } from "@/i18n/LocaleContext";
 
 type TeamMemberBase = {
@@ -30,7 +30,7 @@ const teamMembersBase: TeamMemberBase[] = [
     portrait: christophRiesePortrait,
     portraitAlt: "Portrait of Christoph Riese",
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(213_20%_96%),hsl(219_16%_90%))]",
-    portraitClassName: "h-[98%] w-full object-cover object-[center_12%] scale-[0.98]",
+    portraitClassName: "h-[98%] w-full object-cover object-[center_12%] scale-[1.08]",
   },
   {
     name: "Leon Uschwa",

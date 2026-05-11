@@ -38,7 +38,7 @@ const teamMembersBase: TeamMemberBase[] = [
     portrait: leonUschwaPortrait,
     portraitAlt: "Portrait of Leon Uschwa",
     portraitWrapperClassName: "bg-[linear-gradient(180deg,hsl(214_23%_95%),hsl(219_17%_89%))]",
-    portraitClassName: "h-[118%] w-full object-cover object-[center_top] -translate-y-[8%] scale-[1.02]",
+    portraitClassName: "h-[108%] w-full object-cover object-[center_top] -translate-y-[3%] scale-[0.96]",
   },
 ];
 

@@ -60,7 +60,7 @@ const Team = () => {
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">{copy.team.subtitle}</p>
         </motion.div>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-3">
           {teamMembersBase.map((member, index) => {
             const localized = copy.team.members[index];
 
@@ -71,12 +71,12 @@ const Team = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
-                className="overflow-hidden rounded-[28px] border border-border/60 bg-card shadow-[0_18px_60px_-28px_hsl(222_70%_10%_/_0.35)]"
+                className="overflow-hidden rounded-2xl border border-border/60 bg-card shadow-[0_18px_60px_-30px_hsl(222_70%_10%_/_0.35)]"
               >
-                <div className="p-5 sm:p-6">
-                  <div className="mb-5 overflow-hidden rounded-[22px] border border-white/70 bg-[linear-gradient(180deg,hsl(210_30%_96%),hsl(220_20%_92%))] p-3 shadow-inner">
+                <div className="p-4 sm:p-5">
+                  <div className="mb-4 overflow-hidden rounded-2xl border border-white/70 bg-[linear-gradient(180deg,hsl(210_30%_96%),hsl(220_20%_92%))] p-2.5 shadow-inner">
                     <div
-                      className={`relative aspect-[5/6] overflow-hidden rounded-[18px] bg-[radial-gradient(circle_at_top,hsl(0_0%_100%/_0.55),transparent_58%),linear-gradient(180deg,hsl(214_33%_94%),hsl(220_17%_88%))] ${member.portraitWrapperClassName ?? ""}`}
+                      className={`relative aspect-[4/5] overflow-hidden rounded-xl bg-[radial-gradient(circle_at_top,hsl(0_0%_100%/_0.55),transparent_58%),linear-gradient(180deg,hsl(214_33%_94%),hsl(220_17%_88%))] ${member.portraitWrapperClassName ?? ""}`}
                     >
                       <img
                         src={member.portrait}
@@ -88,14 +88,14 @@ const Team = () => {
                     </div>
                   </div>
 
-                  <div className="mb-4">
-                    <h3 className="text-xl font-bold text-foreground">{member.name}</h3>
-                    <p className="mt-1 text-sm font-semibold text-accent">{localized.role}</p>
+                  <div className="mb-3">
+                    <h3 className="text-lg font-bold text-foreground">{member.name}</h3>
+                    <p className="mt-1 text-[13px] font-semibold text-accent">{localized.role}</p>
                   </div>
 
-                  <ul className="space-y-2.5 text-sm leading-relaxed text-muted-foreground">
+                  <ul className="space-y-2 text-[13px] leading-relaxed text-muted-foreground">
                     {localized.notes.map((note) => (
-                      <li key={note} className="flex gap-3">
+                      <li key={note} className="flex gap-2.5">
                         <span aria-hidden="true" className="text-accent">
                           -
                         </span>
@@ -108,7 +108,7 @@ const Team = () => {
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-accent"
+                    className="mt-5 inline-flex items-center gap-2 text-[13px] font-semibold text-foreground transition-colors hover:text-accent"
                   >
                     <Linkedin size={16} />
                     LinkedIn

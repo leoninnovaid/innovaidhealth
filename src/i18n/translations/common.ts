@@ -43,7 +43,6 @@ export const commonTranslations = {
       privacy: "Privacy Policy",
     },
     hero: {
-      eyebrow: "TOGETHER DIGITAL HEALTH",
       title: "TOGETHER we get stuff done\nin DIGITAL HEALTH",
       description: "Wir bringen digitale Innovation in die Versorgung",
       cta: "Discuss project",
@@ -333,7 +332,6 @@ export const commonTranslations = {
       privacy: "Datenschutz",
     },
     hero: {
-      eyebrow: "TOGETHER DIGITAL HEALTH",
       title: "TOGETHER we get stuff done\nin DIGITAL HEALTH",
       description: "Wir bringen digitale Innovation in die Versorgung",
       cta: "Projekt besprechen",

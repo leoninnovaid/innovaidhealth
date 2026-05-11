@@ -59,7 +59,7 @@
   html {
     scrollbar-width: none;
     -ms-overflow-style: none;
-    background-color: hsl(var(--background));
+    background-color: hsl(var(--primary));
   }
 
   html::-webkit-scrollbar {
@@ -68,7 +68,7 @@
 
   body {
     @apply text-foreground font-sans antialiased;
-    background-color: hsl(var(--background));
+    background-color: hsl(var(--primary));
   }
 
   #root {
